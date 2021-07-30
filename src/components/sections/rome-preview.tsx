@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '@stitches/react'
+import { styled } from '../../../stitches.config'
 
 const Section = styled('section', {
   background: 'white',

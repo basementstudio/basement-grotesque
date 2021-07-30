@@ -7,6 +7,7 @@ import { getHashtagTweets } from 'lib/twitter'
 // Sections
 import Hero from 'components/sections/hero'
 import AboutSection from 'components/sections/about'
+import CharactersSection from 'components/sections/characters'
 import DemoSection from 'components/sections/demo'
 import RomePreview from 'components/sections/rome-preview'
 import DataColumns from 'components/sections/data-columns'
@@ -18,6 +19,7 @@ const HomePage = ({
     <PageLayout>
       <Hero />
       <AboutSection />
+      <CharactersSection />
       <RomePreview />
       <DemoSection />
       <DataColumns tweets={tweets} />

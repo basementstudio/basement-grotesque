@@ -1,11 +1,12 @@
+import { download } from 'lib/utils'
 import Link from 'next/link'
+import { useCallback, useEffect, useState } from 'react'
 
 // Stitches
 import { styled } from '../../../stitches.config'
 
 const Heading = styled('header', {
-  backdropFilter: 'blur(10px)',
-  backgroundColor: 'rgba(255, 255, 255, .1)',
+  backgroundColor: 'black',
   border: '1px solid $white',
   color: '$white',
   fontWeight: 'bold',
@@ -17,20 +18,88 @@ const Heading = styled('header', {
   width: 'calc(100% - 64px)',
   zIndex: '9998',
 
-  div: {
-    display: 'flex',
-    justifyContent: 'space-between',
+  '> div': {
+    display: 'grid',
+    gridTemplateColumns: 'auto 2fr 1fr 1.5fr',
+    alignItems: 'center',
+
     div: {
-      textAlign: 'center',
       borderRight: '1px solid $white',
-      '&:last-of-type': {
-        borderRight: 'none'
-      }
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '20px',
+      textAlign: 'center',
+      lineHeight: 1
+    },
+    button: {
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '20px',
+      textAlign: 'center',
+      lineHeight: 1
     }
+  },
+
+  svg: {
+    display: 'inline-block',
+    margin: '0 8px',
+    verticalAlign: 'bottom'
   }
 })
 
+const DownloadButton = styled('button', { fontWeight: '700' })
+
+const Time = styled('time', {
+  display: 'inline-flex',
+  width: '105px',
+  justifyContent: 'space-between',
+  textTransform: 'uppercase'
+})
+
+function renderTime(date: Date) {
+  let hours: number | string = date.getHours()
+  let minutes: number | string = date.getMinutes()
+  let seconds: number | string = date.getSeconds()
+  const ampm = hours >= 12 ? 'pm' : 'am'
+  hours = hours % 12
+  hours = hours ? hours : 12 // the hour '0' should be '12'
+  hours = hours < 10 ? '0' + hours : hours
+  minutes = minutes < 10 ? '0' + minutes : minutes
+  seconds = seconds < 10 ? '0' + seconds : seconds
+  return (
+    <Time>
+      <span>
+        {hours}:{minutes}:{seconds}
+      </span>{' '}
+      <span>{ampm}</span>
+    </Time>
+  )
+}
+
 const Header = () => {
+  const [now, setNow] = useState(new Date())
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setNow(new Date())
+    }, 1000)
+
+    return () => {
+      window.clearInterval(interval)
+    }
+  }, [])
+
+  const handleDownload = useCallback(() => {
+    download(
+      encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'),
+      'BSMNT Grotesque_v1.201.zip'
+    )
+  }, [])
+
   return (
     <Heading>
       <div>
@@ -57,16 +126,43 @@ const Header = () => {
           </Link>
         </div>
         <div>
-          <p>Grotesque 400 / In Progress</p>
+          <p>
+            <span style={{ fontWeight: 700 }}>Grotesque 400 /</span>{' '}
+            <span style={{ fontWeight: 400 }}>In Progress</span>
+          </p>
         </div>
         <div>
-          <time>11:45:02</time>
+          <svg
+            width="21"
+            height="20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M.452 10c0 8 2.016 9.984 10.048 9.984S20.548 18 20.548 10 18.532.016 10.5.016.452 2 .452 10z"
+              fill="#fff"
+            />
+            <path
+              fill="#101010"
+              d="M9.452 3.016h2v8h-2zM15.452 9.016v2h-4v-2z"
+            />
+          </svg>
+          {renderTime(now)}
         </div>
-        <div>
-          <Link href="/">
-            <a>Download Font</a>
-          </Link>
-        </div>
+        <DownloadButton onClick={handleDownload}>
+          Download Font{' '}
+          <svg
+            width="15"
+            height="16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.667.5v9.31L2.357.5 0 2.856l9.31 9.31H0V15.5h15V.5h-3.333z"
+              fill="#fff"
+            />
+          </svg>
+        </DownloadButton>
       </div>
     </Heading>
   )
