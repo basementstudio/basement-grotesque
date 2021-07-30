@@ -1,4 +1,19 @@
 import { createCss } from '@stitches/react'
+import {
+  AlignContentProperty,
+  AlignSelfProperty,
+  BackgroundColorProperty,
+  BoxShadowProperty,
+  FlexDirectionProperty,
+  FlexWrapProperty,
+  GlobalsNumber,
+  JustifyContentProperty,
+  OverflowXProperty,
+  OverflowYProperty,
+  PointerEventsProperty,
+  TextAlignProperty,
+  UserSelectProperty
+} from '@stitches/react/types/css-types'
 export * from '@stitches/react'
 
 export const defaultTheme = {
@@ -114,7 +129,7 @@ const media = {
 
 const utils = {
   // Abbreviated margin properties
-  m: () => (value: number) => ({
+  m: () => (value: number | string) => ({
     marginTop: value,
     marginBottom: value,
     marginLeft: value,
@@ -167,48 +182,54 @@ const utils = {
     paddingBottom: value
   }),
 
-  ta: () => (value: any) => ({ textAlign: value }),
+  ta: () => (value: TextAlignProperty | undefined) => ({ textAlign: value }),
 
-  fd: () => (value: any) => ({ flexDirection: value }),
-  fw: () => (value: any) => ({ flexWrap: value }),
+  fd: () => (value: FlexDirectionProperty | undefined) => ({
+    flexDirection: value
+  }),
+  fw: () => (value: FlexWrapProperty) => ({ flexWrap: value }),
 
-  ai: () => (value: any) => ({ alignItems: value }),
-  ac: () => (value: any) => ({ alignContent: value }),
-  jc: () => (value: any) => ({ justifyContent: value }),
-  as: () => (value: any) => ({ alignSelf: value }),
-  fg: () => (value: any) => ({ flexGrow: value }),
-  fs: () => (value: any) => ({ flexShrink: value }),
-  fb: () => (value: any) => ({ flexBasis: value }),
+  ai: () => (value: AlignContentProperty) => ({ alignItems: value }),
+  ac: () => (value: AlignContentProperty) => ({ alignContent: value }),
+  jc: () => (value: JustifyContentProperty) => ({
+    justifyContent: value
+  }),
+  as: () => (value: AlignSelfProperty) => ({ alignSelf: value }),
+  fg: () => (value: GlobalsNumber | undefined) => ({ flexGrow: value }),
+  fs: () => (value: GlobalsNumber | undefined) => ({ flexShrink: value }),
+  fb: () => (value: string) => ({ flexBasis: value }),
 
-  bc: () => (value: any) => ({
+  bc: () => (value: BackgroundColorProperty) => ({
     backgroundColor: value
   }),
 
-  br: () => (value: any) => ({
+  br: () => (value: string | number) => ({
     borderRadius: value
   }),
-  btrr: () => (value: any) => ({
+  btrr: () => (value: string | number) => ({
     borderTopRightRadius: value
   }),
-  bbrr: () => (value: any) => ({
+  bbrr: () => (value: string | number) => ({
     borderBottomRightRadius: value
   }),
-  bblr: () => (value: any) => ({
+  bblr: () => (value: string | number) => ({
     borderBottomLeftRadius: value
   }),
-  btlr: () => (value: any) => ({
+  btlr: () => (value: string | number) => ({
     borderTopLeftRadius: value
   }),
 
-  bs: () => (value: any) => ({ boxShadow: value }),
+  bs: () => (value: BoxShadowProperty) => ({ boxShadow: value }),
 
-  lh: () => (value: any) => ({ lineHeight: value }),
+  lh: () => (value: string | number) => ({ lineHeight: value }),
 
-  ox: () => (value: any) => ({ overflowX: value }),
-  oy: () => (value: any) => ({ overflowY: value }),
+  ox: () => (value: OverflowXProperty | undefined) => ({ overflowX: value }),
+  oy: () => (value: OverflowYProperty | undefined) => ({ overflowY: value }),
 
-  pe: () => (value: any) => ({ pointerEvents: value }),
-  us: () => (value: any) => ({
+  pe: () => (value: PointerEventsProperty) => ({
+    pointerEvents: value
+  }),
+  us: () => (value: UserSelectProperty) => ({
     WebkitUserSelect: value,
     userSelect: value
   }),
