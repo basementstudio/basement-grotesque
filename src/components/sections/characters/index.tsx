@@ -101,8 +101,8 @@ const CharactersSection = () => {
               overflow: 'hidden'
             }}
           >
-            {glyphs.split('').map((glyph) => (
-              <Glyph key={glyph}>{glyph}</Glyph>
+            {glyphs.split('').map((glyph, i) => (
+              <Glyph key={i}>{glyph}</Glyph>
             ))}
           </Box>
         </DesktopOnlyBox>
@@ -161,8 +161,8 @@ const CharactersSection = () => {
               mx: '12px'
             }}
           >
-            {mobileGlyphs.split('').map((glyph) => (
-              <Glyph key={glyph} size="fixed">
+            {mobileGlyphs.split('').map((glyph, i) => (
+              <Glyph key={i} size="fixed">
                 {glyph}
               </Glyph>
             ))}
