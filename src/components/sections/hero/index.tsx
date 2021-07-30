@@ -5,6 +5,7 @@ import { styled } from '../../../../stitches.config'
 
 // Images
 import background from '../../../../public/images/bghero.jpg'
+import label from '../../../../public/images/labelhero.png'
 
 const BackgroundImage = styled('div', {
   width: '100vw',
@@ -42,6 +43,13 @@ const Wrapper = styled('div', {
   transform: 'translate(-50%, -50%)'
 })
 
+const ImageContainer = styled('div', {
+  position: 'absolute',
+  left: '50%',
+  bottom: 0,
+  transform: 'translate(-50%, 50%)'
+})
+
 const Hero = () => (
   <section>
     <BackgroundImage>
@@ -59,6 +67,17 @@ const Hero = () => (
         <Outlined>Basement</Outlined> <br /> Grotesque
       </Title>
     </Wrapper>
+    <ImageContainer>
+      <Image
+        alt="Basement"
+        height={100}
+        objectFit="cover"
+        priority
+        quality={100}
+        src={label}
+        width={266}
+      />
+    </ImageContainer>
   </section>
 )
 
