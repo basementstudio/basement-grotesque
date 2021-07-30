@@ -29,6 +29,7 @@ const Wrapper = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   paddingTop: '$3',
+  backgroundColor: 'black',
   backgroundImage: 'url(/images/bghero.jpg)',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
