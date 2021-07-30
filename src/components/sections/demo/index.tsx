@@ -1,6 +1,8 @@
 import Range, { RangeProps } from 'components/primitives/range'
+import ResizableTextarea from 'components/primitives/resizable-textarea'
+import { useAppContext } from 'pages/_app'
 import { useCallback, useState } from 'react'
-import { styled } from '../../../../stitches.config'
+import { css, styled } from '../../../../stitches.config'
 
 const Section = styled('section', {
   background: 'white',
@@ -27,17 +29,15 @@ const PreviewLabel = styled('div', {
   fontFamily: '$sans'
 })
 
-const PreviewText = styled('h3', {
-  color: 'white',
-  fontFamily: '$heading'
-})
-
 type Value = Omit<RangeProps, 'onChange' | 'name'>
 type Name = 'size' | 'tracking' | 'leading'
 
 type Inputs = Record<Name, Value>
 
+const textareaCss = css({ background: 'black' })()
+
 const DemoSection = () => {
+  const { fontsLoaded } = useAppContext()
   const [inputs, setInputs] = useState<Inputs>({
     size: {
       label: 'Size',
@@ -64,6 +64,7 @@ const DemoSection = () => {
       renderValue: (value) => value + '%'
     }
   })
+  const [text, setText] = useState('We Make Cool Shit That Performs')
 
   const handleChange: RangeProps['onChange'] = useCallback((e) => {
     const { name, value } = e.target
@@ -72,6 +73,11 @@ const DemoSection = () => {
       return { ...p, [key]: { ...p[key], value } }
     })
   }, [])
+
+  const handleTextChange: React.ChangeEventHandler<HTMLTextAreaElement> =
+    useCallback((e) => {
+      setText(e.target.value)
+    }, [])
 
   return (
     <Section>
@@ -100,15 +106,20 @@ const DemoSection = () => {
                 </>
               )
             })}
-            <PreviewText
-              style={{
-                fontSize: inputs.size.value + 'px',
-                lineHeight: inputs.leading.value + '%',
-                letterSpacing: inputs.tracking.value + 'px'
-              }}
-            >
-              We Make Cool Shit That Performs
-            </PreviewText>
+            <div>
+              <ResizableTextarea
+                value={text}
+                className={textareaCss}
+                style={{
+                  fontSize: inputs.size.value + 'px',
+                  lineHeight: inputs.leading.value + '%',
+                  letterSpacing: inputs.tracking.value + 'px',
+                  fontFamily: 'var(--fonts-heading)'
+                }}
+                onChange={handleTextChange}
+                fontsLoaded={fontsLoaded}
+              />
+            </div>
           </PreviewLabel>
         </PreviewContainer>
       </div>
