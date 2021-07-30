@@ -41,9 +41,10 @@ export const defaultTheme = {
     red: '#FF4343'
   },
   fonts: {
-    heading:
-      'Basement Grotesque, -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif',
-    sans: 'Inter, -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif'
+    system:
+      '-apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif',
+    heading: 'Basement Grotesque, var(--fonts-system)',
+    body: 'Inter, var(--fonts-system)'
   },
   fontSizes: {
     1: '12px',
