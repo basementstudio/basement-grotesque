@@ -1,7 +1,7 @@
 import Range, { RangeProps } from 'components/primitives/range'
 import ResizableTextarea from 'components/primitives/resizable-textarea'
 import { useAppContext } from 'pages/_app'
-import { useCallback, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { css, styled } from '../../../../stitches.config'
 
 const Section = styled('section', {
@@ -100,10 +100,10 @@ const DemoSection = () => {
               const isLast = i === length - 1
               const input = inputs[key as Name]
               return (
-                <>
+                <Fragment key={i}>
                   {input.label[0]}: {input.renderValue(input.value)}
                   {isLast ? null : ' | '}
-                </>
+                </Fragment>
               )
             })}
           </p>
