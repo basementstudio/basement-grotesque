@@ -1,10 +1,18 @@
+import { styled } from '../../stitches.config'
 import PageLayout from 'components/layout/page'
-import Button from 'components/primitives/button'
+
+const Button = styled('button', {})
 
 const HomePage = () => {
   return (
     <PageLayout headProps={{ title: 'next-typescript | basement.studio' }}>
-      <Button>Hola mundo.</Button>
+      <Button
+        css={{
+          backgroundColor: '$green'
+        }}
+      >
+        Hola mundo.
+      </Button>
     </PageLayout>
   )
 }
