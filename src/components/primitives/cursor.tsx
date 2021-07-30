@@ -7,7 +7,7 @@ import { styled } from '../../../stitches.config'
 import gsap from 'gsap'
 
 const CursorFollower = styled('div', {
-  borderColor: '$black',
+  borderColor: '$white',
   borderRadius: '$round',
   borderWidth: '1px',
   height: '33px',
@@ -20,15 +20,16 @@ const CursorFollower = styled('div', {
   willChange: 'transform',
   zIndex: 9999,
   '&::after': {
+    background: '$white',
+    borderRadius: '$round',
     content: `''`,
     height: '15px',
-    width: '15px',
-    background: '$black',
-    position: 'absolute',
-    borderRadius: '$round',
     left: '50%',
+    mixBlendMode: 'difference',
+    position: 'absolute',
     top: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
+    width: '15px'
   }
 })
 

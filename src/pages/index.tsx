@@ -1,18 +1,13 @@
-import { styled } from '../../stitches.config'
+// Layout
 import PageLayout from 'components/layout/page'
 
-const Button = styled('button', {})
+// Sections
+import Hero from 'components/sections/hero'
 
 const HomePage = () => {
   return (
     <PageLayout>
-      <Button
-        css={{
-          backgroundColor: '$green'
-        }}
-      >
-        Hola mundo.
-      </Button>
+      <Hero />
     </PageLayout>
   )
 }
