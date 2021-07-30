@@ -16,7 +16,7 @@ const BackgroundImage = styled('div', {
 const Title = styled('h1', {
   color: 'white',
   fontFamily: '$heading',
-  fontSize: '120px',
+  fontSize: 'max(60px, 8.333vw)',
   letterSpacing: '-1px',
   lineHeight: '1',
   overflow: 'hidden',
@@ -28,7 +28,7 @@ const Outlined = styled('span', {
   textShadow:
     '1.5px 0 0 white, -1.5px 0 0 white, 0 1.5px 0 white, 0 -1.5px 0 white, 1.5px 1.5px white, -1.5px -1.5px 0 white, 1.5px -1.5px 0 white, -1.5px 1.5px 0 white',
   color: '$black',
-  fontSize: '131px'
+  fontSize: 'max(64px, 9.097vw)'
 })
 
 const Wrapper = styled('div', {
