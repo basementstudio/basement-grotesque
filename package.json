@@ -14,7 +14,8 @@
     "postbuild": "next-sitemap",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "lint:fix": "yarn lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "fp": "git add . && git commit -m '.' && git push"
   },
   "dependencies": {
     "@radix-ui/react-polymorphic": "^0.0.12",
