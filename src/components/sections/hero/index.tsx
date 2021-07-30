@@ -9,7 +9,6 @@ import background from '../../../../public/images/bghero.jpg'
 const BackgroundImage = styled('div', {
   width: '100vw',
   height: '85vh',
-  position: 'fixed',
   overflow: 'hidden',
   zIndex: '-1'
 })
@@ -37,7 +36,11 @@ const Wrapper = styled('div', {
   display: 'flex',
   height: '85vh',
   justifyContent: 'center',
-  paddingTop: '$3'
+  left: '50%',
+  paddingTop: '$3',
+  position: 'absolute',
+  top: '50%',
+  transform: 'translate(-50%, -50%)'
 })
 
 const Hero = () => (
