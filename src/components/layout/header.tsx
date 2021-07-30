@@ -51,7 +51,7 @@ const Heading = styled('header', {
   }
 })
 
-const DownloadButton = styled('button', {})
+const DownloadButton = styled('button', { fontWeight: '700' })
 
 const Time = styled('time', {
   display: 'inline-flex',
@@ -126,7 +126,10 @@ const Header = () => {
           </Link>
         </div>
         <div>
-          <p>Grotesque 400 / In Progress</p>
+          <p>
+            <span style={{ fontWeight: 700 }}>Grotesque 400 /</span>{' '}
+            <span style={{ fontWeight: 400 }}>In Progress</span>
+          </p>
         </div>
         <div>
           <svg

@@ -41,7 +41,7 @@ const DemoSection = () => {
   const [inputs, setInputs] = useState<Inputs>({
     size: {
       label: 'Size',
-      value: '115',
+      value: '108',
       min: 21,
       max: 195,
       step: 1,
