@@ -1,0 +1,7 @@
+# Once you push this code to a repo on GitHub, Dependabot will automatically start sending PRs to keep your dependencies up-to-date!
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"

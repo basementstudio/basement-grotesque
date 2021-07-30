@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-typescript.basement.studio/
+
+# Sitemaps
+Sitemap: https://next-typescript.basement.studio/sitemap.xml
