@@ -1,6 +1,7 @@
 import { Status } from 'twitter-d'
 
-const TWITTER_HASHTAG = '#basementgrotesque'
+const TWITTER_HASHTAG = '#nasa'
+const TWEETS_PER_PAGE = 15
 
 type TwitterRes = {
   statuses: Status[]
@@ -20,7 +21,7 @@ export const getHashtagTweets = async () => {
   const res = (await fetch(
     `https://api.twitter.com/1.1/search/tweets.json?q=${encodeURIComponent(
       TWITTER_HASHTAG
-    )}`,
+    )}&count=${TWEETS_PER_PAGE}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`
