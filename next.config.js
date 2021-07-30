@@ -13,6 +13,9 @@ module.exports = withPlugins(
   ],
   {
     webpack5: true,
-    reactStrictMode: true
+    reactStrictMode: true,
+    images: {
+      domains: ['pbs.twimg.com', 'abs.twimg.com']
+    }
   }
 )

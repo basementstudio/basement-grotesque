@@ -65,11 +65,12 @@ const Text = styled('p', {
 })
 
 const Divisor = styled('hr', {
+  width: '100%',
   margin: '18px 0 80px 0',
   borderTop: '1px solid $black'
 })
 
-const SectionThree = () => {
+const RomePreview = () => {
   return (
     <Section>
       <Text size="icon" centered>
@@ -134,4 +135,4 @@ const SectionThree = () => {
   )
 }
 
-export default SectionThree
+export default RomePreview
