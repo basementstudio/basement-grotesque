@@ -1,19 +1,21 @@
-import { styled } from '../../../stitches.config'
-import GrostesqueAB from '../../../public/svg/grotesque-ab.svg'
+import { styled } from '../../../../stitches.config'
+import GrostesqueAB from '../../../../public/svg/grotesque-ab.svg'
 
 const Container = styled('div', {
   variants: {
     type: {
       'section-container': {
         display: 'block',
-        my: '46px'
+        my: '46px',
+        backgroundColor: '$white'
       },
       'content-container': {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         py: '78px'
-      }
+      },
+      'svg-container': {}
     }
   }
 })
@@ -22,7 +24,7 @@ const Text = styled('p', {
   fontFamily: '$body',
   fontWeight: 500,
   color: '$black',
-  fontSize: '$6',
+  fontSize: 'clamp($4, 2vw, $6)',
   textIndent: '150px',
 
   variants: {
@@ -41,7 +43,7 @@ const AboutSection = () => {
   return (
     <Container as="section" type="section-container">
       <Container type="content-container">
-        <Container css={{ width: '50%' }}>
+        <Container css={{ width: '50%', pl: '40px' }}>
           <Text>
             BSMNT Grotesque is a font inspired by varius placerat urna ornare
             hendrerit nascetur. Ac purus molestie eleifend magna turpis
