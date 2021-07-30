@@ -13,9 +13,25 @@ const Container = styled('div', {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        py: '78px'
-      },
-      'svg-container': {}
+        flexDirection: 'column',
+        py: '78px',
+
+        '@bp2': {
+          flexDirection: 'row'
+        },
+
+        svg: {
+          px: '28px',
+          minWidth: '100%',
+          '@bp2': {
+            position: 'relative',
+            right: '-10%',
+            order: 2,
+            minWidth: '40%',
+            px: 0
+          }
+        }
+      }
     }
   }
 })
@@ -25,7 +41,7 @@ const Text = styled('p', {
   fontWeight: 500,
   color: '$black',
   fontSize: 'clamp($4, 2vw, $6)',
-  textIndent: '150px',
+  textIndent: 'clamp(50px, 8vw, 150px)',
 
   variants: {
     font: {
@@ -43,7 +59,8 @@ const AboutSection = () => {
   return (
     <Container as="section" type="section-container">
       <Container type="content-container">
-        <Container css={{ width: '50%', pl: '40px' }}>
+        <GrostesqueAB />
+        <Container css={{ minWidth: '50%', pl: '40px' }}>
           <Text>
             BSMNT Grotesque is a font inspired by varius placerat urna ornare
             hendrerit nascetur. Ac purus molestie eleifend magna turpis
@@ -56,7 +73,6 @@ const AboutSection = () => {
             egestas. Placerat iaculis sed quis eget massa.
           </Text>
         </Container>
-        <GrostesqueAB />
       </Container>
       <Text css={{ ta: 'center', fontWeight: 800 }}>***</Text>
     </Container>

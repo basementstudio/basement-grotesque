@@ -7,7 +7,9 @@ module.exports = withPlugins(
   [
     withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }),
     withTM(['gsap']),
-    withSvgr()
+    withSvgr({
+      removeViewbox: false
+    })
   ],
   {
     webpack5: true,
