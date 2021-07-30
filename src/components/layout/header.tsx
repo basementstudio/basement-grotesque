@@ -17,7 +17,7 @@ const Heading = styled('header', {
   width: 'calc(100% - 64px)',
   zIndex: '9998',
 
-  div: {
+  '> div': {
     display: 'grid',
     gridTemplateColumns: 'auto 2fr 1fr 1.5fr',
     alignItems: 'center',
@@ -34,7 +34,8 @@ const Heading = styled('header', {
 
   svg: {
     display: 'inline-block',
-    marginLeft: '8px'
+    marginLeft: '8px',
+    verticalAlign: 'bottom'
   }
 })
 
