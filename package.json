@@ -1,8 +1,8 @@
 {
-  "name": "next-typescript",
+  "name": "grotesque",
   "version": "1.0.0",
-  "description": "A minimalist's boilerplate — Next.js with TypeScript.",
-  "repository": "https://github.com/basementstudio/next-typescript",
+  "description": "The basement Grotesque font family",
+  "repository": "https://github.com/basementstudio/grotesque",
   "author": "basement.studio",
   "private": true,
   "scripts": {
