@@ -34,7 +34,6 @@ const Outlined = styled('span', {
 const Wrapper = styled('div', {
   alignItems: 'center',
   display: 'flex',
-  height: '85vh',
   justifyContent: 'center',
   left: '50%',
   paddingTop: '$3',
