@@ -21,7 +21,7 @@ const PreviewContainer = styled('div', {
   mt: '64px',
   background: 'black',
   px: '38px',
-  py: '32px'
+  pt: '32px'
 })
 
 const PreviewLabel = styled('div', {
@@ -42,8 +42,8 @@ const DemoSection = () => {
     size: {
       label: 'Size',
       value: '115',
-      min: 12,
-      max: 256,
+      min: 21,
+      max: 195,
       step: 1,
       renderValue: (value) => value + 'PX'
     },
@@ -51,7 +51,7 @@ const DemoSection = () => {
       label: 'Tracking',
       value: '-2',
       min: -4,
-      max: 10,
+      max: 4,
       step: 0.1,
       renderValue: (value) => value + 'px'
     },
@@ -59,7 +59,7 @@ const DemoSection = () => {
       label: 'Leading',
       value: '110',
       min: 83,
-      max: 200,
+      max: 140,
       step: 1,
       renderValue: (value) => value + '%'
     }
@@ -81,21 +81,21 @@ const DemoSection = () => {
 
   return (
     <Section>
-      <div>
-        <InputsContainer>
-          {Object.keys(inputs).map((key) => {
-            return (
-              <Range
-                {...inputs[key as Name]}
-                name={key}
-                key={key}
-                onChange={handleChange}
-              />
-            )
-          })}
-        </InputsContainer>
-        <PreviewContainer>
-          <PreviewLabel>
+      <InputsContainer>
+        {Object.keys(inputs).map((key) => {
+          return (
+            <Range
+              {...inputs[key as Name]}
+              name={key}
+              key={key}
+              onChange={handleChange}
+            />
+          )
+        })}
+      </InputsContainer>
+      <PreviewContainer>
+        <PreviewLabel>
+          <p>
             {Object.keys(inputs).map((key, i, { length }) => {
               const isLast = i === length - 1
               const input = inputs[key as Name]
@@ -106,23 +106,21 @@ const DemoSection = () => {
                 </>
               )
             })}
-            <div>
-              <ResizableTextarea
-                value={text}
-                className={textareaCss}
-                style={{
-                  fontSize: inputs.size.value + 'px',
-                  lineHeight: inputs.leading.value + '%',
-                  letterSpacing: inputs.tracking.value + 'px',
-                  fontFamily: 'var(--fonts-heading)'
-                }}
-                onChange={handleTextChange}
-                fontsLoaded={fontsLoaded}
-              />
-            </div>
-          </PreviewLabel>
-        </PreviewContainer>
-      </div>
+          </p>
+          <ResizableTextarea
+            value={text}
+            className={textareaCss}
+            style={{
+              fontSize: inputs.size.value + 'px',
+              lineHeight: inputs.leading.value + '%',
+              letterSpacing: inputs.tracking.value + 'px',
+              fontFamily: 'var(--fonts-heading)'
+            }}
+            onChange={handleTextChange}
+            fontsLoaded={fontsLoaded}
+          />
+        </PreviewLabel>
+      </PreviewContainer>
     </Section>
   )
 }

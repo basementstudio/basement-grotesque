@@ -59,7 +59,7 @@ const ResizableTextarea = ({
   }, [fontsLoaded])
 
   return (
-    <div className="relative">
+    <div style={{ position: 'relative' }}>
       <Textarea
         {...textAreaProps}
         style={style}
@@ -72,7 +72,8 @@ const ResizableTextarea = ({
           display: 'none',
           whiteSpace: 'pre-wrap',
           wordWrap: 'break-word',
-          visibility: 'hidden'
+          visibility: 'hidden',
+          paddingBottom: '32px'
         }}
         ref={placeholderDivRef}
       />
