@@ -10,9 +10,7 @@ module.exports = withPlugins(
     withSvgr()
   ],
   {
-    reactStrictMode: true,
-    future: {
-      webpack5: true
-    }
+    webpack5: true,
+    reactStrictMode: true
   }
 )
