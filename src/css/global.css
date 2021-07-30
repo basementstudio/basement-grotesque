@@ -28,3 +28,7 @@ html,
 body {
   overflow-x: hidden;
 }
+
+main {
+  background-color: var(--colors-white);
+}
