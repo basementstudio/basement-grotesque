@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react'
 const isApiSupported = (api: string) => api in window
 
 const useMedia = (mediaQuery: string, initialValue?: boolean) => {
-  const [isVerified, setIsVerified] =
-    useState<boolean | undefined>(initialValue)
+  const [isVerified, setIsVerified] = useState<boolean | undefined>(
+    initialValue
+  )
 
   useEffect(() => {
     if (!isApiSupported('matchMedia')) {
