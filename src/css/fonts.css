@@ -15,3 +15,12 @@
   font-named-instance: 'Italic';
   src: url('/fonts/inter/Inter-italic.var.woff2?v=3.15') format('woff2');
 }
+
+@font-face {
+  font-family: 'Basement Grotesque';
+  src: url('/fonts/grotesque.woff2') format('woff2'),
+      url('/fonts/grotesque.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,5 +1,5 @@
 @import './reset.css';
-@import './inter.css';
+@import './fonts.css';
 
 :root {
   --font-system:
@@ -15,6 +15,7 @@
     helvetica neue,
     sans-serif;
   --font-body: 'Inter', var(--font-system), sans-serif;
+  --font-heading: 'Basement Grotesque', var(--font-system), sans-serif;
 }
 
 html {
