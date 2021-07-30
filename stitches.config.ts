@@ -167,6 +167,52 @@ const utils = {
     paddingBottom: value
   }),
 
+  ta: () => (value: any) => ({ textAlign: value }),
+
+  fd: () => (value: any) => ({ flexDirection: value }),
+  fw: () => (value: any) => ({ flexWrap: value }),
+
+  ai: () => (value: any) => ({ alignItems: value }),
+  ac: () => (value: any) => ({ alignContent: value }),
+  jc: () => (value: any) => ({ justifyContent: value }),
+  as: () => (value: any) => ({ alignSelf: value }),
+  fg: () => (value: any) => ({ flexGrow: value }),
+  fs: () => (value: any) => ({ flexShrink: value }),
+  fb: () => (value: any) => ({ flexBasis: value }),
+
+  bc: () => (value: any) => ({
+    backgroundColor: value
+  }),
+
+  br: () => (value: any) => ({
+    borderRadius: value
+  }),
+  btrr: () => (value: any) => ({
+    borderTopRightRadius: value
+  }),
+  bbrr: () => (value: any) => ({
+    borderBottomRightRadius: value
+  }),
+  bblr: () => (value: any) => ({
+    borderBottomLeftRadius: value
+  }),
+  btlr: () => (value: any) => ({
+    borderTopLeftRadius: value
+  }),
+
+  bs: () => (value: any) => ({ boxShadow: value }),
+
+  lh: () => (value: any) => ({ lineHeight: value }),
+
+  ox: () => (value: any) => ({ overflowX: value }),
+  oy: () => (value: any) => ({ overflowY: value }),
+
+  pe: () => (value: any) => ({ pointerEvents: value }),
+  us: () => (value: any) => ({
+    WebkitUserSelect: value,
+    userSelect: value
+  }),
+
   // A property for applying width/height together
   size: () => (value: number | string) => ({
     width: value,
@@ -176,11 +222,6 @@ const utils = {
   // A property to apply linear gradient
   linearGradient: () => (value: number | string) => ({
     backgroundImage: `linear-gradient(${value})`
-  }),
-
-  // An abbreviated property for border-radius
-  br: () => (value: number | string) => ({
-    borderRadius: value
   })
 }
 

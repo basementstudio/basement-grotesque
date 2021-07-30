@@ -4,7 +4,7 @@ import Container, { ContainerProps } from './container'
 type Props = {
   children?: React.ReactNode
   contain?: boolean | ContainerProps
-  headProps: HeadProps
+  headProps?: HeadProps
 
   // TODO after implementing head, header, footer
   // headerProps: HeaderProps

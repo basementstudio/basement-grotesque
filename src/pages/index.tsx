@@ -5,7 +5,7 @@ const Button = styled('button', {})
 
 const HomePage = () => {
   return (
-    <PageLayout headProps={{ title: 'next-typescript | basement.studio' }}>
+    <PageLayout>
       <Button
         css={{
           backgroundColor: '$green'
