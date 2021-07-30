@@ -6,13 +6,13 @@ import NextHead from 'next/head'
 import { useMedia } from 'hooks/use-media'
 
 const defaultMeta = {
-  title: 'next-typescript | basement.studio',
-  description: `A minimalist's boilerplate — Next.js with TypeScript.`,
+  title: 'Basement Grotesque | basement.studio',
+  description: `A minimalist's guide to show our font.`,
   ogImage: `${originURL}/og.png`
 }
 
 type Meta = {
-  title: string
+  title?: string
   description?: string
   ogImage?: string
   noIndex?: boolean
