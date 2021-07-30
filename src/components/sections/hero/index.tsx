@@ -8,7 +8,10 @@ import background from '../../../../public/images/bghero.jpg'
 
 const BackgroundImage = styled('div', {
   width: '100vw',
-  height: '90vh'
+  height: '90vh',
+  position: 'fixed',
+  overflow: 'hidden',
+  zIndex: '-1'
 })
 
 const Hero = () => (
@@ -18,6 +21,7 @@ const Hero = () => (
         alt="Basement"
         layout="fill"
         objectFit="cover"
+        priority
         quality={100}
         src={background}
       />
