@@ -9,16 +9,27 @@ import gsap from 'gsap'
 const CursorFollower = styled('div', {
   borderColor: '$black',
   borderRadius: '$round',
-  borderWidth: '2px',
-  height: '$4',
+  borderWidth: '1px',
+  height: '33px',
   left: 0,
-  mixBlendMode: 'difference',
   pointerEvents: 'none',
   position: 'fixed',
+  mixBlendMode: 'difference',
   top: 0,
-  width: '$4',
+  width: '33px',
   willChange: 'transform',
-  zIndex: 9999
+  zIndex: 9999,
+  '&::after': {
+    content: `''`,
+    height: '15px',
+    width: '15px',
+    background: '$black',
+    position: 'absolute',
+    borderRadius: '$round',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)'
+  }
 })
 
 const Cursor = () => {
@@ -30,7 +41,7 @@ const Cursor = () => {
 
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     const mouse = { x: pos.x, y: pos.y }
-    const speed = 0.23
+    const speed = 0.2
 
     const xSet = gsap.quickSetter(cursorRef.current, 'x', 'px')
     const ySet = gsap.quickSetter(cursorRef.current, 'y', 'px')
