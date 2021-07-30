@@ -1,5 +1,6 @@
 import Head, { HeadProps } from 'components/common/head'
 import Container, { ContainerProps } from './container'
+import Header from './header'
 
 type Props = {
   children?: React.ReactNode
@@ -16,7 +17,7 @@ const PageLayout = ({ children, contain, headProps }: Props) => {
     <>
       <Head {...headProps} />
       {/* TODO Header */}
-      {/* <Header /> */}
+      <Header />
       <main>
         {contain ? <Container {...contain}>{children}</Container> : children}
       </main>
