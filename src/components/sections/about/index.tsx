@@ -23,6 +23,7 @@ const Container = styled('div', {
 
         svg: {
           px: '28px',
+          paddingBottom: '28px',
           minWidth: '100%',
           maxWidth: 1000,
           '@bp2': {
@@ -30,7 +31,7 @@ const Container = styled('div', {
             right: '-10%',
             order: 2,
             minWidth: '40%',
-            px: 0
+            p: 0
           }
         }
       }
@@ -89,7 +90,9 @@ const AboutSection = () => {
     <Container as="section" type="section-container">
       <Container type="content-container">
         <GrostesqueAB />
-        <Container css={{ pl: '40px', maxWidth: 900 }}>
+        <Container
+          css={{ '@bp2': { p: 0, pl: '40px' }, px: '28px', maxWidth: 900 }}
+        >
           <Text
             size="sm"
             css={{
