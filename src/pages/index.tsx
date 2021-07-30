@@ -13,8 +13,8 @@ const HomePage = () => {
     <PageLayout>
       <Hero />
       <AboutSection />
-      <RomePreview />
       <CharactersSection />
+      <RomePreview />
       <DemoSection />
     </PageLayout>
   )
