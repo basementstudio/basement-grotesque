@@ -6,11 +6,13 @@ const Container = styled('div', {
     type: {
       'section-container': {
         display: 'block',
-        py: '126px'
+        my: '46px'
       },
       'content-container': {
         display: 'flex',
-        justifyContent: 'space-between'
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        py: '78px'
       }
     }
   }
@@ -54,6 +56,7 @@ const AboutSection = () => {
         </Container>
         <GrostesqueAB />
       </Container>
+      <Text css={{ ta: 'center', fontWeight: 800 }}>***</Text>
     </Container>
   )
 }
