@@ -15,7 +15,7 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
-    "fp": "git add . && git commit -m '.' && git push"
+    "fp": "git add . && git commit -m '.' --no-verify && git push --no-verify"
   },
   "dependencies": {
     "@radix-ui/react-polymorphic": "^0.0.12",
