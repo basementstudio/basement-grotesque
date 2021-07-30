@@ -18,6 +18,14 @@
   --font-heading: 'Basement Grotesque', var(--font-system), sans-serif;
 }
 
+*,
+*:active,
+*:focus {
+  box-sizing: border-box;
+  outline: none;
+  cursor: none;
+}
+
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -31,4 +39,9 @@ html {
 
 body {
   font-family: var(--font-body);
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
