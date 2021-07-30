@@ -23,6 +23,10 @@ const Heading = styled('header', {
     alignItems: 'center',
     div: {
       borderRight: '1px solid $white',
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
       padding: '20px',
       textAlign: 'center',
       lineHeight: 1,
@@ -34,7 +38,7 @@ const Heading = styled('header', {
 
   svg: {
     display: 'inline-block',
-    marginLeft: '8px',
+    margin: '0 8px',
     verticalAlign: 'bottom'
   }
 })
