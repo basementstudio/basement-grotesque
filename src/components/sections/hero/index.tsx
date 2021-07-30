@@ -4,15 +4,7 @@ import Image from 'next/image'
 import { styled } from '../../../../stitches.config'
 
 // Images
-import background from '../../../../public/images/bghero.jpg'
 import label from '../../../../public/images/labelhero.png'
-
-const BackgroundImage = styled('div', {
-  width: '100vw',
-  height: '85vh',
-  overflow: 'hidden',
-  zIndex: '-1'
-})
 
 const Title = styled('h1', {
   color: 'white',
@@ -36,11 +28,11 @@ const Wrapper = styled('div', {
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
-  left: '50%',
   paddingTop: '$3',
-  position: 'absolute',
-  top: '50%',
-  transform: 'translate(-50%, -50%)'
+  backgroundImage: 'url(/images/bghero.jpg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '100vh'
 })
 
 const ImageContainer = styled('div', {
@@ -52,16 +44,6 @@ const ImageContainer = styled('div', {
 
 const Hero = () => (
   <section>
-    <BackgroundImage>
-      <Image
-        alt="Basement"
-        layout="fill"
-        objectFit="cover"
-        priority
-        quality={100}
-        src={background}
-      />
-    </BackgroundImage>
     <Wrapper>
       <Title>
         <Outlined>Basement</Outlined> <br /> Grotesque
@@ -69,7 +51,7 @@ const Hero = () => (
     </Wrapper>
     <ImageContainer>
       <Image
-        alt="Basement"
+        alt="Stitch"
         height={100}
         objectFit="cover"
         priority
