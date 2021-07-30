@@ -18,15 +18,23 @@ const Heading = styled('header', {
   zIndex: '9998',
 
   div: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: 'auto 2fr 1fr 1.5fr',
+    alignItems: 'center',
     div: {
-      textAlign: 'center',
       borderRight: '1px solid $white',
+      padding: '20px',
+      textAlign: 'center',
+      lineHeight: 1,
       '&:last-of-type': {
         borderRight: 'none'
       }
     }
+  },
+
+  svg: {
+    display: 'inline-block',
+    marginLeft: '8px'
   }
 })
 
@@ -60,11 +68,39 @@ const Header = () => {
           <p>Grotesque 400 / In Progress</p>
         </div>
         <div>
+          <svg
+            width="21"
+            height="20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M.452 10c0 8 2.016 9.984 10.048 9.984S20.548 18 20.548 10 18.532.016 10.5.016.452 2 .452 10z"
+              fill="#fff"
+            />
+            <path
+              fill="#101010"
+              d="M9.452 3.016h2v8h-2zM15.452 9.016v2h-4v-2z"
+            />
+          </svg>
           <time>11:45:02</time>
         </div>
         <div>
           <Link href="/">
-            <a>Download Font</a>
+            <a>
+              Download Font{' '}
+              <svg
+                width="15"
+                height="16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.667.5v9.31L2.357.5 0 2.856l9.31 9.31H0V15.5h15V.5h-3.333z"
+                  fill="#fff"
+                />
+              </svg>
+            </a>
           </Link>
         </div>
       </div>
