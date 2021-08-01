@@ -1,38 +1,35 @@
 import { styled } from '../../../../stitches.config'
-import GrostesqueAB from '../../../../public/svg/grotesque-ab.svg'
 
 const Container = styled('div', {
   variants: {
     type: {
-      'section-container': {
+      section: {
         display: 'block',
-        my: '46px',
-        backgroundColor: '$white'
+        mb: 120,
+        backgroundColor: '$white',
+        mt: 160,
+        '@bp2': {
+          mt: 100
+        }
       },
-      'content-container': {
-        gap: '0 8vw',
+      content: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-around',
         flexDirection: 'column',
-        py: '78px',
-
+        maxWidth: '1920px',
+        mx: 'auto',
         '@bp2': {
           flexDirection: 'row'
-        },
-
-        svg: {
-          px: '28px',
-          paddingBottom: '28px',
-          minWidth: '100%',
-          maxWidth: 1000,
-          '@bp2': {
-            position: 'relative',
-            right: '-10%',
-            order: 2,
-            minWidth: '40%',
-            p: 0
-          }
+        }
+      },
+      GrotesqueABText: {
+        display: 'flex',
+        px: '28px',
+        mb: '80px',
+        '@bp2': {
+          mb: 0,
+          order: 2,
+          p: 0
         }
       }
     }
@@ -47,49 +44,54 @@ const Text = styled('p', {
   color: '$black',
 
   variants: {
-    font: {
-      grotesque: {
-        fontFamily: '$heading',
-        fontSize: '546px',
-        lineHeight: '656px',
-        fontWeight: 800
-      }
-    },
     size: {
       bg: {
         fontSize: 'clamp(18px, 2vw, $6)',
         lineHeight: 'clamp(25px, 2.2vw, 39px)'
       },
       sm: {
-        fontSize: 14,
-        lineHeight: '20px'
-      }
-    },
-    extra: {
-      before: {
-        '&:before': {
-          display: 'none',
-          marginRight: '8px',
-          content: 'About the font',
-          fontSize: '14px',
-          lineHeight: '26px',
-          textTransform: 'uppercase',
-          verticalAlign: 'top',
-
-          '@bp2': {
-            display: 'inline'
-          }
+        fontSize: '$2',
+        lineHeight: '17px',
+        '@bp2': {
+          fontSize: '$3',
+          lineHeight: '20px'
         }
       }
     }
   }
 })
 
+const GrotesqueABText = styled('span', {
+  position: 'relative',
+  right: '-10%',
+  fontFamily: '$heading',
+  fontSize: 'clamp(200px, 30vw, 546.286px)',
+  lineHeight: '1',
+  letterSpacing: '-0.12em',
+  color: '$white',
+  textShadow:
+    'black 1.5px 0px 0px, black -1.5px 0px 0px, black 0px 1.5px 0px, black 0px -1.5px 0px, black 1.5px 1.5px, black -1.5px -1.5px 0px, black 1.5px -1.5px 0px, black -1.5px 1.5px 0px',
+
+  '&:after': {
+    content: 'Ab',
+    position: 'absolute',
+    bottom: '-6%',
+    right: '-4%',
+    color: '$black',
+    WebkitTextFillColor: '#000',
+    WebkitTextStrokeColor: '$black'
+  }
+})
+
 const AboutSection = () => {
   return (
-    <Container as="section" type="section-container">
-      <Container type="content-container">
-        <GrostesqueAB />
+    <Container as="section" type="section">
+      <Container type="content">
+        <Container type="GrotesqueABText">
+          <GrotesqueABText css={{ mx: 'auto', '@bp2': { mx: 0 } }}>
+            Ab
+          </GrotesqueABText>
+        </Container>
         <Container
           css={{ '@bp2': { p: 0, pl: '40px' }, px: '28px', maxWidth: 900 }}
         >
@@ -100,24 +102,48 @@ const AboutSection = () => {
               ta: 'center',
               textTransform: 'uppercase',
               marginBottom: '48px',
-              '@bp2': { display: 'none' }
+              '@bp2': { marginBottom: '-0px', ta: 'left', fontWeight: '500' }
             }}
           >
             About the font
           </Text>
-          <Text size="bg" css={{ marginBottom: '12px' }} extra="before">
+          <Text
+            size="bg"
+            css={{
+              marginBottom: 48,
+              '@bp2': { marginBottom: 12, textIndent: 140 }
+            }}
+          >
             BSMNT Grotesque is the studio’s first venture into the daunting but
             exciting world of type design. Of course, we had to start with a
             heavy weight: striking and unapologetically so; flawed but charming
             and full of character.
           </Text>
-          <Text css={{ textIndent: 120 }}>
+          <Text
+            css={{
+              textIndent: 90,
+              mb: 16,
+              '@bp2': {
+                textIndent: 0,
+                mb: 20,
+                ml: 'min(8.5vw, 120px)'
+              }
+            }}
+          >
             We set out inspired by the expressiveness of early 19th-century
             grotesque typefaces and the boldness and striking visuals of the
             contemporary revival of brutalist aesthetics. BSMNT is the first
             step in a very ambitious path we’ve set for ourselves.
           </Text>
-          <Text css={{ textIndent: 120 }}>
+          <Text
+            css={{
+              textIndent: 90,
+              '@bp2': {
+                textIndent: 0,
+                ml: 'min(8.5vw, 120px)'
+              }
+            }}
+          >
             The typeface is a work in progress, open to anyone who shares our
             visual and graphic sensibilities. You're invited to check our
             journey as we iterate, change, and add new weights and widths in the
@@ -128,10 +154,10 @@ const AboutSection = () => {
       <Text
         size="bg"
         css={{
+          mt: 30,
           ta: 'center',
           fontWeight: 800,
-          fontFamily: '$heading',
-          marginTop: '-24px'
+          fontFamily: '$heading'
         }}
       >
         ***
