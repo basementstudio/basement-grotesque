@@ -5,9 +5,9 @@ const Container = styled('div', {
     type: {
       section: {
         display: 'block',
+        mt: 160,
         mb: 120,
         backgroundColor: '$white',
-        mt: 160,
         '@bp2': {
           mt: 100
         }
@@ -24,7 +24,6 @@ const Container = styled('div', {
       },
       GrotesqueABText: {
         display: 'flex',
-        px: '28px',
         mb: '80px',
         '@bp2': {
           mb: 0,
@@ -38,7 +37,7 @@ const Container = styled('div', {
 
 const Text = styled('p', {
   fontFamily: '$body',
-  fontSize: 'clamp($3, 1.35vw, 18px)',
+  fontSize: 'clamp($3, 1.35vw, $4)',
   lineHeight: 'clamp(25px, 1.5vw, 22px)',
   fontWeight: 500,
   color: '$black',
@@ -46,15 +45,15 @@ const Text = styled('p', {
   variants: {
     size: {
       bg: {
-        fontSize: 'clamp(18px, 2vw, $6)',
-        lineHeight: 'clamp(25px, 2.2vw, 39px)'
+        fontSize: 'clamp($4, 2vw, $7)',
+        lineHeight: 'clamp($5, 2.2vw, $8)'
       },
       sm: {
         fontSize: '$2',
-        lineHeight: '17px',
+        lineHeight: '$4',
         '@bp2': {
           fontSize: '$3',
-          lineHeight: '20px'
+          lineHeight: '$5'
         }
       }
     }
@@ -63,23 +62,23 @@ const Text = styled('p', {
 
 const GrotesqueABText = styled('span', {
   position: 'relative',
-  right: '-10%',
+  right: 0,
   fontFamily: '$heading',
   fontSize: 'clamp(200px, 30vw, 546.286px)',
   lineHeight: '1',
   letterSpacing: '-0.12em',
   color: '$white',
   textShadow:
-    'black 1.5px 0px 0px, black -1.5px 0px 0px, black 0px 1.5px 0px, black 0px -1.5px 0px, black 1.5px 1.5px, black -1.5px -1.5px 0px, black 1.5px -1.5px 0px, black -1.5px 1.5px 0px',
-
+    '$black 1.5px 0px 0px, $black -1.5px 0px 0px, $black 0px 1.5px 0px, $black 0px -1.5px 0px, $black 1.5px 1.5px, $black -1.5px -1.5px 0px, $black 1.5px -1.5px 0px, $black -1.5px 1.5px 0px',
+  '@bp2': {
+    right: '-10%'
+  },
   '&:after': {
     content: 'Ab',
     position: 'absolute',
     bottom: '-6%',
     right: '-4%',
-    color: '$black',
-    WebkitTextFillColor: '#000',
-    WebkitTextStrokeColor: '$black'
+    color: '$black'
   }
 })
 
