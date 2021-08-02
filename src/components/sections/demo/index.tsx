@@ -19,14 +19,14 @@ const InputsContainer = styled('div', {
 
 const PreviewContainer = styled('div', {
   mt: '64px',
-  background: 'black',
+  background: '$black',
   px: '38px',
   pt: '32px'
 })
 
 const PreviewLabel = styled('div', {
-  color: 'white',
-  fontFamily: '$sans'
+  color: '$white',
+  fontFamily: '$body'
 })
 
 type Value = Omit<RangeProps, 'onChange' | 'name'>
@@ -34,7 +34,7 @@ type Name = 'size' | 'tracking' | 'leading'
 
 type Inputs = Record<Name, Value>
 
-const textareaCss = css({ background: 'black' })()
+const textareaCss = css({ background: '$black' })()
 
 const DemoSection = () => {
   const { fontsLoaded } = useAppContext()

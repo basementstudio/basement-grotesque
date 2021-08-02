@@ -6,8 +6,8 @@ import s from './range.module.scss'
 
 const Label = styled('label', {
   display: 'block',
-  fontFamily: '$sans',
-  fontSize: '$6',
+  fontFamily: '$body',
+  fontSize: '$7',
   fontWeight: '500'
 })
 
@@ -18,8 +18,8 @@ const Flex = styled('div', {
 })
 
 const Value = styled('div', {
-  fontFamily: '$sans',
-  fontSize: '$6',
+  fontFamily: '$body',
+  fontSize: '$7',
   fontWeight: '500'
 })
 

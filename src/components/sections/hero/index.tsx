@@ -7,7 +7,7 @@ import { styled } from '../../../../stitches.config'
 import label from '../../../../public/images/labelhero.png'
 
 const Title = styled('h1', {
-  color: 'white',
+  color: '$white',
   fontFamily: '$heading',
   fontSize: 'max(60px, 8.333vw)',
   letterSpacing: '-1px',
@@ -19,9 +19,9 @@ const Title = styled('h1', {
 
 const Outlined = styled('span', {
   textShadow:
-    '1.5px 0 0 white, -1.5px 0 0 white, 0 1.5px 0 white, 0 -1.5px 0 white, 1.5px 1.5px white, -1.5px -1.5px 0 white, 1.5px -1.5px 0 white, -1.5px 1.5px 0 white',
+    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white',
   color: '$black',
-  fontSize: 'max(64px, 9.097vw)'
+  fontSize: 'max($10, 9.097vw)'
 })
 
 const Wrapper = styled('div', {
@@ -29,7 +29,7 @@ const Wrapper = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   paddingTop: '$3',
-  backgroundColor: 'black',
+  backgroundColor: '$black',
   backgroundImage: 'url(/images/bghero.jpg)',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
