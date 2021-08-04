@@ -18,7 +18,7 @@
     "fp": "git add . && git commit -m '.' -n && git push -n"
   },
   "dependencies": {
-    "@radix-ui/react-polymorphic": "^0.0.12",
+    "@radix-ui/react-polymorphic": "^0.0.13",
     "@stitches/react": "^0.2.3",
     "clsx": "^1.1.1",
     "file-saver": "^2.0.5",
