@@ -10,15 +10,15 @@ const DesktopOnlyBox = styled('div', {
   }
 })
 const Section = styled('section', {
-  background: 'black',
-  color: 'white',
+  background: '$black',
+  color: '$white',
   px: '40px',
   pt: '128px'
 })
 
 const MobileSection = styled('section', {
-  background: 'black',
-  color: 'white',
+  background: '$black',
+  color: '$white',
   py: '80px',
 
   '@bp3': {
@@ -27,10 +27,10 @@ const MobileSection = styled('section', {
 })
 
 const Glyph = styled('div', {
-  background: 'white',
+  background: '$white',
   fontFamily: '$heading',
-  color: 'black',
-  fontSize: '32px',
+  color: '$black',
+  fontSize: '$7',
   height: '120px',
   display: 'inline-flex',
   alignItems: 'center',
@@ -67,7 +67,7 @@ const CharactersSection = () => {
             as="h2"
             css={{
               fontFamily: '$heading',
-              fontSize: '64px',
+              fontSize: '$11',
               textTransform: 'uppercase',
               fontWeight: 800
             }}
@@ -120,7 +120,7 @@ const CharactersSection = () => {
               justifyContent: 'center',
               width: '100%',
               background: 'white',
-              color: 'black',
+              color: '$black',
               borderTop: '1px solid black',
               paddingTop: '24px',
               paddingBottom: '32px',

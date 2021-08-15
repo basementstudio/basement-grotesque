@@ -6,8 +6,8 @@
 
   --thumb-height: var(--thumb-width);
   --thumb-radius: 3px;
-  --thumb-color: black;
-  --track-color: black;
+  --thumb-color: var(--colors-black);
+  --track-color: var(--colors-black);
 }
 
 .range:focus {

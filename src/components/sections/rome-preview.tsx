@@ -42,18 +42,18 @@ const Text = styled('p', {
   variants: {
     size: {
       sm: {
-        fontSize: 24,
+        fontSize: '$6',
         letterSpacing: -1
       },
       md: {
-        fontSize: 40
+        fontSize: '$9'
       },
       lg: {
-        fontSize: 120,
+        fontSize: '$14',
         lineHeight: 1
       },
       icon: {
-        fontSize: 32
+        fontSize: '$7'
       }
     },
     centered: {
@@ -117,7 +117,7 @@ const RomePreview = () => {
                 />
               </svg>
             </span>
-            <Text css={{ fontSize: 114, lineHeight: 1, marginRight: 24 }}>
+            <Text css={{ fontSize: '$13', lineHeight: 1, marginRight: 24 }}>
               ¶
             </Text>
           </Container>

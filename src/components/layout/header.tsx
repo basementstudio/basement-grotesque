@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { styled } from '../../../stitches.config'
 
 const Heading = styled('header', {
-  backgroundColor: 'black',
+  backgroundColor: '$black',
   border: '1px solid $white',
   color: '$white',
   fontWeight: 'bold',

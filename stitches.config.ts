@@ -19,26 +19,13 @@ export * from '@stitches/react'
 export const defaultTheme = {
   colors: {
     blur: 'rgba(0, 0, 0, 0.5)',
-    border: '#424242',
-    gray100: '#424242',
-    gray200: '#616161',
-    gray300: '#757575',
-    gray400: '#9E9E9E',
-    gray50: '#212121',
-    gray500: '#BDBDBD',
-    gray600: '#E0E0E0',
-    gray700: '#EEEEEE',
-    gray800: '#F5F5F5',
-    gray900: '#FAFAFA',
-    hiContrast: '#ffffff',
-    loContrast: '#000000',
     table: 'transparent',
     black: '#000000',
-    white: '#ffffff',
-    blue: '#52a9ff',
-    green: '#26B38D',
-    highlighter: '#E6A6BE',
-    red: '#FF4343'
+    white: '#ffffff'
+  },
+  shadows: {
+    black: '#000000',
+    white: '#ffffff'
   },
   fonts: {
     system:
@@ -50,12 +37,32 @@ export const defaultTheme = {
     1: '12px',
     2: '14px',
     3: '16px',
-    4: '20px',
-    5: '24px',
-    6: '32px',
-    7: '48px',
-    8: '64px',
-    9: '72px'
+    4: '18px',
+    5: '20px',
+    6: '24px',
+    7: '32px',
+    8: '36px',
+    9: '40px',
+    10: '48px',
+    11: '64px',
+    12: '88px',
+    13: '114px',
+    14: '120px'
+  },
+  lineHeights: {
+    1: '12px',
+    2: '14px',
+    3: '17px',
+    4: '18px',
+    5: '20px',
+    6: '25px',
+    7: '32px',
+    8: '39px',
+    9: '48px',
+    10: '48px',
+    12: '88px',
+    13: '114px',
+    14: '120px'
   },
   space: {
     1: '4px',
@@ -77,17 +84,6 @@ export const defaultTheme = {
     7: '256px',
     8: '512px'
   },
-  lineHeights: {
-    1: '18px',
-    2: '21px',
-    3: '24px',
-    4: '30px',
-    5: '36px',
-    6: '48px',
-    7: '72px',
-    8: '96px',
-    9: '108px'
-  },
   radii: {
     1: '2px',
     2: '4px',
@@ -97,24 +93,6 @@ export const defaultTheme = {
     6: '14px',
     round: '9999px'
   }
-}
-
-export const lightTheme = {
-  blur: 'rgba(255, 255, 255, 0.5)',
-  border: '#E0E0E0',
-  gray100: '#F5F5F5',
-  gray200: '#EEEEEE',
-  gray300: '#E0E0E0',
-  gray400: '#BDBDBD',
-  gray50: '#FAFAFA',
-  gray500: '#9E9E9E',
-  gray600: '#757575',
-  gray700: '#616161',
-  gray800: '#424242',
-  gray900: '#212121',
-  hiContrast: '#000000',
-  loContrast: '#ffffff',
-  table: '#FCFCFC'
 }
 
 const media = {
@@ -253,5 +231,3 @@ export const { styled, theme, css, global, keyframes, getCssString } =
     utils,
     media
   })
-
-export const lightThemeClass = theme({ colors: lightTheme })
