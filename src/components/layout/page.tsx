@@ -1,5 +1,6 @@
 import Head, { HeadProps } from 'components/common/head'
 import Container, { ContainerProps } from './container'
+import Footer from './footer'
 import Header from './header'
 
 type Props = {
@@ -16,13 +17,11 @@ const PageLayout = ({ children, contain, headProps }: Props) => {
   return (
     <>
       <Head {...headProps} />
-      {/* TODO Header */}
       <Header />
       <main>
         {contain ? <Container {...contain}>{children}</Container> : children}
       </main>
-      {/* TODO Footer */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
