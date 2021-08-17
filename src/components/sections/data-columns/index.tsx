@@ -1,10 +1,18 @@
-import { styled } from '@stitches/react'
+// Lib
 import { Tweet as TweetType } from 'lib/twitter'
+
+// Primitives
+import Section from 'components/primitives/section'
+
+// Local Components
 import Feature from './feature'
 import Release from './release'
 import Tweet from './tweet'
 
-const Section = styled('section', {
+// Styles
+import { styled } from '../../../../stitches.config'
+
+const SectionInner = styled('section', {
   background: '$black',
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr'
@@ -33,21 +41,21 @@ export const Text = styled('p', {
   variants: {
     size: {
       xs: {
-        fontSize: 16
+        fontSize: '$3'
       },
       md: {
-        fontSize: 24,
+        fontSize: '$6',
         letterSpacing: -1
       },
       lg: {
-        fontSize: 40
+        fontSize: '$9'
       },
       xl: {
-        fontSize: 120,
+        fontSize: '$14',
         lineHeight: 1
       },
       icon: {
-        fontSize: 32
+        fontSize: '$7'
       }
     },
     centered: {
@@ -70,51 +78,53 @@ type DataColumnsProps = {
 const DataColumns = ({ tweets }: DataColumnsProps) => {
   return (
     <Section>
-      <Column>
-        <Text size="lg" heading>
-          Version History
-        </Text>
-        <Release
-          version="1.2"
-          date="JULY 30,2021"
-          text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-        />
-        <Release
-          version="1.2"
-          date="JULY 30,2021"
-          text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-        />
-        <Release
-          version="1.2"
-          date="JULY 30,2021"
-          text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-        />
-      </Column>
-      <Column>
-        <Text size="lg" heading>
-          Features status
-        </Text>
-        <div>
-          <Feature title="Family styles" score={1} />
-          <Feature title="Character set" score={4} />
-          <Feature title="Spacing &amp; Kerning" score={3} />
-          <Feature title="Hinting" score={4} />
-        </div>
-      </Column>
-      <Column>
-        <Text size="lg" heading>
-          Tweets
-        </Text>
-        <div style={{ marginTop: 42 }}>
-          {tweets.map((tweet) => {
-            return (
-              <TweetWrapper key={tweet.id}>
-                <Tweet tweet={tweet} />
-              </TweetWrapper>
-            )
-          })}
-        </div>
-      </Column>
+      <SectionInner>
+        <Column>
+          <Text size="lg" heading>
+            Version History
+          </Text>
+          <Release
+            version="1.2"
+            date="JULY 30,2021"
+            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
+          />
+          <Release
+            version="1.2"
+            date="JULY 30,2021"
+            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
+          />
+          <Release
+            version="1.2"
+            date="JULY 30,2021"
+            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
+          />
+        </Column>
+        <Column>
+          <Text size="lg" heading>
+            Features status
+          </Text>
+          <div>
+            <Feature title="Family styles" score={1} />
+            <Feature title="Character set" score={4} />
+            <Feature title="Spacing &amp; Kerning" score={3} />
+            <Feature title="Hinting" score={4} />
+          </div>
+        </Column>
+        <Column>
+          <Text size="lg" heading>
+            Tweets
+          </Text>
+          <div style={{ marginTop: 42 }}>
+            {tweets.map((tweet) => {
+              return (
+                <TweetWrapper key={tweet.id}>
+                  <Tweet tweet={tweet} />
+                </TweetWrapper>
+              )
+            })}
+          </div>
+        </Column>
+      </SectionInner>
     </Section>
   )
 }

@@ -24,21 +24,21 @@ const Text = styled('p', {
   variants: {
     size: {
       sm: {
-        fontSize: 16
+        fontSize: '$3'
       },
       md: {
-        fontSize: 24,
+        fontSize: '$6',
         letterSpacing: -1
       },
       lg: {
-        fontSize: 40
+        fontSize: '$9'
       },
       xl: {
-        fontSize: 120,
+        fontSize: '$14',
         lineHeight: 1
       },
       icon: {
-        fontSize: 32
+        fontSize: '$7'
       }
     },
     type: {

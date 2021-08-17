@@ -1,5 +1,10 @@
 import { useCallback, useState } from 'react'
 import Marquee from 'react-fast-marquee'
+
+// Primitives
+import Section from 'components/primitives/section'
+
+// Styles
 import { styled } from '../../../../stitches.config'
 
 const Box = styled('div', {})
@@ -9,7 +14,7 @@ const DesktopOnlyBox = styled('div', {
     display: 'block'
   }
 })
-const Section = styled('section', {
+const SectionInner = styled('section', {
   background: '$black',
   color: '$white',
   px: '40px',
@@ -54,8 +59,8 @@ const CharactersSection = () => {
   const handleToggleViewAll = useCallback(() => setViewAll((p) => !p), [])
 
   return (
-    <>
-      <Section css={{ pb: viewAll ? '128px' : '0px' }}>
+    <Section>
+      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }}>
         <Box
           css={{
             display: 'flex',
@@ -106,7 +111,7 @@ const CharactersSection = () => {
             ))}
           </Box>
         </DesktopOnlyBox>
-      </Section>
+      </SectionInner>
       <DesktopOnlyBox>
         {!viewAll && (
           <Box
@@ -119,9 +124,9 @@ const CharactersSection = () => {
               alignItems: 'center',
               justifyContent: 'center',
               width: '100%',
-              background: 'white',
+              background: '$white',
               color: '$black',
-              borderTop: '1px solid black',
+              borderTop: '1px solid $black',
               paddingTop: '24px',
               paddingBottom: '32px',
               textTransform: 'uppercase'
@@ -169,7 +174,7 @@ const CharactersSection = () => {
           </Box>
         </Marquee>
       </MobileSection>
-    </>
+    </Section>
   )
 }
 
