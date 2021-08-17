@@ -1,3 +1,7 @@
+// Primitives
+import Section from 'components/primitives/section'
+
+// Styles
 import { styled } from '../../../../stitches.config'
 
 const Container = styled('div', {
@@ -84,84 +88,86 @@ const GrotesqueABText = styled('span', {
 
 const AboutSection = () => {
   return (
-    <Container as="section" type="section">
-      <Container type="content">
-        <Container type="GrotesqueABText">
-          <GrotesqueABText css={{ mx: 'auto', '@bp2': { mx: 0 } }}>
-            Ab
-          </GrotesqueABText>
+    <Section>
+      <Container as="section" type="section">
+        <Container type="content">
+          <Container type="GrotesqueABText">
+            <GrotesqueABText css={{ mx: 'auto', '@bp2': { mx: 0 } }}>
+              Ab
+            </GrotesqueABText>
+          </Container>
+          <Container
+            css={{ '@bp2': { p: 0, pl: '40px' }, px: '28px', maxWidth: 900 }}
+          >
+            <Text
+              size="sm"
+              css={{
+                fontWeight: '700',
+                ta: 'center',
+                textTransform: 'uppercase',
+                marginBottom: '48px',
+                '@bp2': { marginBottom: '-0px', ta: 'left', fontWeight: '500' }
+              }}
+            >
+              About the font
+            </Text>
+            <Text
+              size="bg"
+              css={{
+                marginBottom: 48,
+                '@bp2': { marginBottom: 12, textIndent: 140 }
+              }}
+            >
+              BSMNT Grotesque is the studio’s first venture into the daunting
+              but exciting world of type design. Of course, we had to start with
+              a heavy weight: striking and unapologetically so; flawed but
+              charming and full of character.
+            </Text>
+            <Text
+              css={{
+                textIndent: 90,
+                mb: 16,
+                '@bp2': {
+                  textIndent: 0,
+                  mb: 20,
+                  ml: 'min(8.5vw, 120px)'
+                }
+              }}
+            >
+              We set out inspired by the expressiveness of early 19th-century
+              grotesque typefaces and the boldness and striking visuals of the
+              contemporary revival of brutalist aesthetics. BSMNT is the first
+              step in a very ambitious path we’ve set for ourselves.
+            </Text>
+            <Text
+              css={{
+                textIndent: 90,
+                '@bp2': {
+                  textIndent: 0,
+                  ml: 'min(8.5vw, 120px)'
+                }
+              }}
+            >
+              The typeface is a work in progress, open to anyone who shares our
+              visual and graphic sensibilities. You're invited to check our
+              journey as we iterate, change, and add new weights and widths in
+              the future as we learn by doing.
+            </Text>
+          </Container>
         </Container>
-        <Container
-          css={{ '@bp2': { p: 0, pl: '40px' }, px: '28px', maxWidth: 900 }}
+        <Text
+          size="bg"
+          css={{
+            mt: 30,
+            ta: 'center',
+            fontWeight: 800,
+            fontFamily: '$heading'
+          }}
         >
-          <Text
-            size="sm"
-            css={{
-              fontWeight: '700',
-              ta: 'center',
-              textTransform: 'uppercase',
-              marginBottom: '48px',
-              '@bp2': { marginBottom: '-0px', ta: 'left', fontWeight: '500' }
-            }}
-          >
-            About the font
-          </Text>
-          <Text
-            size="bg"
-            css={{
-              marginBottom: 48,
-              '@bp2': { marginBottom: 12, textIndent: 140 }
-            }}
-          >
-            BSMNT Grotesque is the studio’s first venture into the daunting but
-            exciting world of type design. Of course, we had to start with a
-            heavy weight: striking and unapologetically so; flawed but charming
-            and full of character.
-          </Text>
-          <Text
-            css={{
-              textIndent: 90,
-              mb: 16,
-              '@bp2': {
-                textIndent: 0,
-                mb: 20,
-                ml: 'min(8.5vw, 120px)'
-              }
-            }}
-          >
-            We set out inspired by the expressiveness of early 19th-century
-            grotesque typefaces and the boldness and striking visuals of the
-            contemporary revival of brutalist aesthetics. BSMNT is the first
-            step in a very ambitious path we’ve set for ourselves.
-          </Text>
-          <Text
-            css={{
-              textIndent: 90,
-              '@bp2': {
-                textIndent: 0,
-                ml: 'min(8.5vw, 120px)'
-              }
-            }}
-          >
-            The typeface is a work in progress, open to anyone who shares our
-            visual and graphic sensibilities. You're invited to check our
-            journey as we iterate, change, and add new weights and widths in the
-            future as we learn by doing.
-          </Text>
-        </Container>
+          ***
+        </Text>
       </Container>
-      <Text
-        size="bg"
-        css={{
-          mt: 30,
-          ta: 'center',
-          fontWeight: 800,
-          fontFamily: '$heading'
-        }}
-      >
-        ***
-      </Text>
-    </Container>
+    </Section>
   )
 }
 

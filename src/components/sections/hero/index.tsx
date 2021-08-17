@@ -1,6 +1,9 @@
 import Image from 'next/image'
 
-// Stitches
+// Primitives
+import Section from 'components/primitives/section'
+
+// Styles
 import { styled } from '../../../../stitches.config'
 
 // Images
@@ -26,25 +29,25 @@ const Outlined = styled('span', {
 
 const Wrapper = styled('div', {
   alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-  paddingTop: '$3',
   backgroundColor: '$black',
   backgroundImage: 'url(/images/bghero.jpg)',
-  backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: '100vh'
+  backgroundSize: 'cover',
+  display: 'flex',
+  height: '100vh',
+  justifyContent: 'center',
+  paddingTop: '$3'
 })
 
 const ImageContainer = styled('div', {
-  position: 'absolute',
-  left: '50%',
   bottom: 0,
+  left: '50%',
+  position: 'absolute',
   transform: 'translate(-50%, 50%)'
 })
 
 const Hero = () => (
-  <section>
+  <Section>
     <Wrapper>
       <Title>
         <Outlined>Basement</Outlined> <br /> Grotesque
@@ -61,7 +64,7 @@ const Hero = () => (
         width={266}
       />
     </ImageContainer>
-  </section>
+  </Section>
 )
 
 export default Hero

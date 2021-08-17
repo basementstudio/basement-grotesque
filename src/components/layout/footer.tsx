@@ -15,24 +15,24 @@ export const Text = styled('p', {
   variants: {
     size: {
       xs: {
-        fontSize: 16
+        fontSize: '$3'
       },
       sm: {
-        fontSize: 18
+        fontSize: '$4'
       },
       md: {
-        fontSize: 24,
+        fontSize: '$6',
         letterSpacing: -1
       },
       lg: {
-        fontSize: 40
+        fontSize: '$9'
       },
       xl: {
-        fontSize: 120,
+        fontSize: '$14',
         lineHeight: 1
       },
       icon: {
-        fontSize: 32
+        fontSize: '$7'
       }
     },
     centered: {

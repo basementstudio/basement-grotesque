@@ -1,11 +1,18 @@
+import { Fragment, useCallback, useState } from 'react'
+
+// Primitives
 import Range, { RangeProps } from 'components/primitives/range'
 import ResizableTextarea from 'components/primitives/resizable-textarea'
+import Section from 'components/primitives/section'
+
+// Pages
 import { useAppContext } from 'pages/_app'
-import { Fragment, useCallback, useState } from 'react'
+
+// Styles
 import { css, styled } from '../../../../stitches.config'
 
-const Section = styled('section', {
-  background: 'white',
+const SectionInner = styled('section', {
+  background: '$white',
   zIndex: '10',
   position: 'relative',
   px: '40px',
@@ -81,46 +88,48 @@ const DemoSection = () => {
 
   return (
     <Section>
-      <InputsContainer>
-        {Object.keys(inputs).map((key) => {
-          return (
-            <Range
-              {...inputs[key as Name]}
-              name={key}
-              key={key}
-              onChange={handleChange}
+      <SectionInner>
+        <InputsContainer>
+          {Object.keys(inputs).map((key) => {
+            return (
+              <Range
+                {...inputs[key as Name]}
+                name={key}
+                key={key}
+                onChange={handleChange}
+              />
+            )
+          })}
+        </InputsContainer>
+        <PreviewContainer>
+          <PreviewLabel>
+            <p>
+              {Object.keys(inputs).map((key, i, { length }) => {
+                const isLast = i === length - 1
+                const input = inputs[key as Name]
+                return (
+                  <Fragment key={i}>
+                    {input.label[0]}: {input.renderValue(input.value)}
+                    {isLast ? null : ' | '}
+                  </Fragment>
+                )
+              })}
+            </p>
+            <ResizableTextarea
+              value={text}
+              className={textareaCss}
+              style={{
+                fontSize: inputs.size.value + 'px',
+                lineHeight: inputs.leading.value + '%',
+                letterSpacing: inputs.tracking.value + 'px',
+                fontFamily: 'var(--fonts-heading)'
+              }}
+              onChange={handleTextChange}
+              fontsLoaded={fontsLoaded}
             />
-          )
-        })}
-      </InputsContainer>
-      <PreviewContainer>
-        <PreviewLabel>
-          <p>
-            {Object.keys(inputs).map((key, i, { length }) => {
-              const isLast = i === length - 1
-              const input = inputs[key as Name]
-              return (
-                <Fragment key={i}>
-                  {input.label[0]}: {input.renderValue(input.value)}
-                  {isLast ? null : ' | '}
-                </Fragment>
-              )
-            })}
-          </p>
-          <ResizableTextarea
-            value={text}
-            className={textareaCss}
-            style={{
-              fontSize: inputs.size.value + 'px',
-              lineHeight: inputs.leading.value + '%',
-              letterSpacing: inputs.tracking.value + 'px',
-              fontFamily: 'var(--fonts-heading)'
-            }}
-            onChange={handleTextChange}
-            fontsLoaded={fontsLoaded}
-          />
-        </PreviewLabel>
-      </PreviewContainer>
+          </PreviewLabel>
+        </PreviewContainer>
+      </SectionInner>
     </Section>
   )
 }
