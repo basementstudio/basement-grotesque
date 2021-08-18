@@ -22,7 +22,7 @@ class MyDocument extends Document {
             dangerouslySetInnerHTML={{ __html: getCssString() }}
           />
         </Head>
-        <body>
+        <body style={{ opacity: 0 }}>
           <Main />
           <NextScript />
         </body>
