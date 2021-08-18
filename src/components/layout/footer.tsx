@@ -68,28 +68,46 @@ export const Text = styled('p', {
 
 const FooterGrid = styled('footer', {
   display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
-  gridTemplateRows: 'repeat(7, 1fr)',
-  height: 300,
+  gridTemplateColumns: '100%',
+  gridTemplateRows: 'repeat(3, auto)',
+
+  '@bp2': {
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateRows: 'repeat(2, auto)'
+  },
 
   border: '1px solid $colors$white',
 
   '.fallingLetters': {
-    gridColumn: '1/3',
-    gridRow: '1/7',
-    borderRight: '1px solid $colors$white',
-    borderBottom: '1px solid $colors$white'
+    gridColumn: '1',
+    gridRow: '1',
+    height: 176,
+    background: 'red',
+
+    '@bp2': {
+      height: 254,
+      borderRight: '1px solid $colors$white',
+      borderBottom: '1px solid $colors$white'
+    }
   },
   '.social': {
-    gridColumn: '3/5',
-    gridRow: '1/7',
-    borderBottom: '1px solid $colors$white'
+    gridColumn: '1',
+    gridRow: '2',
+    borderBottom: '1px solid $colors$white',
+
+    '@bp2': {
+      gridColumn: '3/5',
+      gridRow: '1/7',
+      borderBottom: '1px solid $colors$white'
+    }
   },
   '.legal': {
-    gridColumn: '3/5',
-    gridRow: '7'
+    gridColumn: '1',
+    gridRow: '3',
+    height: 36
   },
   '.policies': {
+    display: 'hidden',
     gridColumn: '1/3',
     gridRow: '7',
     borderRight: '1px solid $colors$white'
@@ -97,13 +115,11 @@ const FooterGrid = styled('footer', {
 })
 
 const Social = styled('ul', {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fill, 1fr)',
+  gap: '5px $4',
 
   li: {
-    '&:not(:last-child)': {
-      marginRight: '$4'
-    },
     a: {
       display: 'flex',
       alignItems: 'center',
@@ -179,36 +195,32 @@ const Footer = () => {
               </Text>
             </Text>
           </Box>
-          <Box>
-            <Social>
-              {social.map(({ label, href }, idx) => (
-                <li key={idx}>
-                  <a href={href}>
-                    <Text size="md" heading>
-                      {label}
-                    </Text>
+          <Social css={{ marginTop: '$4' }}>
+            {social.map(({ label, href }, idx) => (
+              <li key={idx}>
+                <a href={href}>
+                  <Text css={{ fontSize: '$3' }} heading>
+                    {label}
+                  </Text>
 
-                    <span className="arrow">
-                      <svg
-                        width="19"
-                        height="19"
-                        viewBox="0 0 19 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M14.4242 6.85354L2.98488 18.2929L0.707107 16.0151L12.1465 4.57578L13 3.72222L11.7929 3.72222L0.499999 3.72222L0.499999 0.5L14.7778 0.499999L18.5 0.499999L18.5 4.22222L18.5 18.5L15.2778 18.5L15.2778 7.2071L15.2778 5.99999L14.4242 6.85354Z"
-                          stroke="white"
-                        />
-                      </svg>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </Social>
-          </Box>
+                  <Box css={{ width: 10, height: 10 }} className="arrow">
+                    <svg
+                      viewBox="0 0 19 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.4242 6.85354L2.98488 18.2929L0.707107 16.0151L12.1465 4.57578L13 3.72222L11.7929 3.72222L0.499999 3.72222L0.499999 0.5L14.7778 0.499999L18.5 0.499999L18.5 4.22222L18.5 18.5L15.2778 18.5L15.2778 7.2071L15.2778 5.99999L14.4242 6.85354Z"
+                        stroke="white"
+                      />
+                    </svg>
+                  </Box>
+                </a>
+              </li>
+            ))}
+          </Social>
         </Box>
-        <Box
+        {/* <Box
           className="policies"
           css={{ display: 'flex', justifyContent: 'space-between' }}
         >
@@ -229,9 +241,11 @@ const Footer = () => {
           >
             <Text>Contact</Text>
           </Box>
-        </Box>
+        </Box> */}
         <Box className="legal" centered>
-          <Text>© basement.studio LLC 2021 all rights reserved</Text>
+          <Text css={{ fontSize: '$1' }}>
+            © basement.studio LLC 2021 all rights reserved
+          </Text>
         </Box>
       </FooterGrid>
     </Container>
