@@ -1,66 +1,7 @@
 import { styled } from '../../../stitches.config'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
-
-export const Text = styled('p', {
-  fontFamily: '$body',
-  lineHeight: 1,
-  color: '$colors$white',
-
-  variants: {
-    size: {
-      xs: {
-        fontSize: '$3'
-      },
-      sm: {
-        fontSize: '$4'
-      },
-      md: {
-        fontSize: '$6',
-        letterSpacing: -1
-      },
-      lg: {
-        fontSize: '$9'
-      },
-      xl: {
-        fontSize: '$14',
-        lineHeight: 1
-      },
-      icon: {
-        fontSize: '$7'
-      }
-    },
-    centered: {
-      true: {
-        textAlign: 'center'
-      }
-    },
-    heading: {
-      true: {
-        fontFamily: '$heading'
-      }
-    },
-    uppercase: {
-      true: {
-        textTransform: 'uppercase'
-      }
-    },
-    outlined: {
-      true: {
-        textShadow: `-1px -1px 0 $white,  
-          1px -1px 0 $white,
-          -1px 1px 0 $white,
-           1px 1px 0 $white`,
-        color: 'var(--colors-black)'
-      }
-    },
-    tight: {
-      true: {
-        letterSpacing: -2
-      }
-    }
-  }
-})
+import Text from 'components/common/text'
 
 const FooterGrid = styled('footer', {
   display: 'grid',
@@ -268,22 +209,33 @@ const Footer = () => {
           <Box
             css={{
               borderRight: '1px solid $colors$white',
-              width: '100%'
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
-            centered
           >
             <Text>Privacy</Text>
           </Box>
           <Box
             css={{
-              width: '100%'
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
             }}
-            centered
           >
             <Text>Contact</Text>
           </Box>
         </Box>
-        <Box className="legal" centered>
+        <Box
+          className="legal"
+          css={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <Text css={{ fontSize: '$1', '@bp2': { fontSize: '$3' } }}>
             © basement.studio LLC 2021 all rights reserved
           </Text>

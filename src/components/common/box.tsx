@@ -1,15 +1,5 @@
 import { styled } from '../../../stitches.config'
 
-const Box = styled('div', {
-  variants: {
-    centered: {
-      true: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
-    }
-  }
-})
+const Box = styled('div', {})
 
 export default Box
