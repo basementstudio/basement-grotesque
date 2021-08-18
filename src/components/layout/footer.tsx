@@ -1,6 +1,5 @@
 import { styled } from '@stitches/react'
-import { range } from 'lib/utils'
-import MarqueeComponent from 'react-fast-marquee'
+import Box from 'components/common/box'
 
 const Container = styled('div', {
   padding: '0px 40px 32px 40px',
@@ -44,6 +43,25 @@ export const Text = styled('p', {
       true: {
         fontFamily: '$heading'
       }
+    },
+    uppercase: {
+      true: {
+        textTransform: 'uppercase'
+      }
+    },
+    outlined: {
+      true: {
+        textShadow: `-1px -1px 0 $white,  
+          1px -1px 0 $white,
+          -1px 1px 0 $white,
+           1px 1px 0 $white`,
+        color: 'var(--colors-black)'
+      }
+    },
+    tight: {
+      true: {
+        letterSpacing: -2
+      }
     }
   }
 })
@@ -51,48 +69,44 @@ export const Text = styled('p', {
 const FooterGrid = styled('footer', {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
-  gridTemplateRows: 'repeat(10, 1fr)',
-  height: 520,
+  gridTemplateRows: 'repeat(7, 1fr)',
+  height: 300,
 
   border: '1px solid $colors$white',
 
-  '& > *:not(:last-child)': {
-    borderBottom: '1px solid $colors$white'
-  },
-
-  '& > *:first-child': {
-    borderRight: '1px solid $colors$white'
-  },
-
   '.fallingLetters': {
     gridColumn: '1/3',
-    gridRow: '1/9'
+    gridRow: '1/7',
+    borderRight: '1px solid $colors$white',
+    borderBottom: '1px solid $colors$white'
   },
   '.social': {
     gridColumn: '3/5',
-    gridRow: '1/9'
+    gridRow: '1/7',
+    borderBottom: '1px solid $colors$white'
   },
-  '.marqueeSection': {
-    gridColumn: '1/5',
-    gridRow: '9/10'
+  '.legal': {
+    gridColumn: '3/5',
+    gridRow: '7'
   },
-  '.links': {
-    gridColumn: '1/5',
-    gridRow: '10/11'
+  '.policies': {
+    gridColumn: '1/3',
+    gridRow: '7',
+    borderRight: '1px solid $colors$white'
   }
 })
 
 const Social = styled('ul', {
-  display: 'grid',
-  gridAutoRows: '1fr',
-  height: '100%',
+  display: 'flex',
+  flexWrap: 'wrap',
 
   li: {
+    '&:not(:last-child)': {
+      marginRight: '$4'
+    },
     a: {
       display: 'flex',
-      justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '0 32px',
       height: '100%'
     },
 
@@ -102,11 +116,8 @@ const Social = styled('ul', {
       backgroundSize: '100% 0.1em, 0 0.1em',
       backgroundPosition: '100% 100%, 0 100%',
       backgroundRepeat: 'no-repeat',
-      transition: 'background-size 250ms'
-    },
-
-    '&:not(:last-child)': {
-      borderBottom: '1px solid $colors$white'
+      transition: 'background-size 250ms',
+      marginRight: '$2'
     },
 
     '&:hover': {
@@ -119,16 +130,6 @@ const Social = styled('ul', {
         }
       }
     }
-  }
-})
-
-const Marquee = styled(MarqueeComponent, {
-  height: '100%',
-
-  '.marqueeText': {
-    textTransform: 'uppercase',
-    padding: '0 24px',
-    borderRight: '1px solid $colors$white'
   }
 })
 
@@ -151,54 +152,87 @@ const social = [
   }
 ]
 
-const marqueeText = ['basement.studio', 'our work is serious, we are not']
-
 const Footer = () => {
   return (
     <Container>
       <FooterGrid>
-        <div className="fallingLetters"></div>
-        <div className="social">
-          <Social>
-            {social.map(({ label, href }, idx) => (
-              <li key={idx}>
-                <a href={href}>
-                  <Text size="lg" heading>
-                    {label}
-                  </Text>
+        <Box className="fallingLetters"></Box>
+        <Box
+          className="social"
+          css={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: 20
+          }}
+        >
+          <Box>
+            <Text
+              css={{ fontSize: 23, '@bp2': { fontSize: 45 } }}
+              uppercase
+              heading
+              tight
+            >
+              Our work is serious,{' '}
+              <Text css={{ lineHeight: 1.5 }} heading outlined>
+                we are not.
+              </Text>
+            </Text>
+          </Box>
+          <Box>
+            <Social>
+              {social.map(({ label, href }, idx) => (
+                <li key={idx}>
+                  <a href={href}>
+                    <Text size="md" heading>
+                      {label}
+                    </Text>
 
-                  <span className="arrow">
-                    <svg
-                      width="25"
-                      height="26"
-                      viewBox="0 0 25 26"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M-8.49944e-07 6.05556L15.517 6.05556L-1.71675e-07 21.5725L3.92747 25.5L19.4444 9.98302L19.4444 25.5L25 25.5L25 6.05556L25 0.500001L19.4444 0.500001L-1.09278e-06 0.500002L-8.49944e-07 6.05556Z"
-                        strokeWidth="1"
-                        stroke="white"
-                      />
-                    </svg>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </Social>
-        </div>
-        <div className="marqueeSection">
-          <Marquee gradient={false}>
-            {range(4).map(() =>
-              marqueeText.map((text) => (
-                <Text size="sm" className="marqueeText" key={text} heading>
-                  {text}
-                </Text>
-              ))
-            )}
-          </Marquee>
-        </div>
-        <div className="links"></div>
+                    <span className="arrow">
+                      <svg
+                        width="19"
+                        height="19"
+                        viewBox="0 0 19 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M14.4242 6.85354L2.98488 18.2929L0.707107 16.0151L12.1465 4.57578L13 3.72222L11.7929 3.72222L0.499999 3.72222L0.499999 0.5L14.7778 0.499999L18.5 0.499999L18.5 4.22222L18.5 18.5L15.2778 18.5L15.2778 7.2071L15.2778 5.99999L14.4242 6.85354Z"
+                          stroke="white"
+                        />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </Social>
+          </Box>
+        </Box>
+        <Box
+          className="policies"
+          css={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <Box
+            css={{
+              borderRight: '1px solid $colors$white',
+              width: '100%'
+            }}
+            centered
+          >
+            <Text>Privacy</Text>
+          </Box>
+          <Box
+            css={{
+              width: '100%'
+            }}
+            centered
+          >
+            <Text>Contact</Text>
+          </Box>
+        </Box>
+        <Box className="legal" centered>
+          <Text>© basement.studio LLC 2021 all rights reserved</Text>
+        </Box>
       </FooterGrid>
     </Container>
   )
