@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Stitches
 import { styled } from '../../../stitches.config'
@@ -7,7 +7,7 @@ import { styled } from '../../../stitches.config'
 import gsap from 'gsap'
 
 const CursorFollower = styled('div', {
-  borderColor: '$white',
+  borderColor: 'transparent',
   borderRadius: '$round',
   borderWidth: '1px',
   height: '33px',
@@ -19,6 +19,7 @@ const CursorFollower = styled('div', {
   width: '33px',
   willChange: 'transform',
   zIndex: 9999,
+  transition: 'border-color .1s ease-in-out',
   '&::after': {
     background: '$white',
     borderRadius: '$round',
@@ -30,11 +31,20 @@ const CursorFollower = styled('div', {
     top: '50%',
     transform: 'translate(-50%, -50%)',
     width: '15px'
+  },
+
+  variants: {
+    type: {
+      pointer: {
+        borderColor: '$white'
+      }
+    }
   }
 })
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
+  const [type, setType] = useState<'pointer' | undefined>()
 
   useEffect(() => {
     if (!cursorRef.current) return
@@ -47,14 +57,19 @@ const Cursor = () => {
     const xSet = gsap.quickSetter(cursorRef.current, 'x', 'px')
     const ySet = gsap.quickSetter(cursorRef.current, 'y', 'px')
 
-    window.addEventListener(
-      'mousemove',
-      (e) => {
-        mouse.x = e.x
-        mouse.y = e.y
-      },
-      { passive: true }
-    )
+    function handleMouseMove(e: MouseEvent) {
+      mouse.x = e.x
+      mouse.y = e.y
+      if (e.target instanceof HTMLElement) {
+        if (e.target.closest('button') || e.target.closest('a')) {
+          setType('pointer')
+          return
+        }
+      }
+      setType(undefined)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
 
     gsap.ticker.add(() => {
       const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio())
@@ -64,9 +79,13 @@ const Cursor = () => {
       xSet(pos.x)
       ySet(pos.y)
     })
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
   }, [])
 
-  return <CursorFollower ref={cursorRef}></CursorFollower>
+  return <CursorFollower ref={cursorRef} type={type} />
 }
 
 export default Cursor
