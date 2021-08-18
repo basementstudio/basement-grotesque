@@ -76,11 +76,13 @@ const FooterGrid = styled('footer', {
   '.fallingLetters': {
     gridColumn: '1',
     gridRow: '1',
-    height: 176,
+    height: '100%',
+    minHeight: 176,
 
     '@bp2': {
       gridColumn: '1/3',
-      height: 254,
+      height: '100%',
+      minHeight: 254,
       borderRight: '1px solid $colors$white',
       borderBottom: '1px solid $colors$white'
     }
@@ -89,8 +91,12 @@ const FooterGrid = styled('footer', {
     gridColumn: '1',
     gridRow: '2',
     borderBottom: '1px solid $colors$white',
+    height: '100%',
+    minHeight: 176,
 
     '@bp2': {
+      height: '100%',
+      minHeight: 254,
       gridColumn: '3/5',
       gridRow: '1',
       borderBottom: '1px solid $colors$white'
@@ -129,14 +135,14 @@ const Social = styled('ul', {
   margin: '-3px -6px',
 
   '@bp2': {
-    margin: '-$3'
+    margin: '-$2 -$3'
   },
 
   li: {
     padding: '3px 6px',
 
     '@bp2': {
-      padding: '$3'
+      padding: '$2 $3'
     },
 
     a: {
