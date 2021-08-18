@@ -1,8 +1,15 @@
-import { AppProps } from 'next/app'
-import 'css/global.css'
-import Cursor from 'components/primitives/cursor'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
+
+// Gsap Stuff
+import { gsap } from 'lib/gsap'
+
+// Primitives
+import Cursor from 'components/primitives/cursor'
+
+// Styles
+import 'css/global.css'
 
 const Context = createContext<{ fontsLoaded: boolean }>({ fontsLoaded: false })
 export const useAppContext = () => useContext(Context)
@@ -21,6 +28,25 @@ const App = ({ Component, pageProps }: AppProps) => {
         setFontsLoaded(true)
       })
   }, [])
+
+  useEffect(() => {
+    if (!fontsLoaded) return
+
+    const timeline = gsap.timeline({
+      paused: true,
+      smoothChildTiming: true
+    })
+
+    timeline.to('body', {
+      autoAlpha: 1
+    })
+
+    timeline.play()
+
+    return () => {
+      timeline?.kill()
+    }
+  }, [fontsLoaded])
 
   return (
     <Context.Provider value={{ fontsLoaded }}>

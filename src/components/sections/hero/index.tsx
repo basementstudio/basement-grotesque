@@ -1,8 +1,5 @@
 import Image from 'next/image'
 
-// Primitives
-import Section from 'components/primitives/section'
-
 // Styles
 import { styled } from '../../../../stitches.config'
 
@@ -47,7 +44,7 @@ const ImageContainer = styled('div', {
 })
 
 const Hero = () => (
-  <Section>
+  <section>
     <Wrapper>
       <Title>
         <Outlined>Basement</Outlined> <br /> Grotesque
@@ -64,7 +61,7 @@ const Hero = () => (
         width={266}
       />
     </ImageContainer>
-  </Section>
+  </section>
 )
 
 export default Hero
