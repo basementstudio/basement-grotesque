@@ -18,9 +18,10 @@ export * from '@stitches/react'
 
 export const defaultTheme = {
   colors: {
+    background: '#101010',
+    black: '#000000',
     blur: 'rgba(0, 0, 0, 0.5)',
     table: 'transparent',
-    black: '#000000',
     white: '#ffffff'
   },
   shadows: {

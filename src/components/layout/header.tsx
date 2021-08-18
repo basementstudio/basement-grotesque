@@ -1,84 +1,99 @@
-import { download } from 'lib/utils'
-import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
+
+// Lib
+import { download } from 'lib/utils'
 
 // Stitches
 import { styled } from '../../../stitches.config'
 
+// Logos
+import IconArrow from 'logos/arrow.svg'
+import IconClock from 'logos/clock.svg'
+import IconMobile from 'logos/hamburguer.svg'
+import Logo from 'logos/header-logo.svg'
+
 const Heading = styled('header', {
-  backgroundColor: '$black',
-  border: '1px solid $white',
+  backgroundColor: '$background',
+  border: '1px solid $black',
   color: '$white',
-  fontWeight: 'bold',
+  fontWeight: '700',
   left: 0,
-  margin: '32px 40px',
-  mixBlendMode: 'difference',
+  margin: '$4 40px',
   position: 'fixed',
   top: 0,
-  width: 'calc(100% - 64px)',
+  width: 'calc(100% - $5)',
   zIndex: '9998',
 
   '> div': {
-    display: 'grid',
-    gridTemplateColumns: 'auto 2fr 1fr 1.5fr',
     alignItems: 'center',
+    display: 'grid',
+    gridTemplateColumns: '54px 1fr 54px',
+
+    '@bp2': {
+      gridTemplateColumns: 'auto 2.5fr .57fr .92fr'
+    },
 
     div: {
-      borderRight: '1px solid $white',
+      alignItems: 'center',
+      borderRight: '1px solid $black',
       display: 'flex',
       height: '100%',
       justifyContent: 'center',
-      alignItems: 'center',
-      padding: '20px',
+      lineHeight: 1,
+      padding: '12px 15px',
       textAlign: 'center',
-      lineHeight: 1
+
+      '&.fonts': {
+        gap: '$3',
+        display: 'none',
+        '@bp2': {
+          display: 'flex'
+        },
+        '> span': {
+          paddingBottom: '$2',
+          color: '$black'
+        }
+      }
     },
     button: {
-      display: 'flex',
+      alignItems: 'center',
+      display: 'none',
       height: '100%',
       justifyContent: 'center',
-      alignItems: 'center',
+      lineHeight: 1,
       padding: '20px',
       textAlign: 'center',
-      lineHeight: 1
+      '@bp2': {
+        display: 'flex'
+      }
     }
   },
 
   svg: {
     display: 'inline-block',
-    margin: '0 8px',
-    verticalAlign: 'bottom'
+    margin: '0 $2',
+    verticalAlign: 'bottom',
+    '&.mobile__menu': {
+      display: 'block',
+      '@bp2': {
+        display: 'none'
+      }
+    }
   }
 })
 
-const DownloadButton = styled('button', { fontWeight: '700' })
-
-const Time = styled('time', {
-  display: 'inline-flex',
-  width: '105px',
-  justifyContent: 'space-between',
+const DownloadButton = styled('button', {
+  fontWeight: '700',
   textTransform: 'uppercase'
 })
 
-function renderTime(date: Date) {
-  let hours: number | string = date.getHours()
-  let minutes: number | string = date.getMinutes()
-  let seconds: number | string = date.getSeconds()
-  const ampm = hours >= 12 ? 'pm' : 'am'
-  hours = hours % 12
-  hours = hours ? hours : 12 // the hour '0' should be '12'
-  hours = hours < 10 ? '0' + hours : hours
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  seconds = seconds < 10 ? '0' + seconds : seconds
-  return (
-    <Time>
-      <span>
-        {hours}:{minutes}:{seconds}
-      </span>{' '}
-      <span>{ampm}</span>
-    </Time>
-  )
-}
+const Time = styled('time', {
+  display: 'inline-flex',
+  justifyContent: 'center',
+  textTransform: 'uppercase',
+  width: '80px'
+})
 
 const Header = () => {
   const [now, setNow] = useState(new Date())
@@ -100,69 +115,61 @@ const Header = () => {
     )
   }, [])
 
+  const renderTime = useCallback((date: Date) => {
+    let hours: number | string = date.getHours()
+    let minutes: number | string = date.getMinutes()
+    let seconds: number | string = date.getSeconds()
+    hours = hours % 12
+    hours = hours ? hours : 12 // the hour '0' should be '12'
+    hours = hours < 10 ? '0' + hours : hours
+    minutes = minutes < 10 ? '0' + minutes : minutes
+    seconds = seconds < 10 ? '0' + seconds : seconds
+    return (
+      <Time>
+        <span>
+          {hours}:{minutes}:{seconds}
+        </span>
+      </Time>
+    )
+  }, [])
+
   return (
     <Heading>
       <div>
         <div>
           <Link href="/">
             <a>
-              <svg
-                width="32"
-                height="31"
-                viewBox="0 0 32 31"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.40796 16.8232C7.40796 15.5733 8.42097 14.5603 9.67083 14.5603H13.2567C14.5066 14.5603 15.5196 15.5733 15.5196 16.8232V22.2571C15.5196 23.5069 14.5066 24.5199 13.2567 24.5199H9.67083C8.42097 24.5199 7.40796 23.5069 7.40796 22.2571V16.8232ZM7.17941 25.1339C7.17941 28.4158 9.83979 31 13.1217 31H16.7264C20.0589 31 22.7608 28.2982 22.7608 24.9657V14.0353C22.7608 10.7028 20.0589 8.00098 16.7264 8.00098H12.2007C9.54788 8.00098 7.39212 10.2171 7.37326 12.8692V0.0809326H0.13208V30.8492H7.17941V25.1339Z"
-                  fill="white"
-                />
-                <path
-                  d="M31.8121 24.5199H25.4761V30.8559H31.8121V24.5199Z"
-                  fill="white"
-                />
-              </svg>
+              <Logo style={{ margin: 0 }} />
             </a>
           </Link>
         </div>
-        <div>
+        <div className="fonts">
           <p>
-            <span style={{ fontWeight: 700 }}>Grotesque 400 /</span>{' '}
+            <span>Grotesque 800</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
+            <span style={{ fontWeight: 400 }}>v.1.2</span>
+          </p>
+          <span>.</span>
+          <p>
+            <span>Grotesque 400</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
+            <span style={{ fontWeight: 400 }}>In Progress</span>
+          </p>
+          <span>.</span>
+          <p>
+            <span>Grotesque 900</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
             <span style={{ fontWeight: 400 }}>In Progress</span>
           </p>
         </div>
         <div>
-          <svg
-            width="21"
-            height="20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M.452 10c0 8 2.016 9.984 10.048 9.984S20.548 18 20.548 10 18.532.016 10.5.016.452 2 .452 10z"
-              fill="#fff"
-            />
-            <path
-              fill="#101010"
-              d="M9.452 3.016h2v8h-2zM15.452 9.016v2h-4v-2z"
-            />
-          </svg>
+          <IconClock style={{ marginLeft: 0 }} />
           {renderTime(now)}
         </div>
         <DownloadButton onClick={handleDownload}>
-          Download Font{' '}
-          <svg
-            width="15"
-            height="16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.667.5v9.31L2.357.5 0 2.856l9.31 9.31H0V15.5h15V.5h-3.333z"
-              fill="#fff"
-            />
-          </svg>
+          TWEET AND GET IT FREE <IconArrow style={{ marginRight: 0 }} />
         </DownloadButton>
+        <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
       </div>
     </Heading>
   )
