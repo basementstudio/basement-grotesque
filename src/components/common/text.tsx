@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../../stitches.config'
 
 const Text = styled('p', {
   fontFamily: '$body',
