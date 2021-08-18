@@ -1,6 +1,8 @@
-import { download } from 'lib/utils'
-import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
+
+// Lib
+import { download } from 'lib/utils'
 
 // Stitches
 import { styled } from '../../../stitches.config'
@@ -12,30 +14,29 @@ import IconMobile from 'logos/hamburguer.svg'
 import Logo from 'logos/header-logo.svg'
 
 const Heading = styled('header', {
-  backgroundColor: '$black',
-  border: '1px solid $white',
+  backgroundColor: '$background',
+  border: '1px solid $black',
   color: '$white',
-  fontWeight: 'bold',
+  fontWeight: '700',
   left: 0,
   margin: '$4 40px',
-  mixBlendMode: 'difference',
   position: 'fixed',
   top: 0,
   width: 'calc(100% - $5)',
   zIndex: '9998',
 
   '> div': {
+    alignItems: 'center',
     display: 'grid',
     gridTemplateColumns: '54px 1fr 54px',
-    alignItems: 'center',
 
     '@bp2': {
-      gridTemplateColumns: 'auto 3fr .8fr .8fr'
+      gridTemplateColumns: 'auto 2.5fr .57fr .92fr'
     },
 
     div: {
       alignItems: 'center',
-      borderRight: '1px solid $white',
+      borderRight: '1px solid $black',
       display: 'flex',
       height: '100%',
       justifyContent: 'center',
@@ -50,7 +51,8 @@ const Heading = styled('header', {
           display: 'flex'
         },
         '> span': {
-          paddingBottom: '$2'
+          paddingBottom: '$2',
+          color: '$black'
         }
       }
     },
@@ -93,24 +95,6 @@ const Time = styled('time', {
   width: '80px'
 })
 
-function renderTime(date: Date) {
-  let hours: number | string = date.getHours()
-  let minutes: number | string = date.getMinutes()
-  let seconds: number | string = date.getSeconds()
-  hours = hours % 12
-  hours = hours ? hours : 12 // the hour '0' should be '12'
-  hours = hours < 10 ? '0' + hours : hours
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  seconds = seconds < 10 ? '0' + seconds : seconds
-  return (
-    <Time>
-      <span>
-        {hours}:{minutes}:{seconds}
-      </span>
-    </Time>
-  )
-}
-
 const Header = () => {
   const [now, setNow] = useState(new Date())
 
@@ -131,6 +115,24 @@ const Header = () => {
     )
   }, [])
 
+  const renderTime = useCallback((date: Date) => {
+    let hours: number | string = date.getHours()
+    let minutes: number | string = date.getMinutes()
+    let seconds: number | string = date.getSeconds()
+    hours = hours % 12
+    hours = hours ? hours : 12 // the hour '0' should be '12'
+    hours = hours < 10 ? '0' + hours : hours
+    minutes = minutes < 10 ? '0' + minutes : minutes
+    seconds = seconds < 10 ? '0' + seconds : seconds
+    return (
+      <Time>
+        <span>
+          {hours}:{minutes}:{seconds}
+        </span>
+      </Time>
+    )
+  }, [])
+
   return (
     <Heading>
       <div>
@@ -143,26 +145,29 @@ const Header = () => {
         </div>
         <div className="fonts">
           <p>
-            <span>Grotesque 800 /</span>{' '}
+            <span>Grotesque 800</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
             <span style={{ fontWeight: 400 }}>v.1.2</span>
           </p>
           <span>.</span>
           <p>
-            <span>Grotesque 400 /</span>{' '}
+            <span>Grotesque 400</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
             <span style={{ fontWeight: 400 }}>In Progress</span>
           </p>
           <span>.</span>
           <p>
-            <span>Grotesque 900 /</span>{' '}
+            <span>Grotesque 900</span>{' '}
+            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
             <span style={{ fontWeight: 400 }}>In Progress</span>
           </p>
         </div>
         <div>
-          <IconClock />
+          <IconClock style={{ marginLeft: 0 }} />
           {renderTime(now)}
         </div>
         <DownloadButton onClick={handleDownload}>
-          Download Font <IconArrow />
+          TWEET AND GET IT FREE <IconArrow style={{ marginRight: 0 }} />
         </DownloadButton>
         <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
       </div>
