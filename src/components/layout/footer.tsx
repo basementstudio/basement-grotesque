@@ -1,10 +1,6 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../../stitches.config'
 import Box from 'components/common/box'
-
-const Container = styled('div', {
-  padding: '0px 40px 32px 40px',
-  background: '$colors$black'
-})
+import Container from 'components/layout/container'
 
 export const Text = styled('p', {
   fontFamily: '$body',
@@ -69,14 +65,13 @@ export const Text = styled('p', {
 const FooterGrid = styled('footer', {
   display: 'grid',
   gridTemplateColumns: '100%',
-  gridTemplateRows: 'repeat(3, auto)',
+  gridTemplateRows: 'repeat(4, auto)',
+  border: '1px solid $colors$white',
 
   '@bp2': {
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridTemplateRows: 'repeat(2, auto)'
   },
-
-  border: '1px solid $colors$white',
 
   '.fallingLetters': {
     gridColumn: '1',
@@ -85,6 +80,7 @@ const FooterGrid = styled('footer', {
     background: 'red',
 
     '@bp2': {
+      gridColumn: '1/3',
       height: 254,
       borderRight: '1px solid $colors$white',
       borderBottom: '1px solid $colors$white'
@@ -97,26 +93,40 @@ const FooterGrid = styled('footer', {
 
     '@bp2': {
       gridColumn: '3/5',
-      gridRow: '1/7',
+      gridRow: '1',
       borderBottom: '1px solid $colors$white'
+    }
+  },
+  '.policies': {
+    height: 36,
+    gridRow: '3',
+    gridColumn: '1/3',
+
+    '@bp2': {
+      gridColumn: '1/3',
+      gridRow: '2',
+      height: 46,
+      borderRight: '1px solid $colors$white'
     }
   },
   '.legal': {
     gridColumn: '1',
-    gridRow: '3',
-    height: 36
-  },
-  '.policies': {
-    display: 'hidden',
-    gridColumn: '1/3',
-    gridRow: '7',
-    borderRight: '1px solid $colors$white'
+    gridRow: '4',
+    height: 36,
+    borderTop: '1px solid $colors$white',
+
+    '@bp2': {
+      gridColumn: '3/5',
+      gridRow: '2',
+      height: 46
+    }
   }
 })
 
 const Social = styled('ul', {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, 1fr)',
+  gridAutoFlow: 'column',
   gap: '5px $4',
 
   li: {
@@ -171,7 +181,7 @@ const social = [
 const Footer = () => {
   return (
     <Container>
-      <FooterGrid>
+      <FooterGrid css={{ mb: 40, '@bp2': { mb: '$6' } }}>
         <Box className="fallingLetters"></Box>
         <Box
           className="social"
@@ -220,7 +230,7 @@ const Footer = () => {
             ))}
           </Social>
         </Box>
-        {/* <Box
+        <Box
           className="policies"
           css={{ display: 'flex', justifyContent: 'space-between' }}
         >
@@ -241,7 +251,7 @@ const Footer = () => {
           >
             <Text>Contact</Text>
           </Box>
-        </Box> */}
+        </Box>
         <Box className="legal" centered>
           <Text css={{ fontSize: '$1' }}>
             © basement.studio LLC 2021 all rights reserved
