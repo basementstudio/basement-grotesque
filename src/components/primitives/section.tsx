@@ -21,13 +21,13 @@ const Section = ({ children, className, id }: Props) => {
         overwrite: true
       }
     })
-    timelineRef.current.fromTo(
-      entry.target,
-      { autoAlpha: 0 },
-      { autoAlpha: 1, duration: 0.623, ease: 'sine.out' }
-    )
+    timelineRef.current.fromTo(entry.target, { autoAlpha: 0 }, { autoAlpha: 1 })
 
     timelineRef.current.play()
+
+    return () => {
+      timelineRef.current?.kill()
+    }
   }, [entry, inView])
 
   return (

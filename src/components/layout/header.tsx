@@ -101,7 +101,7 @@ const Header = () => {
   }, [])
 
   return (
-    <Heading>
+    <Heading id="header">
       <div>
         <div>
           <Link href="/">

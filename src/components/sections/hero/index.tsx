@@ -1,13 +1,14 @@
 import Image from 'next/image'
 
-// Primitives
-import Section from 'components/primitives/section'
-
 // Styles
 import { styled } from '../../../../stitches.config'
 
 // Images
 import label from '../../../../public/images/labelhero.png'
+
+const Section = styled('section', {
+  backgroundColor: '$black'
+})
 
 const Title = styled('h1', {
   color: '$white',
@@ -48,12 +49,13 @@ const ImageContainer = styled('div', {
 
 const Hero = () => (
   <Section>
-    <Wrapper>
+    <Wrapper id="hero-wrapper">
       <Title>
-        <Outlined>Basement</Outlined> <br /> Grotesque
+        <Outlined id="hero-title-outlined">Basement</Outlined>
+        <span id="hero-title">Grotesque</span>
       </Title>
     </Wrapper>
-    <ImageContainer>
+    <ImageContainer id="hero-image">
       <Image
         alt="Stitch"
         height={100}
