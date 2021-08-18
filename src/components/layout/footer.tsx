@@ -77,7 +77,6 @@ const FooterGrid = styled('footer', {
     gridColumn: '1',
     gridRow: '1',
     height: 176,
-    background: 'red',
 
     '@bp2': {
       gridColumn: '1/3',
@@ -118,25 +117,35 @@ const FooterGrid = styled('footer', {
     '@bp2': {
       gridColumn: '3/5',
       gridRow: '2',
-      height: 46
+      height: 46,
+      borderTop: 'none'
     }
   }
 })
 
 const Social = styled('ul', {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, 1fr)',
-  gridAutoFlow: 'column',
-  gap: '5px $4',
+  display: 'flex',
+  flexWrap: 'wrap',
+  margin: '-3px -6px',
+
+  '@bp2': {
+    margin: '-$3'
+  },
 
   li: {
+    padding: '3px 6px',
+
+    '@bp2': {
+      padding: '$3'
+    },
+
     a: {
       display: 'flex',
       alignItems: 'center',
       height: '100%'
     },
 
-    p: {
+    'p.label': {
       background:
         'linear-gradient(to right, black, black), linear-gradient(to right, $colors$white, $colors$white)',
       backgroundSize: '100% 0.1em, 0 0.1em',
@@ -147,7 +156,7 @@ const Social = styled('ul', {
     },
 
     '&:hover': {
-      p: {
+      'p.label': {
         backgroundSize: '0 0.1em, 100% 0.1em'
       },
       '.arrow': {
@@ -209,11 +218,22 @@ const Footer = () => {
             {social.map(({ label, href }, idx) => (
               <li key={idx}>
                 <a href={href}>
-                  <Text css={{ fontSize: '$3' }} heading>
+                  <Text
+                    className="label"
+                    css={{ fontSize: '$3', '@bp2': { fontSize: '$6' } }}
+                    heading
+                  >
                     {label}
                   </Text>
 
-                  <Box css={{ width: 10, height: 10 }} className="arrow">
+                  <Box
+                    css={{
+                      width: 10,
+                      height: 10,
+                      '@bp2': { width: 19, height: 19 }
+                    }}
+                    className="arrow"
+                  >
                     <svg
                       viewBox="0 0 19 19"
                       fill="none"
@@ -232,7 +252,12 @@ const Footer = () => {
         </Box>
         <Box
           className="policies"
-          css={{ display: 'flex', justifyContent: 'space-between' }}
+          css={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            fontSize: '$1',
+            '@bp2': { fontSize: '$3' }
+          }}
         >
           <Box
             css={{
@@ -253,7 +278,7 @@ const Footer = () => {
           </Box>
         </Box>
         <Box className="legal" centered>
-          <Text css={{ fontSize: '$1' }}>
+          <Text css={{ fontSize: '$1', '@bp2': { fontSize: '$3' } }}>
             © basement.studio LLC 2021 all rights reserved
           </Text>
         </Box>
