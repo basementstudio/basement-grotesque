@@ -46,23 +46,23 @@ const App = ({ Component, pageProps }: AppProps) => {
     })
 
     timeline.current.to('body', {
-      autoAlpha: 1
+      autoAlpha: 1,
+      duration: DURATION * 0.8
     })
-    timeline.current.fromTo(
+    timeline.current.from(
       '#header',
       {
         autoAlpha: 0,
-        yPercent: -30
+        yPercent: -80,
+        ease: 'power2.out'
       },
-      {
-        autoAlpha: 1,
-        yPercent: 0
-      }
+      '<80%'
     )
     timeline.current.from(
       '#hero-wrapper',
       {
-        autoAlpha: 0
+        autoAlpha: 0,
+        duration: DURATION * 0.8
       },
       '<20%'
     )
