@@ -15,13 +15,13 @@ gsap.registerPlugin(
 
 const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2
 const RECIPROCAL_GR = 1 / GOLDEN_RATIO
-const DURATION = RECIPROCAL_GR
+const DURATION = RECIPROCAL_GR * 1.2
 const CUSTOM_EASE = CustomEase.create('custom', 'M0,0,C0.3,0.4,0.4,1,1,1')
 
 export type RegisteredEffects = 'fadeIn' | 'fadeInBottom' | 'in' | 'out'
 
 gsap.defaults({
-  ease: CUSTOM_EASE,
+  ease: 'sine.out',
   duration: DURATION
 })
 

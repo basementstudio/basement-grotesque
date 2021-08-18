@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 // Primitives
@@ -6,6 +6,7 @@ import Section from 'components/primitives/section'
 
 // Styles
 import { styled } from '../../../../stitches.config'
+import { gsap } from 'lib/gsap'
 
 const Box = styled('div', {})
 const DesktopOnlyBox = styled('div', {
@@ -58,9 +59,40 @@ const CharactersSection = () => {
 
   const handleToggleViewAll = useCallback(() => setViewAll((p) => !p), [])
 
+  const parallaxIt = useCallback((e, element, movement) => {
+    const pos = {
+      x: e.clientX / window.innerWidth - 0.5,
+      y: e.clientY / window.innerHeight - 0.5
+    }
+
+    gsap.to(element, {
+      rotationX: pos.y * movement,
+      rotationY: pos.x * movement
+    })
+  }, [])
+
+  useEffect(() => {
+    const section = document.querySelector('.glyph__section')
+    const glyphs = gsap.utils.toArray(document.querySelectorAll('.glyph'))
+
+    if (!section || !glyphs) return
+
+    //@ts-ignore
+    gsap.set(glyphs[0].parentElement, { perspective: 600 })
+
+    section.addEventListener('mousemove', (e) => {
+      glyphs.forEach((element) => {
+        parallaxIt(e, element, 60)
+      })
+    })
+  }, [parallaxIt])
+
   return (
     <Section>
-      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }}>
+      <SectionInner
+        css={{ pb: viewAll ? '128px' : '0px' }}
+        className="glyph__section"
+      >
         <Box
           css={{
             display: 'flex',
@@ -107,7 +139,9 @@ const CharactersSection = () => {
             }}
           >
             {glyphs.split('').map((glyph, i) => (
-              <Glyph key={i}>{glyph}</Glyph>
+              <Glyph key={i} className="glyph">
+                {glyph}
+              </Glyph>
             ))}
           </Box>
         </DesktopOnlyBox>

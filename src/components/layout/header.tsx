@@ -105,7 +105,7 @@ const Header = () => {
       <div>
         <div>
           <Link href="/">
-            <a>
+            <a id="header-logo">
               <svg
                 width="32"
                 height="31"
