@@ -8,10 +8,13 @@ const FooterGrid = styled('footer', {
   gridTemplateColumns: '100%',
   gridTemplateRows: 'repeat(4, auto)',
   border: '1px solid $colors$white',
+  mb: 40,
 
   '@bp2': {
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gridTemplateRows: 'repeat(2, auto)'
+    gridTemplateRows: 'repeat(2, auto)',
+    mt: '48px',
+    mb: '$6'
   },
 
   '.fallingLetters': {
@@ -94,7 +97,7 @@ const Social = styled('ul', {
 
     'p.label': {
       background:
-        'linear-gradient(to right, black, black), linear-gradient(to right, $colors$white, $colors$white)',
+        'linear-gradient(to right, $background, $background), linear-gradient(to right, $colors$white, $colors$white)',
       backgroundSize: '100% 0.1em, 0 0.1em',
       backgroundPosition: '100% 100%, 0 100%',
       backgroundRepeat: 'no-repeat',
@@ -137,7 +140,7 @@ const social = [
 const Footer = () => {
   return (
     <Container>
-      <FooterGrid css={{ mb: 40, '@bp2': { mb: '$6' } }}>
+      <FooterGrid>
         <Box className="fallingLetters"></Box>
         <Box
           className="social"

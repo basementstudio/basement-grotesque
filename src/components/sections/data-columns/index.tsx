@@ -3,6 +3,7 @@ import { Tweet as TweetType } from 'lib/twitter'
 
 // Primitives
 import Section from 'components/primitives/section'
+import TextPrimitive from 'components/common/text'
 
 // Local Components
 import Feature from './feature'
@@ -12,15 +13,19 @@ import Tweet from './tweet'
 // Styles
 import { styled } from '../../../../stitches.config'
 
-const SectionInner = styled('section', {
-  background: '$black',
+const SectionInner = styled('div', {
+  background: '$background',
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr'
+  gridTemplateColumns: '1fr 1fr 1fr',
+  borderTop: '1px solid $white',
+  borderBottom: '1px solid $white'
 })
 
 const Column = styled('div', {
   width: '100%',
   padding: '90px 40px',
+  maxHeight: 900,
+  overflowY: 'scroll',
 
   '&:not(:first-child)': {
     borderLeft: '1px solid $white'
@@ -33,11 +38,7 @@ const TweetWrapper = styled('div', {
   }
 })
 
-export const Text = styled('p', {
-  fontFamily: '$body',
-  lineHeight: 1,
-  color: '$white',
-
+export const Text = styled(TextPrimitive, {
   variants: {
     size: {
       xs: {
@@ -57,16 +58,6 @@ export const Text = styled('p', {
       icon: {
         fontSize: '$7'
       }
-    },
-    centered: {
-      true: {
-        textAlign: 'center'
-      }
-    },
-    heading: {
-      true: {
-        fontFamily: '$heading'
-      }
     }
   }
 })
@@ -80,7 +71,7 @@ const DataColumns = ({ tweets }: DataColumnsProps) => {
     <Section>
       <SectionInner>
         <Column>
-          <Text size="lg" heading>
+          <Text css={{ fontSize: '$9' }} heading uppercase>
             Version History
           </Text>
           <Release
@@ -100,7 +91,7 @@ const DataColumns = ({ tweets }: DataColumnsProps) => {
           />
         </Column>
         <Column>
-          <Text size="lg" heading>
+          <Text css={{ fontSize: '$9' }} heading uppercase>
             Features status
           </Text>
           <div>
@@ -111,7 +102,7 @@ const DataColumns = ({ tweets }: DataColumnsProps) => {
           </div>
         </Column>
         <Column>
-          <Text size="lg" heading>
+          <Text css={{ fontSize: '$9' }} heading uppercase>
             Tweets
           </Text>
           <div style={{ marginTop: 42 }}>
