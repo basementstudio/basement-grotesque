@@ -1,5 +1,5 @@
 import { gsap } from 'lib/gsap'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 type Props = {
@@ -10,20 +10,19 @@ type Props = {
 
 const Section = ({ children, className, id }: Props) => {
   const { ref, inView, entry } = useInView()
-  const timeline = useRef<GSAPTimeline>()
 
   useEffect(() => {
-    if (!entry || !timeline) return
-    timeline.current = gsap.timeline({
+    if (!entry) return
+    const timeline = gsap.timeline({
       paused: true,
       smoothChildTiming: true
     })
-    timeline.current.fromTo(entry.target, { autoAlpha: 0 }, { autoAlpha: 1 })
+    timeline.fromTo(entry.target, { autoAlpha: 0 }, { autoAlpha: 1 })
 
-    timeline.current.play()
+    timeline.play()
 
     return () => {
-      timeline.current?.kill()
+      timeline?.kill()
     }
   }, [entry, inView])
 

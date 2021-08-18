@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 
 // Gsap Stuff
@@ -15,7 +15,6 @@ export const useAppContext = () => useContext(Context)
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
-  const timeline = useRef<GSAPTimeline>()
 
   useEffect(() => {
     // @ts-ignore
@@ -31,19 +30,20 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     if (!fontsLoaded) return
-    timeline.current = gsap.timeline({
+
+    const timeline = gsap.timeline({
       paused: true,
       smoothChildTiming: true
     })
 
-    timeline.current.to('body', {
+    timeline.to('body', {
       autoAlpha: 1
     })
 
-    timeline.current.play()
+    timeline.play()
 
     return () => {
-      timeline.current?.kill()
+      timeline?.kill()
     }
   }, [fontsLoaded])
 
