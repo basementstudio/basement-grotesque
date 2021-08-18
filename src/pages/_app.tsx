@@ -2,6 +2,7 @@ import { AppProps } from 'next/app'
 import 'css/global.css'
 import Cursor from 'components/primitives/cursor'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 const Context = createContext<{ fontsLoaded: boolean }>({ fontsLoaded: false })
 export const useAppContext = () => useContext(Context)
@@ -25,6 +26,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Context.Provider value={{ fontsLoaded }}>
       <Cursor />
       <Component {...pageProps} />
+      <Toaster position="bottom-center" />
     </Context.Provider>
   )
 }
