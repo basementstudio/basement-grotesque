@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-// import Marquee from 'react-fast-marquee'
+import Marquee from 'react-fast-marquee'
 
 // Primitives
 import Section from 'components/primitives/section'
@@ -10,7 +10,6 @@ import toast from 'react-hot-toast'
 import Box from 'components/common/box'
 import Text from 'components/common/text'
 import Container from 'components/layout/container'
-import Marquee from 'components/primitives/marquee'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
@@ -258,7 +257,7 @@ const CharactersSection = () => {
         )}
       </DesktopOnlyBox>
       <MobileSection>
-        <Marquee>
+        <Marquee gradient={false} speed={50}>
           <Box
             css={{
               display: 'grid',
