@@ -93,7 +93,7 @@ const Hero = () => (
         <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
       </Title>
       <Subtitle>
-        KNOW MORE ABOUT IT downstairs
+        KNOW MORE ABOUT IT DOWNSTAIRS
         <IconArrow />
       </Subtitle>
     </Wrapper>
