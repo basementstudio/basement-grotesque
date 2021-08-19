@@ -1,14 +1,57 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic'
 import clsx from 'clsx'
-import { checkIsExternal } from 'lib/utils/router'
-import Link, { LinkProps } from 'next/link'
-import { forwardRef, useMemo } from 'react'
+import { forwardRef } from 'react'
+
+// Styles
+import { styled } from '../../../stitches.config'
 
 // Here you'll put custom props, such as `isLoading`, `variant`, `size`...
 export type ButtonProps = {
   children?: React.ReactNode
   isLoading?: boolean
+  variant?: 'underlined'
 }
+
+const Metis = styled('button', {
+  position: 'relative',
+  cursor: 'pointer',
+  whiteSpace: 'nowrap',
+  color: '$white',
+  textTransform: 'uppercase',
+  fontSize: '$6',
+  display: 'flex',
+  alignItems: 'center',
+  outline: 'none',
+
+  '&:focus': {
+    outline: 'none'
+  },
+
+  variants: {
+    underlined: {
+      true: {
+        '&:before': {
+          background: 'currentcolor',
+          content: '',
+          height: '$1',
+          left: 0,
+          pointerEvents: 'none',
+          position: 'absolute',
+          top: '100%',
+          transform: 'scale3d(0, 1, 1)',
+          transformOrigin: '100% 50%',
+          transition: 'transform 0.3s',
+          width: '100%'
+        },
+
+        '&:hover:before': {
+          transform: 'scale3d(1, 1, 1)',
+          transformOrigin: '0 50%'
+        }
+      }
+    }
+  }
+})
 
 /**
  * This `Button` is Polymorphic, so it can render any HTML element you pass (via the `as` prop).
@@ -23,65 +66,17 @@ export type ButtonProps = {
  * Also, below the `Button` is a `ButtonLink` that automatically wraps `NextLink` to it ✨
  */
 const Button = forwardRef(
-  ({ as: Comp = 'button', className, disabled, isLoading, ...props }, ref) => {
+  ({ className, disabled, isLoading, variant, ...props }, ref) => {
     return (
-      <Comp
+      <Metis
         {...props}
-        disabled={isLoading || disabled}
         className={clsx(className)}
+        disabled={isLoading || disabled}
         ref={ref}
+        underlined={variant === 'underlined'}
       />
     )
   }
 ) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
-
-type NextLinkProps = Pick<
-  LinkProps,
-  'href' | 'locale' | 'prefetch' | 'replace' | 'scroll' | 'shallow'
->
-
-export type ButtonLinkProps = ButtonProps &
-  Omit<JSX.IntrinsicElements['a'], 'href'> &
-  NextLinkProps & { notExternal?: boolean }
-
-export const ButtonLink = forwardRef<'a', ButtonLinkProps>(
-  ({
-    // NextLinkProps
-    href,
-    replace,
-    scroll,
-    shallow,
-    prefetch,
-    locale,
-    // Rest
-    notExternal,
-    ...props
-  }) => {
-    const externalProps = useMemo(() => {
-      const p = { target: '_blank', rel: 'noopener' }
-      if (typeof href === 'string') {
-        if (checkIsExternal(href)) return p
-      } else if (checkIsExternal(href.href ?? '')) return p
-    }, [href])
-
-    return (
-      <Link
-        href={href}
-        replace={replace}
-        scroll={scroll}
-        shallow={shallow}
-        prefetch={prefetch}
-        locale={locale}
-        passHref
-      >
-        <Button
-          {...(notExternal ? undefined : externalProps)}
-          {...props}
-          as="a"
-        />
-      </Link>
-    )
-  }
-)
 
 export default Button

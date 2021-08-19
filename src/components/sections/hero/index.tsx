@@ -1,4 +1,8 @@
+import { useCallback } from 'react'
 import Image from 'next/image'
+
+// Primitives
+import Button from 'components/primitives/button'
 
 // Styles
 import { styled } from '../../../../stitches.config'
@@ -86,29 +90,38 @@ const ImageContainer = styled('div', {
   transform: 'translate(-50%, 50%)'
 })
 
-const Hero = () => (
-  <section>
-    <Wrapper>
-      <Title>
-        <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
-      </Title>
-      <Subtitle>
-        KNOW MORE ABOUT IT DOWNSTAIRS
-        <IconArrow />
-      </Subtitle>
-    </Wrapper>
-    <ImageContainer>
-      <Image
-        alt="Stitch"
-        height={100}
-        objectFit="cover"
-        priority
-        quality={100}
-        src={label}
-        width={266}
-      />
-    </ImageContainer>
-  </section>
-)
+const Hero = () => {
+  const scrollTo = useCallback(() => {
+    document.querySelector('#about-section')?.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }, [])
+  return (
+    <section>
+      <Wrapper>
+        <Title>
+          <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
+        </Title>
+        <Subtitle>
+          <Button onClick={scrollTo} variant="underlined">
+            KNOW MORE ABOUT IT DOWNSTAIRS
+            <IconArrow />
+          </Button>
+        </Subtitle>
+      </Wrapper>
+      <ImageContainer>
+        <Image
+          alt="Stitch"
+          height={100}
+          objectFit="cover"
+          priority
+          quality={100}
+          src={label}
+          width={266}
+        />
+      </ImageContainer>
+    </section>
+  )
+}
 
 export default Hero
