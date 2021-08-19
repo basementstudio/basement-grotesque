@@ -21,7 +21,6 @@
     "@radix-ui/react-polymorphic": "0.0.13",
     "@stitches/react": "^0.2.5",
     "clsx": "^1.1.1",
-    "file-saver": "^2.0.5",
     "next": "^11.1.0",
     "next-seo": "^4.26.0",
     "next-svgr": "^0.0.2",

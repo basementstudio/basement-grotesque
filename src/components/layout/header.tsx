@@ -109,10 +109,7 @@ const Header = () => {
   }, [])
 
   const handleDownload = useCallback(() => {
-    download(
-      encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'),
-      'BSMNT Grotesque_v1.201.zip'
-    )
+    download(encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'))
   }, [])
 
   const renderTime = useCallback((date: Date) => {
