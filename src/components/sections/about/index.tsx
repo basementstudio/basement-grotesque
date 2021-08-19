@@ -88,7 +88,7 @@ const GrotesqueABText = styled('span', {
 
 const AboutSection = () => {
   return (
-    <Section>
+    <Section id="about-section">
       <Container as="section" type="section">
         <Container type="content">
           <Container type="GrotesqueABText">

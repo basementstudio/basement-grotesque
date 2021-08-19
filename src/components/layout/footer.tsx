@@ -97,7 +97,7 @@ const Social = styled('ul', {
 
     'p.label': {
       background:
-        'linear-gradient(to right, $background, $background), linear-gradient(to right, $colors$white, $colors$white)',
+        'linear-gradient(to right, transparent, transparent), linear-gradient(to right, $colors$white, $colors$white)',
       backgroundSize: '100% 0.1em, 0 0.1em',
       backgroundPosition: '100% 100%, 0 100%',
       backgroundRepeat: 'no-repeat',

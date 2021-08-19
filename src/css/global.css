@@ -27,7 +27,8 @@ body {
 html,
 body {
   overflow-x: hidden;
-  background-color: var(--colors-background);
+  background-color: var(--colors-black);
+  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
