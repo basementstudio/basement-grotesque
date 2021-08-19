@@ -12,13 +12,18 @@ import IconArrow from 'logos/arrow-hero.svg'
 const Title = styled('h1', {
   color: '$white',
   fontFamily: '$heading',
-  fontSize: 'max(60px, 13.750vw)',
-  letterSpacing: '-0.833vw',
+  fontSize: '$10',
+  letterSpacing: '-2px',
   lineHeight: '1',
   marginLeft: '-0.347vw',
   overflow: 'hidden',
   textAlign: 'center',
   textTransform: 'uppercase',
+
+  '@bp1': {
+    fontSize: 'max($9, 13.750vw)',
+    letterSpacing: '-0.833vw'
+  },
 
   em: {
     display: 'inline-block',
@@ -30,11 +35,14 @@ const Title = styled('h1', {
 const Outlined = styled('span', {
   color: '$black',
   display: 'inline-block',
-  fontSize: 'max($10, 13.750vw)',
-  letterSpacing: '-10px',
+  letterSpacing: '-1px',
   marginTop: '5.736vw',
   textShadow:
-    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white'
+    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white',
+
+  '@bp1': {
+    letterSpacing: '-0.694vw'
+  }
 })
 
 const Subtitle = styled('h2', {
