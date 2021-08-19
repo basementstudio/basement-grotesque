@@ -27,7 +27,13 @@ const Section = ({ children, className, id }: Props) => {
   }, [entry, inView])
 
   return (
-    <section id={id} className={className} ref={ref} style={{ opacity: 0 }}>
+    <section
+      className={className}
+      data-scroll-section
+      id={id}
+      ref={ref}
+      style={{ opacity: 0 }}
+    >
       {children}
     </section>
   )

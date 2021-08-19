@@ -1,11 +1,16 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 
+import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
+
 // Gsap Stuff
 import { gsap } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
+
+// Layout
+import Header from 'components/layout/header'
 
 // Styles
 import 'css/global.css'
@@ -50,7 +55,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Context.Provider value={{ fontsLoaded }}>
       <Cursor />
-      <Component {...pageProps} />
+      <Header />
+      <LocomotiveScrollProvider>
+        <Component {...pageProps} />
+      </LocomotiveScrollProvider>
     </Context.Provider>
   )
 }

@@ -44,7 +44,7 @@ const ImageContainer = styled('div', {
 })
 
 const Hero = () => (
-  <section>
+  <section data-scroll-section>
     <Wrapper>
       <Title>
         <Outlined>Basement</Outlined> <br /> Grotesque
