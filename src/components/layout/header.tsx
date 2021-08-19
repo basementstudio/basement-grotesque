@@ -8,10 +8,11 @@ import { download } from 'lib/utils'
 import { styled } from '../../../stitches.config'
 
 // Logos
-import IconArrow from 'logos/arrow.svg'
 import IconClock from 'logos/clock.svg'
 import IconMobile from 'logos/hamburguer.svg'
 import Logo from 'logos/header-logo.svg'
+import Button from 'components/primitives/button'
+import ArrowDown from 'components/primitives/arrow-down'
 
 const Heading = styled('header', {
   backgroundColor: '$background',
@@ -83,7 +84,7 @@ const Heading = styled('header', {
   }
 })
 
-const DownloadButton = styled('button', {
+const DownloadButton = styled(Button, {
   fontWeight: '700',
   textTransform: 'uppercase'
 })
@@ -109,6 +110,14 @@ const Header = () => {
   }, [])
 
   const handleDownload = useCallback(() => {
+    const encoded = {
+      url: window.location.origin + window.location.pathname,
+      text: 'TODO'
+    }
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encoded.url}&text=${encoded.text}`,
+      '_blank'
+    )
     download(encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'))
   }, [])
 
@@ -163,8 +172,8 @@ const Header = () => {
           <IconClock style={{ marginLeft: 0 }} />
           {renderTime(now)}
         </div>
-        <DownloadButton onClick={handleDownload}>
-          TWEET AND GET IT FREE <IconArrow style={{ marginRight: 0 }} />
+        <DownloadButton onClick={handleDownload} icon={<ArrowDown />}>
+          TWEET AND GET IT FREE
         </DownloadButton>
         <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
       </div>
