@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
+import { isMobile as _isMobile } from 'react-device-detect'
 
 // Gsap Stuff
 import { gsap } from 'lib/gsap'
@@ -15,6 +16,7 @@ export const useAppContext = () => useContext(Context)
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean>()
 
   useEffect(() => {
     // @ts-ignore
@@ -47,9 +49,13 @@ const App = ({ Component, pageProps }: AppProps) => {
     }
   }, [fontsLoaded])
 
+  useEffect(() => {
+    setIsMobile(_isMobile)
+  }, [])
+
   return (
     <Context.Provider value={{ fontsLoaded }}>
-      <Cursor />
+      {isMobile === false && <Cursor />}
       <Component {...pageProps} />
     </Context.Provider>
   )
