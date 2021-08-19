@@ -61,7 +61,7 @@ const Subtitle = styled('h2', {
 const Wrapper = styled('div', {
   alignItems: 'center',
   backgroundColor: '$black',
-  backgroundImage: 'url(/images/bghero.jpg)',
+  backgroundImage: 'url(/images/bgheromobile.jpg)',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -69,7 +69,11 @@ const Wrapper = styled('div', {
   flexDirection: 'column',
   height: '100vh',
   justifyContent: 'center',
-  paddingTop: '$3'
+  paddingTop: '$3',
+
+  '@bp1': {
+    backgroundImage: 'url(/images/bghero.jpg)'
+  }
 })
 
 const ImageContainer = styled('div', {
