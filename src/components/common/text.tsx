@@ -2,7 +2,7 @@ import { styled } from '../../../stitches.config'
 
 const Text = styled('p', {
   fontFamily: '$body',
-  color: '$white',
+  color: '$colors$white',
 
   variants: {
     centered: {
