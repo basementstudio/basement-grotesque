@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 // Primitives
@@ -68,6 +68,8 @@ const mobileGlyphs = glyphs + `ẞT`
 
 const CharactersSection = () => {
   const [viewAll, setViewAll] = useState(false)
+  const [gridHeight, setGridHeight] = useState<number>()
+  const gridRef = useRef<HTMLDivElement>(null)
 
   const handleToggleViewAll = useCallback(() => setViewAll((p) => !p), [])
 
@@ -94,6 +96,19 @@ const CharactersSection = () => {
         })
       }
     }, [])
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (!gridRef.current) return
+      setGridHeight(gridRef.current.offsetHeight)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <Section background="black">
@@ -197,14 +212,20 @@ const CharactersSection = () => {
             OTF
           </Text>
         </Box>
-        <DesktopOnlyBox>
+        <DesktopOnlyBox
+          css={{
+            transition: gridHeight ? `height ${gridHeight / 4000}s` : undefined,
+            height: viewAll ? gridHeight : '570px',
+            overflow: 'hidden'
+          }}
+        >
           <Box
+            ref={gridRef}
             css={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
               gridColumnGap: '24px',
               gridRowGap: '16px',
-              height: viewAll ? 'auto' : '570px',
               overflow: 'hidden',
               pt: '80px'
             }}
@@ -234,7 +255,10 @@ const CharactersSection = () => {
               borderTop: '1px solid $black',
               paddingTop: '24px',
               paddingBottom: '32px',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
+              '&:focus': {
+                outline: 'none'
+              }
             }}
           >
             <span>{viewAll ? 'View Less' : 'View All'}</span>

@@ -60,7 +60,7 @@ const Cursor = () => {
     function handleMouseMove(e: MouseEvent) {
       mouse.x = e.x
       mouse.y = e.y
-      if (e.target instanceof HTMLElement) {
+      if (e.target instanceof HTMLElement || e.target instanceof SVGElement) {
         if (e.target.closest('button') || e.target.closest('a')) {
           setType('pointer')
           return
