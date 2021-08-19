@@ -155,7 +155,7 @@ const marqueeText = ['basement.studio', 'our work is serious, we are not']
 
 const Footer = () => {
   return (
-    <Container>
+    <Container data-scroll-section>
       <FooterGrid>
         <div className="fallingLetters"></div>
         <div className="social">

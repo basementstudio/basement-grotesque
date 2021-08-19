@@ -43,7 +43,7 @@ const Section = (
     }
   }, [entry, inView])
 
-  return <StyledSection {...props} ref={ref} />
+  return <StyledSection {...props} ref={ref} data-scroll-section />
 }
 
 export default Section

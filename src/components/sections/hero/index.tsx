@@ -10,8 +10,7 @@ import { styled } from '../../../../stitches.config'
 // Images
 import label from '../../../../public/images/labelhero.png'
 
-// Icons
-import IconArrow from 'logos/arrow-hero.svg'
+import ArrowDown from 'components/primitives/arrow-down'
 
 const Title = styled('h1', {
   color: '$white',
@@ -52,7 +51,7 @@ const Outlined = styled('span', {
   }
 })
 
-const Subtitle = styled('h2', {
+const Subtitle = styled(Button, {
   alignItems: 'center',
   color: '$white',
   display: 'flex',
@@ -90,11 +89,6 @@ const ImageContainer = styled('div', {
   transform: 'translate(-50%, 50%)'
 })
 
-const StyledIconArrow = styled(IconArrow, {
-  width: 'max(20px, 1.389vw)',
-  height: 'max(20px, 1.389vw)'
-})
-
 const Hero = () => {
   const scrollTo = useCallback(() => {
     document.querySelector('#about-section')?.scrollIntoView({
@@ -102,16 +96,13 @@ const Hero = () => {
     })
   }, [])
   return (
-    <section>
+    <section data-scroll-section>
       <Wrapper>
         <Title>
           <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
         </Title>
-        <Subtitle>
-          <Button onClick={scrollTo} variant="underlined" hasIcon>
-            KNOW MORE ABOUT IT DOWNSTAIRS
-            <StyledIconArrow />
-          </Button>
+        <Subtitle onClick={scrollTo} variant="underlined" icon={<ArrowDown />}>
+          KNOW MORE ABOUT IT DOWNSTAIRS
         </Subtitle>
       </Wrapper>
       <ImageContainer>
