@@ -1,11 +1,18 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
+import { Toaster } from 'react-hot-toast'
+import { isMobile as _isMobile } from 'react-device-detect'
+
+import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 
 // Gsap Stuff
 import { gsap } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
+
+// Layout
+import Header from 'components/layout/header'
 
 // Styles
 import 'css/global.css'
@@ -15,6 +22,7 @@ export const useAppContext = () => useContext(Context)
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean>()
 
   useEffect(() => {
     // @ts-ignore
@@ -47,10 +55,18 @@ const App = ({ Component, pageProps }: AppProps) => {
     }
   }, [fontsLoaded])
 
+  useEffect(() => {
+    setIsMobile(_isMobile)
+  }, [])
+
   return (
     <Context.Provider value={{ fontsLoaded }}>
-      <Cursor />
-      <Component {...pageProps} />
+      {isMobile === false && <Cursor />}
+      <Header />
+      <Toaster position="bottom-center" />
+      <LocomotiveScrollProvider>
+        <Component {...pageProps} />
+      </LocomotiveScrollProvider>
     </Context.Provider>
   )
 }

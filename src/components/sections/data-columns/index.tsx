@@ -2,7 +2,7 @@
 import { Tweet as TweetType } from 'lib/twitter'
 
 // Primitives
-import Section from 'components/primitives/section'
+import Section from 'components/layout/section'
 import TextPrimitive from 'components/common/text'
 
 // Local Components

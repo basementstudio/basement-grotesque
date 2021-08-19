@@ -139,7 +139,7 @@ const social = [
 
 const Footer = () => {
   return (
-    <Container>
+    <Container data-scroll-section>
       <FooterGrid>
         <Box className="fallingLetters"></Box>
         <Box

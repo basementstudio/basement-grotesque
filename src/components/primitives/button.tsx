@@ -8,7 +8,7 @@ import { styled } from '../../../stitches.config'
 // Here you'll put custom props, such as `isLoading`, `variant`, `size`...
 export type ButtonProps = {
   children?: React.ReactNode
-  hasIcon?: boolean
+  icon?: boolean | React.ReactNode
   isLoading?: boolean
   variant?: 'underlined'
 }
@@ -17,6 +17,7 @@ const StyledButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
   border: 'none',
+  transition: 'background-size 250ms',
 
   '&:focus': {
     outline: 'none'
@@ -30,7 +31,6 @@ const StyledButton = styled('button', {
         backgroundSize: '100% 0.1em, 0 0.1em',
         backgroundPosition: '100% 100%, 0 100%',
         backgroundRepeat: 'no-repeat',
-        transition: 'background-size 250ms',
         '&:hover': {
           backgroundSize: '0 0.1em, 100% 0.1em'
         }
@@ -38,10 +38,14 @@ const StyledButton = styled('button', {
     },
     hasIcon: {
       true: {
-        svg: { transition: 'all 250ms' },
+        svg: {
+          transition: 'all 250ms',
+          fill: 'currentColor',
+          color: 'transparent'
+        },
         '&:hover': {
           svg: {
-            fill: '$colors$white'
+            color: '$white'
           }
         }
       }
@@ -62,7 +66,10 @@ const StyledButton = styled('button', {
  * Also, below the `Button` is a `ButtonLink` that automatically wraps `NextLink` to it ✨
  */
 const Button = forwardRef(
-  ({ className, disabled, isLoading, variant, ...props }, ref) => {
+  (
+    { children, className, disabled, isLoading, variant, icon, ...props },
+    ref
+  ) => {
     return (
       <StyledButton
         {...props}
@@ -70,7 +77,10 @@ const Button = forwardRef(
         disabled={isLoading || disabled}
         ref={ref}
         underlined={variant === 'underlined'}
-      />
+        hasIcon={!!icon}
+      >
+        {children} {icon && typeof icon !== 'boolean' ? icon : null}
+      </StyledButton>
     )
   }
 ) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
