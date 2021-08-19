@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
+import { Toaster } from 'react-hot-toast'
 import { isMobile as _isMobile } from 'react-device-detect'
 
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
@@ -62,6 +63,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <Context.Provider value={{ fontsLoaded }}>
       {isMobile === false && <Cursor />}
       <Header />
+      <Toaster position="bottom-center" />
       <LocomotiveScrollProvider>
         <Component {...pageProps} />
       </LocomotiveScrollProvider>

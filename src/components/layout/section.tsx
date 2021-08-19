@@ -1,14 +1,31 @@
 import { gsap } from 'lib/gsap'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { styled } from '../../../stitches.config'
 
-type Props = {
-  children: React.ReactNode
-  className?: string
-  id?: string
-}
+const StyledSection = styled('div', {
+  position: 'relative',
+  opacity: 0,
+  background: '$white',
+  color: '$black',
 
-const Section = ({ children, className, id }: Props) => {
+  variants: {
+    background: {
+      black: {
+        background: '$black',
+        color: '$white'
+      },
+      muted: {
+        background: '$background',
+        color: '$white'
+      }
+    }
+  }
+})
+
+const Section = (
+  props: React.ComponentPropsWithoutRef<typeof StyledSection>
+) => {
   const { ref, inView, entry } = useInView()
 
   useEffect(() => {
@@ -26,17 +43,7 @@ const Section = ({ children, className, id }: Props) => {
     }
   }, [entry, inView])
 
-  return (
-    <section
-      className={className}
-      data-scroll-section
-      id={id}
-      ref={ref}
-      style={{ opacity: 0 }}
-    >
-      {children}
-    </section>
-  )
+  return <StyledSection {...props} ref={ref} data-scroll-section />
 }
 
 export default Section
