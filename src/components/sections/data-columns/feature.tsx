@@ -3,11 +3,14 @@ import { clamp, range } from 'lib/utils'
 import { Text } from '.'
 
 const Container = styled('div', {
-  borderTop: '1px solid #878787',
   paddingTop: 9,
+  borderTop: '1px solid #878787',
 
   '&:first-child': {
+    borderTop: 'none',
+
     '@bp2': {
+      borderTop: '1px solid #878787',
       marginTop: 50
     }
   },

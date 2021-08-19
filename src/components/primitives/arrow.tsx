@@ -11,7 +11,12 @@ const ArrowDown = styled(IconArrowDown, {
 const ArrowUp = styled(IconArrowUp, {
   $$size: 'max(20px, 1.389vw)',
   width: '$$size',
-  height: '$$size'
+  height: '$$size',
+  fill: 'white',
+
+  '@bp2': {
+    fill: 'none'
+  }
 })
 
 export { ArrowDown, ArrowUp }

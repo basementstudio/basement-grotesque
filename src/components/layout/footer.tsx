@@ -3,19 +3,17 @@ import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import Text from 'components/common/text'
 import { ArrowUp } from 'components/primitives/arrow'
+import Section from './section'
 
 const FooterGrid = styled('footer', {
   display: 'grid',
   gridTemplateColumns: '100%',
   gridTemplateRows: 'repeat(4, auto)',
   border: '1px solid $colors$white',
-  mb: 40,
-  mt: 48,
 
   '@bp2': {
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gridTemplateRows: 'repeat(2, auto)',
-    mb: '$6'
+    gridTemplateRows: 'repeat(2, auto)'
   },
 
   '.fallingLetters': {
@@ -78,16 +76,18 @@ const Social = styled('ul', {
   display: 'flex',
   flexWrap: 'wrap',
   margin: '-3px -6px',
+  justifyContent: 'space-between',
 
   '@bp2': {
-    margin: '-$2 -$3'
+    margin: '0',
+    flexWrap: 'nowrap'
   },
 
   li: {
     padding: '3px 6px',
 
     '@bp2': {
-      padding: '$2 $3'
+      padding: '0'
     },
 
     a: {
@@ -119,6 +119,22 @@ const Social = styled('ul', {
   }
 })
 
+const FooterLink = styled('a', {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  '&:hover': {
+    transition: 'background 200ms ease-in',
+    background: '$white',
+
+    '.label': {
+      color: '$black'
+    }
+  }
+})
+
 const social = [
   {
     label: 'Twitter',
@@ -140,103 +156,107 @@ const social = [
 
 const Footer = () => {
   return (
-    <Container css={{ background: '$background' }} data-scroll-section>
-      <FooterGrid>
-        <Box className="fallingLetters"></Box>
-        <Box
-          className="social"
-          css={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: 20
-          }}
-        >
-          <Box>
-            <Text
-              css={{ fontSize: 23, '@bp2': { fontSize: 45 } }}
-              uppercase
-              heading
-              tight
-            >
-              Our work is serious,{' '}
-              <Text css={{ lineHeight: 1.5 }} heading outlined>
-                we are not.
+    <Section
+      css={{
+        paddingBottom: 40,
+        paddingTop: 48,
+        '@bp2': {
+          paddingBottom: '$6'
+        }
+      }}
+      background="muted"
+      data-scroll-section
+    >
+      <Container>
+        <FooterGrid>
+          <Box className="fallingLetters"></Box>
+          <Box
+            className="social"
+            css={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              padding: 20
+            }}
+          >
+            <Box>
+              <Text
+                css={{ fontSize: '5.4vw', '@bp2': { fontSize: '2.8vw' } }}
+                uppercase
+                heading
+                tight
+              >
+                Our work is serious,{' '}
+                <Text css={{ lineHeight: 1.5 }} heading outlined>
+                  we are not.
+                </Text>
               </Text>
+            </Box>
+            <Social css={{ marginTop: '$4' }}>
+              {social.map(({ label, href }, idx) => (
+                <li key={idx}>
+                  <a href={href}>
+                    <Text
+                      className="label"
+                      css={{ fontSize: '$3', '@bp2': { fontSize: '1.3vw' } }}
+                      heading
+                    >
+                      {label}
+                    </Text>
+
+                    <Box
+                      css={{
+                        width: 10,
+                        height: 10,
+                        '@bp2': { width: 19, height: 19 }
+                      }}
+                      className="arrow"
+                    >
+                      <ArrowUp
+                        css={{ $$size: '$3', '@bps': { $$size: '1.3vw' } }}
+                      />
+                    </Box>
+                  </a>
+                </li>
+              ))}
+            </Social>
+          </Box>
+          <Box
+            className="policies"
+            css={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '$1',
+              '@bp2': { fontSize: '$3' }
+            }}
+          >
+            <FooterLink
+              href="/"
+              css={{
+                borderRight: '1px solid $colors$white'
+              }}
+            >
+              <Text className="label">EULA</Text>
+            </FooterLink>
+            <FooterLink href="mailto:sayhi@basement.studio">
+              <Text className="label">Contact</Text>
+            </FooterLink>
+          </Box>
+          <Box
+            className="legal"
+            css={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <Text css={{ fontSize: '$1', '@bp2': { fontSize: '$3' } }}>
+              © basement.studio LLC 2021 all rights reserved
             </Text>
           </Box>
-          <Social css={{ marginTop: '$4' }}>
-            {social.map(({ label, href }, idx) => (
-              <li key={idx}>
-                <a href={href}>
-                  <Text
-                    className="label"
-                    css={{ fontSize: '$3', '@bp2': { fontSize: '$6' } }}
-                    heading
-                  >
-                    {label}
-                  </Text>
-
-                  <Box
-                    css={{
-                      width: 10,
-                      height: 10,
-                      '@bp2': { width: 19, height: 19 }
-                    }}
-                    className="arrow"
-                  >
-                    <ArrowUp css={{ $$size: '20px' }} />
-                  </Box>
-                </a>
-              </li>
-            ))}
-          </Social>
-        </Box>
-        <Box
-          className="policies"
-          css={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            fontSize: '$1',
-            '@bp2': { fontSize: '$3' }
-          }}
-        >
-          <Box
-            css={{
-              borderRight: '1px solid $colors$white',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <Text>Privacy</Text>
-          </Box>
-          <Box
-            css={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <Text>Contact</Text>
-          </Box>
-        </Box>
-        <Box
-          className="legal"
-          css={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <Text css={{ fontSize: '$1', '@bp2': { fontSize: '$3' } }}>
-            © basement.studio LLC 2021 all rights reserved
-          </Text>
-        </Box>
-      </FooterGrid>
-    </Container>
+        </FooterGrid>
+      </Container>
+    </Section>
   )
 }
 
