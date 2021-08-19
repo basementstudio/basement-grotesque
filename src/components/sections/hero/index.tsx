@@ -33,12 +33,16 @@ const Title = styled('h1', {
 })
 
 const Outlined = styled('span', {
+  backgroundPosition: '48% 36%',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '102%',
   color: '$black',
   display: 'inline-block',
   letterSpacing: '-1px',
   marginTop: '5.736vw',
-  textShadow:
-    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  WebkitTextStroke: '0.115vw white',
 
   '@bp1': {
     letterSpacing: '-0.694vw'
