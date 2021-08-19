@@ -35,3 +35,9 @@ body {
 main {
   background-color: var(--colors-white);
 }
+
+::selection {
+  background-color: white;
+  color: black;
+  -webkit-text-fill-color: black;
+}
