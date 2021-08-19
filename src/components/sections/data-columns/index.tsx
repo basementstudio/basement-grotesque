@@ -17,7 +17,7 @@ import { useState } from 'react'
 import Container from 'components/layout/container'
 
 const SectionInner = styled('div', {
-  background: '$black',
+  background: '$background',
   borderTop: '1px solid $white',
   borderBottom: '1px solid $white',
 
@@ -74,7 +74,7 @@ const SectionPicker = styled('div', {
   select: {
     flex: 1,
     textTransform: 'uppercase',
-    background: '$black',
+    background: '$background',
     width: '100%',
     fontSize: '$6',
     padding: '15px 0',
