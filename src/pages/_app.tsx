@@ -2,11 +2,16 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import { isMobile as _isMobile } from 'react-device-detect'
 
+import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
+
 // Gsap Stuff
 import { gsap } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
+
+// Layout
+import Header from 'components/layout/header'
 
 // Styles
 import 'css/global.css'
@@ -56,7 +61,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Context.Provider value={{ fontsLoaded }}>
       {isMobile === false && <Cursor />}
-      <Component {...pageProps} />
+      <Header />
+      <LocomotiveScrollProvider>
+        <Component {...pageProps} />
+      </LocomotiveScrollProvider>
     </Context.Provider>
   )
 }

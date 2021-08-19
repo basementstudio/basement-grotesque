@@ -1,6 +1,5 @@
 import Head, { HeadProps } from 'components/common/head'
 import Footer from './footer'
-import Header from './header'
 
 type Props = {
   children?: React.ReactNode
@@ -15,8 +14,7 @@ const PageLayout = ({ children, headProps }: Props) => {
   return (
     <>
       <Head {...headProps} />
-      <Header />
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   )

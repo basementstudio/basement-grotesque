@@ -102,7 +102,7 @@ const Hero = () => {
     })
   }, [])
   return (
-    <section>
+    <section data-scroll-section>
       <Wrapper>
         <Title>
           <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
