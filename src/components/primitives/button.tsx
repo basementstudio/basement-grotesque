@@ -8,20 +8,15 @@ import { styled } from '../../../stitches.config'
 // Here you'll put custom props, such as `isLoading`, `variant`, `size`...
 export type ButtonProps = {
   children?: React.ReactNode
+  hasIcon?: boolean
   isLoading?: boolean
   variant?: 'underlined'
 }
 
-const Metis = styled('button', {
-  position: 'relative',
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
-  color: '$white',
-  textTransform: 'uppercase',
-  fontSize: '$6',
+const StyledButton = styled('button', {
   display: 'flex',
   alignItems: 'center',
-  outline: 'none',
+  border: 'none',
 
   '&:focus': {
     outline: 'none'
@@ -30,23 +25,24 @@ const Metis = styled('button', {
   variants: {
     underlined: {
       true: {
-        '&:before': {
-          background: 'currentcolor',
-          content: '',
-          height: '$1',
-          left: 0,
-          pointerEvents: 'none',
-          position: 'absolute',
-          top: '100%',
-          transform: 'scale3d(0, 1, 1)',
-          transformOrigin: '100% 50%',
-          transition: 'transform 0.3s',
-          width: '100%'
-        },
-
-        '&:hover:before': {
-          transform: 'scale3d(1, 1, 1)',
-          transformOrigin: '0 50%'
+        background:
+          'linear-gradient(to right, transparent, transparent), linear-gradient(to right, $colors$white, $colors$white)',
+        backgroundSize: '100% 0.1em, 0 0.1em',
+        backgroundPosition: '100% 100%, 0 100%',
+        backgroundRepeat: 'no-repeat',
+        transition: 'background-size 250ms',
+        '&:hover': {
+          backgroundSize: '0 0.1em, 100% 0.1em'
+        }
+      }
+    },
+    hasIcon: {
+      true: {
+        svg: { transition: 'all 250ms' },
+        '&:hover': {
+          svg: {
+            fill: '$colors$white'
+          }
         }
       }
     }
@@ -68,7 +64,7 @@ const Metis = styled('button', {
 const Button = forwardRef(
   ({ className, disabled, isLoading, variant, ...props }, ref) => {
     return (
-      <Metis
+      <StyledButton
         {...props}
         className={clsx(className)}
         disabled={isLoading || disabled}

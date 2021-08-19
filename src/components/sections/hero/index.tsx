@@ -90,6 +90,11 @@ const ImageContainer = styled('div', {
   transform: 'translate(-50%, 50%)'
 })
 
+const StyledIconArrow = styled(IconArrow, {
+  width: 'max(20px, 1.389vw)',
+  height: 'max(20px, 1.389vw)'
+})
+
 const Hero = () => {
   const scrollTo = useCallback(() => {
     document.querySelector('#about-section')?.scrollIntoView({
@@ -103,9 +108,9 @@ const Hero = () => {
           <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
         </Title>
         <Subtitle>
-          <Button onClick={scrollTo} variant="underlined">
+          <Button onClick={scrollTo} variant="underlined" hasIcon>
             KNOW MORE ABOUT IT DOWNSTAIRS
-            <IconArrow />
+            <StyledIconArrow />
           </Button>
         </Subtitle>
       </Wrapper>
