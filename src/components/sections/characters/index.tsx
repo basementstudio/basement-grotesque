@@ -8,6 +8,8 @@ import Section from 'components/primitives/section'
 import { styled } from '../../../../stitches.config'
 import toast from 'react-hot-toast'
 import Box from 'components/common/box'
+import Text from 'components/common/text'
+import Container from 'components/layout/container'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
@@ -15,18 +17,17 @@ const DesktopOnlyBox = styled('div', {
     display: 'block'
   }
 })
-const SectionInner = styled('div', {
-  background: '$black',
+const SectionInner = styled(Container, {
   color: '$white',
-  px: '40px',
   pt: '128px',
-  position: 'relative'
+  position: 'relative',
+  maxWidth: '1800px'
 })
 
 const MobileSection = styled('div', {
   background: '$black',
   color: '$white',
-  py: '80px',
+  py: '40px',
 
   '@bp3': {
     display: 'none'
@@ -94,9 +95,19 @@ const CharactersSection = () => {
     }, [])
 
   return (
-    <Section>
+    <Section background="black">
       <SectionInner css={{ pb: viewAll ? '128px' : '0px' }}>
-        <Box css={{ position: 'relative' }}>
+        <Box
+          css={{
+            position: 'relative',
+            py: '64px',
+            mb: '64px',
+            '@bp1': {
+              py: '128px',
+              mb: '128px'
+            }
+          }}
+        >
           <Box
             css={{
               position: 'absolute',
@@ -123,14 +134,18 @@ const CharactersSection = () => {
             as="p"
             css={{
               fontFamily: '$heading',
-              fontSize: '88px',
+              fontSize: '48px',
               textTransform: 'uppercase',
               fontWeight: 800,
               wordBreak: 'break-all',
               textAlign: 'center',
               lineHeight: '1',
               maxWidth: '1280px',
-              margin: 'auto'
+              margin: 'auto',
+
+              '@bp2': {
+                fontSize: '88px'
+              }
             }}
           >
             ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -142,47 +157,55 @@ const CharactersSection = () => {
         </Box>
         <Box
           css={{
-            display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+
+            '@bp1': {
+              display: 'flex'
+            }
           }}
         >
-          <Box
+          <Text
             as="h3"
             css={{
-              fontFamily: '$body',
               fontSize: '32px',
-              textTransform: 'uppercase',
               fontWeight: 500
             }}
+            heading
+            uppercase
           >
             Characters
-          </Box>
-          <Box
+          </Text>
+          <Text
             as="p"
             css={{
-              textAlign: 'right',
               fontWeight: 500,
-              textTransform: 'uppercase'
+              mt: '32px',
+
+              '@bp1': {
+                textAlign: 'right',
+                mt: '0'
+              }
             }}
+            uppercase
           >
             412 glyphs
             <br />
             Black (800)
             <br />
             OTF
-          </Box>
+          </Text>
         </Box>
         <DesktopOnlyBox>
           <Box
             css={{
-              pt: '80px',
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
               gridColumnGap: '24px',
               gridRowGap: '16px',
               height: viewAll ? 'auto' : '570px',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              pt: '80px'
             }}
           >
             {glyphs.split('').map((glyph, i) => (
@@ -237,7 +260,6 @@ const CharactersSection = () => {
         <Marquee gradient={false} speed={50}>
           <Box
             css={{
-              pt: '80px',
               display: 'grid',
               gridTemplateRows: 'repeat(4, 1fr)',
               gridColumnGap: '24px',
@@ -248,7 +270,7 @@ const CharactersSection = () => {
             }}
           >
             {mobileGlyphs.split('').map((glyph, i) => (
-              <Glyph key={i} size="fixed">
+              <Glyph key={i} size="fixed" onClick={handleCopyGlyph}>
                 {glyph}
               </Glyph>
             ))}

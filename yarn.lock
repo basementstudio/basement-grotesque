@@ -3222,6 +3222,11 @@ gonzales-pe@^4.3.0:
   dependencies:
     minimist "^1.2.5"
 
+goober@^2.0.35:
+  version "2.0.41"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.41.tgz#0a3d786ff9917bcf2a096eef703bf717838cbec9"
+  integrity sha512-kwjegMT5018zWydhOQlQneCgCtrKJaPsru7TaBWmTYV0nsMeUrM6L6O8JmNYb9UbPMgWcmtf+9p4Y3oJabIH1A==
+
 graceful-fs@^4.1.2, graceful-fs@^4.2.4:
   version "4.2.6"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
@@ -5047,6 +5052,13 @@ react-fast-marquee@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-fast-marquee/-/react-fast-marquee-1.2.1.tgz#8a8ee91ec0cee04bcff7f1ea5c3fd5a2c4dc227d"
   integrity sha512-rd9ZDhiUrrL2puZNlnb633df/1gjtknuIaf749LIgTLXa18fzPIdFBrz4VjERu1ECUdU9tniaF5FuosNt/GYKQ==
+
+react-hot-toast@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.1.0.tgz#f4fe3107a3ccd1d7e76ad3d3282967fbf2fccf2c"
+  integrity sha512-/wUoUVUC/qCYmkJvMzl/oXBIJe47vYqtwOpA76Pz8SrklrF8RBUTLG2eS+ivznzQzY8YlsyODIV7Qk3vOnFf1g==
+  dependencies:
+    goober "^2.0.35"
 
 react-intersection-observer@^8.32.0:
   version "8.32.0"
