@@ -1,5 +1,5 @@
 import React from 'react'
-import Section from 'components/primitives/section'
+import Section from 'components/layout/section'
 import { styled } from '../../../stitches.config'
 
 const SectionInner = styled('section', {

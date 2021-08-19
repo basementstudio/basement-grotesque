@@ -1,5 +1,5 @@
 // Primitives
-import Section from 'components/primitives/section'
+import Section from 'components/layout/section'
 
 // Styles
 import { styled } from '../../../../stitches.config'

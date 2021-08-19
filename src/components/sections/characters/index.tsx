@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 // Primitives
-import Section from 'components/primitives/section'
+import Section from 'components/layout/section'
 
 // Styles
 import { styled } from '../../../../stitches.config'
