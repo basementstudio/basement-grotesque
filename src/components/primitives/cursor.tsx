@@ -7,36 +7,61 @@ import { styled } from '../../../stitches.config'
 import gsap from 'gsap'
 
 const CursorFollower = styled('div', {
-  borderColor: 'transparent',
-  borderRadius: '$round',
-  borderWidth: '1px',
-  height: '33px',
+  $$size: '15px',
+  $$sizeOuter: '33px',
+  height: '$$sizeOuter',
+  width: '$$sizeOuter',
+  position: 'fixed',
   left: 0,
   pointerEvents: 'none',
-  position: 'fixed',
   mixBlendMode: 'difference',
   top: 0,
-  width: '33px',
-  willChange: 'transform',
   zIndex: 9999,
-  transition: 'border-color .1s ease-in-out',
-  '&::after': {
-    background: '$white',
-    borderRadius: '$round',
-    content: `''`,
-    height: '15px',
-    left: '50%',
+
+  '.outer': {
     mixBlendMode: 'difference',
     position: 'absolute',
+    transform: 'translate(-50%, -50%)',
+    left: '50%',
+    top: '50%',
+    borderColor: 'transparent',
+    borderRadius: '$round',
+    borderWidth: '1px',
+    height: '$$size',
+    width: '$$size',
+    willChange: 'transform',
+    transition:
+      'border-color .1s ease-in-out, width .22s ease-in-out, height .22s ease-in-out'
+  },
+
+  '.inner': {
+    background: '$white',
+    borderRadius: '$round',
+    mixBlendMode: 'difference',
+    position: 'absolute',
+    left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '15px'
+    height: '$$size',
+    width: '$$size',
+    transition: 'all .1s ease-in-out'
   },
 
   variants: {
     type: {
       pointer: {
-        borderColor: '$white'
+        '.outer': {
+          borderColor: '$white',
+          height: '$$sizeOuter',
+          width: '$$sizeOuter'
+        }
+      },
+      text: {
+        '.inner': {
+          width: '4px',
+          borderRadius: '1px',
+          height: '26px'
+        }
       }
     }
   }
@@ -44,7 +69,7 @@ const CursorFollower = styled('div', {
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const [type, setType] = useState<'pointer' | undefined>()
+  const [type, setType] = useState<'pointer' | 'text' | undefined>()
 
   useEffect(() => {
     if (!cursorRef.current) return
@@ -63,6 +88,20 @@ const Cursor = () => {
       if (e.target instanceof HTMLElement || e.target instanceof SVGElement) {
         if (e.target.closest('button') || e.target.closest('a')) {
           setType('pointer')
+          return
+        } else if (
+          e.target.closest('p') ||
+          e.target.closest('span') ||
+          e.target.closest('h1') ||
+          e.target.closest('h2') ||
+          e.target.closest('h3') ||
+          e.target.closest('h4') ||
+          e.target.closest('h5') ||
+          e.target.closest('h5') ||
+          e.target.closest('input') ||
+          e.target.closest('textarea')
+        ) {
+          setType('text')
           return
         }
       }
@@ -85,7 +124,12 @@ const Cursor = () => {
     }
   }, [])
 
-  return <CursorFollower ref={cursorRef} type={type} />
+  return (
+    <CursorFollower ref={cursorRef} type={type}>
+      <div className="outer" />
+      <div className="inner" />
+    </CursorFollower>
+  )
 }
 
 export default Cursor
