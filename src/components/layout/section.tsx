@@ -5,12 +5,16 @@ import { styled } from '../../../stitches.config'
 
 const StyledSection = styled('div', {
   position: 'relative',
-  opacity: 0,
   background: '$white',
   color: '$black',
   my: '-1px',
 
   variants: {
+    fadeIn: {
+      true: {
+        opacity: 0
+      }
+    },
     background: {
       black: {
         background: '$black',
@@ -24,13 +28,15 @@ const StyledSection = styled('div', {
   }
 })
 
-const Section = (
-  props: React.ComponentPropsWithoutRef<typeof StyledSection>
-) => {
+type SectionProps = React.ComponentPropsWithoutRef<typeof StyledSection> & {
+  fadeIn?: boolean
+}
+
+const Section = ({ fadeIn = true, ...rest }: SectionProps) => {
   const { ref, inView, entry } = useInView()
 
   useEffect(() => {
-    if (!entry) return
+    if (!fadeIn || !entry) return
     const timeline = gsap.timeline({
       paused: true,
       smoothChildTiming: true
@@ -42,9 +48,11 @@ const Section = (
     return () => {
       timeline?.kill()
     }
-  }, [entry, inView])
+  }, [entry, inView, fadeIn])
 
-  return <StyledSection {...props} ref={ref} data-scroll-section />
+  return (
+    <StyledSection {...rest} fadeIn={fadeIn} ref={ref} data-scroll-section />
+  )
 }
 
 export default Section

@@ -12,6 +12,7 @@ import label from '../../../../public/images/labelhero.png'
 
 import ArrowDown from 'components/primitives/arrow-down'
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
+import Section from 'components/layout/section'
 
 const Title = styled('h1', {
   color: '$white',
@@ -98,7 +99,7 @@ const Hero = () => {
   }, [scroll])
 
   return (
-    <section data-scroll-section>
+    <Section fadeIn={false} css={{ zIndex: 10 }}>
       <Wrapper>
         <Title>
           <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
@@ -118,7 +119,7 @@ const Hero = () => {
           width={266}
         />
       </ImageContainer>
-    </section>
+    </Section>
   )
 }
 
