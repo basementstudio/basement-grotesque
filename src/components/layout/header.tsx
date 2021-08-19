@@ -12,7 +12,7 @@ import IconClock from 'logos/clock.svg'
 import IconMobile from 'logos/hamburguer.svg'
 import Logo from 'logos/header-logo.svg'
 import Button from 'components/primitives/button'
-import ArrowDown from 'components/primitives/arrow-down'
+import { ArrowDown } from 'components/primitives/arrow'
 
 const Heading = styled('header', {
   backgroundColor: '$background',

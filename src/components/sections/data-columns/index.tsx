@@ -102,7 +102,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
   return (
-    <Section>
+    <Section data-scroll-section>
       <SectionInner
         css={{
           display: 'none',
