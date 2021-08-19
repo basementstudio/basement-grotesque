@@ -6,22 +6,48 @@ import { styled } from '../../../../stitches.config'
 // Images
 import label from '../../../../public/images/labelhero.png'
 
+// Icons
+import IconArrow from 'logos/arrow-hero.svg'
+
 const Title = styled('h1', {
   color: '$white',
   fontFamily: '$heading',
-  fontSize: 'max(60px, 8.333vw)',
-  letterSpacing: '-1px',
+  fontSize: 'max(60px, 13.750vw)',
+  letterSpacing: '-0.833vw',
   lineHeight: '1',
+  marginLeft: '-0.347vw',
   overflow: 'hidden',
   textAlign: 'center',
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
+
+  em: {
+    display: 'inline-block',
+    fontStyle: 'normal',
+    transform: 'translateY(-35%)'
+  }
 })
 
 const Outlined = styled('span', {
-  textShadow:
-    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white',
   color: '$black',
-  fontSize: 'max($10, 9.097vw)'
+  display: 'inline-block',
+  fontSize: 'max($10, 13.750vw)',
+  letterSpacing: '-10px',
+  marginTop: '5.736vw',
+  textShadow:
+    '1.5px 0 0 $white, -1.5px 0 0 $white, 0 1.5px 0 $white, 0 -1.5px 0 $white, 1.5px 1.5px $white, -1.5px -1.5px 0 $white, 1.5px -1.5px 0 $white, -1.5px 1.5px 0 $white'
+})
+
+const Subtitle = styled('h2', {
+  alignItems: 'center',
+  color: '$white',
+  display: 'flex',
+  fontSize: 'max($4, 1.667vw)',
+  fontWeight: '700',
+  marginTop: 'max($3, 1.667vw)',
+
+  svg: {
+    marginLeft: '$2'
+  }
 })
 
 const Wrapper = styled('div', {
@@ -29,8 +55,10 @@ const Wrapper = styled('div', {
   backgroundColor: '$black',
   backgroundImage: 'url(/images/bghero.jpg)',
   backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   display: 'flex',
+  flexDirection: 'column',
   height: '100vh',
   justifyContent: 'center',
   paddingTop: '$3'
@@ -47,8 +75,12 @@ const Hero = () => (
   <section>
     <Wrapper>
       <Title>
-        <Outlined>Basement</Outlined> <br /> Grotesque
+        <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
       </Title>
+      <Subtitle>
+        KNOW MORE ABOUT IT downstairs
+        <IconArrow />
+      </Subtitle>
     </Wrapper>
     <ImageContainer>
       <Image
