@@ -40,7 +40,6 @@ const Outlined = styled('span', {
   display: 'inline-block',
   letterSpacing: '-1px',
   marginTop: '5.736vw',
-  WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   WebkitTextStroke: '0.115vw white',
 
