@@ -3,7 +3,7 @@ import { Fragment, useCallback, useState } from 'react'
 // Primitives
 import Range, { RangeProps } from 'components/primitives/range'
 import ResizableTextarea from 'components/primitives/resizable-textarea'
-import Section from 'components/primitives/section'
+import Section from 'components/layout/section'
 
 // Pages
 import { useAppContext } from 'pages/_app'
