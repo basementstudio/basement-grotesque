@@ -84,6 +84,14 @@ declare module 'locomotive-scroll' {
     destroy(): void
   }
 
+  interface ScrollToOptions {
+    offset?: number | string
+    duration?: number
+    easing?: [number, number, number, number]
+    disableLerp?: boolean
+    callback?: () => void
+  }
+
   export class Native extends Core {
     constructor(options?: LocomotiveScrollOptions)
 
@@ -92,7 +100,7 @@ declare module 'locomotive-scroll' {
     checkResize(): void
     addElements(): void
     updateElements(): void
-    scrollTo(targetOption: string | Event, offsetOption: number): void
+    scrollTo(targetOption: string | Event, options?: ScrollToOptions): void
     update(): void
     destroy(): void
   }
@@ -128,7 +136,7 @@ declare module 'locomotive-scroll' {
     addSections(): void
     transform(element: Element, x: number, y: number, delay: number): void
     transformElement(isForced: boolean): void
-    scrollTo(targetOption: string | Event, offsetOption: number): void
+    scrollTo(targetOption: string | Event, options?: ScrollToOptions): void
     update(): void
     startScroll(): void
     stopScroll(): void
@@ -186,16 +194,7 @@ declare module 'locomotive-scroll' {
     update(): void
     start(): void
     stop(): void
-    scrollTo(
-      target: Node | string | number,
-      options?: {
-        offset?: number
-        duration?: number
-        easing?: [number, number, number, number]
-        disableLerp?: boolean
-        callback?: () => void
-      }
-    ): void
+    scrollTo(target: Node | string | number, options?: ScrollToOptions): void
     setScroll(x: number, y: number): void
     on(event: 'call' | 'scroll', func: (data: string | string[]) => void): void
     destroy(): void

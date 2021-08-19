@@ -94,7 +94,7 @@ const Hero = () => {
   const { scroll } = useLocomotiveScroll()
 
   const scrollTo = useCallback(() => {
-    scroll.scrollTo('#about-section', { offset: '-100' })
+    scroll?.scrollTo('#about-section', { offset: '-100' })
   }, [scroll])
 
   return (
