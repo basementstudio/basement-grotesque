@@ -45,6 +45,7 @@ const Glyph = styled('button', {
   justifyContent: 'center',
   transition: 'background .15s, color .15s',
   outline: 'none',
+  userSelect: 'none',
   '&:hover': {
     background: '$black',
     color: '$white'
