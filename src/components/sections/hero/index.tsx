@@ -11,6 +11,7 @@ import { styled } from '../../../../stitches.config'
 import label from '../../../../public/images/labelhero.png'
 
 import { ArrowDown } from 'components/primitives/arrow'
+import { useLocomotiveScroll } from 'context/locomotive-scroll'
 
 const Title = styled('h1', {
   color: '$white',
@@ -90,11 +91,12 @@ const ImageContainer = styled('div', {
 })
 
 const Hero = () => {
+  const { scroll } = useLocomotiveScroll()
+
   const scrollTo = useCallback(() => {
-    document.querySelector('#about-section')?.scrollIntoView({
-      behavior: 'smooth'
-    })
-  }, [])
+    scroll?.scrollTo('#about-section', { offset: '-100' })
+  }, [scroll])
+
   return (
     <section data-scroll-section>
       <Wrapper>

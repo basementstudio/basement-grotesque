@@ -13,20 +13,24 @@ import IconMobile from 'logos/hamburguer.svg'
 import Logo from 'logos/header-logo.svg'
 import Button from 'components/primitives/button'
 import { ArrowDown } from 'components/primitives/arrow'
+import Container from './container'
 
-const Heading = styled('header', {
-  backgroundColor: '$background',
-  border: '1px solid $black',
+const StyledHeader = styled('header', {
+  my: '$4',
+  position: 'fixed',
+  left: 0,
+  top: 0,
+  width: '100%',
+  zIndex: '9998'
+})
+
+const Content = styled(Container, {
   color: '$white',
   fontWeight: '700',
-  left: 0,
-  margin: '$4 40px',
-  position: 'fixed',
-  top: 0,
-  width: 'calc(100% - $5)',
-  zIndex: '9998',
 
   '> div': {
+    backgroundColor: '$background',
+    border: '1px solid $black',
     alignItems: 'center',
     display: 'grid',
     gridTemplateColumns: '54px 1fr 54px',
@@ -68,17 +72,16 @@ const Heading = styled('header', {
       '@bp2': {
         display: 'flex'
       }
-    }
-  },
-
-  svg: {
-    display: 'inline-block',
-    margin: '0 $2',
-    verticalAlign: 'bottom',
-    '&.mobile__menu': {
-      display: 'block',
-      '@bp2': {
-        display: 'none'
+    },
+    svg: {
+      display: 'inline-block',
+      margin: '0 $2',
+      verticalAlign: 'bottom',
+      '&.mobile__menu': {
+        display: 'block',
+        '@bp2': {
+          display: 'none'
+        }
       }
     }
   }
@@ -140,44 +143,46 @@ const Header = () => {
   }, [])
 
   return (
-    <Heading>
-      <div>
+    <StyledHeader>
+      <Content>
         <div>
-          <Link href="/">
-            <a>
-              <Logo style={{ margin: 0 }} />
-            </a>
-          </Link>
+          <div>
+            <Link href="/">
+              <a>
+                <Logo style={{ margin: 0 }} />
+              </a>
+            </Link>
+          </div>
+          <div className="fonts">
+            <p>
+              <span>Grotesque 800</span>{' '}
+              <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
+              <span style={{ fontWeight: 400 }}>v.1.2</span>
+            </p>
+            <span>.</span>
+            <p>
+              <span>Grotesque 400</span>{' '}
+              <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
+              <span style={{ fontWeight: 400 }}>In Progress</span>
+            </p>
+            <span>.</span>
+            <p>
+              <span>Grotesque 900</span>{' '}
+              <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
+              <span style={{ fontWeight: 400 }}>In Progress</span>
+            </p>
+          </div>
+          <div>
+            <IconClock style={{ marginLeft: 0 }} />
+            {renderTime(now)}
+          </div>
+          <DownloadButton onClick={handleDownload} icon={<ArrowDown />}>
+            TWEET AND GET IT FREE
+          </DownloadButton>
+          <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
         </div>
-        <div className="fonts">
-          <p>
-            <span>Grotesque 800</span>{' '}
-            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
-            <span style={{ fontWeight: 400 }}>v.1.2</span>
-          </p>
-          <span>.</span>
-          <p>
-            <span>Grotesque 400</span>{' '}
-            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
-            <span style={{ fontWeight: 400 }}>In Progress</span>
-          </p>
-          <span>.</span>
-          <p>
-            <span>Grotesque 900</span>{' '}
-            <span style={{ color: 'var(--colors-black)' }}>/</span>{' '}
-            <span style={{ fontWeight: 400 }}>In Progress</span>
-          </p>
-        </div>
-        <div>
-          <IconClock style={{ marginLeft: 0 }} />
-          {renderTime(now)}
-        </div>
-        <DownloadButton onClick={handleDownload} icon={<ArrowDown />}>
-          TWEET AND GET IT FREE
-        </DownloadButton>
-        <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
-      </div>
-    </Heading>
+      </Content>
+    </StyledHeader>
   )
 }
 

@@ -8,6 +8,7 @@ const StyledSection = styled('div', {
   opacity: 0,
   background: '$white',
   color: '$black',
+  my: '-1px',
 
   variants: {
     background: {
