@@ -9,11 +9,11 @@ const FooterGrid = styled('footer', {
   gridTemplateRows: 'repeat(4, auto)',
   border: '1px solid $colors$white',
   mb: 40,
+  mt: 48,
 
   '@bp2': {
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridTemplateRows: 'repeat(2, auto)',
-    mt: '48px',
     mb: '$6'
   },
 
@@ -97,7 +97,7 @@ const Social = styled('ul', {
 
     'p.label': {
       background:
-        'linear-gradient(to right, $background, $background), linear-gradient(to right, $colors$white, $colors$white)',
+        'linear-gradient(to right, $black, $black), linear-gradient(to right, $colors$white, $colors$white)',
       backgroundSize: '100% 0.1em, 0 0.1em',
       backgroundPosition: '100% 100%, 0 100%',
       backgroundRepeat: 'no-repeat',

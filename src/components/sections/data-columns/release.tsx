@@ -1,18 +1,27 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../../../stitches.config'
 import React from 'react'
 import { Text } from '.'
 
 const Container = styled('div', {
-  marginTop: 50,
   display: 'flex',
   justifyContent: 'space-between',
+
+  '&:first-child': {
+    '@bp2': {
+      marginTop: 50
+    }
+  },
+
+  '&:not(:last-child)': {
+    paddingBottom: 50
+  },
 
   '.text': {
     marginLeft: 42
   }
 })
 
-type ReleaseProps = {
+export type ReleaseProps = {
   version: string
   date: string
   text: string

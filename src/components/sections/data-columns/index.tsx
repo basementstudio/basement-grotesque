@@ -7,34 +7,38 @@ import TextPrimitive from 'components/common/text'
 
 // Local Components
 import Feature from './feature'
-import Release from './release'
+import Release, { ReleaseProps } from './release'
 import Tweet from './tweet'
 
 // Styles
 import { styled } from '../../../../stitches.config'
+import Box from 'components/common/box'
+import { useState } from 'react'
+import Container from 'components/layout/container'
 
 const SectionInner = styled('div', {
-  background: '$background',
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr',
+  background: '$black',
   borderTop: '1px solid $white',
-  borderBottom: '1px solid $white'
+  borderBottom: '1px solid $white',
+
+  '@bp2': {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr'
+  }
 })
 
 const Column = styled('div', {
   width: '100%',
-  padding: '90px 40px',
-  maxHeight: 900,
-  overflowY: 'scroll',
+  overflowY: 'auto',
+  padding: '42px 0',
 
-  '&:not(:first-child)': {
-    borderLeft: '1px solid $white'
-  }
-})
+  '@bp2': {
+    maxHeight: 900,
+    padding: '74px 40px',
 
-const TweetWrapper = styled('div', {
-  '&:not(:last-child)': {
-    marginBottom: '44px'
+    '&:not(:first-child)': {
+      borderLeft: '1px solid $white'
+    }
   }
 })
 
@@ -62,36 +66,70 @@ export const Text = styled(TextPrimitive, {
   }
 })
 
+const SectionPicker = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  position: 'relative',
+
+  select: {
+    flex: 1,
+    textTransform: 'uppercase',
+    background: '$black',
+    width: '100%',
+    fontSize: '$6',
+    padding: '15px 0',
+    '-webkit-appearance': 'none'
+  },
+
+  option: {
+    textTransform: 'uppercase'
+  },
+
+  svg: {
+    position: 'absolute',
+    right: 0
+  }
+})
+
 type DataColumnsProps = {
   tweets: TweetType[]
+  releases: ReleaseProps[]
 }
 
-const DataColumns = ({ tweets }: DataColumnsProps) => {
+type Sections = 'releases' | 'features' | 'tweets'
+
+const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
+  const [activeSection, setActiveSection] = useState<Sections>('releases')
+
   return (
     <Section>
-      <SectionInner>
+      <SectionInner
+        css={{
+          display: 'none',
+
+          '@bp2': {
+            display: 'grid'
+          }
+        }}
+      >
         <Column>
-          <Text css={{ fontSize: '$9' }} heading uppercase>
+          <Text css={{ fontSize: '$3' }} uppercase>
+            July 30, 2021
+          </Text>
+          <Text css={{ fontSize: '$7' }} heading uppercase>
             Version History
           </Text>
-          <Release
-            version="1.2"
-            date="JULY 30,2021"
-            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-          />
-          <Release
-            version="1.2"
-            date="JULY 30,2021"
-            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-          />
-          <Release
-            version="1.2"
-            date="JULY 30,2021"
-            text="Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat."
-          />
+          <div>
+            {releases.map(({ date, text, version }, idx) => (
+              <Release version={version} date={date} text={text} key={idx} />
+            ))}
+          </div>
         </Column>
         <Column>
-          <Text css={{ fontSize: '$9' }} heading uppercase>
+          <Text css={{ fontSize: '$3' }} uppercase>
+            Stats
+          </Text>
+          <Text css={{ fontSize: '$7' }} heading uppercase>
             Features status
           </Text>
           <div>
@@ -102,19 +140,84 @@ const DataColumns = ({ tweets }: DataColumnsProps) => {
           </div>
         </Column>
         <Column>
-          <Text css={{ fontSize: '$9' }} heading uppercase>
+          <Text css={{ fontSize: '$3' }} uppercase>
+            #BASEMENTGROTESQUE
+          </Text>
+          <Text css={{ fontSize: '$7' }} heading uppercase>
             Tweets
           </Text>
-          <div style={{ marginTop: 42 }}>
-            {tweets.map((tweet) => {
-              return (
-                <TweetWrapper key={tweet.id}>
-                  <Tweet tweet={tweet} />
-                </TweetWrapper>
-              )
-            })}
+          <div>
+            {tweets.map((tweet) => (
+              <Tweet tweet={tweet} key={tweet.id} />
+            ))}
           </div>
         </Column>
+      </SectionInner>
+      <SectionInner
+        css={{
+          '@bp2': {
+            display: 'none'
+          }
+        }}
+      >
+        <Box>
+          <Container css={{ borderBottom: '1px solid $white' }}>
+            <SectionPicker>
+              <select
+                onChange={(e) => {
+                  setActiveSection(e.target.value as Sections)
+                }}
+              >
+                {[
+                  { key: 'releases', label: 'Version History' },
+                  { key: 'features', label: 'Feature Status' },
+                  { key: 'tweets', label: 'Tweets' }
+                ].map(({ key, label }) => (
+                  <option value={key} key={key}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+              <svg
+                width="20"
+                height="13"
+                viewBox="0 0 20 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1.5L10 10.5L19 1.5"
+                  stroke="white"
+                  strokeWidth="2.5"
+                />
+              </svg>
+            </SectionPicker>
+          </Container>
+        </Box>
+        <Container>
+          <Column
+            css={{ display: activeSection === 'releases' ? 'block' : 'none' }}
+          >
+            {releases.map(({ date, text, version }, idx) => (
+              <Release version={version} date={date} text={text} key={idx} />
+            ))}
+          </Column>
+          <Column
+            css={{ display: activeSection === 'features' ? 'block' : 'none' }}
+          >
+            <Feature title="Family styles" score={1} />
+            <Feature title="Character set" score={4} />
+            <Feature title="Spacing &amp; Kerning" score={3} />
+            <Feature title="Hinting" score={4} />
+          </Column>
+          <Column
+            css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
+          >
+            {tweets.map((tweet) => (
+              <Tweet tweet={tweet} key={tweet.id} />
+            ))}
+          </Column>
+        </Container>
       </SectionInner>
     </Section>
   )

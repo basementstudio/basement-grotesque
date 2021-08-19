@@ -1,10 +1,22 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../../../stitches.config'
 import { Tweet as TweetType } from 'lib/twitter'
 import Image from 'next/image'
 
 type TweetProps = {
   tweet: TweetType
 }
+
+const Container = styled('div', {
+  '&:first-child': {
+    '@bp2': {
+      marginTop: 50
+    }
+  },
+
+  '&:not(:last-child)': {
+    paddingBottom: 50
+  }
+})
 
 const UserData = styled('div', {
   display: 'flex',
@@ -54,7 +66,7 @@ const Text = styled('p', {
 
 const Tweet = ({ tweet }: TweetProps) => {
   return (
-    <div>
+    <Container>
       <UserData>
         <Image
           width="72"
@@ -62,7 +74,7 @@ const Tweet = ({ tweet }: TweetProps) => {
           src={tweet.user.profile_image_url_https}
           className="tweetImage"
         />
-        <Box css={{ marginLeft: '$space$3' }}>
+        <Box css={{ flex: 1, marginLeft: '$space$3' }}>
           <Text size="md" type="heading">
             {tweet.user.name}
           </Text>
@@ -85,7 +97,7 @@ const Tweet = ({ tweet }: TweetProps) => {
       >
         {new Date(tweet.created_at).toString()}
       </Text>
-    </div>
+    </Container>
   )
 }
 
