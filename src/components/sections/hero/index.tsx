@@ -4,8 +4,14 @@ import Image from 'next/image'
 // Context
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
 
+// Layout
+import Section from 'components/layout/section'
+
 // Primitives
 import Button from 'components/primitives/button'
+
+// Constants
+import { DURATION } from 'lib/gsap'
 
 // Styles
 import { styled } from '../../../../stitches.config'
@@ -15,7 +21,6 @@ import label from '../../../../public/images/labelhero.png'
 
 // Icons
 import ArrowDown from 'components/primitives/arrow-down'
-import { DURATION } from 'lib/gsap'
 
 const Title = styled('h1', {
   color: '$white',
@@ -109,7 +114,7 @@ const Hero = () => {
   }, [scroll])
 
   return (
-    <section data-scroll-section>
+    <Section fadeIn={false} css={{ zIndex: 10 }}>
       <Wrapper>
         <Title>
           <Outlined data-scroll data-scroll-speed={0.6} className="hero__title">
@@ -145,7 +150,7 @@ const Hero = () => {
           width={266}
         />
       </ImageContainer>
-    </section>
+    </Section>
   )
 }
 

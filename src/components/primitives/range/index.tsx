@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { styled } from '../../../../stitches.config'
+import { useCursor } from '../cursor'
 
 import s from './range.module.scss'
 
 const Label = styled('label', {
   display: 'block',
   fontFamily: '$body',
-  fontSize: '$7',
-  fontWeight: '500'
+  fontWeight: '500',
+  fontSize: '18px',
+  '@bp1': {
+    fontSize: '24px'
+  }
 })
 
 const Flex = styled('div', {
@@ -19,8 +23,11 @@ const Flex = styled('div', {
 
 const Value = styled('div', {
   fontFamily: '$body',
-  fontSize: '$7',
-  fontWeight: '500'
+  fontWeight: '500',
+  fontSize: '18px',
+  '@bp1': {
+    fontSize: '24px'
+  }
 })
 
 export type RangeProps = {
@@ -45,15 +52,27 @@ const Range = ({
   renderValue
 }: RangeProps) => {
   const [isMobileSSRSafe, setIsMobileSSRSafe] = useState(false)
+  const [isGrabbing, setIsGrabbing] = useState(false)
+  const { setType } = useCursor()
+
   useEffect(() => {
     setIsMobileSSRSafe(isMobile)
   }, [])
 
+  const handlePointerDown = useCallback(() => {
+    setType('grabbing')
+    setIsGrabbing(true)
+  }, [setType])
+
+  const handlePointerUp = useCallback(() => {
+    setType('grab')
+    setIsGrabbing(false)
+  }, [setType])
+
   return (
     <div
       style={{
-        // @ts-ignore
-        '--thumb-width': isMobileSSRSafe ? '24px' : '18px'
+        ['--thumb-width' as string]: isMobileSSRSafe ? '24px' : '18px'
       }}
     >
       <Flex>
@@ -69,6 +88,9 @@ const Range = ({
         value={value}
         name={name}
         onChange={onChange}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        data-cursor={isGrabbing ? 'grabbing' : 'grab'}
       />
     </div>
   )

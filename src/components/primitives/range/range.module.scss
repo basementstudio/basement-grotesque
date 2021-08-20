@@ -6,24 +6,24 @@
 
   --thumb-height: var(--thumb-width);
   --thumb-radius: 3px;
-  --thumb-color: var(--colors-black);
-  --track-color: var(--colors-black);
+  --thumb-color: var(--colors-white);
+  --track-color: var(--colors-white);
 }
 
 .range:focus {
   outline: none;
-  cursor: grabbing;
+  cursor: none;
 
   &::-webkit-slider-thumb {
-    cursor: grabbing;
+    cursor: none;
   }
 
   &::-moz-range-thumb {
-    cursor: grabbing;
+    cursor: none;
   }
 
   &::-ms-thumb {
-    cursor: grabbing;
+    cursor: none;
   }
 }
 
@@ -40,7 +40,7 @@
   background: var(--thumb-color);
   border: none;
   border-radius: var(--thumb-radius);
-  cursor: grab;
+  cursor: none;
   -webkit-appearance: none;
 }
 
@@ -56,7 +56,7 @@
   background: var(--thumb-color);
   border: none;
   border-radius: var(--thumb-radius);
-  cursor: grab;
+  cursor: none;
 }
 
 .range::-ms-track {
@@ -85,7 +85,7 @@
   height: var(--thumb-height);
   background: theme('colors.font.text');
   border-radius: var(--thumb-radius);
-  cursor: grab;
+  cursor: none;
   margin-top: 0;
 
   /* Needed to keep the Edge thumb centred */

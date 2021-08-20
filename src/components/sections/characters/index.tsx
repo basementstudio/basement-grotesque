@@ -8,8 +8,8 @@ import Section from 'components/layout/section'
 import { styled } from '../../../../stitches.config'
 import toast from 'react-hot-toast'
 import Box from 'components/common/box'
-import Text from 'components/common/text'
 import Container from 'components/layout/container'
+import SectionHeading from 'components/common/section-heading'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
@@ -20,8 +20,7 @@ const DesktopOnlyBox = styled('div', {
 const SectionInner = styled(Container, {
   color: '$white',
   pt: '128px',
-  position: 'relative',
-  maxWidth: '1800px'
+  position: 'relative'
 })
 
 const MobileSection = styled('div', {
@@ -112,13 +111,13 @@ const CharactersSection = () => {
 
   return (
     <Section background="black">
-      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }}>
+      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }} autoPy maxWidth>
         <Box
           css={{
             position: 'relative',
             py: '64px',
             mb: '64px',
-            '@bp1': {
+            '@bp2': {
               py: '128px',
               mb: '128px'
             }
@@ -171,47 +170,18 @@ const CharactersSection = () => {
             0123456789!?&
           </Box>
         </Box>
-        <Box
-          css={{
-            alignItems: 'center',
-            justifyContent: 'space-between',
-
-            '@bp1': {
-              display: 'flex'
-            }
-          }}
-        >
-          <Text
-            as="h3"
-            css={{
-              fontSize: '32px',
-              fontWeight: 500
-            }}
-            heading
-            uppercase
-          >
-            Characters
-          </Text>
-          <Text
-            as="p"
-            css={{
-              fontWeight: 500,
-              mt: '32px',
-
-              '@bp1': {
-                textAlign: 'right',
-                mt: '0'
-              }
-            }}
-            uppercase
-          >
-            412 glyphs
-            <br />
-            Black (800)
-            <br />
-            OTF
-          </Text>
-        </Box>
+        <SectionHeading
+          title="Characters"
+          subtitle={
+            <>
+              412 glyphs
+              <br />
+              Black (800)
+              <br />
+              OTF
+            </>
+          }
+        />
         <DesktopOnlyBox
           css={{
             transition: gridHeight ? `height ${gridHeight / 4000}s` : undefined,
