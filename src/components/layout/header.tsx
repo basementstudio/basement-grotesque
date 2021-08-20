@@ -121,7 +121,7 @@ const Header = () => {
       `https://twitter.com/intent/tweet?url=${encoded.url}&text=${encoded.text}`,
       '_blank'
     )
-    download(encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'))
+    download(encodeURI(location.origin + '/BasementGrotesque-Black_v1.202.zip'))
   }, [])
 
   const renderTime = useCallback((date: Date) => {

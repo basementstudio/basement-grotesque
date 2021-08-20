@@ -40,4 +40,6 @@ main {
   background-color: white;
   color: black;
   -webkit-text-fill-color: black;
+
+  /* text-shadow: 0.03em 0.03em 0 rgb(0 0 0 / 80%), 0.03em -0.03em 0 rgb(0 0 0 / 60%), -0.03em 0.03em 0 rgb(0 0 0 / 50%); */
 }
