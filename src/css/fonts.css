@@ -19,8 +19,8 @@
 @font-face {
   font-family: 'Basement Grotesque';
   src:
-    url('/fonts/grotesque/grotesque.woff2') format('woff2'),
-    url('/fonts/grotesque/grotesque.woff') format('woff');
+    url('/fonts/grotesque/BasementGrotesque-Black_v1.202.woff2') format('woff2'),
+    url('/fonts/grotesque/BasementGrotesque-Black_v1.202.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
