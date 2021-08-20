@@ -14,8 +14,8 @@ import { styled } from '../../../stitches.config'
 import gsap from 'gsap'
 
 const CursorFollower = styled('div', {
-  $$size: '15px',
-  $$sizeOuter: '33px',
+  $$size: '14px',
+  $$sizeOuter: '32px',
   height: '$$sizeOuter',
   width: '$$sizeOuter',
   position: 'fixed',
