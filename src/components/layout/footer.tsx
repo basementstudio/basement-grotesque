@@ -159,10 +159,7 @@ const Footer = () => {
     <Section
       css={{
         paddingBottom: 40,
-        paddingTop: 48,
-        '@bp2': {
-          paddingBottom: '$6'
-        }
+        paddingTop: 48
       }}
       background="muted"
       data-scroll-section
@@ -181,7 +178,11 @@ const Footer = () => {
           >
             <Box>
               <Text
-                css={{ fontSize: '5.4vw', '@bp2': { fontSize: '2.8vw' } }}
+                css={{
+                  fontSize: '5.4vw',
+                  lineHeight: 1,
+                  '@bp2': { fontSize: '2.8vw' }
+                }}
                 uppercase
                 heading
                 tight

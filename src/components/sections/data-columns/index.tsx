@@ -29,6 +29,7 @@ const SectionInner = styled('div', {
 
 const Column = styled('div', {
   width: '100%',
+  height: '100%',
   overflowY: 'auto',
   padding: '42px 0',
 
@@ -102,7 +103,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
   return (
-    <Section background="muted" data-scroll-section>
+    <Section background="muted">
       <SectionInner
         css={{
           display: 'none',
@@ -112,7 +113,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
           }
         }}
       >
-        <Column>
+        <Column data-native-scroll-container>
           <Text css={{ fontSize: '$3' }} uppercase>
             July 30, 2021
           </Text>
@@ -125,7 +126,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
             ))}
           </div>
         </Column>
-        <Column>
+        <Column data-native-scroll-container>
           <Text css={{ fontSize: '$3' }} uppercase>
             Stats
           </Text>
@@ -139,7 +140,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
             <Feature title="Hinting" score={4} />
           </div>
         </Column>
-        <Column>
+        <Column data-native-scroll-container>
           <Text css={{ fontSize: '$3' }} uppercase>
             #BASEMENTGROTESQUE
           </Text>
