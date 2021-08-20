@@ -40,6 +40,8 @@ const PostersSection = () => {
         height={[268, 675]}
         left={[0, 40]}
         top={[80, 309]}
+        data-scroll-speed={-0.6}
+        data-scroll
       />
 
       <Poster
@@ -49,6 +51,8 @@ const PostersSection = () => {
         height={[233, 527]}
         left={[0, -169]}
         top={[1163, 1125]}
+        data-scroll-speed={-0.6}
+        data-scroll
       />
 
       <Poster
@@ -67,6 +71,8 @@ const PostersSection = () => {
         height={[151, 255]}
         left={[116, 963]}
         top={[1472, 2128]}
+        data-scroll-speed={-0.6}
+        data-scroll
       />
 
       <Poster
@@ -76,6 +82,8 @@ const PostersSection = () => {
         height={[14, 25]}
         left={[28, 40]}
         top={[1021, 1809]}
+        data-scroll-speed={-0.6}
+        data-scroll
       />
 
       {/* This is delicate, be careful! */}
@@ -127,6 +135,8 @@ const PostersSection = () => {
         left={[116, 40]}
         top={[1408, 1695]}
         fontFeatureSettings="'ss01' on"
+        data-scroll-speed={-0.6}
+        data-scroll
       >
         I004.s5
       </TextPiece>
@@ -143,6 +153,8 @@ const PostersSection = () => {
         left={[116, 358]}
         top={[1021, 1804]}
         maxWidth={[231, 322]}
+        data-scroll-speed={0.6}
+        data-scroll
       >
         In every mithraeum the centrepiece was a representation of Mithras
         killing a sacred bull, an act called the tauroctony.
@@ -162,7 +174,8 @@ const Poster = ({
   height,
   alt,
   left,
-  top
+  top,
+  ...rest
 }: {
   src: StaticImageData | ResponsiveValue<StaticImageData>
   alt: string
@@ -184,6 +197,7 @@ const Poster = ({
           top: toVw(top[1])
         }
       }}
+      {...rest}
     >
       <Box css={{ '@bp2': { display: 'none' } }}>
         <AspectBox ratio={width[0] / height[0]}>
@@ -220,7 +234,8 @@ const TextPiece = ({
   maxWidth,
   uppercase,
   fontFeatureSettings,
-  lineHeight = 1.15
+  lineHeight = 1.15,
+  ...rest
 }: {
   children?: React.ReactNode
   left: ResponsiveValue
@@ -252,6 +267,7 @@ const TextPiece = ({
         }
       }}
       uppercase={uppercase}
+      {...rest}
       heading
     >
       {children}
