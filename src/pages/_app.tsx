@@ -6,7 +6,7 @@ import { isMobile as _isMobile } from 'react-device-detect'
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 
 // Gsap Stuff
-import { DURATION, gsap, SplitText } from 'lib/gsap'
+import { gsap, SplitText } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
@@ -55,26 +55,12 @@ const App = ({ Component, pageProps }: AppProps) => {
     timeline.to('body', {
       autoAlpha: 1
     })
-
     timeline.from('#header', {
       yPercent: -30,
       autoAlpha: 0
     })
-
-    timeline.in(
-      title.chars,
-      {
-        duration: DURATION * 1.2
-      },
-      '<80%'
-    )
-    timeline.in(
-      subtitle.chars,
-      {
-        duration: DURATION
-      },
-      '<45%'
-    )
+    timeline.in(title.chars, '<80%')
+    timeline.in(subtitle.chars, '<45%')
     timeline.from(
       ['.hero__link', '.hero__image'],
       {

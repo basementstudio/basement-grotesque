@@ -16,7 +16,7 @@ gsap.registerPlugin(
 const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2
 const RECIPROCAL_GR = 1 / GOLDEN_RATIO
 const DURATION = RECIPROCAL_GR * 1.2
-const CUSTOM_EASE = CustomEase.create('custom', 'M0,0,C0.23,0.42,0.42,1,1,1')
+const CUSTOM_EASE = CustomEase.create('custom', 'M0,0,C0.23,0.42,0.5,1,1,1')
 
 export type RegisteredEffects = 'fadeIn' | 'fadeInBottom' | 'in' | 'out'
 
@@ -74,7 +74,7 @@ gsap.registerEffect({
   extendTimeline: true,
   defaults: {
     duration: DURATION,
-    each: DURATION / 25,
+    each: DURATION / 23,
     ease: CUSTOM_EASE,
     fade: DURATION * 0.8,
     from: 'start',
