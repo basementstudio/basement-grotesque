@@ -83,7 +83,11 @@ const RomePreview = () => {
           †
         </Text>
         <ContentContainer size="sm" centered>
-          <Text size="lg" css={{ marginTop: 20 }} centered>
+          <Text
+            size="lg"
+            css={{ marginTop: 20, textTransform: 'uppercase' }}
+            centered
+          >
             Lëtzebuerg
             <br />
             Moscow
