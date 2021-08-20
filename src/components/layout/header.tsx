@@ -143,7 +143,7 @@ const Header = () => {
   }, [])
 
   return (
-    <StyledHeader>
+    <StyledHeader id="header">
       <Content>
         <div>
           <div>

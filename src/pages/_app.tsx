@@ -6,7 +6,7 @@ import { isMobile as _isMobile } from 'react-device-detect'
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 
 // Gsap Stuff
-import { gsap } from 'lib/gsap'
+import { DURATION, gsap, SplitText } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
@@ -39,6 +39,14 @@ const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     if (!fontsLoaded) return
 
+    const title = new SplitText('.hero__title', {
+      type: 'chars'
+    })
+
+    const subtitle = new SplitText('.hero__subtitle', {
+      type: 'chars'
+    })
+
     const timeline = gsap.timeline({
       paused: true,
       smoothChildTiming: true
@@ -47,6 +55,35 @@ const App = ({ Component, pageProps }: AppProps) => {
     timeline.to('body', {
       autoAlpha: 1
     })
+
+    timeline.from('#header', {
+      yPercent: -30,
+      autoAlpha: 0
+    })
+
+    timeline.in(
+      title.chars,
+      {
+        duration: DURATION * 1.2
+      },
+      '<80%'
+    )
+    timeline.in(
+      subtitle.chars,
+      {
+        duration: DURATION
+      },
+      '<45%'
+    )
+    timeline.from(
+      ['.hero__link', '.hero__image'],
+      {
+        yPercent: 60,
+        autoAlpha: 0,
+        stagger: 0.2
+      },
+      '>-20%'
+    )
 
     timeline.play()
 

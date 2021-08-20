@@ -1,6 +1,9 @@
 import { useCallback } from 'react'
 import Image from 'next/image'
 
+// Context
+import { useLocomotiveScroll } from 'context/locomotive-scroll'
+
 // Primitives
 import Button from 'components/primitives/button'
 
@@ -10,12 +13,14 @@ import { styled } from '../../../../stitches.config'
 // Images
 import label from '../../../../public/images/labelhero.png'
 
+// Icons
 import ArrowDown from 'components/primitives/arrow-down'
-import { useLocomotiveScroll } from 'context/locomotive-scroll'
+import { DURATION } from 'lib/gsap'
 
 const Title = styled('h1', {
   color: '$white',
   fontFamily: '$heading',
+  fontKerning: 'none',
   fontSize: '$10',
   letterSpacing: '-2px',
   lineHeight: '1',
@@ -31,8 +36,9 @@ const Title = styled('h1', {
 
   em: {
     display: 'inline-block',
+    fontKerning: 'none',
     fontStyle: 'normal',
-    transform: 'translateY(-35%)'
+    transform: 'translateY(-42%)'
   }
 })
 
@@ -44,6 +50,7 @@ const Outlined = styled('span', {
   display: 'inline-block',
   letterSpacing: '-1px',
   marginTop: '5.736vw',
+  paddingRight: '0.6vw',
   WebkitTextFillColor: 'transparent',
   WebkitTextStroke: '0.115vw white',
 
@@ -94,22 +101,42 @@ const Hero = () => {
   const { scroll } = useLocomotiveScroll()
 
   const scrollTo = useCallback(() => {
-    scroll?.scrollTo('#about-section', { offset: '-100' })
+    scroll?.scrollTo('#about-section', {
+      offset: '-100',
+      duration: DURATION * 1000,
+      easing: [0.4, 0.0, 0.55, 0.55]
+    })
   }, [scroll])
 
   return (
     <section data-scroll-section>
       <Wrapper>
         <Title>
-          <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
+          <Outlined data-scroll data-scroll-speed={0.6} className="hero__title">
+            Basement
+          </Outlined>
+          <br />
+          <div data-scroll data-scroll-speed={-0.3}>
+            <em className="hero__subtitle">Grotesque</em>
+          </div>
         </Title>
-        <Subtitle onClick={scrollTo} variant="underlined" icon={<ArrowDown />}>
+        <Subtitle
+          className="hero__link"
+          data-scroll
+          data-scroll-speed={0.3}
+          icon={<ArrowDown />}
+          onClick={scrollTo}
+          variant="underlined"
+        >
           KNOW MORE ABOUT IT DOWNSTAIRS
         </Subtitle>
       </Wrapper>
       <ImageContainer>
         <Image
           alt="Stitch"
+          className="hero__image"
+          data-scroll
+          data-scroll-speed={0.3}
           height={100}
           objectFit="cover"
           priority
