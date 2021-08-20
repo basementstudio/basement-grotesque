@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 
 // Gsap Stuff
-import { gsap, SplitText } from 'lib/gsap'
+import { DURATION, gsap, SplitText } from 'lib/gsap'
 
 // Primitives
 import Cursor from 'components/primitives/cursor'
@@ -51,25 +51,28 @@ const App = ({ Component, pageProps }: AppProps) => {
     })
 
     timeline.to('body', {
-      autoAlpha: 1
+      autoAlpha: 1,
+      duration: DURATION / 2
     })
     timeline.from('#header', {
       yPercent: -30,
-      autoAlpha: 0
+      autoAlpha: 0,
+      duration: DURATION * 0.8
     })
     timeline.in(title.chars, '<80%')
-    timeline.in(subtitle.chars, '<45%')
+    timeline.in(subtitle.chars, '<40%')
     timeline.from(
       ['.hero__link', '.hero__image'],
       {
-        yPercent: 60,
         autoAlpha: 0,
-        stagger: 0.2
+        duration: DURATION * 0.8,
+        stagger: 0.15,
+        yPercent: 60
       },
       '>-20%'
     )
 
-    timeline.play()
+    timeline.timeScale(1.4).play()
 
     return () => {
       timeline?.kill()

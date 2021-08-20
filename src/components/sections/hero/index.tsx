@@ -43,7 +43,7 @@ const Title = styled('h1', {
     display: 'inline-block',
     fontKerning: 'none',
     fontStyle: 'normal',
-    transform: 'translateY(-42%)'
+    transform: 'translateY(-38%)'
   }
 })
 
@@ -117,11 +117,15 @@ const Hero = () => {
     <Section fadeIn={false} css={{ zIndex: 10 }}>
       <Wrapper>
         <Title>
-          <Outlined data-scroll data-scroll-speed={0.6} className="hero__title">
+          <Outlined
+            data-scroll
+            data-scroll-speed={-0.6}
+            className="hero__title"
+          >
             Basement
           </Outlined>
           <br />
-          <div data-scroll data-scroll-speed={-0.3}>
+          <div data-scroll data-scroll-speed={0.4}>
             <em className="hero__subtitle">Grotesque</em>
           </div>
         </Title>
