@@ -42,15 +42,29 @@ const Glyph = styled('button', {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
-  transition: 'background .15s, color .15s',
+  transition: 'background .15s, color .15s, transform .25s',
   outline: 'none',
   userSelect: 'none',
+  border: '1px solid $black',
+  transformOrigin: 'center center',
+
   '&:hover': {
+    transform: 'scale(1.25)',
     background: '$black',
+    borderColor: '$white',
     color: '$white'
   },
   '&:focus': {
     outline: 'none'
+  },
+
+  '@bp3': {
+    '&:nth-of-type(12n)': {
+      transformOrigin: 'right center'
+    },
+    '&:nth-of-type(12n+1)': {
+      transformOrigin: 'left center'
+    }
   },
 
   variants: {
@@ -197,7 +211,8 @@ const CharactersSection = () => {
               gridColumnGap: '24px',
               gridRowGap: '16px',
               overflow: 'hidden',
-              pt: '80px'
+              pt: '80px',
+              pb: '30px'
             }}
           >
             {glyphs.split('').map((glyph, i) => (
@@ -261,7 +276,8 @@ const CharactersSection = () => {
               gridRowGap: '16px',
               overflow: 'hidden',
               gridAutoFlow: 'column',
-              mx: '12px'
+              mx: '12px',
+              py: '20px'
             }}
           >
             {mobileGlyphs.split('').map((glyph, i) => (
