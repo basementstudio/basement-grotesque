@@ -121,7 +121,7 @@ const Header = () => {
       `https://twitter.com/intent/tweet?url=${encoded.url}&text=${encoded.text}`,
       '_blank'
     )
-    download(encodeURI(location.origin + '/BSMNT Grotesque_v1.201.zip'))
+    download(encodeURI(location.origin + '/BasementGrotesque-Black_v1.202.zip'))
   }, [])
 
   const renderTime = useCallback((date: Date) => {
@@ -176,7 +176,10 @@ const Header = () => {
             <IconClock style={{ marginLeft: 0 }} />
             {renderTime(now)}
           </div>
-          <DownloadButton onClick={handleDownload} icon={<ArrowDown />}>
+          <DownloadButton
+            onClick={handleDownload}
+            icon={<ArrowDown css={{ $$size: '15px' }} />}
+          >
             TWEET AND GET IT FREE
           </DownloadButton>
           <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />
