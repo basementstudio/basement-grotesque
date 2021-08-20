@@ -65,13 +65,12 @@ const Text = styled('p', {
   }
 })
 
-const Divisor = styled('hr', {
+const Divisor = styled('div', {
   width: '100%',
-  borderTop: '1px solid $white',
-  margin: '24px 0 32px 0',
+  height: 56,
 
   '@bp2': {
-    margin: '48px 0'
+    height: 96
   }
 })
 
