@@ -54,11 +54,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       autoAlpha: 1,
       duration: DURATION / 2
     })
-    timeline.from('#header', {
-      yPercent: -30,
-      autoAlpha: 0,
-      duration: DURATION * 0.8
-    })
+    // timeline.from('#header', {
+    //   yPercent: -30,
+    //   autoAlpha: 0,
+    //   duration: DURATION * 0.8
+    // })
     timeline.in(title.chars, '<80%')
     timeline.in(subtitle.chars, '<40%')
     timeline.from(
