@@ -26,17 +26,15 @@ const Title = styled('h1', {
   color: '$white',
   fontFamily: '$heading',
   fontKerning: 'none',
-  fontSize: '$10',
-  letterSpacing: '-2px',
   lineHeight: '1',
   marginLeft: '-0.347vw',
   overflow: 'hidden',
   textAlign: 'center',
   textTransform: 'uppercase',
+  fontSize: 'max($9, 11.750vw)',
 
   '@bp1': {
-    fontSize: 'max($9, 13.750vw)',
-    letterSpacing: '-0.833vw'
+    fontSize: 'max($9, 13.750vw)'
   },
 
   em: {
@@ -55,7 +53,7 @@ const Outlined = styled('span', {
   display: 'inline-block',
   letterSpacing: '-1px',
   marginTop: '5.736vw',
-  paddingRight: '0.6vw',
+  paddingRight: '0.7vw',
   WebkitTextFillColor: 'transparent',
   WebkitTextStroke: '0.115vw white',
 
@@ -68,9 +66,13 @@ const Subtitle = styled(Button, {
   alignItems: 'center',
   color: '$white',
   display: 'flex',
-  fontSize: 'max($4, 1.667vw)',
   fontWeight: '700',
   marginTop: 'max($3, 1.667vw)',
+  fontSize: '3.75vw',
+
+  '@bp1': {
+    fontSize: 'max($4, 1.667vw)'
+  },
 
   svg: {
     marginLeft: '$2'
@@ -111,16 +113,16 @@ const Hero = () => {
   return (
     <Section css={{ zIndex: 10 }}>
       <Wrapper>
-        <Title>
+        <Title data-cursor="undefined">
           <Outlined
             data-scroll
             data-scroll-speed={-0.6}
             className="hero__title"
           >
-            Basement
+            Basement{' '}
           </Outlined>
-          <br />
-          <div data-scroll data-scroll-speed={0.4}>
+          <br style={{ userSelect: 'none' }} />
+          <div data-scroll data-scroll-speed={0.4} data-cursor="undefined">
             <em className="hero__subtitle">Grotesque</em>
           </div>
         </Title>
