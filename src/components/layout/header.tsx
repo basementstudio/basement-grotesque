@@ -176,7 +176,10 @@ const Header = () => {
             <IconClock style={{ marginLeft: 0 }} />
             {renderTime(now)}
           </div>
-          <DownloadButton onClick={handleDownload} icon={<ArrowDown />}>
+          <DownloadButton
+            onClick={handleDownload}
+            icon={<ArrowDown css={{ $$size: '15px' }} />}
+          >
             TWEET AND GET IT FREE
           </DownloadButton>
           <IconMobile className="mobile__menu" style={{ margin: '0 auto' }} />

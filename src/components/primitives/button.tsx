@@ -39,6 +39,7 @@ const StyledButton = styled('button', {
     hasIcon: {
       true: {
         svg: {
+          ml: '8px',
           transition: 'all 250ms',
           fill: 'currentColor',
           color: 'transparent'
