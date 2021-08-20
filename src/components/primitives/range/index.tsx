@@ -10,7 +10,7 @@ const Label = styled('label', {
   fontFamily: '$body',
   fontWeight: '500',
   fontSize: '18px',
-  '@bp1': {
+  '@bp2': {
     fontSize: '24px'
   }
 })
@@ -25,7 +25,7 @@ const Value = styled('div', {
   fontFamily: '$body',
   fontWeight: '500',
   fontSize: '18px',
-  '@bp1': {
+  '@bp2': {
     fontSize: '24px'
   }
 })

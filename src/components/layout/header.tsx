@@ -143,7 +143,7 @@ const Header = () => {
   }, [])
 
   return (
-    <StyledHeader>
+    <StyledHeader id="header">
       <Content>
         <div>
           <div>
@@ -178,7 +178,11 @@ const Header = () => {
           </div>
           <DownloadButton
             onClick={handleDownload}
-            icon={<ArrowDown css={{ $$size: '15px' }} />}
+            icon={
+              <ArrowDown
+                css={{ $$size: '15px', transform: 'rotate(270deg)' }}
+              />
+            }
           >
             TWEET AND GET IT FREE
           </DownloadButton>
