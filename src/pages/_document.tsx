@@ -15,7 +15,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" className="has-scroll-smooth">
         <Head>
           <style
             id="stitches"

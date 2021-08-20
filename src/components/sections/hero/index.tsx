@@ -69,7 +69,6 @@ const Subtitle = styled(Button, {
 const Wrapper = styled('div', {
   alignItems: 'center',
   backgroundColor: '$black',
-  backgroundImage: 'url(/images/bgheromobile.jpg)',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -77,11 +76,7 @@ const Wrapper = styled('div', {
   flexDirection: 'column',
   height: '100vh',
   justifyContent: 'center',
-  paddingTop: '$3',
-
-  '@bp1': {
-    backgroundImage: 'url(/images/bghero.jpg)'
-  }
+  paddingTop: '$3'
 })
 
 const ImageContainer = styled('div', {
@@ -99,7 +94,7 @@ const Hero = () => {
   }, [scroll])
 
   return (
-    <Section fadeIn={false} css={{ zIndex: 10 }}>
+    <Section css={{ zIndex: 10 }}>
       <Wrapper>
         <Title>
           <Outlined>Basement</Outlined> <br /> <em>Grotesque</em>
