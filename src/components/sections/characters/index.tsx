@@ -47,12 +47,7 @@ const Glyph = styled('button', {
   userSelect: 'none',
   border: '1px solid $black',
   transformOrigin: 'center center',
-  '&:nth-of-type(12n)': {
-    transformOrigin: 'right center'
-  },
-  '&:nth-of-type(12n+1)': {
-    transformOrigin: 'left center'
-  },
+
   '&:hover': {
     transform: 'scale(1.25)',
     background: '$black',
@@ -61,6 +56,15 @@ const Glyph = styled('button', {
   },
   '&:focus': {
     outline: 'none'
+  },
+
+  '@bp3': {
+    '&:nth-of-type(12n)': {
+      transformOrigin: 'right center'
+    },
+    '&:nth-of-type(12n+1)': {
+      transformOrigin: 'left center'
+    }
   },
 
   variants: {
@@ -272,7 +276,8 @@ const CharactersSection = () => {
               gridRowGap: '16px',
               overflow: 'hidden',
               gridAutoFlow: 'column',
-              mx: '12px'
+              mx: '12px',
+              py: '20px'
             }}
           >
             {mobileGlyphs.split('').map((glyph, i) => (
