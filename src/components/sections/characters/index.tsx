@@ -20,8 +20,7 @@ const DesktopOnlyBox = styled('div', {
 const SectionInner = styled(Container, {
   color: '$white',
   pt: '128px',
-  position: 'relative',
-  maxWidth: '1800px'
+  position: 'relative'
 })
 
 const MobileSection = styled('div', {
@@ -112,13 +111,13 @@ const CharactersSection = () => {
 
   return (
     <Section background="black">
-      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }}>
+      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }} autoPy maxWidth>
         <Box
           css={{
             position: 'relative',
             py: '64px',
             mb: '64px',
-            '@bp1': {
+            '@bp2': {
               py: '128px',
               mb: '128px'
             }
