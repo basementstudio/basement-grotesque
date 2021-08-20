@@ -32,7 +32,7 @@ const PreviewLabel = styled('div', {
   fontFamily: '$body',
   textAlign: 'center',
   fontSize: '14px',
-  '@bp1': {
+  '@bp2': {
     textAlign: 'left'
   }
 })
@@ -42,7 +42,12 @@ type Name = 'size' | 'tracking' | 'leading'
 
 type Inputs = Record<Name, Value>
 
-const textareaCss = css({ background: '$background', mt: '24px' })()
+const textareaCss = css({
+  background: '$background',
+  mt: '24px',
+  textAlign: 'center',
+  '@bp2': { textAlign: 'left' }
+})()
 
 const DemoSection = () => {
   const { fontsLoaded } = useAppContext()
@@ -89,7 +94,7 @@ const DemoSection = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 786) {
+      if (window.innerWidth < 900) {
         setInputs((p) => ({
           ...p,
           size: { ...p.size, min: 14, max: 100, value: '32' }
@@ -115,6 +120,7 @@ const DemoSection = () => {
       css={{
         pt: 88,
         '@bp2': {
+          zIndex: 10,
           pt: 128
         }
       }}
@@ -149,7 +155,17 @@ const DemoSection = () => {
             })}
           </InputsContainer>
         </Container>
-        <Container css={{ display: 'none', '@bp1': { display: 'block' } }}>
+        <Container
+          css={{
+            display: 'none',
+            '@bp2': {
+              display: 'block',
+              position: 'relative',
+              mt: '-100px',
+              bottom: '-100px'
+            }
+          }}
+        >
           <PreviewContainer>
             <PreviewLabel>
               <p>
@@ -179,7 +195,7 @@ const DemoSection = () => {
             </PreviewLabel>
           </PreviewContainer>
         </Container>
-        <Box css={{ '@bp1': { display: 'none' } }}>
+        <Box css={{ '@bp2': { display: 'none' } }}>
           <PreviewContainer>
             <PreviewLabel>
               <p>
