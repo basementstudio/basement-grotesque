@@ -22,6 +22,14 @@ const Container = styled('div', {
           py: 128
         }
       }
+    },
+    withoutPx: {
+      true: {
+        padding: '0',
+        '@bp2': {
+          padding: '0'
+        }
+      }
     }
   }
 })

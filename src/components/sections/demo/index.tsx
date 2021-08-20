@@ -110,96 +110,106 @@ const DemoSection = () => {
   }, [])
 
   return (
-    <Section background="black">
-      <Container>
-        <SectionHeading
-          title={<>Try this beauty&nbsp;:)</>}
-          subtitle={
-            <Box
-              as="span"
-              css={{ display: 'none', '@bp2': { display: 'inline' } }}
-            >
-              412 glyphs
-              <br />
-              Black (800)
-              <br />
-              OTF
-            </Box>
-          }
-        />
-        <InputsContainer>
-          {Object.keys(inputs).map((key) => {
-            return (
-              <Range
-                {...inputs[key as Name]}
-                name={key}
-                key={key}
-                onChange={handleChange}
+    <Section
+      background="black"
+      css={{
+        pt: 88,
+        '@bp2': {
+          pt: 128
+        }
+      }}
+    >
+      <Container withoutPx maxWidth>
+        <Container>
+          <SectionHeading
+            title={<>Try this beauty&nbsp;:)</>}
+            subtitle={
+              <Box
+                as="span"
+                css={{ display: 'none', '@bp2': { display: 'inline' } }}
+              >
+                412 glyphs
+                <br />
+                Black (800)
+                <br />
+                OTF
+              </Box>
+            }
+          />
+          <InputsContainer>
+            {Object.keys(inputs).map((key) => {
+              return (
+                <Range
+                  {...inputs[key as Name]}
+                  name={key}
+                  key={key}
+                  onChange={handleChange}
+                />
+              )
+            })}
+          </InputsContainer>
+        </Container>
+        <Container css={{ display: 'none', '@bp1': { display: 'block' } }}>
+          <PreviewContainer>
+            <PreviewLabel>
+              <p>
+                {Object.keys(inputs).map((key, i, { length }) => {
+                  const isLast = i === length - 1
+                  const input = inputs[key as Name]
+                  return (
+                    <Fragment key={i}>
+                      {input.label[0]}: {input.renderValue(input.value)}
+                      {isLast ? null : ' | '}
+                    </Fragment>
+                  )
+                })}
+              </p>
+              <ResizableTextarea
+                value={text}
+                className={textareaCss}
+                style={{
+                  fontSize: inputs.size.value + 'px',
+                  lineHeight: inputs.leading.value + '%',
+                  letterSpacing: inputs.tracking.value + 'px',
+                  fontFamily: 'var(--fonts-heading)'
+                }}
+                onChange={handleTextChange}
+                fontsLoaded={fontsLoaded}
               />
-            )
-          })}
-        </InputsContainer>
+            </PreviewLabel>
+          </PreviewContainer>
+        </Container>
+        <Box css={{ '@bp1': { display: 'none' } }}>
+          <PreviewContainer>
+            <PreviewLabel>
+              <p>
+                {Object.keys(inputs).map((key, i, { length }) => {
+                  const isLast = i === length - 1
+                  const input = inputs[key as Name]
+                  return (
+                    <Fragment key={i}>
+                      {input.label[0]}: {input.renderValue(input.value)}
+                      {isLast ? null : ' | '}
+                    </Fragment>
+                  )
+                })}
+              </p>
+              <ResizableTextarea
+                value={text}
+                className={textareaCss}
+                style={{
+                  fontSize: inputs.size.value + 'px',
+                  lineHeight: inputs.leading.value + '%',
+                  letterSpacing: inputs.tracking.value + 'px',
+                  fontFamily: 'var(--fonts-heading)'
+                }}
+                onChange={handleTextChange}
+                fontsLoaded={fontsLoaded}
+              />
+            </PreviewLabel>
+          </PreviewContainer>
+        </Box>
       </Container>
-      <Container css={{ display: 'none', '@bp1': { display: 'block' } }}>
-        <PreviewContainer>
-          <PreviewLabel>
-            <p>
-              {Object.keys(inputs).map((key, i, { length }) => {
-                const isLast = i === length - 1
-                const input = inputs[key as Name]
-                return (
-                  <Fragment key={i}>
-                    {input.label[0]}: {input.renderValue(input.value)}
-                    {isLast ? null : ' | '}
-                  </Fragment>
-                )
-              })}
-            </p>
-            <ResizableTextarea
-              value={text}
-              className={textareaCss}
-              style={{
-                fontSize: inputs.size.value + 'px',
-                lineHeight: inputs.leading.value + '%',
-                letterSpacing: inputs.tracking.value + 'px',
-                fontFamily: 'var(--fonts-heading)'
-              }}
-              onChange={handleTextChange}
-              fontsLoaded={fontsLoaded}
-            />
-          </PreviewLabel>
-        </PreviewContainer>
-      </Container>
-      <Box css={{ '@bp1': { display: 'none' } }}>
-        <PreviewContainer>
-          <PreviewLabel>
-            <p>
-              {Object.keys(inputs).map((key, i, { length }) => {
-                const isLast = i === length - 1
-                const input = inputs[key as Name]
-                return (
-                  <Fragment key={i}>
-                    {input.label[0]}: {input.renderValue(input.value)}
-                    {isLast ? null : ' | '}
-                  </Fragment>
-                )
-              })}
-            </p>
-            <ResizableTextarea
-              value={text}
-              className={textareaCss}
-              style={{
-                fontSize: inputs.size.value + 'px',
-                lineHeight: inputs.leading.value + '%',
-                letterSpacing: inputs.tracking.value + 'px',
-                fontFamily: 'var(--fonts-heading)'
-              }}
-              onChange={handleTextChange}
-              fontsLoaded={fontsLoaded}
-            />
-          </PreviewLabel>
-        </PreviewContainer>
-      </Box>
     </Section>
   )
 }
