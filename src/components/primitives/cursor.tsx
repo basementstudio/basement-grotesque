@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
+import { isMobile as _isMobile } from 'react-device-detect'
 
 // Stitches
 import { styled } from '../../../stitches.config'
@@ -44,7 +51,8 @@ const CursorFollower = styled('div', {
     transform: 'translate(-50%, -50%)',
     height: '$$size',
     width: '$$size',
-    transition: 'all .1s ease-in-out'
+    transition: 'all .1s ease-in-out',
+    border: '1px solid transparent'
   },
 
   variants: {
@@ -62,14 +70,39 @@ const CursorFollower = styled('div', {
           borderRadius: '1px',
           height: '26px'
         }
+      },
+      grab: {
+        '.inner': {
+          borderWidth: '2px',
+          background: 'transparent',
+          borderColor: '$white'
+        }
+      },
+      grabbing: {
+        '.inner': {
+          borderWidth: '4px',
+          background: 'transparent',
+          borderColor: '$white'
+        }
       }
     }
   }
 })
 
-const Cursor = () => {
+type CursorType = 'pointer' | 'text' | 'grab' | 'grabbing' | undefined
+
+const CursorContext = createContext<
+  { setType: React.Dispatch<React.SetStateAction<CursorType>> } | undefined
+>(undefined)
+
+const Cursor = ({ children }: { children?: React.ReactNode }) => {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const [type, setType] = useState<'pointer' | 'text' | undefined>()
+  const [type, setType] = useState<CursorType>()
+  const [isMobile, setIsMobile] = useState<boolean>()
+
+  useEffect(() => {
+    setIsMobile(_isMobile)
+  }, [])
 
   useEffect(() => {
     if (!cursorRef.current) return
@@ -86,6 +119,10 @@ const Cursor = () => {
       mouse.x = e.x
       mouse.y = e.y
       if (e.target instanceof HTMLElement || e.target instanceof SVGElement) {
+        if (e.target.dataset.cursor) {
+          setType(e.target.dataset.cursor as any)
+          return
+        }
         if (e.target.closest('button') || e.target.closest('a')) {
           setType('pointer')
           return
@@ -122,14 +159,29 @@ const Cursor = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [isMobile])
 
   return (
-    <CursorFollower ref={cursorRef} type={type}>
-      <div className="outer" />
-      <div className="inner" />
-    </CursorFollower>
+    <>
+      {isMobile === false && (
+        <CursorFollower ref={cursorRef} type={type}>
+          <div className="outer" />
+          <div className="inner" />
+        </CursorFollower>
+      )}
+      <CursorContext.Provider value={{ setType }}>
+        {children}
+      </CursorContext.Provider>
+    </>
   )
+}
+
+export const useCursor = () => {
+  const context = useContext(CursorContext)
+  if (context === undefined) {
+    throw new Error('useCursor must be used within a CursorProvider')
+  }
+  return context
 }
 
 export default Cursor

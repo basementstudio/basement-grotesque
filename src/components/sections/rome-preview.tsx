@@ -1,16 +1,9 @@
 import React from 'react'
 import Section from 'components/layout/section'
 import { styled } from '../../../stitches.config'
+import Container from 'components/layout/container'
 
-const SectionInner = styled('section', {
-  background: '$white',
-  zIndex: '10',
-  position: 'relative',
-  px: '40px',
-  py: '60px'
-})
-
-const Container = styled('div', {
+const ContentContainer = styled('div', {
   width: '100%',
 
   variants: {
@@ -32,8 +25,10 @@ const Container = styled('div', {
 
 const ColumnedContent = styled('div', {
   display: 'grid',
-  gap: '0 24px',
-  gridTemplateColumns: '1fr 1fr'
+  gap: '48px 24px',
+  '@bp2': {
+    gridTemplateColumns: '1fr 1fr'
+  }
 })
 
 const Text = styled('p', {
@@ -43,14 +38,20 @@ const Text = styled('p', {
   variants: {
     size: {
       sm: {
-        fontSize: '$6',
-        letterSpacing: -1
+        letterSpacing: -1,
+        fontSize: '18px',
+        '@bp2': {
+          fontSize: '$6'
+        }
       },
       md: {
-        fontSize: '$9'
+        fontSize: '24px',
+        '@bp2': {
+          fontSize: '$9'
+        }
       },
       lg: {
-        fontSize: '$14',
+        fontSize: 'clamp(40px, 8vw, 112px)',
         lineHeight: 1
       },
       icon: {
@@ -73,29 +74,29 @@ const Divisor = styled('hr', {
 
 const RomePreview = () => {
   return (
-    <Section>
-      <SectionInner>
+    <Section background="black" css={{ py: '64px' }}>
+      <Container css={{ maxWidth: '1800px', mx: 'auto' }}>
         <Text size="icon" centered>
           †
         </Text>
-        <Container size="sm" centered>
+        <ContentContainer size="sm" centered>
           <Text size="lg" css={{ marginTop: 20 }} centered>
             HAMBURG <br /> MOSKOW <br /> GENÈVE <br /> ROMA
           </Text>
-        </Container>
+        </ContentContainer>
         <Text size="icon" css={{ marginTop: 24 }} centered>
           ‡
         </Text>
         <Divisor />
-        <Container size="lg" centered>
-          <Container size="sm">
+        <ContentContainer size="lg" centered>
+          <ContentContainer size="sm">
             <Text size="md">
               CATACOMBS, ALTHOUGH MOST NOTABLE AS UNDERGROUND PASSAGEWAYS AND
               CEMETERIES, ALSO HOUSE MANY DECORATIONS.
             </Text>
-          </Container>
+          </ContentContainer>
           <ColumnedContent css={{ marginTop: 84 }}>
-            <Container
+            <ContentContainer
               css={{
                 background: '$black',
                 color: '#FDFDFD',
@@ -122,7 +123,7 @@ const RomePreview = () => {
               <Text css={{ fontSize: '$13', lineHeight: 1, marginRight: 24 }}>
                 ¶
               </Text>
-            </Container>
+            </ContentContainer>
             <div>
               <Text size="sm">
                 There are thousands of decorations in the centuries-old
@@ -133,8 +134,8 @@ const RomePreview = () => {
               </Text>
             </div>
           </ColumnedContent>
-        </Container>
-      </SectionInner>
+        </ContentContainer>
+      </Container>
     </Section>
   )
 }
