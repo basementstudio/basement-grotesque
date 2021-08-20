@@ -11,6 +11,7 @@ import CharactersSection from 'components/sections/characters'
 import DemoSection from 'components/sections/demo'
 import RomePreview from 'components/sections/rome-preview'
 import DataColumns from 'components/sections/data-columns'
+import PostersSection from 'components/sections/posters'
 
 const HomePage = ({
   tweets
@@ -22,6 +23,7 @@ const HomePage = ({
       <CharactersSection />
       <RomePreview />
       <DemoSection />
+      <PostersSection />
       <DataColumns tweets={tweets} />
     </PageLayout>
   )
