@@ -76,7 +76,8 @@ const MobileMenu = ({ isOn, handleToggle }: ToggleState) => {
             pointerEvents: isOn ? 'all' : 'none',
             overflow: 'hidden',
             transition:
-              'background .44s .2s cubic-bezier(0.52, 0.16, 0.24, 1), bottom .56s cubic-bezier(0.52, 0.16, 0.24, 1) .2s'
+              'background .44s .2s cubic-bezier(0.52, 0.16, 0.24, 1), bottom .56s cubic-bezier(0.52, 0.16, 0.24, 1) .2s',
+            '.stagger': { opacity: 0, transform: 'scale(1, 0.95)' }
           }}
           aria-hidden={!isOn}
         >

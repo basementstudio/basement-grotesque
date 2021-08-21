@@ -26,12 +26,66 @@ const StyledHeader = styled('header', {
   zIndex: '9998'
 })
 
-const Time = styled('time', {
+const StyledTime = styled('time', {
   display: 'inline-flex',
   justifyContent: 'flex-start',
   textTransform: 'uppercase',
   width: '80px'
 })
+
+const Time = ({ variant }: { variant?: 'mobile' }) => {
+  const [now, setNow] = useState(new Date())
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setNow(new Date())
+    }, 1000)
+
+    return () => {
+      window.clearInterval(interval)
+    }
+  }, [])
+
+  const renderTime = useCallback((date: Date) => {
+    let hours: number | string = date.getHours()
+    let minutes: number | string = date.getMinutes()
+    let seconds: number | string = date.getSeconds()
+    hours = hours % 12
+    hours = hours ? hours : 12 // the hour '0' should be '12'
+    hours = hours < 10 ? '0' + hours : hours
+    minutes = minutes < 10 ? '0' + minutes : minutes
+    seconds = seconds < 10 ? '0' + seconds : seconds
+    return (
+      <StyledTime>
+        <span>
+          {hours}:{minutes}:{seconds}
+        </span>
+      </StyledTime>
+    )
+  }, [])
+
+  return (
+    <Box
+      css={{
+        display: 'flex',
+        alignItems: 'center',
+        px: '$$px',
+        height: '100%',
+        borderLeft: '1px solid black',
+        borderRight: '1px solid black',
+        ...(variant === 'mobile'
+          ? {
+              flexGrow: 1,
+              justifyContent: 'center'
+            }
+          : undefined)
+      }}
+    >
+      <IconClock style={{ marginRight: 8 }} />
+      {renderTime(now)}
+    </Box>
+  )
+}
 
 const StyledButton = styled(Button, {
   fontWeight: '700',
@@ -72,7 +126,7 @@ export const DownloadButton = ({
               textAlign: 'left',
               position: 'relative'
             }
-          : undefined)
+          : { height: '100%' })
       }}
       icon={
         <ArrowDown
@@ -103,18 +157,7 @@ export const DownloadButton = ({
 }
 
 const Header = () => {
-  const [now, setNow] = useState(new Date())
   const mobileMenuState = useToggleState()
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setNow(new Date())
-    }, 1000)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [])
 
   useEffect(() => {
     const handleResize = () => {
@@ -128,24 +171,6 @@ const Header = () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [mobileMenuState])
-
-  const renderTime = useCallback((date: Date) => {
-    let hours: number | string = date.getHours()
-    let minutes: number | string = date.getMinutes()
-    let seconds: number | string = date.getSeconds()
-    hours = hours % 12
-    hours = hours ? hours : 12 // the hour '0' should be '12'
-    hours = hours < 10 ? '0' + hours : hours
-    minutes = minutes < 10 ? '0' + minutes : minutes
-    seconds = seconds < 10 ? '0' + seconds : seconds
-    return (
-      <Time>
-        <span>
-          {hours}:{minutes}:{seconds}
-        </span>
-      </Time>
-    )
-  }, [])
 
   return (
     <StyledHeader id="header">
@@ -217,19 +242,7 @@ const Header = () => {
               flexShrink: 0
             }}
           >
-            <Box
-              css={{
-                display: 'flex',
-                alignItems: 'center',
-                px: '$$px',
-                height: '100%',
-                borderLeft: '1px solid black',
-                borderRight: '1px solid black'
-              }}
-            >
-              <IconClock style={{ marginRight: 8 }} />
-              {renderTime(now)}
-            </Box>
+            <Time />
             <DownloadButton />
           </Box>
           <Box
@@ -237,7 +250,17 @@ const Header = () => {
               height: '100%',
               display: 'flex',
               alignItems: 'center',
-              borderLeft: '1px solid black',
+              flexGrow: 1,
+              '@bp1': { display: 'none' }
+            }}
+          >
+            <Time variant="mobile" />
+          </Box>
+          <Box
+            css={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
               '@bp1': { display: 'none' }
             }}
           >
