@@ -38,7 +38,6 @@ const Text = styled('p', {
   variants: {
     size: {
       sm: {
-        letterSpacing: -1,
         fontSize: '18px',
         '@bp2': {
           fontSize: '$6'
@@ -66,10 +65,13 @@ const Text = styled('p', {
   }
 })
 
-const Divisor = styled('hr', {
+const Divisor = styled('div', {
   width: '100%',
-  margin: '18px 0 80px 0',
-  borderTop: '1px solid $black'
+  height: 56,
+
+  '@bp2': {
+    height: 96
+  }
 })
 
 const RomePreview = () => {
@@ -80,8 +82,18 @@ const RomePreview = () => {
           †
         </Text>
         <ContentContainer size="sm" centered>
-          <Text size="lg" css={{ marginTop: 20 }} centered>
-            HAMBURG <br /> MOSKOW <br /> GENÈVE <br /> ROMA
+          <Text
+            size="lg"
+            css={{ marginTop: 20, textTransform: 'uppercase' }}
+            centered
+          >
+            Lëtzebuerg
+            <br />
+            Moscow
+            <br />
+            Genève
+            <br />
+            Roma
           </Text>
         </ContentContainer>
         <Text size="icon" css={{ marginTop: 24 }} centered>
@@ -95,10 +107,10 @@ const RomePreview = () => {
               CEMETERIES, ALSO HOUSE MANY DECORATIONS.
             </Text>
           </ContentContainer>
-          <ColumnedContent css={{ marginTop: 84 }}>
+          <ColumnedContent css={{ marginTop: 80 }}>
             <ContentContainer
               css={{
-                background: '$black',
+                background: '$background',
                 color: '#FDFDFD',
                 display: 'flex',
                 justifyContent: 'space-between',
