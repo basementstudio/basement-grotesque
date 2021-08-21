@@ -16,10 +16,8 @@ const NativeScrollContainer: FC<NativeScrollContainerProps> = ({
 
   useEffect(() => {
     const innerScroller = containerRef.current as HTMLElement
-    const hasScroll = (elm: HTMLElement) =>
-      elm?.clientHeight < elm?.scrollHeight
 
-    innerScroller.onwheel = (e) => {
+    const wheelHandler = (e: WheelEvent) => {
       const reachedTopLimit =
         innerScroller.scrollTop === 0 &&
         lastScrollTop.current === 0 &&
@@ -38,14 +36,25 @@ const NativeScrollContainer: FC<NativeScrollContainerProps> = ({
         innerScroller.scrollTop <= 0 ? 0 : innerScroller.scrollTop
     }
 
-    if (hasScroll(innerScroller)) {
-      innerScroller.onmouseover = () => {
-        scroll?.stop()
-      }
+    const mouseOverHandler = () => {
+      scroll?.stop()
     }
 
-    innerScroller.onmouseout = () => {
+    const mouseOutHandler = () => {
       scroll?.start()
+    }
+
+    innerScroller.addEventListener('wheel', wheelHandler)
+    innerScroller.addEventListener('mouseout', mouseOutHandler)
+
+    if (innerScroller?.clientHeight < innerScroller?.scrollHeight) {
+      innerScroller.addEventListener('mouseover', mouseOverHandler)
+    }
+
+    return () => {
+      innerScroller.removeEventListener('wheel', wheelHandler)
+      innerScroller.removeEventListener('mouseout', mouseOutHandler)
+      innerScroller.removeEventListener('mouseover', mouseOverHandler)
     }
   }, [scroll])
 

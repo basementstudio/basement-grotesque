@@ -163,6 +163,7 @@ const Footer = () => {
       }}
       background="muted"
       data-scroll-section
+      noMargin
     >
       <Container maxWidth>
         <FooterGrid>

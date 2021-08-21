@@ -39,10 +39,20 @@ const Release = ({ version, date, text }: ReleaseProps) => {
         </Text>
       </div>
       <div className="text">
-        <Text size="xs" css={{ marginTop: 45 }}>
+        <Text
+          css={{ fontSize: '$2', marginTop: 45, '@bp2': { fontSize: '$3' } }}
+        >
           {date}
         </Text>
-        <Text size="md" css={{ marginTop: 10 }}>
+        <Text
+          css={{
+            fontSize: '$4',
+            marginTop: 10,
+            '@bp2': {
+              fontSize: '$6'
+            }
+          }}
+        >
           {text}
         </Text>
       </div>
