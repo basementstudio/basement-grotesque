@@ -94,7 +94,7 @@ const DownloadButton = styled(Button, {
 
 const Time = styled('time', {
   display: 'inline-flex',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   textTransform: 'uppercase',
   width: '80px'
 })

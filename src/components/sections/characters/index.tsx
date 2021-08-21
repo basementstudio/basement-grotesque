@@ -164,7 +164,6 @@ const CharactersSection = () => {
             css={{
               fontFamily: '$heading',
               fontSize: '48px',
-              textTransform: 'uppercase',
               fontWeight: 800,
               wordBreak: 'break-all',
               textAlign: 'center',
@@ -176,6 +175,8 @@ const CharactersSection = () => {
                 fontSize: '88px'
               }
             }}
+            data-scroll-speed={-0.6}
+            data-scroll
           >
             ABCDEFGHIJKLMNOPQRSTUVWXYZ
             <br />
