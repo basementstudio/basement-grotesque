@@ -65,12 +65,12 @@ const MobileMenu = ({ isOn, handleToggle }: ToggleState) => {
         <Container
           css={{
             position: 'fixed',
-            top: 0,
+            top: 128,
             left: 0,
             right: 0,
             bottom: isOn ? 0 : '100%',
             zIndex: 50,
-            pt: '128px',
+            // pt: '128px',
             backgroundColor: 'black',
             color: 'white',
             pointerEvents: isOn ? 'all' : 'none',
