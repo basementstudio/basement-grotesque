@@ -164,7 +164,7 @@ const Footer = () => {
       background="muted"
       data-scroll-section
     >
-      <Container>
+      <Container maxWidth>
         <FooterGrid>
           <Box className="fallingLetters"></Box>
           <Box

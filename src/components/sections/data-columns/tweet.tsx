@@ -2,6 +2,8 @@ import { styled } from '../../../../stitches.config'
 import { Tweet as TweetType } from 'lib/twitter'
 import Image from 'next/image'
 import { monthLabels } from 'lib/utils/date'
+import { get2D } from 'lib/utils'
+import Box from 'components/common/box'
 
 type TweetProps = {
   tweet: TweetType
@@ -27,8 +29,6 @@ const UserData = styled('div', {
     filter: 'grayscale(100%)'
   }
 })
-
-const Box = styled('div', {})
 
 const Text = styled('p', {
   lineHeight: 1,
@@ -98,7 +98,7 @@ const Tweet = ({ tweet }: TweetProps) => {
         type="body"
         css={{ marginTop: '$space$3', opacity: '50%' }}
       >
-        {date.getHours()}:{date.getMinutes()}{' '}
+        {get2D(date.getHours())}:{get2D(date.getMinutes())}{' '}
         {date.getHours() >= 12 ? 'PM' : 'AM'}
         {' - '}
         {date.getDate()} {monthLabels[date.getMonth()]} {date.getFullYear()}

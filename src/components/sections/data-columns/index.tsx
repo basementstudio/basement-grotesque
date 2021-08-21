@@ -15,25 +15,26 @@ import { styled } from '../../../../stitches.config'
 import Box from 'components/common/box'
 import { useState } from 'react'
 import Container from 'components/layout/container'
+import NativeScrollContainer from 'components/common/native-scroll-container'
 
 const SectionInner = styled('div', {
   background: '$background',
   borderTop: '1px solid $white',
   borderBottom: '1px solid $white',
 
-  '@bp2': {
+  '@bp3': {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr'
   }
 })
 
-const Column = styled('div', {
+const Column = styled(NativeScrollContainer, {
   width: '100%',
   height: '100%',
   overflowY: 'auto',
   padding: '42px 0',
 
-  '@bp2': {
+  '@bp3': {
     maxHeight: 900,
     padding: '74px 40px',
 
@@ -104,122 +105,124 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
 
   return (
     <Section background="muted">
-      <SectionInner
-        css={{
-          display: 'none',
+      <Container maxWidth>
+        <SectionInner
+          css={{
+            display: 'none',
 
-          '@bp2': {
-            display: 'grid'
-          }
-        }}
-      >
-        <Column data-native-scroll-container>
-          <Text css={{ fontSize: '$3' }} uppercase>
-            July 30, 2021
-          </Text>
-          <Text css={{ fontSize: '$7' }} heading uppercase>
-            Version History
-          </Text>
-          <div>
-            {releases.map(({ date, text, version }, idx) => (
-              <Release version={version} date={date} text={text} key={idx} />
-            ))}
-          </div>
-        </Column>
-        <Column data-native-scroll-container>
-          <Text css={{ fontSize: '$3' }} uppercase>
-            Stats
-          </Text>
-          <Text css={{ fontSize: '$7' }} heading uppercase>
-            Features status
-          </Text>
-          <div>
-            <Feature title="Family styles" score={1} />
-            <Feature title="Character set" score={4} />
-            <Feature title="Spacing &amp; Kerning" score={3} />
-            <Feature title="Hinting" score={4} />
-          </div>
-        </Column>
-        <Column data-native-scroll-container>
-          <Text css={{ fontSize: '$3' }} uppercase>
-            #BASEMENTGROTESQUE
-          </Text>
-          <Text css={{ fontSize: '$7' }} heading uppercase>
-            Tweets
-          </Text>
-          <div>
-            {tweets.map((tweet) => (
-              <Tweet tweet={tweet} key={tweet.id} />
-            ))}
-          </div>
-        </Column>
-      </SectionInner>
-      <SectionInner
-        css={{
-          '@bp2': {
-            display: 'none'
-          }
-        }}
-      >
-        <Box>
-          <Container css={{ borderBottom: '1px solid $white' }}>
-            <SectionPicker>
-              <select
-                onChange={(e) => {
-                  setActiveSection(e.target.value as Sections)
-                }}
-              >
-                {[
-                  { key: 'releases', label: 'Version History' },
-                  { key: 'features', label: 'Feature Status' },
-                  { key: 'tweets', label: 'Tweets' }
-                ].map(({ key, label }) => (
-                  <option value={key} key={key}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-              <svg
-                width="20"
-                height="13"
-                viewBox="0 0 20 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 1.5L10 10.5L19 1.5"
-                  stroke="white"
-                  strokeWidth="2.5"
-                />
-              </svg>
-            </SectionPicker>
+            '@bp3': {
+              display: 'grid'
+            }
+          }}
+        >
+          <Column>
+            <Text css={{ fontSize: '$3' }} uppercase>
+              July 30, 2021
+            </Text>
+            <Text css={{ fontSize: '$7' }} heading uppercase>
+              Version History
+            </Text>
+            <div>
+              {releases.map(({ date, text, version }, idx) => (
+                <Release version={version} date={date} text={text} key={idx} />
+              ))}
+            </div>
+          </Column>
+          <Column>
+            <Text css={{ fontSize: '$3' }} uppercase>
+              Stats
+            </Text>
+            <Text css={{ fontSize: '$7' }} heading uppercase>
+              Features status
+            </Text>
+            <div>
+              <Feature title="Family styles" score={1} />
+              <Feature title="Character set" score={4} />
+              <Feature title="Spacing &amp; Kerning" score={3} />
+              <Feature title="Hinting" score={4} />
+            </div>
+          </Column>
+          <Column>
+            <Text css={{ fontSize: '$3' }} uppercase>
+              #BASEMENTGROTESQUE
+            </Text>
+            <Text css={{ fontSize: '$7' }} heading uppercase>
+              Tweets
+            </Text>
+            <div>
+              {tweets.map((tweet) => (
+                <Tweet tweet={tweet} key={tweet.id} />
+              ))}
+            </div>
+          </Column>
+        </SectionInner>
+        <SectionInner
+          css={{
+            '@bp3': {
+              display: 'none'
+            }
+          }}
+        >
+          <Box>
+            <Container css={{ borderBottom: '1px solid $white' }}>
+              <SectionPicker>
+                <select
+                  onChange={(e) => {
+                    setActiveSection(e.target.value as Sections)
+                  }}
+                >
+                  {[
+                    { key: 'releases', label: 'Version History' },
+                    { key: 'features', label: 'Feature Status' },
+                    { key: 'tweets', label: 'Tweets' }
+                  ].map(({ key, label }) => (
+                    <option value={key} key={key}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+                <svg
+                  width="20"
+                  height="13"
+                  viewBox="0 0 20 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1.5L10 10.5L19 1.5"
+                    stroke="white"
+                    strokeWidth="2.5"
+                  />
+                </svg>
+              </SectionPicker>
+            </Container>
+          </Box>
+          <Container>
+            <Column
+              css={{ display: activeSection === 'releases' ? 'block' : 'none' }}
+            >
+              {releases.map(({ date, text, version }, idx) => (
+                <Release version={version} date={date} text={text} key={idx} />
+              ))}
+            </Column>
+            <Column
+              css={{ display: activeSection === 'features' ? 'block' : 'none' }}
+            >
+              <Feature title="Family styles" score={1} />
+              <Feature title="Character set" score={4} />
+              <Feature title="Spacing &amp; Kerning" score={3} />
+              <Feature title="Hinting" score={4} />
+            </Column>
+            <Column
+              css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
+            >
+              {tweets.map((tweet) => (
+                <Tweet tweet={tweet} key={tweet.id} />
+              ))}
+            </Column>
           </Container>
-        </Box>
-        <Container>
-          <Column
-            css={{ display: activeSection === 'releases' ? 'block' : 'none' }}
-          >
-            {releases.map(({ date, text, version }, idx) => (
-              <Release version={version} date={date} text={text} key={idx} />
-            ))}
-          </Column>
-          <Column
-            css={{ display: activeSection === 'features' ? 'block' : 'none' }}
-          >
-            <Feature title="Family styles" score={1} />
-            <Feature title="Character set" score={4} />
-            <Feature title="Spacing &amp; Kerning" score={3} />
-            <Feature title="Hinting" score={4} />
-          </Column>
-          <Column
-            css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
-          >
-            {tweets.map((tweet) => (
-              <Tweet tweet={tweet} key={tweet.id} />
-            ))}
-          </Column>
-        </Container>
-      </SectionInner>
+        </SectionInner>
+      </Container>
     </Section>
   )
 }

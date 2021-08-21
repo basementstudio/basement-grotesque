@@ -65,3 +65,9 @@ export const range = (start: number, stop?: number, step?: number) => {
 
 export const clamp = (num: number, min: number, max: number) =>
   Math.min(Math.max(num, min), max)
+
+export const get2D = (number: number) =>
+  number.toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  })
