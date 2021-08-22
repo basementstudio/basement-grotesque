@@ -156,8 +156,8 @@ const PostersSection = () => {
         data-scroll-speed={0.6}
         data-scroll
       >
-        In every mithraeum the centrepiece was a representation of Mithras
-        killing a sacred bull, an act called the tauroctony.
+        In every Mithraeum the centerpiece was a representation of Mithras
+        killing a sacred bull, an act called the Tauroctony.
       </TextPiece>
       <TextPiece size={[14, 24]} left={[28, 40]} top={[1644, 2355]}>
         2K21

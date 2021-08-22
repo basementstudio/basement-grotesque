@@ -62,10 +62,10 @@ const AboutSection = () => {
                 '@bp2': { marginBottom: 28 }
               }}
             >
-              <b>Basement-Grotesque</b> is the studio’s first venture into the
+              <b>Basement Grotesque</b> is the studio’s first venture into the
               daunting but exciting world of type design. Of course, we had to
-              start with a heavy weight: striking and unapologetically so;
-              flawed but charming and full of character.
+              start with a heavyweight: striking and unapologetically so; flawed
+              but charming and full of character.
             </Text>
             <Text
               css={{
@@ -79,8 +79,8 @@ const AboutSection = () => {
             >
               We set out inspired by the expressiveness of early 19th-century
               grotesque typefaces and the boldness and striking visuals of the
-              contemporary revival of brutalist aesthetics. BSMNT is the first
-              step in a very ambitious path we’ve set for ourselves.
+              contemporary revival of brutalist aesthetics. Grotesque is the
+              first step in a very ambitious path we’ve set for ourselves.
             </Text>
             <Text
               css={{
