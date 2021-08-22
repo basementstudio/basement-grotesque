@@ -123,10 +123,7 @@ export const DownloadButton = ({
         px: '$$px',
         ...(variant === 'mobile'
           ? {
-              fontSize: '30px',
-              '@media screen and (min-width: 389px)': {
-                fontSize: '40px'
-              },
+              fontSize: '40px',
               textAlign: 'left',
               position: 'relative'
             }
@@ -140,22 +137,17 @@ export const DownloadButton = ({
             transform: 'rotate(270deg)',
             ...(variant === 'mobile'
               ? {
-                  $$size: '22px',
                   position: 'absolute',
-                  bottom: '12px',
-                  left: '124px',
-                  '@media screen and (min-width: 389px)': {
-                    $$size: '32px',
-                    bottom: '14px',
-                    left: '164px'
-                  }
+                  $$size: '32px',
+                  bottom: '14px',
+                  left: '200px'
                 }
               : undefined)
           }}
         />
       }
     >
-      TWEET AND GET IT&nbsp;FREE{' '}
+      {variant === 'mobile' ? 'TWEET IT' : <>TWEET AND GET IT&nbsp;FREE</>}{' '}
     </StyledButton>
   )
 }

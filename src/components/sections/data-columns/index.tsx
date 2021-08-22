@@ -19,7 +19,7 @@ import Tweet from './tweet'
 import { styled } from '../../../../stitches.config'
 
 const SectionInner = styled('div', {
-  background: '$background',
+  background: '$black',
 
   '@bp3': {
     display: 'grid',
@@ -38,7 +38,7 @@ const Column = styled(NativeScrollContainer, {
     padding: '74px 40px',
 
     '&:not(:first-child)': {
-      borderLeft: '1px solid $white'
+      borderLeft: '2px solid $white'
     }
   }
 })
@@ -104,8 +104,8 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
 
   return (
     <Section
-      css={{ borderTop: '1px solid $white', borderBottom: '1px solid $white' }}
-      background="muted"
+      css={{ borderTop: '2px solid $white', borderBottom: '2px solid $white' }}
+      background="black"
       noMargin
     >
       <Container maxWidth>
@@ -168,7 +168,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
         }}
       >
         <Box>
-          <Container css={{ borderBottom: '1px solid $white' }}>
+          <Container css={{ borderBottom: '2px solid $white' }}>
             <SectionPicker>
               <select
                 onChange={(e) => {

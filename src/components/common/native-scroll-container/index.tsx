@@ -1,6 +1,9 @@
+import clsx from 'clsx'
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
 import { FC, useRef } from 'react'
 import { useEffect } from 'react'
+
+import s from './native-scroll-container.module.css'
 
 type NativeScrollContainerProps = {
   className?: string
@@ -59,7 +62,7 @@ const NativeScrollContainer: FC<NativeScrollContainerProps> = ({
   }, [scroll])
 
   return (
-    <div className={className} ref={containerRef}>
+    <div className={clsx(className, s.container)} ref={containerRef}>
       {children}
     </div>
   )

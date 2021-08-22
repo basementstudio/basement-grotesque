@@ -18,7 +18,7 @@ type ResponsiveValue<T extends any = number> = [T, T]
 const PostersSection = () => {
   return (
     <Section
-      background="muted"
+      background="black"
       css={{
         height: toVw(1705, 375),
         '@bp2': { height: toVw(2497) }
@@ -47,11 +47,11 @@ const PostersSection = () => {
 
       <Video
         src="/KTYPE B- 1.mp4"
-        width={[375, 849]}
+        width={[375, 527]}
         height={[233, 527]}
-        left={[0, -169]}
+        left={[0, 40]}
         top={[1163, 1125]}
-        videoLeft={[71, 132]}
+        videoLeft={[71, 0]}
         data-scroll-speed={-0.6}
         data-scroll
       />

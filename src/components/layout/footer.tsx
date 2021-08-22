@@ -9,7 +9,7 @@ const FooterGrid = styled('footer', {
   display: 'grid',
   gridTemplateColumns: '100%',
   gridTemplateRows: 'repeat(4, auto)',
-  border: '1px solid $colors$white',
+  border: '2px solid $colors$white',
 
   '@bp2': {
     gridTemplateColumns: 'repeat(4, 1fr)',
@@ -26,14 +26,14 @@ const FooterGrid = styled('footer', {
       gridColumn: '1/3',
       height: '100%',
       minHeight: 254,
-      borderRight: '1px solid $colors$white',
-      borderBottom: '1px solid $colors$white'
+      borderRight: '2px solid $colors$white',
+      borderBottom: '2px solid $colors$white'
     }
   },
   '.social': {
     gridColumn: '1',
     gridRow: '2',
-    borderBottom: '1px solid $colors$white',
+    borderBottom: '2px solid $colors$white',
     height: '100%',
     minHeight: 176,
 
@@ -42,7 +42,7 @@ const FooterGrid = styled('footer', {
       minHeight: 254,
       gridColumn: '3/5',
       gridRow: '1',
-      borderBottom: '1px solid $colors$white'
+      borderBottom: '2px solid $colors$white'
     }
   },
   '.policies': {
@@ -54,14 +54,14 @@ const FooterGrid = styled('footer', {
       gridColumn: '1/3',
       gridRow: '2',
       height: 46,
-      borderRight: '1px solid $colors$white'
+      borderRight: '2px solid $colors$white'
     }
   },
   '.legal': {
     gridColumn: '1',
     gridRow: '4',
     height: 36,
-    borderTop: '1px solid $colors$white',
+    borderTop: '2px solid $colors$white',
 
     '@bp2': {
       gridColumn: '3/5',
@@ -138,19 +138,19 @@ const FooterLink = styled('a', {
 const social = [
   {
     label: 'Twitter',
-    href: '/'
+    href: 'https://twitter.com/basementstudio'
   },
   {
     label: 'Dribble',
-    href: '/'
+    href: 'https://dribbble.com/basementstudio'
   },
   {
     label: 'Instagram',
-    href: '/'
+    href: 'https://www.instagram.com/basementdotstudio/'
   },
   {
     label: 'Github',
-    href: '/'
+    href: 'https://github.com/basementstudio'
   }
 ]
 
@@ -161,7 +161,7 @@ const Footer = () => {
         paddingBottom: 40,
         paddingTop: 48
       }}
-      background="muted"
+      background="black"
       data-scroll-section
       noMargin
     >
@@ -197,7 +197,7 @@ const Footer = () => {
             <Social css={{ marginTop: '$4' }}>
               {social.map(({ label, href }, idx) => (
                 <li key={idx}>
-                  <a href={href}>
+                  <a href={href} target="_blank" rel="noopener">
                     <Text
                       className="label"
                       css={{ fontSize: '$3', '@bp2': { fontSize: '1.3vw' } }}
@@ -236,13 +236,17 @@ const Footer = () => {
             <FooterLink
               href="/"
               css={{
-                borderRight: '1px solid $colors$white'
+                borderRight: '2px solid $colors$white'
               }}
             >
-              <Text className="label">EULA</Text>
+              <Text className="label" as="span" uppercase heading>
+                EULA
+              </Text>
             </FooterLink>
             <FooterLink href="mailto:sayhi@basement.studio">
-              <Text className="label">Contact</Text>
+              <Text className="label" as="span" uppercase heading>
+                Contact
+              </Text>
             </FooterLink>
           </Box>
           <Box
