@@ -1,19 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
-
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
-
-// Gsap Stuff
 import { DURATION, gsap, SplitText } from 'lib/gsap'
-
-// Primitives
 import Cursor from 'components/primitives/cursor'
-
-// Layout
 import Header from 'components/layout/header'
-
-// Styles
+import { useAppGA } from 'lib/ga'
 import 'css/global.css'
 
 const Context = createContext<{ fontsLoaded: boolean }>({ fontsLoaded: false })
@@ -21,6 +13,8 @@ export const useAppContext = () => useContext(Context)
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
+
+  useAppGA()
 
   useEffect(() => {
     // @ts-ignore
