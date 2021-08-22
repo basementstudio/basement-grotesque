@@ -97,6 +97,7 @@ const DemoSection = () => {
       if (window.innerWidth < 900) {
         setInputs((p) => ({
           ...p,
+          tracking: { ...p.tracking, value: '0.4' },
           size: { ...p.size, min: 14, max: 100, value: '32' }
         }))
       } else {
@@ -118,10 +119,10 @@ const DemoSection = () => {
     <Section
       background="black"
       css={{
-        pt: 88,
+        py: 88,
         '@bp2': {
           zIndex: 10,
-          pt: 128
+          py: 128
         }
       }}
     >
@@ -142,6 +143,74 @@ const DemoSection = () => {
               </Box>
             }
           />
+          <Container
+            css={{
+              display: 'none',
+              '@bp2': {
+                display: 'block'
+              }
+            }}
+            withoutPx
+          >
+            <PreviewContainer>
+              <PreviewLabel>
+                <p>
+                  {Object.keys(inputs).map((key, i, { length }) => {
+                    const isLast = i === length - 1
+                    const input = inputs[key as Name]
+                    return (
+                      <Fragment key={i}>
+                        {input.label[0]}: {input.renderValue(input.value)}
+                        {isLast ? null : ' | '}
+                      </Fragment>
+                    )
+                  })}
+                </p>
+                <ResizableTextarea
+                  value={text}
+                  className={textareaCss}
+                  style={{
+                    fontSize: inputs.size.value + 'px',
+                    lineHeight: inputs.leading.value + '%',
+                    letterSpacing: inputs.tracking.value + 'px',
+                    fontFamily: 'var(--fonts-heading)'
+                  }}
+                  onChange={handleTextChange}
+                  fontsLoaded={fontsLoaded}
+                />
+              </PreviewLabel>
+            </PreviewContainer>
+          </Container>
+          <Box css={{ '@bp2': { display: 'none' } }}>
+            <PreviewContainer>
+              <PreviewLabel>
+                <p>
+                  {Object.keys(inputs).map((key, i, { length }) => {
+                    const isLast = i === length - 1
+                    const input = inputs[key as Name]
+                    return (
+                      <Fragment key={i}>
+                        {input.label[0]}: {input.renderValue(input.value)}
+                        {isLast ? null : ' | '}
+                      </Fragment>
+                    )
+                  })}
+                </p>
+                <ResizableTextarea
+                  value={text}
+                  className={textareaCss}
+                  style={{
+                    fontSize: inputs.size.value + 'px',
+                    lineHeight: inputs.leading.value + '%',
+                    letterSpacing: inputs.tracking.value + 'px',
+                    fontFamily: 'var(--fonts-heading)'
+                  }}
+                  onChange={handleTextChange}
+                  fontsLoaded={fontsLoaded}
+                />
+              </PreviewLabel>
+            </PreviewContainer>
+          </Box>
           <InputsContainer>
             {Object.keys(inputs).map((key) => {
               return (
@@ -155,76 +224,6 @@ const DemoSection = () => {
             })}
           </InputsContainer>
         </Container>
-        <Container
-          css={{
-            display: 'none',
-            '@bp2': {
-              display: 'block',
-              position: 'relative',
-              mt: '-100px',
-              bottom: '-100px'
-            }
-          }}
-        >
-          <PreviewContainer>
-            <PreviewLabel>
-              <p>
-                {Object.keys(inputs).map((key, i, { length }) => {
-                  const isLast = i === length - 1
-                  const input = inputs[key as Name]
-                  return (
-                    <Fragment key={i}>
-                      {input.label[0]}: {input.renderValue(input.value)}
-                      {isLast ? null : ' | '}
-                    </Fragment>
-                  )
-                })}
-              </p>
-              <ResizableTextarea
-                value={text}
-                className={textareaCss}
-                style={{
-                  fontSize: inputs.size.value + 'px',
-                  lineHeight: inputs.leading.value + '%',
-                  letterSpacing: inputs.tracking.value + 'px',
-                  fontFamily: 'var(--fonts-heading)'
-                }}
-                onChange={handleTextChange}
-                fontsLoaded={fontsLoaded}
-              />
-            </PreviewLabel>
-          </PreviewContainer>
-        </Container>
-        <Box css={{ '@bp2': { display: 'none' } }}>
-          <PreviewContainer>
-            <PreviewLabel>
-              <p>
-                {Object.keys(inputs).map((key, i, { length }) => {
-                  const isLast = i === length - 1
-                  const input = inputs[key as Name]
-                  return (
-                    <Fragment key={i}>
-                      {input.label[0]}: {input.renderValue(input.value)}
-                      {isLast ? null : ' | '}
-                    </Fragment>
-                  )
-                })}
-              </p>
-              <ResizableTextarea
-                value={text}
-                className={textareaCss}
-                style={{
-                  fontSize: inputs.size.value + 'px',
-                  lineHeight: inputs.leading.value + '%',
-                  letterSpacing: inputs.tracking.value + 'px',
-                  fontFamily: 'var(--fonts-heading)'
-                }}
-                onChange={handleTextChange}
-                fontsLoaded={fontsLoaded}
-              />
-            </PreviewLabel>
-          </PreviewContainer>
-        </Box>
       </Container>
     </Section>
   )

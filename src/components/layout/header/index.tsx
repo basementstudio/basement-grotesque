@@ -198,8 +198,9 @@ const Header = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             border: '1px solid black',
-            backgroundColor: '$background',
             height: '56px',
+            backdropFilter: 'saturate(180%) blur(5px)',
+            backgroundColor: 'rgba(16, 16, 16, .8)',
 
             $$px: '18px'
           }}
@@ -223,7 +224,7 @@ const Header = () => {
                 borderRight: '1px solid black',
                 px: '$$px',
                 height: '100%',
-                '.divider': { color: 'black', mx: '12px' },
+                '.divider': { mx: '12px' },
                 '.regular': { fontWeight: '400' },
 
                 '@media screen and (min-width: 1268px)': {

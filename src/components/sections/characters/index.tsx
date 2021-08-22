@@ -11,6 +11,7 @@ import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import SectionHeading from 'components/common/section-heading'
 import { toVw } from '../posters'
+import ArrowDown from 'components/primitives/arrow-down'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
@@ -96,7 +97,7 @@ const Glyph = ({
   )
 }
 
-const glyphs = `AÁÂÄÀÅÃÆBCÇDÐEÉÊËÈFGHIÍÎÏÌJKLMNÑOÓÔÖÒØÕŒPÞQRSẞTUÚÛÜÙVWẂŴẄẀXYÝŶŸỲZaáâäàåãæbcçdðeéêëèfghiíîïìĳjklmnñoóôöòøõœpþqrsßtuúûüùvwẃŵẅẁxyýŷÿỳz̈̇.,:;…&†‡¶!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'01234567890123456789`
+const glyphs = `AÁÂÄÀÅÃÆBCÇDÐEÉÊËÈFGHIÍÎÏÌJKLMNÑOÓÔÖÒØÕŒPÞQRSẞTUÚÛÜÙVWẂŴẄẀXYÝŶŸỲZaáâäàåãæbcçdðeéêëèfghiíîïìĳjklmnñoóôöòøõœpþqrsßtuúûüùvwẃŵẅẁxyýŷÿỳz̈̇.,:;…&†‡¶!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'01234567890123456789@`
 const mobileGlyphs = glyphs + `ẞT`
 
 const CharactersSection = () => {
@@ -252,38 +253,34 @@ const CharactersSection = () => {
             css={{
               appearance: 'none',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               width: '100%',
               background: '$white',
               color: '$black',
               borderTop: '1px solid $black',
-              paddingTop: '24px',
-              paddingBottom: '32px',
+              py: '24px',
               textTransform: 'uppercase',
               '&:focus': {
                 outline: 'none'
+              },
+              fontFamily: '$heading',
+              svg: {
+                ml: '8px',
+                transition: 'all 250ms',
+                fill: 'currentColor',
+                color: '$black'
               }
             }}
           >
-            <span>{viewAll ? 'View Less' : 'View All'}</span>
-            <svg
-              width="22"
-              height="10"
-              viewBox="0 0 22 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{
-                marginTop: '8px',
-                transform: viewAll ? 'rotate(180deg)' : 'none'
+            {viewAll ? 'View Less' : 'View All'}{' '}
+            <ArrowDown
+              css={{
+                color: 'black',
+                path: { stroke: 'black' },
+                $$size: '15px'
               }}
-            >
-              <path
-                d="M11 10.0002L0.607696 0.250246L21.3923 0.250244L11 10.0002Z"
-                fill="#101010"
-              />
-            </svg>
+            />
           </Box>
         )}
       </DesktopOnlyBox>
