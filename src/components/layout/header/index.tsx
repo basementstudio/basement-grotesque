@@ -16,6 +16,7 @@ import Container from '../container'
 import Box from 'components/common/box'
 import MobileMenu from './mobile-menu'
 import { useToggleState } from 'hooks/use-toggle-state'
+import { useLocomotiveScroll } from 'context/locomotive-scroll'
 
 const StyledHeader = styled('header', {
   my: '$4',
@@ -161,6 +162,7 @@ export const DownloadButton = ({
 
 const Header = () => {
   const mobileMenuState = useToggleState()
+  const { scroll } = useLocomotiveScroll()
 
   useEffect(() => {
     const handleResize = () => {
@@ -174,6 +176,12 @@ const Header = () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [mobileMenuState])
+
+  const handleLogoClick = useCallback(() => {
+    if (scroll) {
+      scroll.scrollTo(0)
+    }
+  }, [scroll])
 
   return (
     <StyledHeader id="header">
@@ -198,7 +206,12 @@ const Header = () => {
         >
           <Box css={{ display: 'flex', alignItems: 'center', height: '100%' }}>
             <Link href="/" passHref>
-              <Box as="a" title="Basement Grotesque" css={{ px: '$$px' }}>
+              <Box
+                as="a"
+                title="Basement Grotesque"
+                css={{ px: '$$px' }}
+                onClick={handleLogoClick}
+              >
                 <Logo style={{ margin: 0 }} />
               </Box>
             </Link>
