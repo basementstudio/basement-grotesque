@@ -40,6 +40,7 @@ class MyDocument extends Document {
         `
             }}
           />
+          <script async data-api="/_hive" src="/bee.js" />
         </Head>
         <body style={{ opacity: 0 }}>
           <Main />

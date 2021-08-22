@@ -50,7 +50,7 @@ export const Ab2 = () => {
 
 export const Ab3 = () => {
   return (
-    <div className="absolute ab" data-scroll-speed={-0.4} data-scroll>
+    <div className="absolute ab" data-scroll-speed={-0.6} data-scroll>
       <svg viewBox="0 0 840 522" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#ab-3-clip0)">
           <path
@@ -70,7 +70,7 @@ export const Ab3 = () => {
 
 export const Ab4 = () => {
   return (
-    <div className="absolute ab" data-scroll-speed={-0.6} data-scroll>
+    <div className="absolute ab" data-scroll-speed={-1} data-scroll>
       <svg viewBox="0 0 840 522" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#ab-4-clip0)">
           <path
@@ -96,13 +96,13 @@ const AbAnimation = () => {
     if (!inView) return
 
     function handleResize() {
-      const multiplier = (window.innerWidth * 20) / 1440
+      const multiplier = Math.min((window.innerWidth * 20) / 1440, 20)
       const tl = gsap.timeline()
       tl.to('.ab svg', {
         y: (index) => index * multiplier,
         x: (index) => index * multiplier,
-        ease: 'elastic',
-        duration: DURATION * 3.5
+        ease: 'elastic.out(1, 0.4)',
+        duration: DURATION * 3
       })
       tlRef.current = tl
     }
@@ -125,6 +125,8 @@ const AbAnimation = () => {
     <Box
       css={{
         position: 'relative',
+        width: '100%',
+        marginTop: '-64px',
         '.absolute': { position: 'absolute', inset: 0 }
       }}
       ref={ref}

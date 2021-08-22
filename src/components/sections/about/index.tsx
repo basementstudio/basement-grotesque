@@ -36,8 +36,8 @@ const Text = styled('p', {
 
 const AboutSection = () => {
   return (
-    <Section id="about-section" background="black">
-      <Container autoPy maxWidth>
+    <Section id="about-section" background="black" css={{ pt: '128px' }}>
+      <Container autoPy css={{ pb: 0 }} maxWidth>
         <Box
           css={{
             display: 'grid',
@@ -50,9 +50,9 @@ const AboutSection = () => {
         >
           <Box
             css={{
-              maxWidth: 900,
+              maxWidth: 708,
               gridRowStart: 2,
-              '@bp2': { p: 0, pl: '40px', gridRowStart: 'initial' }
+              '@bp2': { gridRowStart: 'initial' }
             }}
           >
             <Text
@@ -98,7 +98,9 @@ const AboutSection = () => {
           </Box>
           <Box
             css={{
-              '@bp2': { margin: '-64px -128px -128px -32px' }
+              display: 'flex',
+              alignItems: 'center',
+              '@bp2': { margin: '-128px -128px -128px -32px' }
             }}
           >
             <AbAnimation />
@@ -106,12 +108,15 @@ const AboutSection = () => {
         </Box>
         <Box
           css={{
-            mt: 64,
             ta: 'center',
             fontWeight: 800,
             fontFamily: '$heading',
             fontSize: 'clamp($4, 2vw, $7)',
-            lineHeight: 'clamp($5, 2.2vw, $8)'
+            lineHeight: 'clamp($5, 2.2vw, $8)',
+            mt: '64px',
+            '@bp2': {
+              mt: '128px'
+            }
           }}
         >
           ***
