@@ -95,7 +95,11 @@ const MobileMenu = ({ isOn, handleToggle }: ToggleState) => {
                 maxWidth: '420px'
               }}
             >
-              <DownloadButton variant="mobile" className="stagger" />
+              <DownloadButton
+                variant="mobile"
+                className="stagger"
+                tabIndex={isOn ? 0 : -1}
+              />
               <Box
                 css={{
                   mt: '32px',
@@ -130,6 +134,7 @@ const MobileMenu = ({ isOn, handleToggle }: ToggleState) => {
                 fontSize: '20px'
               }}
               className="stagger"
+              tabIndex={isOn ? 0 : -1}
             >
               www.basement.studio
             </Box>

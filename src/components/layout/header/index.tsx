@@ -94,10 +94,12 @@ const StyledButton = styled(Button, {
 
 export const DownloadButton = ({
   variant,
-  className
+  className,
+  tabIndex
 }: {
   variant?: 'mobile'
   className?: string
+  tabIndex?: number
 }) => {
   const handleDownload = useCallback(() => {
     const encoded = {
@@ -115,6 +117,7 @@ export const DownloadButton = ({
     <StyledButton
       onClick={handleDownload}
       className={className}
+      tabIndex={tabIndex}
       css={{
         px: '$$px',
         ...(variant === 'mobile'
