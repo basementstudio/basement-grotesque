@@ -9,8 +9,8 @@ import streetPoster from '../../../../public/images/posters/street.png'
 import streetMobilePoster from '../../../../public/images/posters/street-mobile.png'
 import theOdysseyPoster from '../../../../public/images/posters/the-odyssey.png'
 import marDelPlataPoster from '../../../../public/images/posters/mar-del-plata.png'
-import magazinePoster from '../../../../public/images/posters/magazine.png'
 import arrowDown from '../../../../public/images/posters/arrow-down.png'
+import { styled } from '../../../../stitches.config'
 
 export const toVw = (px: number, base = 1440) => `${(px * 100) / base}vw`
 type ResponsiveValue<T extends any = number> = [T, T]
@@ -24,6 +24,7 @@ const PostersSection = () => {
         '@bp2': { height: toVw(2497) }
       }}
     >
+      {/* This is delicate, be careful! */}
       <Poster
         src={subwayPoster}
         alt="subway poster"
@@ -44,13 +45,13 @@ const PostersSection = () => {
         data-scroll
       />
 
-      <Poster
-        src={theOdysseyPoster}
-        alt="the odyssey poster"
+      <Video
+        src="/KTYPE B- 1.mp4"
         width={[375, 849]}
         height={[233, 527]}
         left={[0, -169]}
         top={[1163, 1125]}
+        videoLeft={[71, 132]}
         data-scroll-speed={-0.6}
         data-scroll
       />
@@ -65,8 +66,8 @@ const PostersSection = () => {
       />
 
       <Poster
-        src={magazinePoster}
-        alt="magazine poster"
+        src={theOdysseyPoster}
+        alt="the odyssey poster"
         width={[259, 437]}
         height={[151, 255]}
         left={[116, 963]}
@@ -86,7 +87,6 @@ const PostersSection = () => {
         data-scroll
       />
 
-      {/* This is delicate, be careful! */}
       <TextPiece
         size={[18, 24]}
         left={[28, 732]}
@@ -162,8 +162,6 @@ const PostersSection = () => {
       <TextPiece size={[14, 24]} left={[28, 40]} top={[1644, 2355]}>
         2K21
       </TextPiece>
-
-      {/* TODO SVG */}
     </Section>
   )
 }
@@ -272,6 +270,72 @@ const TextPiece = ({
     >
       {children}
     </Text>
+  )
+}
+
+const VideoAspectBox = styled(AspectBox, {
+  display: 'flex',
+  background: 'black'
+})
+
+const Video = ({
+  src,
+  width,
+  height,
+  left,
+  top,
+  videoLeft,
+  ...rest
+}: {
+  src: string | ResponsiveValue<string>
+  width: ResponsiveValue
+  height: ResponsiveValue
+  left: ResponsiveValue
+  top: ResponsiveValue
+  videoLeft: ResponsiveValue
+}) => {
+  return (
+    <Box
+      css={{
+        position: 'absolute',
+        width: toVw(width[0], 375),
+        left: toVw(left[0], 375),
+        top: toVw(top[0], 375),
+        '@bp2': {
+          width: toVw(width[1]),
+          left: toVw(left[1]),
+          top: toVw(top[1])
+        }
+      }}
+      {...rest}
+    >
+      <Box css={{ '@bp2': { display: 'none' } }}>
+        <VideoAspectBox ratio={width[0] / height[0]}>
+          <Box
+            as="video"
+            css={{ height: '100%', marginLeft: toVw(videoLeft[0], 375) }}
+            src={Array.isArray(src) ? src[0] : src}
+            controls={false}
+            autoPlay
+            muted
+            loop
+          />
+        </VideoAspectBox>
+      </Box>
+      <Box css={{ display: 'none', '@bp2': { display: 'block' } }}>
+        <VideoAspectBox ratio={width[1] / height[1]}>
+          <Box
+            as="video"
+            css={{ height: '100%', marginLeft: toVw(videoLeft[1]) }}
+            src={Array.isArray(src) ? src[1] : src}
+            controls={false}
+            autoPlay
+            muted
+            loop
+          />
+        </VideoAspectBox>
+      </Box>
+    </Box>
   )
 }
 
