@@ -76,7 +76,7 @@ const Range = ({
       }}
     >
       <Flex>
-        <Label>{label}</Label>
+        <Label htmlFor={`range-${name}`}>{label}</Label>
         <Value>{renderValue(value)}</Value>
       </Flex>
       <input
@@ -87,6 +87,7 @@ const Range = ({
         step={step}
         value={value}
         name={name}
+        id={`range-${name}`}
         onChange={onChange}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}

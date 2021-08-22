@@ -1,17 +1,17 @@
-import { originURL } from 'lib/constants'
+import { siteOrigin } from 'lib/constants'
 import { NextRouter } from 'next/dist/client/router'
 
 export type QueryParams = { [key: string]: string | null }
 
 export const cleanPath = (asPath: string) => {
-  const uri = new URL(asPath, originURL)
+  const uri = new URL(asPath, siteOrigin)
   return uri.pathname
 }
 
 export const checkIsExternal = (href: string) => {
   try {
     const url = new URL(href)
-    const { hostname } = new URL(originURL)
+    const { hostname } = new URL(siteOrigin)
     if (url.hostname !== hostname) return true
   } catch (error) {
     // failed cause href is relative
@@ -24,7 +24,7 @@ export const getHrefWithQuery = (
   newQueryParams?: QueryParams,
   override = true
 ) => {
-  const uri = new URL(asPath, originURL)
+  const uri = new URL(asPath, siteOrigin)
 
   if (newQueryParams) {
     Object.keys(newQueryParams).forEach((key) => {

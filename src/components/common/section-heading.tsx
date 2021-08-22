@@ -20,7 +20,7 @@ const SectionHeading = ({
       }}
     >
       <Text
-        as="h3"
+        as="h2"
         css={{
           fontSize: '32px',
           fontWeight: 500,

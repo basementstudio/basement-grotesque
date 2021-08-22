@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 // Primitives
@@ -10,10 +10,12 @@ import toast from 'react-hot-toast'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import SectionHeading from 'components/common/section-heading'
+import { toVw } from '../posters'
+import ArrowDown from 'components/primitives/arrow-down'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
-  '@bp3': {
+  '@bp2': {
     display: 'block'
   }
 })
@@ -28,55 +30,74 @@ const MobileSection = styled('div', {
   color: '$white',
   py: '40px',
 
-  '@bp3': {
+  '@bp2': {
     display: 'none'
   }
 })
 
-const Glyph = styled('button', {
-  background: '$white',
-  fontFamily: '$heading',
-  color: '$black',
-  fontSize: '$7',
-  height: '120px',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  transition: 'background .15s, color .15s, transform .25s',
-  outline: 'none',
-  userSelect: 'none',
-  border: '1px solid $black',
-  transformOrigin: 'center center',
+const Glyph = ({
+  onClick,
+  children
+}: {
+  onClick: React.MouseEventHandler<HTMLButtonElement>
+  children?: React.ReactNode
+}) => {
+  return (
+    <Box
+      as="button"
+      onClick={onClick}
+      css={{
+        position: 'relative',
+        background: '$white',
+        fontFamily: '$heading',
+        color: '$black',
+        transition: 'background .15s, color .15s, transform .25s',
+        outline: 'none',
+        userSelect: 'none',
+        border: '1px solid $black',
+        transformOrigin: 'center center',
+        fontSize: '32px',
+        width: '90px',
+        pb: `calc(100% - 2px)`,
+        '@bp2': {
+          width: '100%',
+          pb: `100%`,
+          fontSize: `min(40px, ${toVw(32)})`,
+          '&:nth-of-type(12n)': {
+            transformOrigin: 'right center'
+          },
+          '&:nth-of-type(12n+1)': {
+            transformOrigin: 'left center',
+            zIndex: 1
+          }
+        },
+        '&:hover': {
+          transform: 'scale(1.25)',
+          background: '$black',
+          borderColor: '$white',
+          color: '$white'
+        },
+        '&:focus': {
+          outline: 'none'
+        },
+        '> span': {
+          position: 'absolute',
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }
+      }}
+    >
+      <span>{children}</span>
+    </Box>
+  )
+}
 
-  '&:hover': {
-    transform: 'scale(1.25)',
-    background: '$black',
-    borderColor: '$white',
-    color: '$white'
-  },
-  '&:focus': {
-    outline: 'none'
-  },
-
-  '@bp3': {
-    '&:nth-of-type(12n)': {
-      transformOrigin: 'right center'
-    },
-    '&:nth-of-type(12n+1)': {
-      transformOrigin: 'left center'
-    }
-  },
-
-  variants: {
-    size: {
-      fixed: {
-        width: '91px'
-      }
-    }
-  }
-})
-
-const glyphs = `AÁÂÄÀÅÃÆBCÇDÐEÉÊËÈFGHIÍÎÏÌJKLMNÑOÓÔÖÒØÕŒPÞQRSẞTUÚÛÜÙVWẂŴẄẀXYÝŶŸỲZaáâäàåãæbcçdðeéêëèfghiíîïìĳjklmnñoóôöòøõœpþqrsßtuúûüùvwẃŵẅẁxyýŷÿỳz̈̇.,:;…&†‡¶!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'01234567890123456789`
+const glyphs = `AÁÂÄÀÅÃÆBCÇDÐEÉÊËÈFGHIÍÎÏÌJKLMNÑOÓÔÖÒØÕŒPÞQRSẞTUÚÛÜÙVWẂŴẄẀXYÝŶŸỲZaáâäàåãæbcçdðeéêëèfghiíîïìĳjklmnñoóôöòøõœpþqrsßtuúûüùvwẃŵẅẁxyýŷÿỳz̈̇.,:;…&†‡¶!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'01234567890123456789@`
 const mobileGlyphs = glyphs + `ẞT`
 
 const CharactersSection = () => {
@@ -164,7 +185,6 @@ const CharactersSection = () => {
             css={{
               fontFamily: '$heading',
               fontSize: '48px',
-              textTransform: 'uppercase',
               fontWeight: 800,
               wordBreak: 'break-all',
               textAlign: 'center',
@@ -176,6 +196,8 @@ const CharactersSection = () => {
                 fontSize: '88px'
               }
             }}
+            data-scroll-speed={-0.6}
+            data-scroll
           >
             ABCDEFGHIJKLMNOPQRSTUVWXYZ
             <br />
@@ -208,8 +230,8 @@ const CharactersSection = () => {
             css={{
               display: 'grid',
               gridTemplateColumns: 'repeat(12, 1fr)',
-              gridColumnGap: '24px',
-              gridRowGap: '16px',
+              gridColumnGap: `min(18px, ${toVw(16)})`,
+              gridRowGap: `min(18px, ${toVw(16)})`,
               overflow: 'hidden',
               pt: '80px',
               pb: '30px'
@@ -231,38 +253,34 @@ const CharactersSection = () => {
             css={{
               appearance: 'none',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               width: '100%',
               background: '$white',
               color: '$black',
               borderTop: '1px solid $black',
-              paddingTop: '24px',
-              paddingBottom: '32px',
+              py: '24px',
               textTransform: 'uppercase',
               '&:focus': {
                 outline: 'none'
+              },
+              fontFamily: '$heading',
+              svg: {
+                ml: '8px',
+                transition: 'all 250ms',
+                fill: 'currentColor',
+                color: '$black'
               }
             }}
           >
-            <span>{viewAll ? 'View Less' : 'View All'}</span>
-            <svg
-              width="22"
-              height="10"
-              viewBox="0 0 22 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{
-                marginTop: '8px',
-                transform: viewAll ? 'rotate(180deg)' : 'none'
+            {viewAll ? 'View Less' : 'View All'}{' '}
+            <ArrowDown
+              css={{
+                color: 'black',
+                path: { stroke: 'black' },
+                $$size: '15px'
               }}
-            >
-              <path
-                d="M11 10.0002L0.607696 0.250246L21.3923 0.250244L11 10.0002Z"
-                fill="#101010"
-              />
-            </svg>
+            />
           </Box>
         )}
       </DesktopOnlyBox>
@@ -272,16 +290,16 @@ const CharactersSection = () => {
             css={{
               display: 'grid',
               gridTemplateRows: 'repeat(4, 1fr)',
-              gridColumnGap: '24px',
+              gridColumnGap: '16px',
               gridRowGap: '16px',
               overflow: 'hidden',
               gridAutoFlow: 'column',
-              mx: '12px',
+              mx: '8px',
               py: '20px'
             }}
           >
             {mobileGlyphs.split('').map((glyph, i) => (
-              <Glyph key={i} size="fixed" onClick={handleCopyGlyph}>
+              <Glyph key={i} onClick={handleCopyGlyph}>
                 {glyph}
               </Glyph>
             ))}

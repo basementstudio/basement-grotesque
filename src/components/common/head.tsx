@@ -1,5 +1,5 @@
 import { NextSeo, NextSeoProps } from 'next-seo'
-import { originURL } from 'lib/constants'
+import { siteOrigin } from 'lib/constants'
 import { useRouter } from 'next/dist/client/router'
 import { useMemo } from 'react'
 import NextHead from 'next/head'
@@ -8,7 +8,7 @@ import { useMedia } from 'hooks/use-media'
 const defaultMeta = {
   title: 'Basement Grotesque | basement.studio',
   description: `A minimalist's guide to show our font.`,
-  ogImage: `${originURL}/og.png`
+  ogImage: `${siteOrigin}/og.png`
 }
 
 type Meta = {
@@ -29,7 +29,7 @@ const Head = (props: HeadProps) => {
       ...props.rawNextSeoProps,
       title: props.title ?? defaultMeta.title,
       description: props.description ?? defaultMeta.description,
-      canonical: `${originURL}${router.pathname}`,
+      canonical: `${siteOrigin}${router.pathname}`,
       openGraph: {
         images: [{ url: props.ogImage ?? defaultMeta.ogImage }]
       },

@@ -1,0 +1,43 @@
+.menuButton {
+  .line1,
+  .line3 {
+    --total-length: 111.22813415527344;
+    --offset: -50.22813415527344;
+  }
+
+  .line2 {
+    --total-length: 99;
+  }
+
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    --length: 24;
+    --offset: -38;
+
+    stroke-dasharray: var(--length) var(--total-length);
+    stroke-dashoffset: var(--offset);
+    transition: all .5s cubic-bezier(.645, .045, .355, 1), color .18s cubic-bezier(0.32, 0.08, 0.24, 1);
+  }
+}
+
+.menuOpen {
+  path {
+    transform: translateX(30px);
+  }
+
+  .line1,
+  .line3 {
+    --offset: -16.9705627485;
+    --length: 22.627416998;
+  }
+
+  .line2 {
+    --offset: -20;
+    --length: 0;
+  }
+}

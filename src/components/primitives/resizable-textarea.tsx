@@ -60,12 +60,26 @@ const ResizableTextarea = ({
 
   return (
     <div style={{ position: 'relative' }}>
-      <Textarea
-        {...textAreaProps}
-        style={style}
-        value={value}
-        ref={textareaRef}
-      />
+      <label>
+        <span
+          style={{
+            position: 'absolute',
+            top: '-1px',
+            right: '-1px',
+            opacity: 0,
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+        >
+          textarea
+        </span>
+        <Textarea
+          {...textAreaProps}
+          style={style}
+          value={value}
+          ref={textareaRef}
+        />
+      </label>
       <div
         style={{
           ...style,

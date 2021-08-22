@@ -12,7 +12,7 @@ import marDelPlataPoster from '../../../../public/images/posters/mar-del-plata.p
 import magazinePoster from '../../../../public/images/posters/magazine.png'
 import arrowDown from '../../../../public/images/posters/arrow-down.png'
 
-const toVw = (px: number, base = 1440) => `${(px * 100) / base}vw`
+export const toVw = (px: number, base = 1440) => `${(px * 100) / base}vw`
 type ResponsiveValue<T extends any = number> = [T, T]
 
 const PostersSection = () => {
