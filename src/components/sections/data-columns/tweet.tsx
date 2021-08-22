@@ -75,22 +75,37 @@ const Tweet = ({ tweet }: TweetProps) => {
           width="72"
           height="72"
           src={tweet.user.profile_image_url_https}
+          layout="fixed"
           className="tweetImage"
         />
-        <Box css={{ flex: 1, marginLeft: '$space$3' }}>
-          <Text size="md" type="heading">
+        <Box
+          css={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginLeft: '$space$3'
+          }}
+        >
+          <Text css={{ fontSize: 20, '@bp2': { fontSize: 24 } }} type="heading">
             {tweet.user.name}
           </Text>
           <Text
             size="sm"
-            type="heading"
-            css={{ opacity: '50%', marginTop: '$space$2' }}
+            css={{ opacity: '50%', marginTop: '$space$2', fontWeight: 800 }}
           >
             @{tweet.user.screen_name}
           </Text>
         </Box>
       </UserData>
-      <Text size="md" type="body" css={{ marginTop: '$space$3' }}>
+      <Text
+        type="body"
+        css={{
+          marginTop: '$space$3',
+          fontSize: 18,
+          lineHeight: 1.6
+        }}
+      >
         {tweet.text}
       </Text>
       <Text

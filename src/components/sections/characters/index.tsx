@@ -11,7 +11,7 @@ import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import SectionHeading from 'components/common/section-heading'
 import { toVw } from '../posters'
-import ArrowDown from 'components/primitives/arrow-down'
+import { ArrowDown } from 'components/primitives/arrow'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',

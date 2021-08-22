@@ -46,10 +46,11 @@ const Release = ({ version, date, text }: ReleaseProps) => {
         </Text>
         <Text
           css={{
-            fontSize: '$4',
+            fontSize: '$3',
+            lineHeight: 1.6,
             marginTop: 10,
             '@bp2': {
-              fontSize: '$6'
+              fontSize: 18
             }
           }}
         >

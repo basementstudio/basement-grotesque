@@ -202,6 +202,7 @@ const Footer = () => {
                       className="label"
                       css={{ fontSize: '$3', '@bp2': { fontSize: '1.3vw' } }}
                       heading
+                      uppercase
                     >
                       {label}
                     </Text>

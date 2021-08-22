@@ -30,14 +30,16 @@ const Score = styled('div', {
     '&:not(.filled)': {
       opacity: 0.4
     },
+    '&:not(:last-child)': {
+      marginRight: 10
+    },
 
     svg: {
-      height: 45,
-      width: 45,
+      width: '100%',
+      maxWidth: 45,
 
       '@bp2': {
-        width: 60,
-        height: 60
+        maxWidth: 60
       }
     }
   }
@@ -73,7 +75,7 @@ const Feature = ({ title, score }: FeatureProps) => {
         <Text size="md" heading>
           {title}
         </Text>
-        <Text size="xs">
+        <Text size="xs" css={{ marginTop: 4, opacity: 0.5 }}>
           {filledStars}/{totalStars}
         </Text>
       </Head>
