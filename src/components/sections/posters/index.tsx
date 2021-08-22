@@ -132,8 +132,8 @@ const PostersSection = () => {
       </TextPiece>
       <TextPiece
         size={[14, 24]}
-        left={[116, 40]}
-        top={[1408, 1695]}
+        left={[96, 40]}
+        top={[1392, 1695]}
         fontFeatureSettings="'ss01' on"
         data-scroll-speed={-0.6}
         data-scroll

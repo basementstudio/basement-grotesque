@@ -38,7 +38,7 @@ const Column = styled(NativeScrollContainer, {
     padding: '74px 40px',
 
     '&:not(:first-child)': {
-      borderLeft: '2px solid $white'
+      borderLeft: '1px solid $white'
     }
   }
 })
@@ -73,6 +73,7 @@ const SectionPicker = styled('div', {
   position: 'relative',
 
   select: {
+    fontFamily: '$heading',
     flex: 1,
     textTransform: 'uppercase',
     background: '$background',
@@ -104,7 +105,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
 
   return (
     <Section
-      css={{ borderTop: '2px solid $white', borderBottom: '2px solid $white' }}
+      css={{ borderTop: '1px solid $white', borderBottom: '1px solid $white' }}
       background="black"
       noMargin
     >
@@ -168,7 +169,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
         }}
       >
         <Box>
-          <Container css={{ borderBottom: '2px solid $white' }}>
+          <Container css={{ borderBottom: '1px solid $white' }}>
             <SectionPicker>
               <select
                 onChange={(e) => {

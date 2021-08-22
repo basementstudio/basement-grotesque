@@ -23,18 +23,17 @@ const InputsContainer = styled('div', {
 const PreviewContainer = styled('div', {
   mt: '64px',
   background: '$background',
-  px: '38px',
-  pt: '32px'
+  px: '24px',
+  pt: '32px',
+  '@bp1': {
+    px: '38px'
+  }
 })
 
 const PreviewLabel = styled('div', {
   color: '$white',
   fontFamily: '$body',
-  textAlign: 'center',
-  fontSize: '14px',
-  '@bp2': {
-    textAlign: 'left'
-  }
+  fontSize: '14px'
 })
 
 type Value = Omit<RangeProps, 'onChange' | 'name'>
@@ -44,9 +43,7 @@ type Inputs = Record<Name, Value>
 
 const textareaCss = css({
   background: '$background',
-  mt: '24px',
-  textAlign: 'center',
-  '@bp2': { textAlign: 'left' }
+  mt: '24px'
 })()
 
 const DemoSection = () => {

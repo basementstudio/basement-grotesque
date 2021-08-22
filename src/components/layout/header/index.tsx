@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import { isMobile as _isMobile } from 'react-device-detect'
 
 // Lib
 import { download } from 'lib/utils'
@@ -102,6 +103,16 @@ export const DownloadButton = ({
   className?: string
   tabIndex?: number
 }) => {
+  const [isMobile, setIsMobile] = useState<boolean>()
+
+  useEffect(() => {
+    setIsMobile(_isMobile)
+  }, [])
+
+  const shouldOnlyTweet = useMemo(() => {
+    return isMobile || variant === 'mobile'
+  }, [isMobile, variant])
+
   const handleDownload = useCallback(() => {
     const encoded = {
       url: window.location.origin + window.location.pathname,
@@ -111,8 +122,12 @@ export const DownloadButton = ({
       `https://twitter.com/intent/tweet?url=${encoded.url}&text=${encoded.text}`,
       '_blank'
     )
-    download(encodeURI(location.origin + '/BasementGrotesque-Black_v1.202.zip'))
-  }, [])
+    if (!shouldOnlyTweet) {
+      download(
+        encodeURI(location.origin + '/BasementGrotesque-Black_v1.202.zip')
+      )
+    }
+  }, [shouldOnlyTweet])
 
   return (
     <StyledButton
@@ -147,7 +162,7 @@ export const DownloadButton = ({
         />
       }
     >
-      {variant === 'mobile' ? 'TWEET IT' : <>TWEET AND GET IT&nbsp;FREE</>}{' '}
+      {shouldOnlyTweet ? 'TWEET IT' : <>TWEET AND GET IT&nbsp;FREE</>}{' '}
     </StyledButton>
   )
 }
@@ -210,7 +225,7 @@ const Header = () => {
             </Link>
             <Box
               css={{
-                display: 'none',
+                display: 'flex',
                 alignItems: 'center',
                 borderLeft: '1px solid black',
                 borderRight: '1px solid black',
@@ -218,13 +233,24 @@ const Header = () => {
                 height: '100%',
                 '.divider': { mx: '12px' },
                 '.regular': { fontWeight: '400' },
+                '> p, > span': {
+                  display: 'none'
+                },
+
+                '@media screen and (min-width: 742px)': {
+                  '.ipad': {
+                    display: 'block'
+                  }
+                },
 
                 '@media screen and (min-width: 1268px)': {
-                  display: 'flex'
+                  '> p, > span': {
+                    display: 'block'
+                  }
                 }
               }}
             >
-              <p>
+              <p className="ipad">
                 <span>Grotesque 800</span> <span>/</span>{' '}
                 <span className="regular">v.1.2</span>
               </p>
