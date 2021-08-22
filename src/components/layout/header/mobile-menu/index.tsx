@@ -5,7 +5,7 @@ import Container from 'components/layout/container'
 import { useEffect } from 'react'
 import { gsap } from 'lib/gsap'
 import Box from 'components/common/box'
-import { DownloadButton } from '..'
+import { DownloadButton } from '../'
 
 import s from './mobile-menu.module.scss'
 

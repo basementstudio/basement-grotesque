@@ -19,8 +19,7 @@ import { styled } from '../../../../stitches.config'
 // Images
 import label from '../../../../public/images/labelhero.png'
 
-// Icons
-import ArrowDown from 'components/primitives/arrow-down'
+import { ArrowDown } from 'components/primitives/arrow'
 
 const Title = styled('h1', {
   color: '$white',

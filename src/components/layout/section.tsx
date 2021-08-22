@@ -6,6 +6,10 @@ const StyledSection = styled('div', {
   color: '$black',
   my: '-1px',
 
+  '&:last-child': {
+    mb: 0
+  },
+
   variants: {
     background: {
       black: {
@@ -15,6 +19,11 @@ const StyledSection = styled('div', {
       muted: {
         background: '$background',
         color: '$white'
+      }
+    },
+    noMargin: {
+      true: {
+        my: 0
       }
     }
   }

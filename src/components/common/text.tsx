@@ -21,11 +21,8 @@ const Text = styled('p', {
     },
     outlined: {
       true: {
-        textShadow: `-1px -1px 0 $white,  
-          1px -1px 0 $white,
-          -1px 1px 0 $white,
-           1px 1px 0 $white`,
-        color: 'var(--colors-black)'
+        '-webkit-text-fill-color': 'transparent',
+        '-webkit-text-stroke': '1px white'
       }
     },
     tight: {

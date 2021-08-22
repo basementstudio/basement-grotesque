@@ -1,10 +1,25 @@
-import { styled } from '@stitches/react'
+import { styled } from '../../../../stitches.config'
 import { Tweet as TweetType } from 'lib/twitter'
 import Image from 'next/image'
+import { monthLabels } from 'lib/utils/date'
+import { get2D } from 'lib/utils'
+import Box from 'components/common/box'
 
 type TweetProps = {
   tweet: TweetType
 }
+
+const Container = styled('div', {
+  '&:first-child': {
+    '@bp2': {
+      marginTop: 50
+    }
+  },
+
+  '&:not(:last-child)': {
+    paddingBottom: 50
+  }
+})
 
 const UserData = styled('div', {
   display: 'flex',
@@ -14,8 +29,6 @@ const UserData = styled('div', {
     filter: 'grayscale(100%)'
   }
 })
-
-const Box = styled('div', {})
 
 const Text = styled('p', {
   lineHeight: 1,
@@ -53,29 +66,46 @@ const Text = styled('p', {
 })
 
 const Tweet = ({ tweet }: TweetProps) => {
+  const date = new Date(tweet.created_at)
+
   return (
-    <div>
+    <Container>
       <UserData>
         <Image
           width="72"
           height="72"
           src={tweet.user.profile_image_url_https}
+          layout="fixed"
           className="tweetImage"
         />
-        <Box css={{ marginLeft: '$space$3' }}>
-          <Text size="md" type="heading">
+        <Box
+          css={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginLeft: '$space$3'
+          }}
+        >
+          <Text css={{ fontSize: 20, '@bp2': { fontSize: 24 } }} type="heading">
             {tweet.user.name}
           </Text>
           <Text
             size="sm"
-            type="heading"
-            css={{ opacity: '50%', marginTop: '$space$2' }}
+            css={{ opacity: '50%', marginTop: '$space$2', fontWeight: 800 }}
           >
             @{tweet.user.screen_name}
           </Text>
         </Box>
       </UserData>
-      <Text size="md" type="body" css={{ marginTop: '$space$3' }}>
+      <Text
+        type="body"
+        css={{
+          marginTop: '$space$3',
+          fontSize: 18,
+          lineHeight: 1.6
+        }}
+      >
         {tweet.text}
       </Text>
       <Text
@@ -83,9 +113,12 @@ const Tweet = ({ tweet }: TweetProps) => {
         type="body"
         css={{ marginTop: '$space$3', opacity: '50%' }}
       >
-        {new Date(tweet.created_at).toString()}
+        {get2D(date.getHours())}:{get2D(date.getMinutes())}{' '}
+        {date.getHours() >= 12 ? 'PM' : 'AM'}
+        {' - '}
+        {date.getDate()} {monthLabels[date.getMonth()]} {date.getFullYear()}
       </Text>
-    </div>
+    </Container>
   )
 }
 

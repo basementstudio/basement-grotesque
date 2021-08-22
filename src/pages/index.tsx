@@ -24,10 +24,28 @@ const HomePage = ({
       <RomePreview />
       <DemoSection />
       <PostersSection />
-      <DataColumns tweets={tweets} />
+      <DataColumns tweets={tweets} releases={releases} />
     </PageLayout>
   )
 }
+
+const releases = [
+  {
+    version: '1.2',
+    date: 'JULY 30, 2021',
+    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+  },
+  {
+    version: '1.2',
+    date: 'JULY 30, 2021',
+    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+  },
+  {
+    version: '1.2',
+    date: 'JULY 30, 2021',
+    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+  }
+]
 
 export const getStaticProps = async () => {
   const tweets = await getHashtagTweets()
