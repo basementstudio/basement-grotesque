@@ -8,7 +8,7 @@ The typeface is a work in progress, open to anyone who shares our visual and gra
 
 We set out inspired by the expressiveness of early 19th-century grotesque typefaces and the boldness and striking visuals of the contemporary revival of brutalist aesthetics. This is the first step in a very ambitious path we’ve set for ourselves.
 
-Currency, basement grotesques count with 415 unique glyphs 
+Currently, it has 415 unique glyphs and counting...
 
 
 ## **License**
