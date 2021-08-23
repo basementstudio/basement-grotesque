@@ -10,16 +10,9 @@ We set out inspired by the expressiveness of early 19th-century grotesque typefa
 
 Currently, it has 415 unique glyphs and counting...
 
-
-## **License**
-
-basement grotesque is OSS and licensed under [EULA](https://twitter.com/ambriganti)
-
-
 ## Author
 
 - [@ambriganti](https://twitter.com/ambriganti)
-
 
 ## Contributors
 
@@ -29,6 +22,11 @@ basement grotesque is OSS and licensed under [EULA](https://twitter.com/ambrigan
 - [@ambriganti](https://twitter.com/ambriganti)
 - [@ambriganti](https://twitter.com/ambriganti)
 - [@ambriganti](https://twitter.com/ambriganti)
+
+## **License**
+
+Copyright 2021 basement grotesque by basement.studio.
+This is an Open Source Font, licensed under the SIL Open Font License, Version 1.1.
 
 ---
 basement grotesque is a typeface designed by basement studio. 🏴
