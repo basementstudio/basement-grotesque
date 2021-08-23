@@ -1,9 +1,11 @@
-import { styled } from '../../../stitches.config'
+import { styled } from '../../../../stitches.config'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import Text from 'components/common/text'
 import { ArrowUp } from 'components/primitives/arrow'
-import Section from './section'
+import Section from '../section'
+import { useEffect } from 'react'
+import mixed from './physics'
 
 const FooterGrid = styled('footer', {
   display: 'grid',
@@ -155,6 +157,10 @@ const social = [
 ]
 
 const Footer = () => {
+  useEffect(() => {
+    mixed()
+  })
+
   return (
     <Section
       css={{
