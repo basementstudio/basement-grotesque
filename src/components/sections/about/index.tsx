@@ -55,7 +55,7 @@ const AboutSection = () => {
     })
 
     const subtitle = new SplitText('.about__subtitle', {
-      type: 'lines,words,chars'
+      type: 'lines'
     })
 
     const tl = gsap.timeline({
@@ -114,12 +114,7 @@ const AboutSection = () => {
             <Text
               className="about__subtitle"
               css={{
-                textIndent: 90,
-                mb: 16,
-                '@bp2': {
-                  textIndent: 0,
-                  mb: 20
-                }
+                mb: 16
               }}
             >
               We set out inspired by the expressiveness of early 19th-century
@@ -127,15 +122,7 @@ const AboutSection = () => {
               contemporary revival of brutalist aesthetics. Grotesque is the
               first step in a very ambitious path we’ve set for ourselves.
             </Text>
-            <Text
-              className="about__subtitle"
-              css={{
-                textIndent: 90,
-                '@bp2': {
-                  textIndent: 0
-                }
-              }}
-            >
+            <Text className="about__subtitle">
               The typeface is a work in progress, open to anyone who shares our
               visual and graphic sensibilities. You're invited to check our
               journey as we iterate, change, and add new weights and widths in
