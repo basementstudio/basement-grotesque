@@ -13,7 +13,7 @@ Currently, it has 415 unique glyphs and counting...
 
 ## **License**
 
-basement grotesque is licensed under UELA
+basement grotesque is OSS and licensed under [EULA](https://twitter.com/ambriganti)
 
 
 ## Author
