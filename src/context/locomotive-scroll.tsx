@@ -38,6 +38,8 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
           smooth: true,
           lerp: 0.09708,
           //@ts-ignore
+          firefoxMultiplier: 20,
+          //@ts-ignore
           smartphone: {
             smooth: false
           },
