@@ -69,7 +69,7 @@ const AboutSection = () => {
     tl.in(title.lines)
     tl.in(subtitle.lines, '<40%')
 
-    tl.play()
+    tl.timeScale(1.3).play()
 
     return () => {
       tl.kill()
