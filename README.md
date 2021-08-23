@@ -17,8 +17,6 @@ Currency, basement grotesques count with 415 unique glyphs
 For instructions on how to work with the source files and how to [compile & build font files](https://github.com/rsms/inter/blob/master/CONTRIBUTING.md#compiling-font-files), refer to [CONTRIBUTING.md](https://github.com/rsms/inter/blob/master/CONTRIBUTING.md).
 
 basement grotesque is licensed under UELA
-
-
 basement Grotesque is a typeface designed for for the basement brand.
 
 ## Author
