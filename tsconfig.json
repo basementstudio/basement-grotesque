@@ -20,5 +20,5 @@
     "baseUrl": "./src"
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "src/lib/renderer.js", "src/components/layout/footer/animation/physics2.js"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }
