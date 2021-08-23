@@ -168,7 +168,6 @@ const Footer = () => {
   const { inView, ref } = useInView({ triggerOnce: true })
 
   useEffect(() => {
-    console.log(inView)
     if (!animContainerRef.current || !inView) return
     animation(animContainerRef.current)
   }, [inView])
