@@ -5,6 +5,7 @@ import { styled } from '../../../../../stitches.config'
 import Text from 'components/common/text'
 import { range } from 'lib/utils'
 import { animation } from './physics'
+import { useBreakpoint } from 'hooks/use-breakpoint'
 
 const Canvas = styled('div', {
   overflow: 'hidden',
@@ -36,10 +37,11 @@ const LETTERS = ['l', 'f', 'n', 'Y', 'b', '1', '7', '8']
 
 const FooterAnimation = () => {
   const animContainerRef = useRef<HTMLDivElement>(null)
+  const breakpoint = useBreakpoint()
 
   useEffect(() => {
     animation(animContainerRef.current)
-  }, [])
+  }, [breakpoint])
 
   return (
     <Canvas ref={animContainerRef} id="playground">
