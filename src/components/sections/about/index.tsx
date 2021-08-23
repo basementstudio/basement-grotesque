@@ -39,7 +39,7 @@ const Text = styled('p', {
 })
 
 const AboutSection = () => {
-  const { ref, inView } = useInView({ triggerOnce: true })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
 
   useEffect(() => {
     gsap.set('#about-section', {
