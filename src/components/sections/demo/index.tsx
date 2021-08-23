@@ -50,7 +50,7 @@ const textareaCss = css({
 
 const DemoSection = () => {
   const { fontsLoaded } = useAppContext()
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 })
   const [inputs, setInputs] = useState<Inputs>({
     size: {
       label: 'Size',
