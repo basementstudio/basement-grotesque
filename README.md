@@ -32,4 +32,4 @@ basement grotesque is licensed under UELA
 
 ---
 basement grotesque is a typeface designed by basement studio.
-## **[⬇︎ Download It](https://grotesque.basement.studio/)**
+### **[⬇︎ Download It](https://grotesque.basement.studio/)**
