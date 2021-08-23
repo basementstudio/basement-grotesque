@@ -153,7 +153,7 @@ const AboutSection = () => {
           </Box>
         </Box>
         <Box
-          data-scroll-speed={-0.6}
+          data-scroll-speed={0.1}
           data-scroll
           css={{
             ta: 'center',
