@@ -1,4 +1,6 @@
 import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { DURATION, gsap } from 'lib/gsap'
 
 // Primitives
 import Range, { RangeProps } from 'components/primitives/range'
@@ -48,6 +50,7 @@ const textareaCss = css({
 
 const DemoSection = () => {
   const { fontsLoaded } = useAppContext()
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
   const [inputs, setInputs] = useState<Inputs>({
     size: {
       label: 'Size',
@@ -112,6 +115,40 @@ const DemoSection = () => {
     }
   }, [])
 
+  useEffect(() => {
+    gsap.set('.demo__section', {
+      autoAlpha: 0
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const items = document?.querySelector('.demo__section')?.childNodes
+
+    if (!items) return
+
+    const tl = gsap.timeline({
+      paused: true,
+      smoothChildTiming: true
+    })
+    tl.to('.demo__section', {
+      autoAlpha: 1,
+      duration: DURATION / 2
+    })
+    tl.from(items, {
+      autoAlpha: 0,
+      y: 30,
+      stagger: 0.1
+    })
+
+    tl.play()
+
+    return () => {
+      tl.kill()
+    }
+  }, [inView])
+
   return (
     <Section
       background="black"
@@ -123,8 +160,8 @@ const DemoSection = () => {
         }
       }}
     >
-      <Container withoutPx maxWidth>
-        <Container>
+      <Container withoutPx maxWidth ref={ref}>
+        <Container className="demo__section">
           <SectionHeading
             title={<>Try this beauty&nbsp;:)</>}
             subtitle={
