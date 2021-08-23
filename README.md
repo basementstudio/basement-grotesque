@@ -25,7 +25,7 @@ Currently, it has 415 unique glyphs and counting...
 
 ## **License**
 
-Copyright 2021 basement grotesque by basement.studio.
+Copyright 2021 basement grotesque by basement.studio. </br>
 This is an Open Source Font, licensed under the SIL Open Font License, Version 1.1.
 
 ---
