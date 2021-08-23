@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Marquee from 'react-fast-marquee'
+import { useInView } from 'react-intersection-observer'
 
 // Primitives
 import Section from 'components/layout/section'
@@ -12,6 +13,7 @@ import Container from 'components/layout/container'
 import SectionHeading from 'components/common/section-heading'
 import { toVw } from '../posters'
 import { ArrowDown } from 'components/primitives/arrow'
+import { DURATION, gsap, SplitText } from 'lib/gsap'
 
 const DesktopOnlyBox = styled('div', {
   display: 'none',
@@ -101,6 +103,7 @@ const glyphs = `AÁÂÄÀÅÃÆBCÇDÐEÉÊËÈFGHIÍÎÏÌJKLMNÑOÓÔÖÒØÕ�
 const mobileGlyphs = glyphs + `ẞT`
 
 const CharactersSection = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
   const [viewAll, setViewAll] = useState(false)
   const [gridHeight, setGridHeight] = useState<number>()
   const gridRef = useRef<HTMLDivElement>(null)
@@ -144,9 +147,53 @@ const CharactersSection = () => {
     }
   }, [])
 
+  useEffect(() => {
+    gsap.set('#characters-section', {
+      autoAlpha: 0
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const title = new SplitText('.characters__title', {
+      type: 'lines,words,chars'
+    })
+
+    const tl = gsap.timeline({
+      paused: true,
+      smoothChildTiming: true
+    })
+    tl.to('#characters-section', {
+      autoAlpha: 1,
+      duration: DURATION / 2
+    })
+    tl.in(title.chars)
+    tl.from(
+      '.characters__svg',
+      {
+        autoAlpha: 0,
+        y: 30
+      },
+      '< 80%'
+    )
+
+    tl.timeScale(1.5).play()
+
+    return () => {
+      tl.kill()
+    }
+  }, [inView])
+
   return (
     <Section background="black">
-      <SectionInner css={{ pb: viewAll ? '128px' : '0px' }} autoPy maxWidth>
+      <SectionInner
+        id="characters-section"
+        autoPy
+        css={{ pb: viewAll ? '128px' : '0px' }}
+        maxWidth
+        ref={ref}
+      >
         <Box
           css={{
             position: 'relative',
@@ -168,6 +215,7 @@ const CharactersSection = () => {
             }}
           >
             <svg
+              className="characters__svg"
               width="638"
               height="810"
               viewBox="0 0 638 810"
@@ -182,6 +230,7 @@ const CharactersSection = () => {
           </Box>
           <Box
             as="p"
+            className="characters__title"
             css={{
               fontFamily: '$heading',
               fontSize: '48px',

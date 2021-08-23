@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+
 // Primitives
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
@@ -6,6 +9,7 @@ import Section from 'components/layout/section'
 // Styles
 import { styled } from '../../../../stitches.config'
 import AbAnimation from './ab-animation'
+import { DURATION, gsap, SplitText } from 'lib/gsap'
 
 const Text = styled('p', {
   fontFamily: '$body',
@@ -35,9 +39,46 @@ const Text = styled('p', {
 })
 
 const AboutSection = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
+
+  useEffect(() => {
+    gsap.set('#about-section', {
+      autoAlpha: 0
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const title = new SplitText('.about__title', {
+      type: 'lines,words,chars'
+    })
+
+    const subtitle = new SplitText('.about__subtitle', {
+      type: 'lines,words,chars'
+    })
+
+    const tl = gsap.timeline({
+      paused: true,
+      smoothChildTiming: true
+    })
+    tl.to('#about-section', {
+      autoAlpha: 1,
+      duration: DURATION / 2
+    })
+    tl.in(title.lines)
+    tl.in(subtitle.lines, '<40%')
+
+    tl.timeScale(1.3).play()
+
+    return () => {
+      tl.kill()
+    }
+  }, [inView])
+
   return (
-    <Section id="about-section" background="black" css={{ pt: '128px' }}>
-      <Container autoPy css={{ pb: 0 }} maxWidth>
+    <Section background="black" css={{ pt: '128px' }} id="about-section">
+      <Container autoPy css={{ pb: 0 }} maxWidth ref={ref}>
         <Box
           css={{
             display: 'grid',
@@ -49,6 +90,8 @@ const AboutSection = () => {
           }}
         >
           <Box
+            data-scroll-speed={0.6}
+            data-scroll
             css={{
               maxWidth: 708,
               gridRowStart: 2,
@@ -56,6 +99,7 @@ const AboutSection = () => {
             }}
           >
             <Text
+              className="about__title"
               size="bg"
               css={{
                 marginBottom: 48,
@@ -68,6 +112,7 @@ const AboutSection = () => {
               but charming and full of character.
             </Text>
             <Text
+              className="about__subtitle"
               css={{
                 textIndent: 90,
                 mb: 16,
@@ -83,6 +128,7 @@ const AboutSection = () => {
               first step in a very ambitious path we’ve set for ourselves.
             </Text>
             <Text
+              className="about__subtitle"
               css={{
                 textIndent: 90,
                 '@bp2': {
@@ -107,6 +153,8 @@ const AboutSection = () => {
           </Box>
         </Box>
         <Box
+          data-scroll-speed={-0.6}
+          data-scroll
           css={{
             ta: 'center',
             fontWeight: 800,

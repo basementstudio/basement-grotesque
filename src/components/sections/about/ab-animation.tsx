@@ -50,7 +50,7 @@ export const Ab2 = () => {
 
 export const Ab3 = () => {
   return (
-    <div className="absolute ab" data-scroll-speed={-0.6} data-scroll>
+    <div className="absolute ab" data-scroll-speed={-0.4} data-scroll>
       <svg viewBox="0 0 840 522" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#ab-3-clip0)">
           <path
@@ -70,7 +70,7 @@ export const Ab3 = () => {
 
 export const Ab4 = () => {
   return (
-    <div className="absolute ab" data-scroll-speed={-1} data-scroll>
+    <div className="absolute ab" data-scroll-speed={-0.6} data-scroll>
       <svg viewBox="0 0 840 522" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#ab-4-clip0)">
           <path
@@ -89,21 +89,36 @@ export const Ab4 = () => {
 }
 
 const AbAnimation = () => {
-  const { ref, inView } = useInView({ threshold: 0.5 })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
   const tlRef = useRef<gsap.core.Timeline>()
+
+  useEffect(() => {
+    gsap.set('.ab svg', { autoAlpha: 0 })
+  }, [])
 
   useEffect(() => {
     if (!inView) return
 
     function handleResize() {
       const multiplier = Math.min((window.innerWidth * 20) / 1440, 20)
-      const tl = gsap.timeline()
+      const tl = gsap.timeline({
+        paused: true,
+        smoothChildTiming: true
+      })
       tl.to('.ab svg', {
+        delay: DURATION / 2,
         y: (index) => index * multiplier,
         x: (index) => index * multiplier,
-        ease: 'elastic.out(1, 0.4)',
-        duration: DURATION * 3
+        autoAlpha: 1,
+        ease: 'elastic.out(1, 0.75)',
+        duration: DURATION,
+        stagger: {
+          each: 0.02,
+          from: 'end'
+        }
       })
+        .timeScale(0.4)
+        .play()
       tlRef.current = tl
     }
 

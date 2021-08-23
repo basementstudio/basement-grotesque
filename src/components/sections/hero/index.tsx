@@ -128,7 +128,7 @@ const Hero = () => {
         <Subtitle
           className="hero__link"
           data-scroll
-          data-scroll-speed={0.3}
+          data-scroll-speed={-0.3}
           icon={<ArrowDown />}
           onClick={scrollTo}
           variant="underlined"
@@ -140,8 +140,6 @@ const Hero = () => {
         <Image
           alt="Stitch"
           className="hero__image"
-          data-scroll
-          data-scroll-speed={0.3}
           height={100}
           objectFit="cover"
           priority
