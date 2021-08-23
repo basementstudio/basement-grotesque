@@ -259,7 +259,7 @@ const CharactersSection = () => {
           title="Characters"
           subtitle={
             <>
-              412 glyphs
+              413 glyphs
               <br />
               Black (800)
               <br />
