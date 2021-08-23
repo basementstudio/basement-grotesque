@@ -32,7 +32,7 @@ const StyledTime = styled('time', {
   display: 'inline-flex',
   justifyContent: 'flex-start',
   textTransform: 'uppercase',
-  width: '80px'
+  width: '72px'
 })
 
 const Time = ({ variant }: { variant?: 'mobile' }) => {
