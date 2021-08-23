@@ -225,7 +225,7 @@ const Header = () => {
             </Link>
             <Box
               css={{
-                display: 'flex',
+                display: 'none',
                 alignItems: 'center',
                 borderLeft: '1px solid black',
                 borderRight: '1px solid black',
@@ -238,6 +238,7 @@ const Header = () => {
                 },
 
                 '@media screen and (min-width: 742px)': {
+                  display: 'flex',
                   '.ipad': {
                     display: 'block'
                   }
