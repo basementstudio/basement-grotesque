@@ -1,6 +1,6 @@
 import { FullUser, Status } from 'twitter-d'
 
-const TWITTER_HASHTAG = '#superbowl'
+const TWITTER_HASHTAG = '#basementgrotesque'
 const TWEETS_PER_PAGE = 5
 
 export type Tweet = Status & {

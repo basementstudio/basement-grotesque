@@ -115,12 +115,13 @@ export const DownloadButton = ({
 
   const handleDownload = useCallback(() => {
     const encoded = {
+      hashtags: encodeURIComponent('basementgrotesque'),
       text: encodeURIComponent(
         'I’m downloading the #basementgrotesque typeface, the boldest font I’ll ever use on my side-projects. Thank you guys @basementstudio 🏴 Get it now: https://grotesque.basement.studio/'
       )
     }
     window.open(
-      `https://twitter.com/intent/tweet?text=${encoded.text}`,
+      `https://twitter.com/intent/tweet?hashtags=basementgrotesque&text=${encoded.text}`,
       '_blank'
     )
     if (!shouldOnlyTweet) {
