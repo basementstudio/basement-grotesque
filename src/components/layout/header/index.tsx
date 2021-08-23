@@ -115,11 +115,12 @@ export const DownloadButton = ({
 
   const handleDownload = useCallback(() => {
     const encoded = {
-      url: window.location.origin + window.location.pathname,
-      text: 'TODO'
+      text: encodeURIComponent(
+        'I’m downloading the #basementgrotesque typeface, the boldest font I’ll ever use on my side-projects. Thank you guys @basementstudio 🏴 Get it now: https://grotesque.basement.studio/'
+      )
     }
     window.open(
-      `https://twitter.com/intent/tweet?url=${encoded.url}&text=${encoded.text}`,
+      `https://twitter.com/intent/tweet?text=${encoded.text}`,
       '_blank'
     )
     if (!shouldOnlyTweet) {
