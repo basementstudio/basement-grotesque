@@ -4,8 +4,12 @@ import Container from 'components/layout/container'
 import Text from 'components/common/text'
 import { ArrowUp } from 'components/primitives/arrow'
 import Section from '../section'
-import { useEffect } from 'react'
-import mixed from './physics'
+import { useEffect, useRef } from 'react'
+// import mixed from './physics'
+import { animation } from './physics2'
+import { range } from 'lib/utils'
+import { gsap } from 'lib/gsap'
+import { useInView } from 'react-intersection-observer'
 
 const FooterGrid = styled('footer', {
   display: 'grid',
@@ -36,6 +40,7 @@ const FooterGrid = styled('footer', {
     gridColumn: '1',
     gridRow: '2',
     borderBottom: '1px solid $colors$white',
+    borderTop: '1px solid $colors$white',
     height: '100%',
     minHeight: 176,
 
@@ -44,7 +49,7 @@ const FooterGrid = styled('footer', {
       minHeight: 254,
       gridColumn: '3/5',
       gridRow: '1',
-      borderBottom: '1px solid $colors$white'
+      borderTop: '0'
     }
   },
   '.policies': {
@@ -156,10 +161,17 @@ const social = [
   }
 ]
 
+const LETTERS = ['l', 'f', 'n', 'Y']
+
 const Footer = () => {
+  const animContainerRef = useRef<HTMLDivElement>(null)
+  const { inView, ref } = useInView({ triggerOnce: true })
+
   useEffect(() => {
-    mixed()
-  })
+    console.log(inView)
+    if (!animContainerRef.current || !inView) return
+    animation(animContainerRef.current)
+  }, [inView])
 
   return (
     <Section
@@ -173,7 +185,25 @@ const Footer = () => {
     >
       <Container maxWidth>
         <FooterGrid>
-          <Box className="fallingLetters"></Box>
+          <Box
+            css={{ position: 'relative', overflow: 'hidden' }}
+            className="fallingLetters"
+            ref={ref}
+          >
+            <div ref={animContainerRef} id="playground">
+              {range(50).map((i) => (
+                <Text
+                  as="span"
+                  className="letter"
+                  outlined={gsap.utils.random(-1, 1) < 0}
+                  key={i}
+                >
+                  {LETTERS[gsap.utils.random(0, LETTERS.length - 1, 1)]}
+                </Text>
+              ))}
+            </div>
+          </Box>
+
           <Box
             className="social"
             css={{
