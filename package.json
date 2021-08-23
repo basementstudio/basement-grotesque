@@ -44,7 +44,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.0",
     "@types/file-saver": "^2.0.3",
-    "@types/node": "^16.6.2",
+    "@types/node": "^16.7.1",
     "@types/p2": "^0.7.39",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.6",
@@ -56,7 +56,7 @@
     "eslint-config-next": "^11.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gsap": "./src/lib/gsap/gsap-bonus.tgz",
