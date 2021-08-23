@@ -33,6 +33,11 @@ const Head = (props: HeadProps) => {
       openGraph: {
         images: [{ url: props.ogImage ?? defaultMeta.ogImage }]
       },
+      twitter: {
+        handle: '@basementstudio',
+        site: '@basementstudio',
+        cardType: 'summary_large_image'
+      },
       noindex: props.noIndex
     }
   }, [props, router.pathname])

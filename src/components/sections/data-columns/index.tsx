@@ -19,7 +19,7 @@ import Tweet from './tweet'
 import { styled } from '../../../../stitches.config'
 
 const SectionInner = styled('div', {
-  background: '$background',
+  background: '$black',
 
   '@bp3': {
     display: 'grid',
@@ -73,6 +73,7 @@ const SectionPicker = styled('div', {
   position: 'relative',
 
   select: {
+    fontFamily: '$heading',
     flex: 1,
     textTransform: 'uppercase',
     background: '$background',
@@ -105,7 +106,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
   return (
     <Section
       css={{ borderTop: '1px solid $white', borderBottom: '1px solid $white' }}
-      background="muted"
+      background="black"
       noMargin
     >
       <Container maxWidth>

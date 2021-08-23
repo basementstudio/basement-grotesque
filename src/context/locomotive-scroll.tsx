@@ -4,6 +4,7 @@ import mergeRefs from 'react-merge-refs'
 
 // Hooks
 import { useMeasure } from 'hooks/use-measure'
+import Box from 'components/common/box'
 
 export interface Context {
   scroll: Scroll | null
@@ -63,9 +64,13 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
     <LocomotiveScrollContext.Provider
       value={{ scroll: locomotiveScrollRef.current, isReady }}
     >
-      <main ref={mergeRefs([scrollContainerRef, ref])} data-scroll-container>
+      <Box
+        css={{ background: 'black' }}
+        ref={mergeRefs([scrollContainerRef, ref])}
+        data-scroll-container
+      >
         {children}
-      </main>
+      </Box>
     </LocomotiveScrollContext.Provider>
   )
 }

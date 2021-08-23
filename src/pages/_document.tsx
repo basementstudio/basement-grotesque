@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+import { GAScripts } from 'lib/ga'
 import Document, {
   Html,
   Head,
@@ -40,7 +41,7 @@ class MyDocument extends Document {
         `
             }}
           />
-          <script async data-api="/_hive" src="/bee.js" />
+          <GAScripts />
         </Head>
         <body style={{ opacity: 0 }}>
           <Main />

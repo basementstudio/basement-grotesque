@@ -136,7 +136,7 @@ const MobileMenu = ({ isOn, handleToggle }: ToggleState) => {
               className="stagger"
               tabIndex={isOn ? 0 : -1}
             >
-              www.basement.studio
+              www.basementstudio
             </Box>
           </Box>
         </Container>

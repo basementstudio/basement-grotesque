@@ -72,11 +72,13 @@ const Tweet = ({ tweet }: TweetProps) => {
     <Container>
       <UserData>
         <Image
-          width="72"
-          height="72"
+          width="48"
+          height="48"
           src={tweet.user.profile_image_url_https}
+          alt={tweet.user.name + ' avatar'}
           layout="fixed"
           className="tweetImage"
+          objectFit="cover"
         />
         <Box
           css={{
@@ -87,12 +89,16 @@ const Tweet = ({ tweet }: TweetProps) => {
             marginLeft: '$space$3'
           }}
         >
-          <Text css={{ fontSize: 20, '@bp2': { fontSize: 24 } }} type="heading">
+          <Text css={{ fontSize: 16, '@bp2': { fontSize: 18 } }} type="heading">
             {tweet.user.name}
           </Text>
           <Text
-            size="sm"
-            css={{ opacity: '50%', marginTop: '$space$2', fontWeight: 800 }}
+            css={{
+              fontSize: 14,
+              opacity: '50%',
+              marginTop: '$space$2',
+              fontWeight: 800
+            }}
           >
             @{tweet.user.screen_name}
           </Text>
@@ -102,16 +108,15 @@ const Tweet = ({ tweet }: TweetProps) => {
         type="body"
         css={{
           marginTop: '$space$3',
-          fontSize: 18,
+          fontSize: 16,
           lineHeight: 1.6
         }}
       >
         {tweet.text}
       </Text>
       <Text
-        size="sm"
         type="body"
-        css={{ marginTop: '$space$3', opacity: '50%' }}
+        css={{ marginTop: '$space$3', opacity: '50%', fontSize: 14 }}
       >
         {get2D(date.getHours())}:{get2D(date.getMinutes())}{' '}
         {date.getHours() >= 12 ? 'PM' : 'AM'}
