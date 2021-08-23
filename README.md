@@ -6,19 +6,23 @@ The typeface is a work in progress, open to anyone who shares our visual and gra
 
 ## **[⬇︎ Download It](https://grotesque.basement.studio/)**
 
+
 ## **Design**
 
 We set out inspired by the expressiveness of early 19th-century grotesque typefaces and the boldness and striking visuals of the contemporary revival of brutalist aesthetics. This is the first step in a very ambitious path we’ve set for ourselves.
 
 Currency, basement grotesques count with 415 unique glyphs 
 
+
 ## **License**
 
 basement grotesque is licensed under UELA
 
+
 ## Author
 
 - [@ambriganti](https://twitter.com/ambriganti)
+
 
 ## Contributors
 
@@ -28,5 +32,6 @@ basement grotesque is licensed under UELA
 - [@ambriganti](https://twitter.com/ambriganti)
 - [@ambriganti](https://twitter.com/ambriganti)
 - [@ambriganti](https://twitter.com/ambriganti)
+
 
 basement grotesque is a typeface designed by basement studio.
