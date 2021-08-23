@@ -9,6 +9,10 @@ The typeface is a work in progress, open to anyone who shares our visual and gra
 We set out inspired by the expressiveness of early 19th-century grotesque typefaces and the boldness and striking visuals of the contemporary revival of brutalist aesthetics. This is the first step in a very ambitious path we’ve set for ourselves.
 
 - This font has 415 unique glyphs.
+- Discretionary and standard ligatures (14 total).
+- Language support for Western and Central European languages.
+- Stylistic sets and glyph alternates.
+- Old style and lining figures.
 
 ## Author
 
