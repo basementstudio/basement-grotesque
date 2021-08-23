@@ -25,7 +25,7 @@ We set out inspired by the expressiveness of early 19th-century grotesque typefa
 
 ## **License**
 
-Copyright 2021 basement grotesque by [basement.studio](https://basement.studio/). </br>
+Copyright 2021 basement grotesque by basement.studio. </br>
 This is an Open Source Font, licensed under the SIL Open Font License, Version 1.1.
 
 ---
