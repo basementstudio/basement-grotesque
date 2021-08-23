@@ -1,9 +1,13 @@
-import { styled } from '../../../stitches.config'
+import dynamic from 'next/dynamic'
+import { useInView } from 'react-intersection-observer'
+import { styled } from '../../../../stitches.config'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import Text from 'components/common/text'
 import { ArrowUp } from 'components/primitives/arrow'
-import Section from './section'
+import Section from '../section'
+
+const FooterAnimation = dynamic(() => import('./animation'), { ssr: false })
 
 const FooterGrid = styled('footer', {
   display: 'grid',
@@ -34,6 +38,7 @@ const FooterGrid = styled('footer', {
     gridColumn: '1',
     gridRow: '2',
     borderBottom: '1px solid $colors$white',
+    borderTop: '1px solid $colors$white',
     height: '100%',
     minHeight: 176,
 
@@ -42,7 +47,7 @@ const FooterGrid = styled('footer', {
       minHeight: 254,
       gridColumn: '3/5',
       gridRow: '1',
-      borderBottom: '1px solid $colors$white'
+      borderTop: '0'
     }
   },
   '.policies': {
@@ -155,6 +160,8 @@ const social = [
 ]
 
 const Footer = () => {
+  const { inView, ref } = useInView({ triggerOnce: true })
+
   return (
     <Section
       css={{
@@ -167,7 +174,14 @@ const Footer = () => {
     >
       <Container maxWidth>
         <FooterGrid>
-          <Box className="fallingLetters"></Box>
+          <Box
+            css={{ position: 'relative', overflow: 'hidden' }}
+            className="fallingLetters"
+            ref={ref}
+          >
+            {inView && <FooterAnimation />}
+          </Box>
+
           <Box
             className="social"
             css={{
