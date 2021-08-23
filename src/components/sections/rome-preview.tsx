@@ -4,6 +4,9 @@ import Section from 'components/layout/section'
 import { styled } from '../../../stitches.config'
 import Container from 'components/layout/container'
 import { DURATION, gsap, SplitText } from 'lib/gsap'
+import Box from 'components/common/box'
+import { StyledAspectBox } from 'components/common/aspect-box'
+import { toVw } from './posters'
 
 const ContentContainer = styled('div', {
   width: '100%',
@@ -131,7 +134,7 @@ const RomePreview = () => {
   }, [inView])
 
   return (
-    <Section background="black" css={{ py: '64px' }}>
+    <Section background="black" css={{ pt: '64px' }}>
       <Container
         className="rome-preview__section"
         css={{ maxWidth: '1800px', mx: 'auto' }}
@@ -215,6 +218,194 @@ const RomePreview = () => {
             </div>
           </ColumnedContent>
         </ContentContainer>
+      </Container>
+      <Container
+        css={{ background: '$background', '@bp1': { background: 'black' } }}
+        maxWidth
+      >
+        <Container
+          css={{
+            mt: '64px',
+            background: '$background',
+            padding: 0,
+            '@bp1': {
+              padding: `min(40px, ${toVw(40)})`
+            }
+          }}
+        >
+          <Box
+            css={{
+              display: 'grid',
+              '@bp1': { gridTemplateColumns: '1fr 1fr' }
+            }}
+          >
+            {[
+              {
+                label: (
+                  <>
+                    MANY ACCENTS,
+                    <br />
+                    OBVIOUSLY
+                  </>
+                ),
+                children: (
+                  <>
+                    <span>aàáâä</span>
+                    <br />
+                    <span className="ss01">aàáâä</span>
+                    <br />
+                    <span className="ss02">aàáâä</span>
+                  </>
+                )
+              },
+              {
+                label: (
+                  <>
+                    CAPITAL VARIABLES,
+                    <br />
+                    BECAUSE, WHY NOT?
+                  </>
+                ),
+                background: 'white',
+                color: 'black',
+                invertSelection: true,
+                children: (
+                  <>
+                    <span>R</span>
+                    <span className="ss01">R</span>
+                    <span className="ss02">R</span>
+                    <span className="ss03">R</span>
+                    <br />
+                    <span>G</span>
+                    <span className="ss01">G</span>
+                    <br />
+                    <span>Q</span>
+                    <span className="ss01">Q</span>
+                  </>
+                )
+              },
+              {
+                label: null,
+                hideOnDesktop: true,
+                children: (
+                  <>
+                    <span>1918-2021</span>
+                    <br />
+                    <span>£ 206.10</span>
+                    <br />
+                    <span>€ 37,00</span>
+                  </>
+                )
+              }
+            ].map(
+              (
+                {
+                  label,
+                  background,
+                  color,
+                  children,
+                  invertSelection,
+                  hideOnDesktop
+                },
+                i
+              ) => {
+                return (
+                  <StyledAspectBox
+                    key={i}
+                    ratio={680 / 587}
+                    className={invertSelection ? 'invert-selection' : ''}
+                    css={{
+                      background,
+                      color,
+                      position: 'relative',
+                      label: {
+                        position: 'absolute',
+                        top: `min(24px, ${toVw(24)})`,
+                        right: `min(32px, ${toVw(32)})`,
+                        textAlign: 'right',
+                        fontWeight: 500,
+                        lineHeight: 1.25,
+                        userSelect: 'none',
+                        fontSize: `min(16px, ${toVw(16)})`,
+                        display: 'none'
+                      },
+                      '@bp1': {
+                        display: hideOnDesktop ? 'none' : 'block',
+                        label: {
+                          display: 'block'
+                        }
+                      }
+                    }}
+                  >
+                    <label>{label}</label>
+                    <Box
+                      as="p"
+                      className="children"
+                      css={{
+                        width: '100%',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        fontFamily: '$heading',
+                        letterSpacing: '0.04em',
+                        lineHeight: 1,
+                        textAlign: 'center',
+                        fontSize: `min(56px, ${toVw(52, 375)})`,
+                        '@bp1': {
+                          fontSize: `min(112px, ${toVw(112)})`
+                        }
+                      }}
+                    >
+                      {children}
+                    </Box>
+                  </StyledAspectBox>
+                )
+              }
+            )}
+          </Box>
+          <Box
+            css={{
+              display: 'none',
+              textAlign: 'center',
+              py: `min(120px, ${toVw(120)})`,
+              mt: `min(40px, ${toVw(40)})`,
+              label: {
+                fontWeight: 500,
+                lineHeight: 1.25,
+                userSelect: 'none',
+                mt: '24px',
+                fontSize: `min(16px, ${toVw(16)})`,
+                display: 'none'
+              },
+              '@bp1': {
+                display: 'block',
+                label: {
+                  display: 'block'
+                }
+              }
+            }}
+          >
+            <Box
+              css={{
+                fontFamily: '$heading',
+                letterSpacing: '0.04em',
+                lineHeight: 1,
+                fontSize: `min(56px, ${toVw(55, 375)})`,
+                '@bp1': {
+                  fontSize: `min(112px, ${toVw(112)})`
+                }
+              }}
+            >
+              <span>1918-2021</span>
+              <br />
+              <span>£ 206.10</span>
+              <br />
+              <span>€ 37,00</span>
+            </Box>
+            <label>WHO NEEDS NUMBERS?</label>
+          </Box>
+        </Container>
       </Container>
     </Section>
   )

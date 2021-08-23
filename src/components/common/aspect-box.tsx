@@ -1,3 +1,4 @@
+import { styled } from '../../../stitches.config'
 import Box from './box'
 
 const AspectBox = ({
@@ -29,5 +30,7 @@ const AspectBox = ({
     </Box>
   )
 }
+
+export const StyledAspectBox = styled(AspectBox, {})
 
 export default AspectBox

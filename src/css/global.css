@@ -41,6 +41,23 @@ main {
   background-color: white;
   color: black;
   -webkit-text-fill-color: black;
+}
 
-  /* text-shadow: 0.03em 0.03em 0 rgb(0 0 0 / 80%), 0.03em -0.03em 0 rgb(0 0 0 / 60%), -0.03em 0.03em 0 rgb(0 0 0 / 50%); */
+.invert-selection::selection,
+.invert-selection *::selection {
+  background-color: black;
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.ss01 {
+  font-feature-settings: 'ss01' on;
+}
+
+.ss02 {
+  font-feature-settings: 'ss02' on;
+}
+
+.ss03 {
+  font-feature-settings: 'ss03' on;
 }
