@@ -30,6 +30,6 @@ basement grotesque is licensed under UELA
 - [@ambriganti](https://twitter.com/ambriganti)
 - [@ambriganti](https://twitter.com/ambriganti)
 
-
+---
 basement grotesque is a typeface designed by basement studio.
 ## **[⬇︎ Download It](https://grotesque.basement.studio/)**
