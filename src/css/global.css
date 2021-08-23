@@ -44,35 +44,3 @@ main {
 
   /* text-shadow: 0.03em 0.03em 0 rgb(0 0 0 / 80%), 0.03em -0.03em 0 rgb(0 0 0 / 60%), -0.03em 0.03em 0 rgb(0 0 0 / 50%); */
 }
-
-:root {
-  --letter-size: 80px;
-  --letter-width-ratio: 0.7;
-  --letter-height-ratio: 0.8;
-}
-
-#playground {
-  overflow: hidden;
-  position: absolute;
-  top: -800px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border: solid 1px black;
-  border-top: none;
-}
-
-#playground .letter {
-  display: inline-block;
-  margin: 2px;
-  width: calc(var(--letter-size) * var(--letter-width-ratio));
-  height: calc(var(--letter-size) * var(--letter-height-ratio));
-  font-size: var(--letter-size);
-  line-height: calc(var(--letter-size) * var(--letter-height-ratio));
-  font-family: 'Basement Grotesque';
-}
-
-#playground .letter.outlined {
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px white;
-}

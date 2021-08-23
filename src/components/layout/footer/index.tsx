@@ -1,15 +1,13 @@
+import dynamic from 'next/dynamic'
+import { useInView } from 'react-intersection-observer'
 import { styled } from '../../../../stitches.config'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import Text from 'components/common/text'
 import { ArrowUp } from 'components/primitives/arrow'
 import Section from '../section'
-import { useEffect, useRef } from 'react'
-// import mixed from './physics'
-import { animation } from './physics2'
-import { range } from 'lib/utils'
-import { gsap } from 'lib/gsap'
-import { useInView } from 'react-intersection-observer'
+
+const FooterAnimation = dynamic(() => import('./animation'), { ssr: false })
 
 const FooterGrid = styled('footer', {
   display: 'grid',
@@ -161,16 +159,8 @@ const social = [
   }
 ]
 
-const LETTERS = ['l', 'f', 'n', 'Y']
-
 const Footer = () => {
-  const animContainerRef = useRef<HTMLDivElement>(null)
   const { inView, ref } = useInView({ triggerOnce: true })
-
-  useEffect(() => {
-    if (!animContainerRef.current || !inView) return
-    animation(animContainerRef.current)
-  }, [inView])
 
   return (
     <Section
@@ -189,18 +179,7 @@ const Footer = () => {
             className="fallingLetters"
             ref={ref}
           >
-            <div ref={animContainerRef} id="playground">
-              {range(50).map((i) => (
-                <Text
-                  as="span"
-                  className="letter"
-                  outlined={gsap.utils.random(-1, 1) < 0}
-                  key={i}
-                >
-                  {LETTERS[gsap.utils.random(0, LETTERS.length - 1, 1)]}
-                </Text>
-              ))}
-            </div>
+            {inView && <FooterAnimation />}
           </Box>
 
           <Box
