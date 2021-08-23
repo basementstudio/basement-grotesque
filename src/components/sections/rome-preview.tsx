@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 import Section from 'components/layout/section'
 import { styled } from '../../../stitches.config'
 import Container from 'components/layout/container'
+import { DURATION, gsap, SplitText } from 'lib/gsap'
 
 const ContentContainer = styled('div', {
   width: '100%',
@@ -75,14 +77,72 @@ const Divisor = styled('div', {
 })
 
 const RomePreview = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 })
+
+  useEffect(() => {
+    gsap.set('.rome-preview__section', {
+      autoAlpha: 0
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const title = new SplitText('.rome-preview__title', {
+      type: 'lines,words,chars'
+    })
+
+    const subtitle = new SplitText('.rome-preview__subtitle', {
+      type: 'lines,words,chars'
+    })
+
+    const items = document.querySelectorAll('.rome-preview__items')[0]
+      .childNodes
+
+    const tl = gsap.timeline({
+      paused: true,
+      smoothChildTiming: true
+    })
+    tl.to('.rome-preview__section', {
+      autoAlpha: 1,
+      duration: DURATION / 2
+    })
+    tl.in(title.words)
+    tl.from(
+      '.rome-preview__svg',
+      {
+        autoAlpha: 0,
+        y: 30
+      },
+      '< 30%'
+    )
+    tl.in(subtitle.lines, '>-30%')
+    tl.from(items, {
+      autoAlpha: 0,
+      y: 30,
+      stagger: 0.1
+    })
+
+    tl.timeScale(1.2).play()
+
+    return () => {
+      tl.kill()
+    }
+  }, [inView])
+
   return (
     <Section background="black" css={{ py: '64px' }}>
-      <Container css={{ maxWidth: '1800px', mx: 'auto' }}>
-        <Text size="icon" centered>
+      <Container
+        className="rome-preview__section"
+        css={{ maxWidth: '1800px', mx: 'auto' }}
+        ref={ref}
+      >
+        <Text size="icon" centered className="rome-preview__svg">
           †
         </Text>
         <ContentContainer size="sm" centered>
           <Text
+            className="rome-preview__title"
             size="lg"
             css={{ marginTop: 20, textTransform: 'uppercase' }}
             centered
@@ -96,18 +156,26 @@ const RomePreview = () => {
             Roma
           </Text>
         </ContentContainer>
-        <Text size="icon" css={{ marginTop: 24 }} centered>
+        <Text
+          size="icon"
+          css={{ marginTop: 24 }}
+          centered
+          className="rome-preview__svg"
+        >
           ‡
         </Text>
         <Divisor />
         <ContentContainer size="lg" centered>
           <ContentContainer size="sm">
-            <Text size="md">
+            <Text size="md" className="rome-preview__subtitle">
               CATACOMBS, ALTHOUGH MOST NOTABLE AS UNDERGROUND PASSAGEWAYS AND
               CEMETERIES, ALSO HOUSE MANY DECORATIONS.
             </Text>
           </ContentContainer>
-          <ColumnedContent css={{ marginTop: 80 }}>
+          <ColumnedContent
+            css={{ marginTop: 80 }}
+            className="rome-preview__items"
+          >
             <ContentContainer
               css={{
                 background: '$background',
