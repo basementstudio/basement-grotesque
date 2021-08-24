@@ -249,13 +249,136 @@ const RomePreview = () => {
                   </>
                 ),
                 children: (
-                  <>
-                    <span>aàáâä</span>
+                  <Box data-scroll data-scroll-speed={0.35}>
+                    <span>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        a
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        à
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.3}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        á
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.4}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        â
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.5}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        ä
+                      </Box>
+                    </span>
                     <br />
-                    <span className="ss01">aàáâä</span>
+                    <span className="ss01">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        a
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        à
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.3}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        á
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.4}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        â
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.5}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        ä
+                      </Box>
+                    </span>
                     <br />
-                    <span className="ss02">aàáâä</span>
-                  </>
+                    <span className="ss02">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        a
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        à
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.3}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        á
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.4}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        â
+                      </Box>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.5}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        ä
+                      </Box>
+                    </span>
+                  </Box>
                 )
               },
               {
@@ -271,16 +394,88 @@ const RomePreview = () => {
                 invertSelection: true,
                 children: (
                   <>
-                    <span>R</span>
-                    <span className="ss01">R</span>
-                    <span className="ss02">R</span>
-                    <span className="ss03">R</span>
+                    <span>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        R
+                      </Box>
+                    </span>
+                    <span className="ss01">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        R
+                      </Box>
+                    </span>
+                    <span className="ss02">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.3}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        R
+                      </Box>
+                    </span>
+                    <span className="ss03">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.4}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        R
+                      </Box>
+                    </span>
                     <br />
-                    <span>G</span>
-                    <span className="ss01">G</span>
+                    <span>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        G
+                      </Box>
+                    </span>
+                    <span className="ss01">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        G
+                      </Box>
+                    </span>
                     <br />
-                    <span>Q</span>
-                    <span className="ss01">Q</span>
+                    <span>
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.1}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        Q
+                      </Box>
+                    </span>
+                    <span className="ss01">
+                      <Box
+                        data-scroll
+                        data-scroll-speed={0.2}
+                        css={{ display: 'inline-block' }}
+                        as="span"
+                      >
+                        Q
+                      </Box>
+                    </span>
                   </>
                 )
               },
@@ -339,7 +534,6 @@ const RomePreview = () => {
                   >
                     <label>{label}</label>
                     <Box
-                      as="p"
                       className="children"
                       css={{
                         width: '100%',
@@ -397,13 +591,19 @@ const RomePreview = () => {
                 }
               }}
             >
-              <span>1918-2021</span>
-              <br />
-              <span>£ 206.10</span>
-              <br />
-              <span>€ 37,00</span>
+              <Box data-scroll data-scroll-speed={0.1}>
+                <span>1918-2021</span>
+              </Box>
+              <Box data-scroll data-scroll-speed={0.4}>
+                <span>£ 206.10</span>
+              </Box>
+              <Box data-scroll data-scroll-speed={0.7}>
+                <span>€ 37,00</span>
+              </Box>
             </Box>
-            <label>WHO NEEDS NUMBERS?</label>
+            <label data-scroll data-scroll-speed={0.4}>
+              WHO NEEDS NUMBERS?
+            </label>
           </Box>
         </Container>
       </Container>

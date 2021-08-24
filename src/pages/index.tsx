@@ -32,7 +32,7 @@ const HomePage = ({
 const releases = [
   {
     version: '1.2',
-    date: new Date('08-18-2021'),
+    date: new Date('08-24-2021'),
     text: 'Refined shapes for certain glyphs. Adjusted kerning and addition of more variants and ligatures.'
   },
   {
