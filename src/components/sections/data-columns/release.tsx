@@ -1,6 +1,6 @@
 import { styled } from '../../../../stitches.config'
 import { Text } from '.'
-import { formatDate } from 'lib/utils'
+import { formatDate } from 'lib/utils/date'
 
 const Container = styled('div', {
   display: 'flex',

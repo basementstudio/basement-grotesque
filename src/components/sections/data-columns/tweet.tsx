@@ -1,7 +1,7 @@
 import { styled } from '../../../../stitches.config'
 import { Tweet as TweetType } from 'lib/twitter'
 import Image from 'next/image'
-import { formatDate } from 'lib/utils'
+import { formatDate } from 'lib/utils/date'
 import Box from 'components/common/box'
 
 type TweetProps = {
