@@ -32,7 +32,12 @@ const StyledTime = styled('time', {
   display: 'inline-flex',
   justifyContent: 'flex-start',
   textTransform: 'uppercase',
-  width: '72px'
+  width: '100px',
+  '> span': {
+    display: 'inline-flex',
+    justifyContent: 'space-between',
+    flexGrow: 1
+  }
 })
 
 const Time = ({ variant }: { variant?: 'mobile' }) => {
@@ -52,6 +57,7 @@ const Time = ({ variant }: { variant?: 'mobile' }) => {
     let hours: number | string = date.getHours()
     let minutes: number | string = date.getMinutes()
     let seconds: number | string = date.getSeconds()
+    const isAm = hours <= 12
     hours = hours % 12
     hours = hours ? hours : 12 // the hour '0' should be '12'
     hours = hours < 10 ? '0' + hours : hours
@@ -60,7 +66,7 @@ const Time = ({ variant }: { variant?: 'mobile' }) => {
     return (
       <StyledTime>
         <span>
-          {hours}:{minutes}:{seconds}
+          {hours}:{minutes}:{seconds} <span>{isAm ? 'AM' : 'PM'}</span>
         </span>
       </StyledTime>
     )
@@ -237,6 +243,7 @@ const Header = () => {
                 '> p, > span': {
                   display: 'none'
                 },
+                '.disabled': { color: 'rgba(255,255,255,0.5)' },
 
                 '@media screen and (min-width: 742px)': {
                   display: 'flex',
@@ -257,12 +264,12 @@ const Header = () => {
                 <span className="regular">v.1.2</span>
               </p>
               <span className="divider">·</span>
-              <p>
+              <p className="disabled">
                 <span>Grotesque 400</span> <span>/</span>{' '}
                 <span className="regular">In Progress</span>
               </p>
               <span className="divider">·</span>
-              <p>
+              <p className="disabled">
                 <span>Grotesque 900</span> <span>/</span>{' '}
                 <span className="regular">In Progress</span>
               </p>

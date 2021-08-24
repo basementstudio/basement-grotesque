@@ -1,3 +1,5 @@
+import { monthLabels } from './date'
+
 export function download(url: string) {
   //iOS devices do not support downloading. We have to inform user about this.
   if (/(iP)/g.test(navigator.userAgent)) {
@@ -71,3 +73,18 @@ export const get2D = (number: number) =>
     minimumIntegerDigits: 2,
     useGrouping: false
   })
+
+export const formatDate = (date: Date, includeTime = false) => {
+  return (
+    <>
+      {includeTime ? (
+        <>
+          {get2D(date.getHours())}:{get2D(date.getMinutes())}{' '}
+          {date.getHours() > 12 ? 'PM' : 'AM'}
+          {' - '}
+        </>
+      ) : null}
+      {date.getDate()} {monthLabels[date.getMonth()]} {date.getFullYear()}
+    </>
+  )
+}

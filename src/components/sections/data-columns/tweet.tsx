@@ -1,8 +1,7 @@
 import { styled } from '../../../../stitches.config'
 import { Tweet as TweetType } from 'lib/twitter'
 import Image from 'next/image'
-import { monthLabels } from 'lib/utils/date'
-import { get2D } from 'lib/utils'
+import { formatDate } from 'lib/utils'
 import Box from 'components/common/box'
 
 type TweetProps = {
@@ -118,10 +117,7 @@ const Tweet = ({ tweet }: TweetProps) => {
         type="body"
         css={{ marginTop: '$space$3', opacity: '50%', fontSize: 14 }}
       >
-        {get2D(date.getHours())}:{get2D(date.getMinutes())}{' '}
-        {date.getHours() >= 12 ? 'PM' : 'AM'}
-        {' - '}
-        {date.getDate()} {monthLabels[date.getMonth()]} {date.getFullYear()}
+        {formatDate(date, true)}
       </Text>
     </Container>
   )

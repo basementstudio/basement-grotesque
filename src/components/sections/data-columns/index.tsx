@@ -118,7 +118,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
         >
           <Column>
             <Text css={{ fontSize: '$3' }} uppercase>
-              July 30, 2021
+              CHANGELOG
             </Text>
             <Text css={{ fontSize: '$7' }} heading uppercase>
               Version History
