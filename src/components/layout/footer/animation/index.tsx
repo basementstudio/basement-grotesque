@@ -27,6 +27,7 @@ const Letter = styled(Text, {
   height: 'calc(var(--letter-size) * var(--letter-height-ratio))',
   fontSize: 'var(--letter-size)',
   lineHeight: 'calc(var(--letter-size) * var(--letter-height-ratio))',
+  willChange: 'transform',
 
   '@bp2': {
     '--letter-size': '80px'

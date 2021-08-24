@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+import { gsap } from 'lib/gsap'
 import p2 from 'p2'
 
 const DISTANCE_UNIT = 50
@@ -186,7 +186,7 @@ export const animation = (element) => {
 
   const animate = () => {
     playground.updateChildren()
-    requestAnimationFrame(animate)
+    gsap.ticker.add(animate)
   }
 
   animate()
