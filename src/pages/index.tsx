@@ -32,18 +32,28 @@ const HomePage = ({
 const releases = [
   {
     version: '1.2',
-    date: 'JULY 30, 2021',
-    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+    date: new Date('08-18-2021'),
+    text: 'Refined shapes for certain glyphs. Adjusted kerning and addition of more variants and ligatures.'
   },
   {
-    version: '1.2',
-    date: 'JULY 30, 2021',
-    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+    version: '1.1',
+    date: new Date('07-08-2021'),
+    text: 'Refined and redrawn shapes. Masters set up for additional weights and widths. Renaming from Bold to Black to comply with the new weight spectrum.'
   },
   {
-    version: '1.2',
-    date: 'JULY 30, 2021',
-    text: 'Basement Grotesque urna in a nisl, blandit donec augue rhoncus, bibendum. Pellentesque ut id massa leo a non, in augue. Mollis augue ornare amet facilisi facilisis. Faucibus amet et faucibus eget. Porta nisl curabitur tortor vitae tortor placerat.'
+    version: '1.0',
+    date: new Date('04-28-2021'),
+    text: 'Private release. Bold weight, full set of glyphs with support for most Latin languages, full set of punctuation and symbols.'
+  },
+  {
+    version: '0.9',
+    date: new Date('04-24-2021'),
+    text: 'Capital letters, alternative glyphs, stylistic sets, regular and discretionary ligatures, lining and old-style figures.'
+  },
+  {
+    version: '0.5',
+    date: new Date('03-17-2021'),
+    text: 'Lowercase and some capital letters.'
   }
 ]
 
@@ -52,7 +62,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      tweets: tweets.statuses ?? []
+      tweets
     },
     revalidate: 1
   }

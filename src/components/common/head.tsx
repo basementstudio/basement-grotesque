@@ -6,8 +6,8 @@ import NextHead from 'next/head'
 import { useMedia } from 'hooks/use-media'
 
 const defaultMeta = {
-  title: 'Basement Grotesque | basement.studio',
-  description: `A minimalist's guide to show our font.`,
+  title: 'basement grotesque by basement.studio',
+  description: `basement grotesque is the studio’s first venture into the daunting but exciting world of type design. Striking and unapologetically so.`,
   ogImage: `${siteOrigin}/og.png`
 }
 

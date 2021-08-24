@@ -203,7 +203,12 @@ const Footer = () => {
                 tight
               >
                 Our work is serious,{' '}
-                <Text css={{ lineHeight: 1.5 }} heading outlined>
+                <Text
+                  css={{ lineHeight: 1.5, display: 'block' }}
+                  as="span"
+                  heading
+                  outlined
+                >
                   we are not.
                 </Text>
               </Text>

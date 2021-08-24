@@ -1,6 +1,6 @@
 import { styled } from '../../../../stitches.config'
-import React from 'react'
 import { Text } from '.'
+import { formatDate } from 'lib/utils'
 
 const Container = styled('div', {
   display: 'flex',
@@ -23,7 +23,7 @@ const Container = styled('div', {
 
 export type ReleaseProps = {
   version: string
-  date: string
+  date: Date
   text: string
 }
 
@@ -40,18 +40,16 @@ const Release = ({ version, date, text }: ReleaseProps) => {
       </div>
       <div className="text">
         <Text
-          css={{ fontSize: '$2', marginTop: 45, '@bp2': { fontSize: '$3' } }}
-        >
-          {date}
-        </Text>
-        <Text
           css={{
             fontSize: 16,
             lineHeight: 1.6,
-            marginTop: 10
+            marginTop: 56
           }}
         >
           {text}
+        </Text>
+        <Text css={{ marginTop: 10, opacity: '50%', fontSize: 14 }}>
+          {formatDate(date)}
         </Text>
       </div>
     </Container>
