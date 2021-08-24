@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://next-typescript.basement.studio/',
+  siteUrl: 'https://grotesque.basement.studio/',
   generateRobotsTxt: true,
   exclude: []
 }
