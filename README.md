@@ -22,12 +22,18 @@ We set out inspired by the expressiveness of early 19th-century grotesque typefa
 
 ## Contributors
 
-- [@ambriganti](https://twitter.com/ambriganti)
-- [@ambriganti](https://twitter.com/ambriganti)
-- [@ambriganti](https://twitter.com/ambriganti)
-- [@ambriganti](https://twitter.com/ambriganti)
-- [@ambriganti](https://twitter.com/ambriganti)
-- [@ambriganti](https://twitter.com/ambriganti)
+- [@facumontanaro_](https://twitter.com/facumontanaro_)
+- [@GGManolo](https://twitter.com/GGManolo)
+- [@julianbenegas8](https://twitter.com/julianbenegas8)
+- [@matiasperz_](https://twitter.com/matiasperz_)
+- [@MikaelSargsyan](https://twitter.com/MikaelSargsyan)
+- [@nachogaran](https://twitter.com/nachogaran)
+- [@moransantiago_](https://twitter.com/moransantiago_)
+- [@NatyMartinezL](https://twitter.com/NatyMartinezL)
+- [@nazarenooviedo](https://twitter.com/nazarenooviedo)
+- [@palmieri_brian](https://twitter.com/palmieri_brian)
+- [@ragojose](https://twitter.com/ragojose)
+- [@teo_zaragoza](https://twitter.com/teo_zaragoza)
 
 ## **License**
 
