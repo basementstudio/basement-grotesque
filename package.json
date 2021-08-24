@@ -28,6 +28,7 @@
     "@radix-ui/react-polymorphic": "0.0.13",
     "@stitches/react": "^0.2.5",
     "clsx": "^1.1.1",
+    "date-fns": "^2.23.0",
     "locomotive-scroll": "^4.1.1",
     "lodash.throttle": "^4.1.1",
     "next": "^11.1.0",
