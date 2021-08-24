@@ -255,6 +255,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         a
                       </Box>
@@ -262,6 +263,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         à
                       </Box>
@@ -269,6 +271,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.3}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         á
                       </Box>
@@ -276,6 +279,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.4}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         â
                       </Box>
@@ -283,6 +287,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.5}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         ä
                       </Box>
@@ -293,6 +298,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         a
                       </Box>
@@ -300,6 +306,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         à
                       </Box>
@@ -307,6 +314,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.3}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         á
                       </Box>
@@ -314,6 +322,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.4}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         â
                       </Box>
@@ -321,6 +330,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.5}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         ä
                       </Box>
@@ -331,6 +341,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         a
                       </Box>
@@ -338,6 +349,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         à
                       </Box>
@@ -345,6 +357,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.3}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         á
                       </Box>
@@ -352,6 +365,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.4}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         â
                       </Box>
@@ -359,6 +373,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.5}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         ä
                       </Box>
@@ -384,6 +399,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         R
                       </Box>
@@ -393,6 +409,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         R
                       </Box>
@@ -402,6 +419,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.3}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         R
                       </Box>
@@ -411,6 +429,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.4}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         R
                       </Box>
@@ -421,6 +440,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         G
                       </Box>
@@ -430,6 +450,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         G
                       </Box>
@@ -440,6 +461,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.1}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         Q
                       </Box>
@@ -449,6 +471,7 @@ const RomePreview = () => {
                         data-scroll
                         data-scroll-speed={0.2}
                         css={{ display: 'inline-block' }}
+                        as="span"
                       >
                         Q
                       </Box>
@@ -511,7 +534,6 @@ const RomePreview = () => {
                   >
                     <label>{label}</label>
                     <Box
-                      as="p"
                       className="children"
                       css={{
                         width: '100%',
