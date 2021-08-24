@@ -16,7 +16,9 @@ We set out inspired by the expressiveness of early 19th-century grotesque typefa
 - Stylistic sets and glyph alternates.
 - Old style and lining figures.
 
-![img-02](https://user-images.githubusercontent.com/89411566/130511472-5fd8fba5-7315-4da8-b5c2-253d8f554011.png)
+![img-02](https://user-images.githubusercontent.com/89411566/130539677-faf9369f-0e74-4232-8648-75d3f02cbc52.png)
+![img-03](https://user-images.githubusercontent.com/89411566/130539535-14d5b1a9-601a-4515-ab25-763ead182c2d.png)
+
 
 ## Author
 
