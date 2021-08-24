@@ -62,7 +62,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      tweets: tweets.statuses ?? []
+      tweets
     },
     revalidate: 1
   }
