@@ -4,7 +4,6 @@ import { formatDate } from 'lib/utils/date'
 
 const Container = styled('div', {
   display: 'flex',
-  justifyContent: 'space-between',
 
   '&:first-child': {
     '@bp2': {
