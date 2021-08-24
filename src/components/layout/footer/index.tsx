@@ -194,9 +194,9 @@ const Footer = () => {
             <Box>
               <Text
                 css={{
-                  fontSize: '5.4vw',
+                  fontSize: 'min(60px, 5.4vw)',
                   lineHeight: 1,
-                  '@bp2': { fontSize: '2.8vw' }
+                  '@bp2': { fontSize: 'min(60px, 2.8vw)' }
                 }}
                 uppercase
                 heading
@@ -214,7 +214,10 @@ const Footer = () => {
                   <a href={href} target="_blank" rel="noopener">
                     <Text
                       className="label"
-                      css={{ fontSize: '$3', '@bp2': { fontSize: '1.3vw' } }}
+                      css={{
+                        fontSize: '$3',
+                        '@bp2': { fontSize: 'min(24px, 1.3vw)' }
+                      }}
                       heading
                       uppercase
                     >
@@ -230,7 +233,10 @@ const Footer = () => {
                       className="arrow"
                     >
                       <ArrowUp
-                        css={{ $$size: '$3', '@bps': { $$size: '1.3vw' } }}
+                        css={{
+                          $$size: '$3',
+                          '@bp2': { $$size: 'min(20px, 1.3vw)' }
+                        }}
                       />
                     </Box>
                   </a>
@@ -248,7 +254,9 @@ const Footer = () => {
             }}
           >
             <FooterLink
-              href="/"
+              href="https://github.com/basementstudio/basement-grotesque/blob/master/LICENSE.txt"
+              target="_blank"
+              rel="noopener"
               css={{
                 borderRight: '1px solid $colors$white'
               }}
@@ -257,7 +265,11 @@ const Footer = () => {
                 EULA
               </Text>
             </FooterLink>
-            <FooterLink href="mailto:sayhi@basement.studio">
+            <FooterLink
+              target="_blank"
+              rel="noopener"
+              href="mailto:sayhi@basement.studio"
+            >
               <Text className="label" as="span" uppercase heading>
                 Contact
               </Text>

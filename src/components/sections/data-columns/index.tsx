@@ -20,6 +20,7 @@ import { styled } from '../../../../stitches.config'
 
 const SectionInner = styled('div', {
   background: '$black',
+  border: '1px solid white',
 
   '@bp3': {
     display: 'grid',
@@ -104,11 +105,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
   return (
-    <Section
-      css={{ borderTop: '1px solid $white', borderBottom: '1px solid $white' }}
-      background="black"
-      noMargin
-    >
+    <Section background="black" noMargin>
       <Container maxWidth>
         <SectionInner
           css={{

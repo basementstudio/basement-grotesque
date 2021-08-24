@@ -1,10 +1,16 @@
 {
-  "name": "grotesque",
-  "version": "1.0.0",
-  "description": "The basement Grotesque font family",
-  "repository": "https://github.com/basementstudio/grotesque",
+  "name": "basement-grotesque",
+  "version": "1.2.0",
+  "description": "The basement grotesque typeface",
+  "keywords": [
+    "font",
+    "design",
+    "typeface"
+  ],
+  "homepage": "https://grotesque.basement.studio",
+  "repository": "https://github.com/basementstudio/basement-grotesque",
   "author": "basement.studio",
-  "private": true,
+  "license": "OFL-1.1",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -76,14 +82,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "babel": {
-    "presets": [
-      "next/babel"
-    ],
-    "plugins": [
-      "babel-plugin-optimize-clsx"
-    ]
-  },
   "prettier": {
     "semi": false,
     "singleQuote": true,
