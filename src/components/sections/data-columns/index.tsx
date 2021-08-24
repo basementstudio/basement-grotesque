@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // Lib
-import { Tweet as TweetType } from 'lib/twitter'
+import { TwitterRes as TwitterResType } from 'lib/twitter'
 
 // Primitives
 import Section from 'components/layout/section'
@@ -95,7 +95,7 @@ const SectionPicker = styled('div', {
 })
 
 type DataColumnsProps = {
-  tweets: TweetType[]
+  tweets: TwitterResType
   releases: ReleaseProps[]
 }
 
@@ -151,7 +151,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
               Tweets
             </Text>
             <div>
-              {tweets.map((tweet) => (
+              {tweets.data.map((tweet) => (
                 <Tweet tweet={tweet} key={tweet.id} />
               ))}
             </div>
@@ -218,7 +218,7 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
           <Column
             css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
           >
-            {tweets.map((tweet) => (
+            {tweets.data.map((tweet) => (
               <Tweet tweet={tweet} key={tweet.id} />
             ))}
           </Column>

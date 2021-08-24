@@ -74,8 +74,8 @@ const Tweet = ({ tweet }: TweetProps) => {
         <Image
           width="48"
           height="48"
-          src={tweet.user.profile_image_url_https}
-          alt={tweet.user.name + ' avatar'}
+          src={tweet?.user?.profile_image_url as string}
+          alt={tweet?.user?.name + ' avatar'}
           layout="fixed"
           className="tweetImage"
           objectFit="cover"
@@ -90,7 +90,7 @@ const Tweet = ({ tweet }: TweetProps) => {
           }}
         >
           <Text css={{ fontSize: 16, '@bp2': { fontSize: 18 } }} type="heading">
-            {tweet.user.name}
+            {tweet?.user?.name ?? ''}
           </Text>
           <Text
             css={{
@@ -100,7 +100,7 @@ const Tweet = ({ tweet }: TweetProps) => {
               fontWeight: 800
             }}
           >
-            @{tweet.user.screen_name}
+            @{tweet?.user?.username ?? ''}
           </Text>
         </Box>
       </UserData>
