@@ -147,7 +147,7 @@ const RomePreview = () => {
           <Text
             className="rome-preview__title"
             size="lg"
-            css={{ marginTop: 20, textTransform: 'uppercase' }}
+            css={{ marginTop: 20, textTransform: 'uppercase', lineHeight: 1.2 }}
             centered
           >
             Lëtzebuerg
