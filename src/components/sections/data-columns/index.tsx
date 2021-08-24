@@ -10,6 +10,7 @@ import TextPrimitive from 'components/common/text'
 import Box from 'components/common/box'
 import Container from 'components/layout/container'
 import NativeScrollContainer from 'components/common/native-scroll-container'
+import { ArrowDown } from 'components/primitives/arrow'
 
 // Local Components
 import Feature from './feature'
@@ -95,6 +96,23 @@ const SectionPicker = styled('div', {
   }
 })
 
+const LoadMore = styled('button', {
+  outline: 'none !important',
+  display: 'flex',
+  alignItems: 'center',
+  transition: 'opacity .2s ease',
+  fontSize: 14,
+
+  '@bp2': {
+    mt: 14,
+    fontSize: 16
+  },
+
+  '&:disabled': {
+    opacity: 0.5
+  }
+})
+
 type DataColumnsProps = {
   tweets: TwitterResType
   releases: ReleaseProps[]
@@ -173,9 +191,19 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
                 </Fragment>
               ))}
               {hasNextPage && (
-                <button onClick={() => fetchNextPage()}>
-                  {isFetching ? 'Loading...' : 'Load more'}
-                </button>
+                <LoadMore onClick={() => fetchNextPage()} disabled={isFetching}>
+                  <Text uppercase heading>
+                    Load more
+                  </Text>
+                  <ArrowDown
+                    css={{
+                      marginLeft: 8,
+                      color: 'white',
+                      path: { fill: 'white' },
+                      $$size: '16px'
+                    }}
+                  />
+                </LoadMore>
               )}
             </div>
           </Column>
@@ -249,9 +277,19 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
               </Fragment>
             ))}
             {hasNextPage && (
-              <button onClick={() => fetchNextPage()}>
-                {isFetching ? 'Loading...' : 'Load more'}
-              </button>
+              <LoadMore onClick={() => fetchNextPage()} disabled={isFetching}>
+                <Text uppercase heading>
+                  Load more
+                </Text>
+                <ArrowDown
+                  css={{
+                    marginLeft: 8,
+                    color: 'white',
+                    path: { fill: 'white' },
+                    $$size: '16px'
+                  }}
+                />
+              </LoadMore>
             )}
           </Column>
         </Container>
