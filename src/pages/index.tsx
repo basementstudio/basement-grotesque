@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType } from 'next'
+import dynamic from 'next/dynamic'
 
 // Layout
 import PageLayout from 'components/layout/page'
@@ -7,11 +8,16 @@ import { getHashtagTweets } from 'lib/twitter'
 // Sections
 import Hero from 'components/sections/hero'
 import AboutSection from 'components/sections/about'
-import CharactersSection from 'components/sections/characters'
+// import CharactersSection from 'components/sections/characters'
 import DemoSection from 'components/sections/demo'
 import RomePreview from 'components/sections/rome-preview'
 import DataColumns from 'components/sections/data-columns'
 import PostersSection from 'components/sections/posters'
+
+const CharactersSection = dynamic(
+  () => import('components/sections/characters'),
+  { ssr: false }
+)
 
 const HomePage = ({
   tweets
