@@ -17,7 +17,7 @@ We set out inspired by the expressiveness of early 19th-century grotesque typefa
 - Old style and lining figures.
 
 ![img-02](https://user-images.githubusercontent.com/89411566/130539677-faf9369f-0e74-4232-8648-75d3f02cbc52.png)
-![img-03](https://user-images.githubusercontent.com/89411566/130539535-14d5b1a9-601a-4515-ab25-763ead182c2d.png)
+![img-03](https://user-images.githubusercontent.com/89411566/130622743-8b83f6a1-c211-42ef-84f8-f61530ea48eb.png)
 
 
 ## Author
