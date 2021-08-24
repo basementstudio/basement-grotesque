@@ -169,11 +169,9 @@ const DemoSection = () => {
                 as="span"
                 css={{ display: 'none', '@bp2': { display: 'inline' } }}
               >
-                412 glyphs
+                Handcrafted
                 <br />
-                Black (800)
-                <br />
-                OTF
+                for strong designs
               </Box>
             }
           />

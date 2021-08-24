@@ -50,14 +50,15 @@ export const getHashtagTweets = async (nextPageToken?: string) => {
 
   const usersMap: Record<string, User> = {}
 
-  res.includes.users.forEach((user: User) => {
+  res.includes?.users.forEach((user: User) => {
     usersMap[user.id] = user
   })
 
-  res.data = res.data.map((tweet) => ({
-    ...tweet,
-    user: usersMap[tweet.author_id]
-  }))
+  res.data =
+    res.data?.map((tweet) => ({
+      ...tweet,
+      user: usersMap[tweet.author_id]
+    })) ?? []
 
   return res
 }
