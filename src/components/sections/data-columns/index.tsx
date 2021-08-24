@@ -83,6 +83,7 @@ const SectionPicker = styled('div', {
     width: '100%',
     fontSize: '$6',
     padding: '15px 0',
+    background: '$black',
     '-webkit-appearance': 'none'
   },
 
