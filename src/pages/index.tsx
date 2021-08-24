@@ -32,27 +32,27 @@ const HomePage = ({
 const releases = [
   {
     version: '1.2',
-    date: new Date('08-24-2021'),
+    date: new Date(2021, 8, 24),
     text: 'Refined shapes for certain glyphs. Adjusted kerning and addition of more variants and ligatures.'
   },
   {
     version: '1.1',
-    date: new Date('07-08-2021'),
+    date: new Date(2021, 7, 8),
     text: 'Refined and redrawn shapes. Masters set up for additional weights and widths. Renaming from Bold to Black to comply with the new weight spectrum.'
   },
   {
     version: '1.0',
-    date: new Date('04-28-2021'),
+    date: new Date(2021, 4, 28),
     text: 'Private release. Bold weight, full set of glyphs with support for most Latin languages, full set of punctuation and symbols.'
   },
   {
     version: '0.9',
-    date: new Date('04-24-2021'),
+    date: new Date(2021, 4, 24),
     text: 'Capital letters, alternative glyphs, stylistic sets, regular and discretionary ligatures, lining and old-style figures.'
   },
   {
     version: '0.5',
-    date: new Date('03-17-2021'),
+    date: new Date(2021, 3, 17),
     text: 'Lowercase and some capital letters.'
   }
 ]

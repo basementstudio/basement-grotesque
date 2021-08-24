@@ -15,5 +15,9 @@ export const monthLabels = [
   'Dec'
 ]
 
-export const formatDate = (date: Date, withHours = false) =>
-  format(date, withHours ? "HH:mm aaaaa'm' - dd LLL yyyy" : 'dd LLL yyyy')
+export const formatDate = (date: Date, withHours = false) => {
+  return format(
+    date,
+    withHours ? "HH:mm aaaaa'm' - dd LLL yyyy" : 'dd LLL yyyy'
+  )
+}
