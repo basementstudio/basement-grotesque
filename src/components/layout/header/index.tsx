@@ -19,6 +19,7 @@ import MobileMenu from './mobile-menu'
 import { useToggleState } from 'hooks/use-toggle-state'
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
 import { useRouter } from 'next/router'
+import { event } from 'lib/ga'
 
 const StyledHeader = styled('header', {
   my: '$4',
@@ -121,6 +122,12 @@ export const DownloadButton = ({
   }, [isMobile, variant])
 
   const handleDownload = useCallback(() => {
+    event({
+      category: 'Download',
+      action: 'Download',
+      label: 'Download',
+      value: '1'
+    })
     const encoded = {
       text: encodeURIComponent(
         'I’m downloading the #basementgrotesque typeface, the boldest font I’ll ever use on my side-projects. Thank you guys @basementstudio 🏴 Get it now: https://grotesque.basement.studio/'
