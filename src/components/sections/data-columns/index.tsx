@@ -108,21 +108,14 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
     fetchNextPage,
     hasNextPage,
     isFetching
-  } = useInfiniteQuery(
-    ['tweets'],
-    ({ pageParam }) => {
-      console.log(pageParam)
-      return getTweets(pageParam)
+  } = useInfiniteQuery(['tweets'], ({ pageParam }) => getTweets(pageParam), {
+    refetchOnWindowFocus: false,
+    initialData: {
+      pageParams: [undefined],
+      pages: [initialTweets]
     },
-    {
-      refetchOnWindowFocus: false,
-      initialData: {
-        pageParams: [undefined],
-        pages: [initialTweets]
-      },
-      getNextPageParam: (lastPage) => lastPage.meta.next_token
-    }
-  )
+    getNextPageParam: (lastPage) => lastPage.meta.next_token
+  })
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
   return (
