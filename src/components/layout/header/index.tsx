@@ -18,6 +18,7 @@ import Box from 'components/common/box'
 import MobileMenu from './mobile-menu'
 import { useToggleState } from 'hooks/use-toggle-state'
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
+import { useRouter } from 'next/router'
 
 const StyledHeader = styled('header', {
   my: '$4',
@@ -175,6 +176,7 @@ export const DownloadButton = ({
 }
 
 const Header = () => {
+  const router = useRouter()
   const mobileMenuState = useToggleState()
   const { scroll } = useLocomotiveScroll()
 
@@ -196,6 +198,15 @@ const Header = () => {
       scroll.scrollTo(0)
     }
   }, [scroll])
+
+  const handleContextMenu: React.MouseEventHandler<HTMLAnchorElement> =
+    useCallback(
+      (e) => {
+        e.preventDefault()
+        router.push('https://basement.studio')
+      },
+      [router]
+    )
 
   return (
     <StyledHeader id="header">
@@ -224,8 +235,15 @@ const Header = () => {
               <Box
                 as="a"
                 title="Basement Grotesque"
-                css={{ px: '$$px' }}
+                css={{
+                  px: '$$px',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
                 onClick={handleLogoClick}
+                onContextMenu={handleContextMenu}
               >
                 <Logo style={{ margin: 0 }} />
               </Box>

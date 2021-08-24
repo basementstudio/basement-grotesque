@@ -75,10 +75,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Context.Provider value={{ fontsLoaded }}>
-        <Header />
         <Toaster position="bottom-center" />
         <Cursor>
           <LocomotiveScrollProvider>
+            <Header />
             <Component {...pageProps} />
           </LocomotiveScrollProvider>
         </Cursor>
