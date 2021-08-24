@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 import { DURATION, gsap, SplitText } from 'lib/gsap'
 import Cursor from 'components/primitives/cursor'
@@ -10,6 +12,8 @@ import 'css/global.css'
 
 const Context = createContext<{ fontsLoaded: boolean }>({ fontsLoaded: false })
 export const useAppContext = () => useContext(Context)
+
+const queryClient = new QueryClient()
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
@@ -69,15 +73,17 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, [fontsLoaded])
 
   return (
-    <Context.Provider value={{ fontsLoaded }}>
-      <Header />
-      <Toaster position="bottom-center" />
-      <Cursor>
-        <LocomotiveScrollProvider>
-          <Component {...pageProps} />
-        </LocomotiveScrollProvider>
-      </Cursor>
-    </Context.Provider>
+    <QueryClientProvider client={queryClient}>
+      <Context.Provider value={{ fontsLoaded }}>
+        <Header />
+        <Toaster position="bottom-center" />
+        <Cursor>
+          <LocomotiveScrollProvider>
+            <Component {...pageProps} />
+          </LocomotiveScrollProvider>
+        </Cursor>
+      </Context.Provider>
+    </QueryClientProvider>
   )
 }
 

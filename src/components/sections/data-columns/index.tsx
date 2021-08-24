@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
+import { useInfiniteQuery } from 'react-query'
 
 // Lib
 import { TwitterRes as TwitterResType } from 'lib/twitter'
@@ -17,6 +18,7 @@ import Tweet from './tweet'
 
 // Styles
 import { styled } from '../../../../stitches.config'
+import { getHrefWithQuery } from 'lib/utils/router'
 
 const SectionInner = styled('div', {
   background: '$black',
@@ -77,7 +79,6 @@ const SectionPicker = styled('div', {
     fontFamily: '$heading',
     flex: 1,
     textTransform: 'uppercase',
-    background: '$background',
     width: '100%',
     fontSize: '$6',
     padding: '15px 0',
@@ -101,7 +102,27 @@ type DataColumnsProps = {
 
 type Sections = 'releases' | 'features' | 'tweets'
 
-const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
+const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
+  const {
+    data: queriedTweets,
+    fetchNextPage,
+    hasNextPage,
+    isFetching
+  } = useInfiniteQuery(
+    ['tweets'],
+    ({ pageParam }) => {
+      console.log(pageParam)
+      return getTweets(pageParam)
+    },
+    {
+      refetchOnWindowFocus: false,
+      initialData: {
+        pageParams: [undefined],
+        pages: [initialTweets]
+      },
+      getNextPageParam: (lastPage) => lastPage.meta.next_token
+    }
+  )
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
   return (
@@ -151,9 +172,18 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
               Tweets
             </Text>
             <div>
-              {tweets.data.map((tweet) => (
-                <Tweet tweet={tweet} key={tweet.id} />
+              {queriedTweets?.pages?.map((page, pageIdx) => (
+                <Fragment key={pageIdx}>
+                  {page.data.map((tweet) => (
+                    <Tweet tweet={tweet} key={tweet.id} />
+                  ))}
+                </Fragment>
               ))}
+              {hasNextPage && (
+                <button onClick={() => fetchNextPage()}>
+                  {isFetching ? 'Loading...' : 'Load more'}
+                </button>
+              )}
             </div>
           </Column>
         </SectionInner>
@@ -218,14 +248,31 @@ const DataColumns = ({ tweets, releases }: DataColumnsProps) => {
           <Column
             css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
           >
-            {tweets.data.map((tweet) => (
-              <Tweet tweet={tweet} key={tweet.id} />
+            {queriedTweets?.pages?.map((page, pageIdx) => (
+              <Fragment key={pageIdx}>
+                {page.data.map((tweet) => (
+                  <Tweet tweet={tweet} key={tweet.id} />
+                ))}
+              </Fragment>
             ))}
+            {hasNextPage && (
+              <button onClick={() => fetchNextPage()}>
+                {isFetching ? 'Loading...' : 'Load more'}
+              </button>
+            )}
           </Column>
         </Container>
       </SectionInner>
     </Section>
   )
+}
+
+const getTweets = async (next_token?: string): Promise<TwitterResType> => {
+  const url = getHrefWithQuery('/api/tweets', {
+    next_token: next_token ?? null
+  })
+
+  return await (await fetch(url)).json()
 }
 
 export default DataColumns

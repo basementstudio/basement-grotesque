@@ -9,10 +9,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case 'GET': {
-        const checkout = await getHashtagTweets(
+        const twitterRes = await getHashtagTweets(
           next_token as string | undefined
         )
-        success(res, { checkout })
+        success(res, twitterRes)
         break
       }
       default:
