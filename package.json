@@ -21,7 +21,8 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
-    "fp": "git add . && git commit -m '.' -n && git push -n"
+    "fp": "git add . && git commit -m '.' -n && git push -n",
+    "test": "jest --watch --env=jsdom"
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
@@ -48,6 +49,8 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "@types/file-saver": "^2.0.3",
     "@types/lodash.throttle": "^4.1.6",
     "@types/node": "^16.7.2",
@@ -56,6 +59,7 @@
     "@types/react-dom": "^17.0.6",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
+    "babel-jest": "^27.0.6",
     "babel-plugin-optimize-clsx": "^2.6.2",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
@@ -67,6 +71,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gsap": "./src/lib/gsap/gsap-bonus.tgz",
     "husky": "^7.0.2",
+    "jest": "^27.0.6",
     "lint-staged": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
     "next-sitemap": "^1.6.162",
