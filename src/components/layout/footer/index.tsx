@@ -146,7 +146,7 @@ const social = [
     href: 'https://twitter.com/basementstudio'
   },
   {
-    label: 'Dribble',
+    label: 'Dribbble',
     href: 'https://dribbble.com/basementstudio'
   },
   {

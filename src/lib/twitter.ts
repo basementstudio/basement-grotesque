@@ -32,6 +32,9 @@ export type TwitterRes = {
 }
 
 export const getHashtagTweets = async (nextPageToken?: string) => {
+  if (!process.env.TWITTER_BEARER_TOKEN) {
+    throw new Error('TWITTER_BEARER_TOKEN environment variable not found.')
+  }
   const pathAndQuery = getHrefWithQuery('/2/tweets/search/recent', {
     query: TWITTER_HASHTAG,
     max_results: TWEETS_PER_PAGE.toString(),
