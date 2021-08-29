@@ -2,7 +2,7 @@ import { InferGetStaticPropsType } from 'next'
 
 // Layout
 import PageLayout from 'components/layout/page'
-import { getHashtagTweets } from 'lib/twitter'
+import { getHashtagTweets, TwitterRes } from 'lib/twitter'
 
 // Sections
 import Hero from 'components/sections/hero'
@@ -58,7 +58,13 @@ const releases = [
 ]
 
 export const getStaticProps = async () => {
-  const tweets = await getHashtagTweets()
+  let tweets: TwitterRes | null
+  try {
+    tweets = await getHashtagTweets()
+  } catch (error) {
+    console.warn(error.message)
+    tweets = null
+  }
 
   return {
     props: {
