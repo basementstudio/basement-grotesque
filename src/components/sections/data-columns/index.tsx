@@ -115,7 +115,7 @@ const LoadMore = styled('button', {
 })
 
 type DataColumnsProps = {
-  tweets: TwitterResType
+  tweets: TwitterResType | null
   releases: ReleaseProps[]
 }
 
@@ -128,12 +128,13 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
     hasNextPage,
     isFetching
   } = useInfiniteQuery(['tweets'], ({ pageParam }) => getTweets(pageParam), {
+    enabled: !!initialTweets,
     refetchOnWindowFocus: false,
     initialData: {
       pageParams: [undefined],
       pages: [initialTweets]
     },
-    getNextPageParam: (lastPage) => lastPage.meta.next_token
+    getNextPageParam: (lastPage) => (lastPage ? lastPage.meta.next_token : null)
   })
   const [activeSection, setActiveSection] = useState<Sections>('releases')
 
@@ -184,13 +185,16 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
               Tweets
             </Text>
             <div>
-              {queriedTweets?.pages?.map((page, pageIdx) => (
-                <Fragment key={pageIdx}>
-                  {page.data.map((tweet) => (
-                    <Tweet tweet={tweet} key={tweet.id} />
-                  ))}
-                </Fragment>
-              ))}
+              {queriedTweets?.pages?.map((page, pageIdx) => {
+                if (!page) return null
+                return (
+                  <Fragment key={pageIdx}>
+                    {page.data.map((tweet) => (
+                      <Tweet tweet={tweet} key={tweet.id} />
+                    ))}
+                  </Fragment>
+                )
+              })}
               {hasNextPage && (
                 <LoadMore onClick={() => fetchNextPage()} disabled={isFetching}>
                   <Text uppercase heading>
@@ -270,13 +274,16 @@ const DataColumns = ({ tweets: initialTweets, releases }: DataColumnsProps) => {
           <Column
             css={{ display: activeSection === 'tweets' ? 'block' : 'none' }}
           >
-            {queriedTweets?.pages?.map((page, pageIdx) => (
-              <Fragment key={pageIdx}>
-                {page.data.map((tweet) => (
-                  <Tweet tweet={tweet} key={tweet.id} />
-                ))}
-              </Fragment>
-            ))}
+            {queriedTweets?.pages?.map((page, pageIdx) => {
+              if (!page) return null
+              return (
+                <Fragment key={pageIdx}>
+                  {page.data.map((tweet) => (
+                    <Tweet tweet={tweet} key={tweet.id} />
+                  ))}
+                </Fragment>
+              )
+            })}
             {hasNextPage && (
               <LoadMore onClick={() => fetchNextPage()} disabled={isFetching}>
                 <Text uppercase heading>
