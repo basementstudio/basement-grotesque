@@ -168,9 +168,9 @@ const PostersSection = () => {
 
 const Poster = ({
   src,
+  alt,
   width,
   height,
-  alt,
   left,
   top,
   ...rest
@@ -316,6 +316,7 @@ const Video = ({
             css={{ height: '100%', marginLeft: toVw(videoLeft[0], 375) }}
             src={Array.isArray(src) ? src[0] : src}
             controls={false}
+            playsInline
             autoPlay
             muted
             loop
@@ -329,6 +330,7 @@ const Video = ({
             css={{ height: '100%', marginLeft: toVw(videoLeft[1]) }}
             src={Array.isArray(src) ? src[1] : src}
             controls={false}
+            playsInline
             autoPlay
             muted
             loop
