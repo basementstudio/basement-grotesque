@@ -71,7 +71,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
-    "jest": "^27.0.6",
+    "jest": "^27.1.1",
     "lint-staged": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
     "next-sitemap": "^1.6.162",
