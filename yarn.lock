@@ -6730,9 +6730,10 @@ react-merge-refs@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/react-merge-refs/-/react-merge-refs-1.1.0.tgz"
 
-react-query@^3.21.0:
-  version "3.21.0"
-  resolved "https://registry.npmjs.org/react-query/-/react-query-3.21.0.tgz"
+react-query@^3.23.1:
+  version "3.23.1"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.23.1.tgz#cde2d268958716d34a23e62aabba668752ba8f95"
+  integrity sha512-pq0vEwB5PNGvkWJNUk0qPpsxcDmhzY80ZLNPLIVQJ3k2UyXoGccPTrgOIj4Kz2TrMfgvRBTNwiSxHdaW7Sl0WQ==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
