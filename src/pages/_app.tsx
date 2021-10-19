@@ -7,6 +7,7 @@ import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 import { DURATION, gsap, SplitText } from 'lib/gsap'
 import Cursor from 'components/primitives/cursor'
 import Header from 'components/layout/header'
+import { useRouter } from 'next/dist/client/router'
 import { useAppGA } from 'lib/ga'
 import 'css/global.css'
 
@@ -17,6 +18,7 @@ const queryClient = new QueryClient()
 
 const App = ({ Component, pageProps }: AppProps) => {
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const router = useRouter()
 
   useAppGA()
 
@@ -33,7 +35,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, [])
 
   useEffect(() => {
-    if (!fontsLoaded) return
+    if (!fontsLoaded || router.asPath !== '/') return
 
     const title = new SplitText('.hero__title', {
       type: 'chars'
