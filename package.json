@@ -27,7 +27,7 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
     "@radix-ui/react-polymorphic": "0.0.13",
-    "@stitches/react": "^0.2.5",
+    "@stitches/react": "^1.2.5",
     "clsx": "^1.1.1",
     "date-fns": "^2.23.0",
     "gsap": "./src/lib/gsap/gsap-bonus.tgz",
