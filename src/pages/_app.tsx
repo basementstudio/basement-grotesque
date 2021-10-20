@@ -35,40 +35,45 @@ const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     if (!fontsLoaded) return
 
-    const title = new SplitText('.hero__title', {
-      type: 'chars'
-    })
+    try {
+      const title = new SplitText('.hero__title', {
+        type: 'chars'
+      })
 
-    const subtitle = new SplitText('.hero__subtitle', {
-      type: 'chars'
-    })
+      const subtitle = new SplitText('.hero__subtitle', {
+        type: 'chars'
+      })
 
-    const timeline = gsap.timeline({
-      paused: true,
-      smoothChildTiming: true
-    })
+      const timeline = gsap.timeline({
+        paused: true,
+        smoothChildTiming: true
+      })
 
-    timeline.to('body', {
-      autoAlpha: 1,
-      duration: DURATION / 2
-    })
-    timeline.in(title.chars, '<80%')
-    timeline.in(subtitle.chars, '<40%')
-    timeline.from(
-      ['.hero__link', '.hero__image'],
-      {
-        autoAlpha: 0,
-        duration: DURATION * 0.8,
-        stagger: 0.15,
-        yPercent: 60
-      },
-      '>-20%'
-    )
+      timeline.to('body', {
+        autoAlpha: 1,
+        duration: DURATION / 2
+      })
+      timeline.in(title.chars, '<80%')
+      timeline.in(subtitle.chars, '<40%')
+      timeline.from(
+        ['.hero__link', '.hero__image'],
+        {
+          autoAlpha: 0,
+          duration: DURATION * 0.8,
+          stagger: 0.15,
+          yPercent: 60
+        },
+        '>-20%'
+      )
 
-    timeline.timeScale(1.4).play()
+      timeline.timeScale(1.4).play()
 
-    return () => {
-      timeline?.kill()
+      return () => {
+        timeline?.kill()
+      }
+    } catch (error) {
+      // noop
+      document.body.style.opacity = '1'
     }
   }, [fontsLoaded])
 
