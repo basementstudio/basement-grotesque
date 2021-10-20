@@ -72,7 +72,6 @@ const App = ({ Component, pageProps }: AppProps) => {
         timeline?.kill()
       }
     } catch (error) {
-      // noop
       document.body.style.opacity = '1'
     }
   }, [fontsLoaded])
