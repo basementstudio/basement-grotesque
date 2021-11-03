@@ -5985,9 +5985,10 @@ next-seo@^4.26.0:
   version "4.26.0"
   resolved "https://registry.npmjs.org/next-seo/-/next-seo-4.26.0.tgz"
 
-next-sitemap@^1.6.162:
-  version "1.6.162"
-  resolved "https://registry.npmjs.org/next-sitemap/-/next-sitemap-1.6.162.tgz"
+next-sitemap@^1.6.203:
+  version "1.6.203"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.6.203.tgz#bfa2e67fea2bab1efed60cda743e7f98dc00bb46"
+  integrity sha512-WigcoqIUNbXQa2GnwOiCOydGx/XHCS4kRtIPNEsc8DGX2XvJtbAJKRxcidZZ2KihTAtwwCu1XQ4Hbof4mJbvLg==
   dependencies:
     "@corex/deepmerge" "^2.6.34"
     matcher "^4.0.0"
