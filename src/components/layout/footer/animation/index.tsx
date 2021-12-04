@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 import { styled } from '../../../../../stitches.config'
-import Text from 'components/common/text'
 import { range } from 'lib/utils'
 import { animation } from './physics'
 import { useBreakpoint } from 'hooks/use-breakpoint'
@@ -16,11 +15,12 @@ const Canvas = styled('div', {
   bottom: 0
 })
 
-const Letter = styled(Text, {
+const Letter = styled('span', {
   '--letter-size': '45px',
   '--letter-width-ratio': '0.7',
   '--letter-height-ratio': '0.8',
 
+  fontFamily: '$heading',
   display: 'inline-block',
   margin: 2,
   width: 'calc(var(--letter-size) * var(--letter-width-ratio))',
@@ -31,6 +31,15 @@ const Letter = styled(Text, {
 
   '@bp2': {
     '--letter-size': '80px'
+  },
+
+  variants: {
+    outlined: {
+      true: {
+        '-webkit-text-fill-color': 'transparent',
+        '-webkit-text-stroke': '1px white'
+      }
+    }
   }
 })
 
@@ -47,12 +56,7 @@ const FooterAnimation = () => {
   return (
     <Canvas ref={animContainerRef} id="playground">
       {range(70).map((i) => (
-        <Letter
-          heading
-          outlined={gsap.utils.random(-1, 1) < 0}
-          as="span"
-          key={i}
-        >
+        <Letter outlined={gsap.utils.random(-1, 1) < 0} key={i}>
           {LETTERS[gsap.utils.random(0, LETTERS.length - 1, 1)]}
         </Letter>
       ))}
