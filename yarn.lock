@@ -857,9 +857,10 @@
   version "0.2.3"
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
 
-"@corex/deepmerge@^2.6.34":
-  version "2.6.34"
-  resolved "https://registry.npmjs.org/@corex/deepmerge/-/deepmerge-2.6.34.tgz"
+"@corex/deepmerge@^2.6.148":
+  version "2.6.148"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.6.148.tgz#8fa825d53ffd1cbcafce1b6a830eefd3dcc09dd5"
+  integrity sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -5986,11 +5987,12 @@ next-seo@^4.26.0:
   version "4.26.0"
   resolved "https://registry.npmjs.org/next-seo/-/next-seo-4.26.0.tgz"
 
-next-sitemap@^1.6.162:
-  version "1.6.162"
-  resolved "https://registry.npmjs.org/next-sitemap/-/next-sitemap-1.6.162.tgz"
+next-sitemap@^1.6.237:
+  version "1.6.237"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.6.237.tgz#6688e56df0224c20292c76890e7dd4bd29f265ee"
+  integrity sha512-ucnaeJI8RZC3ZHtEisdupwzv9Z2D7LWEwL+P2grQtEM4eTeybP9j4NsFX5PHI3r7GPnWOH4p/jokydHcw7h40Q==
   dependencies:
-    "@corex/deepmerge" "^2.6.34"
+    "@corex/deepmerge" "^2.6.148"
     matcher "^4.0.0"
     minimist "^1.2.5"
 
