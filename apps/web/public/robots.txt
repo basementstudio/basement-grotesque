@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://next-typescript.basement.studio/
+Host: https://grotesque.basement.studio/
 
 # Sitemaps
-Sitemap: https://next-typescript.basement.studio/sitemap.xml
+Sitemap: https://grotesque.basement.studio/sitemap.xml
