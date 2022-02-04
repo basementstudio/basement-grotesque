@@ -6,7 +6,6 @@ type Props = {
   children?: React.ReactNode
   headProps?: HeadProps
 
-  // TODO after implementing head, header, footer
   header?: false | React.ReactNode
   footer?: false | React.ReactNode
 }

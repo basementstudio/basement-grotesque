@@ -1,11 +1,11 @@
-import PageLayout from 'components/layout/page'
+import { NFTLayout } from 'components/layout/nft'
 import { NFTHero } from 'components/sections/nft/hero'
 
 const NFTPage = () => {
   return (
-    <PageLayout header={false} footer={false}>
+    <NFTLayout>
       <NFTHero />
-    </PageLayout>
+    </NFTLayout>
   )
 }
 

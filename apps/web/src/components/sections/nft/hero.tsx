@@ -3,75 +3,88 @@ import B from 'logos/b.svg'
 import Web3Globe from 'logos/web3-globe.svg'
 import Link from 'components/primitives/link'
 import Box from 'components/common/box'
-import { NFTTopMarquee } from 'components/sections/nft/top-marquee'
 import { styled } from '../../../../stitches.config'
 import { toVw } from '../posters'
 
 export const NFTHero = () => {
   return (
-    <Box css={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <NFTTopMarquee />
-      <Section
-        background="black"
-        css={{ px: toVw(12, 1920), flexGrow: 1, display: 'flex' }}
+    <Section
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: `$$fullFrameHeight`,
+        py: toVw(32, 1920),
+        px: toVw(32, 1920)
+      }}
+      background="black"
+    >
+      <Box
+        css={{
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%'
+        }}
       >
-        <Box
-          css={{
-            border: `1px solid $white`,
-            borderRadius: 32,
-            padding: toVw(32, 1920),
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%'
-          }}
-        >
-          <Nav>
+        <Nav>
+          <Link variant="unstyled" href="#">
             <B />
-            <Link href="#">About</Link>
-            <Link href="#">The Grotesque</Link>
-            <Link href="#">The Team</Link>
-            <button>Connect Wallet & Claim</button>
-          </Nav>
-          <Content>
-            <div className="tagline">
+          </Link>
+          <Link variant="unstyled" href="#">
+            About
+          </Link>
+          <Link variant="unstyled" href="#">
+            The Grotesque
+          </Link>
+          <Link variant="unstyled" href="#">
+            The Team
+          </Link>
+          <button>Connect Wallet & Claim</button>
+        </Nav>
+        <Content>
+          <div className="tagline">
+            <p>
+              On August 29, 2021, SSUMDAY, CLOSER, ABBEDAGGE, FBI, and HUHI
+              brought home a historic championship title to 100 Thieves.
+              <br />
+              To commemorate, Nadeshot commissioned a one-of-a-kind diamond
+              chain to gift our players & coaches.
+            </p>
+            <p>
+              On August 29, 2021, SSUMDAY, CLOSER, ABBEDAGGE, FBI, and HUHI
+              brought home a historic championship title to 100 Thieves.{' '}
+            </p>
+          </div>
+          <h1>
+            basement
+            <br />
+            grotesque
+            <br />
+            NFT
+          </h1>
+        </Content>
+        <ActionContainer>
+          <Web3Box>
+            <div>
               <p>
-                On August 29, 2021, SSUMDAY, CLOSER, ABBEDAGGE, FBI, and HUHI
-                brought home a historic championship title to 100 Thieves.
-                <br />
-                To commemorate, Nadeshot commissioned a one-of-a-kind diamond
-                chain to gift our players & coaches.
+                <s>WEB1</s>
+                <span>WEB3</span>
               </p>
+              <Web3Globe />
               <p>
-                On August 29, 2021, SSUMDAY, CLOSER, ABBEDAGGE, FBI, and HUHI
-                brought home a historic championship title to 100 Thieves.{' '}
+                <s>WEB2</s>
+                <span>©{new Date().getFullYear()}</span>
               </p>
             </div>
-            <h1>
-              basement
-              <br />
-              grotesque
-              <br />
-              NFT
-            </h1>
-          </Content>
-          <ActionContainer>
-            <Web3Box>
-              <div>
-                <p>WEB3</p>
-                <Web3Globe />
-                <p>©{new Date().getFullYear()}</p>
-              </div>
-              <h3>0.5 ETH</h3>
-            </Web3Box>
-            <H2>
-              <span>MINTED</span> <b>003/500</b>
-            </H2>
-            <CTA css={{ mt: toVw(32, 1920) }}>CONNECT WALLET & CLAIM</CTA>
-          </ActionContainer>
-        </Box>
-      </Section>
-      <NFTTopMarquee />
-    </Box>
+            <h3>0.5 ETH</h3>
+          </Web3Box>
+          <H2>
+            <span>MINTED</span> <b>003/500</b>
+          </H2>
+          <CTA css={{ mt: toVw(32, 1920) }}>CONNECT WALLET & CLAIM</CTA>
+        </ActionContainer>
+      </Box>
+    </Section>
   )
 }
 
@@ -84,7 +97,13 @@ const Nav = styled('nav', {
   'a, button': {
     fontSize: toVw(18, 1920),
     fontFamily: '$mono',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    transition: 'color 0.3s ease-in-out',
+    cursor: 'none',
+
+    '&:hover': {
+      color: '$orange'
+    }
   }
 })
 
@@ -139,13 +158,19 @@ const Web3Box = styled('div', {
 
   '> div': {
     display: 'flex',
-    alignItems: 'flex-end',
     fontSize: toVw(20, 1920),
     justifyContent: 'space-between',
+    alignItems: 'stretch',
 
     p: {
       flexShrink: 0,
-      minWidth: toVw(66, 1920)
+      minWidth: toVw(66, 1920),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      '&:last-child': {
+        textAlign: 'right'
+      }
     }
   },
 
@@ -157,7 +182,7 @@ const Web3Box = styled('div', {
 })
 
 const H2 = styled('h2', {
-  fontSize: toVw(115, 1920),
+  fontSize: toVw(118, 1920),
   fontFamily: '$grotequeExtended',
   fontWeight: 900,
   lineHeight: 1.1,
@@ -179,8 +204,15 @@ const CTA = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-
+  fontFamily: '$grotequeExtended',
   fontWeight: 900,
   fontSize: toVw(48, 1920),
-  lineHeight: 1.1
+  lineHeight: 1.1,
+  transition:
+    'background-color 0.3s ease-in-out, border-color 0.3s ease-in-out',
+
+  '&:hover': {
+    backgroundColor: '$orange',
+    borderColor: '$orange'
+  }
 })
