@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { EthersAppContext } from 'eth-hooks/context'
 import { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -6,7 +7,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { LocomotiveScrollProvider } from 'context/locomotive-scroll'
 import { DURATION, gsap, SplitText } from 'lib/gsap'
 import Cursor from 'components/primitives/cursor'
-import Header from 'components/layout/header'
 import { useAppGA } from 'lib/ga'
 import 'css/global.css'
 
@@ -82,8 +82,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Toaster position="bottom-center" />
         <Cursor>
           <LocomotiveScrollProvider>
-            <Header />
-            <Component {...pageProps} />
+            {/* <ContractsAppContext> */}
+            <EthersAppContext>
+              <Component {...pageProps} />
+            </EthersAppContext>
+            {/* </ContractsAppContext> */}
           </LocomotiveScrollProvider>
         </Cursor>
       </Context.Provider>

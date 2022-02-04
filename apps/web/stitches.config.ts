@@ -17,7 +17,8 @@ export const {
       black: '#000000',
       blur: 'rgba(0, 0, 0, 0.5)',
       table: 'transparent',
-      white: '#ffffff'
+      white: '#ffffff',
+      orange: '#FF4D00'
     },
     shadows: {
       black: '#000000',
@@ -27,7 +28,8 @@ export const {
       system:
         '-apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif',
       heading: 'Basement Grotesque, var(--fonts-system)',
-      body: 'Inter, var(--fonts-system)'
+      body: 'Inter, var(--fonts-system)',
+      mono: 'monospace'
     },
     fontSizes: {
       1: '12px',

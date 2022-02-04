@@ -1,21 +1,23 @@
 import Head, { HeadProps } from 'components/common/head'
 import Footer from './footer'
+import Header from './header'
 
 type Props = {
   children?: React.ReactNode
   headProps?: HeadProps
 
   // TODO after implementing head, header, footer
-  // headerProps: HeaderProps
-  // footerProps: FooterProps
+  header?: false | React.ReactNode
+  footer?: false | React.ReactNode
 }
 
-const PageLayout = ({ children, headProps }: Props) => {
+const PageLayout = ({ children, headProps, header, footer }: Props) => {
   return (
     <>
       <Head {...headProps} />
+      {header === false ? null : <>{header ?? <Header />}</>}
       {children}
-      <Footer />
+      {footer === false ? null : <>{footer ?? <Footer />}</>}
     </>
   )
 }
