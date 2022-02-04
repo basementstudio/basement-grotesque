@@ -1,12 +1,35 @@
+import { DURATION, gsap } from 'lib/gsap'
+import * as React from 'react'
 import Section from 'components/layout/section'
-import B from 'logos/b.svg'
 import Web3Globe from 'logos/web3-globe.svg'
-import Link from 'components/primitives/link'
 import Box from 'components/common/box'
 import { styled } from '../../../../stitches.config'
 import { toVw } from '../posters'
 
 export const NFTHero = () => {
+  const mintQuantityRef = React.useRef<HTMLSpanElement>(null)
+
+  React.useEffect(() => {
+    const count = { value: 0 }
+    const mintCount = 3
+
+    const tween = gsap.to(count, {
+      value: mintCount,
+      duration: DURATION * 0.8,
+      onUpdate: () => {
+        if (mintQuantityRef.current) {
+          const n = Math.round(count.value)
+          const result = `00${n}`.slice(-3)
+          mintQuantityRef.current.innerText = result
+        }
+      }
+    })
+
+    return () => {
+      tween.kill()
+    }
+  }, [])
+
   return (
     <Section
       css={{
@@ -26,21 +49,6 @@ export const NFTHero = () => {
           width: '100%'
         }}
       >
-        <Nav>
-          <Link variant="unstyled" href="#">
-            <B />
-          </Link>
-          <Link variant="unstyled" href="#">
-            About
-          </Link>
-          <Link variant="unstyled" href="#">
-            The Grotesque
-          </Link>
-          <Link variant="unstyled" href="#">
-            The Team
-          </Link>
-          <button>Connect Wallet & Claim</button>
-        </Nav>
         <Content>
           <div className="tagline">
             <p>
@@ -79,7 +87,10 @@ export const NFTHero = () => {
             <h3>0.5 ETH</h3>
           </Web3Box>
           <H2>
-            <span>MINTED</span> <b>003/500</b>
+            <span>MINTED</span>{' '}
+            <b>
+              <span ref={mintQuantityRef}>000</span>/500
+            </b>
           </H2>
           <CTA css={{ mt: toVw(32, 1920) }}>CONNECT WALLET & CLAIM</CTA>
         </ActionContainer>
@@ -87,25 +98,6 @@ export const NFTHero = () => {
     </Section>
   )
 }
-
-const Nav = styled('nav', {
-  display: 'flex',
-  width: '100%',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-
-  'a, button': {
-    fontSize: toVw(18, 1920),
-    fontFamily: '$mono',
-    textTransform: 'uppercase',
-    transition: 'color 0.3s ease-in-out',
-    cursor: 'none',
-
-    '&:hover': {
-      color: '$orange'
-    }
-  }
-})
 
 const Content = styled('div', {
   py: toVw(24, 1920),

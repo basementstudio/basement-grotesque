@@ -4,6 +4,10 @@ import { NFTMarquee } from 'components/sections/nft/marquee'
 import { toVw } from 'components/sections/posters'
 import { range } from 'lib/utils'
 import Footer from './footer'
+import * as React from 'react'
+import B from 'logos/b.svg'
+import Link from 'components/primitives/link'
+import { styled } from '../../../stitches.config'
 
 type Props = {
   children?: React.ReactNode
@@ -55,6 +59,22 @@ export const NFTLayout = ({ headProps, children }: Props) => {
         </NFTMarquee>
       </Box>
 
+      <Header>
+        <Link variant="unstyled" href="#">
+          <B />
+        </Link>
+        <Link variant="unstyled" href="#">
+          About
+        </Link>
+        <Link variant="unstyled" href="#">
+          The Grotesque
+        </Link>
+        <Link variant="unstyled" href="#">
+          The Team
+        </Link>
+        <button>Connect Wallet & Claim</button>
+      </Header>
+
       <Box
         css={{
           $$fullFrameHeight: 'calc(100vh - $$frameBorderY * 2)',
@@ -70,3 +90,29 @@ export const NFTLayout = ({ headProps, children }: Props) => {
     </Box>
   )
 }
+
+const Header = styled('header', {
+  display: 'flex',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  position: 'fixed',
+  left: 0,
+  right: 0,
+  zIndex: 999,
+  top: `calc(${toVw(32, 1920)} + $$frameBorderY)`,
+  px: `calc(${toVw(32, 1920)} + $$frameBorderX)`,
+  mixBlendMode: 'difference',
+
+  'a, button': {
+    fontSize: toVw(18, 1920),
+    fontFamily: '$mono',
+    textTransform: 'uppercase',
+    transition: 'color 0.3s ease-in-out',
+    cursor: 'none',
+
+    '&:hover': {
+      color: '$orange'
+    }
+  }
+})
