@@ -1,5 +1,4 @@
 import { siteOrigin } from 'lib/constants'
-import { NextRouter } from 'next/dist/client/router'
 
 export type QueryParams = { [key: string]: string | null }
 
@@ -41,21 +40,4 @@ export const getHrefWithQuery = (
   }
 
   return `${uri.pathname}${uri.search}${uri.hash}`
-}
-
-export type TransitionOptions = Parameters<NextRouter['push']>['2']
-
-/**
- * Don't use this inside a useEffect with `router` as a dependency (infinite loop alert).
- */
-export const makeQuery = (
-  router: NextRouter,
-  queryParams: QueryParams,
-  opts?: { replace?: boolean } & TransitionOptions
-) => {
-  const url = getHrefWithQuery(router.asPath, queryParams)
-  const replace = opts?.replace
-  delete opts?.replace
-  if (replace) return router.replace(url, url, { scroll: false, ...opts })
-  else return router.push(url, url, { scroll: false, ...opts })
 }

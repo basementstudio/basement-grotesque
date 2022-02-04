@@ -15,6 +15,9 @@
     "lint:fix": {
       "outputs": []
     },
+    "type-check": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     }
