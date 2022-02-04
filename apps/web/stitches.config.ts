@@ -28,8 +28,10 @@ export const {
       system:
         '-apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif',
       heading: 'Basement Grotesque, var(--fonts-system)',
+      grotequeExtended:
+        'Basement Grotesque Extended, Basement Grotesque, var(--fonts-system)',
       body: 'Inter, var(--fonts-system)',
-      mono: 'monospace'
+      mono: 'IBM Plex Mono'
     },
     fontSizes: {
       1: '12px',
@@ -129,12 +131,6 @@ export const {
     my: (value: Stitches.PropertyValue<'marginTop'>) => ({
       marginTop: value,
       marginBottom: value
-    }),
-    p: (value: Stitches.PropertyValue<'paddingTop'>) => ({
-      paddingTop: value,
-      paddingBottom: value,
-      paddingLeft: value,
-      paddingRight: value
     }),
     pt: (value: Stitches.PropertyValue<'paddingTop'>) => ({
       paddingTop: value
