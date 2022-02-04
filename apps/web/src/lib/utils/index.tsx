@@ -88,3 +88,7 @@ export const formatDate = (date: Date, includeTime = false) => {
     </>
   )
 }
+
+export function lerp(v0: number, v1: number, t: number) {
+  return v0 * (1 - t) + v1 * t
+}

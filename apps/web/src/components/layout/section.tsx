@@ -19,6 +19,10 @@ const StyledSection = styled('div', {
       muted: {
         background: '$background',
         color: '$white'
+      },
+      transparent: {
+        background: 'transparent',
+        color: '$white'
       }
     },
     noMargin: {

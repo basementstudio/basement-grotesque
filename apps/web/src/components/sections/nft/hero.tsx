@@ -39,7 +39,7 @@ export const NFTHero = () => {
         py: toVw(32, 1920),
         px: toVw(32, 1920)
       }}
-      background="black"
+      background="transparent"
     >
       <Box
         css={{
