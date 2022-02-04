@@ -62,7 +62,7 @@ export const getStaticProps = async () => {
   try {
     tweets = await getHashtagTweets()
   } catch (error) {
-    console.warn(error.message)
+    console.warn(error)
     tweets = null
   }
 
