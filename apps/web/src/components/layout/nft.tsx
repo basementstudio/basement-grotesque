@@ -8,6 +8,10 @@ import * as React from 'react'
 import B from 'logos/b.svg'
 import Link from 'components/primitives/link'
 import { styled } from '../../../stitches.config'
+import { R3fContextProvider } from 'lib/r3f/context'
+import { R3fCanvas } from 'lib/r3f/canvas'
+import { BsmnZipModel } from 'lib/r3f/components/bsmnt-zip-model'
+import { R3fGroup } from 'lib/r3f/components/layout/group'
 
 type Props = {
   children?: React.ReactNode
@@ -74,6 +78,49 @@ export const NFTLayout = ({ headProps, children }: Props) => {
         </Link>
         <button>Connect Wallet & Claim</button>
       </Header>
+
+      <Box
+        id="r3f-canvas"
+        css={{
+          padding: `$$frameBorderY $$frameBorderX`,
+          borderRadius: '$$frameBorderRadius',
+          overflow: 'hidden',
+          position: 'fixed',
+          inset: 0,
+
+          '> div': {
+            position: 'relative !important',
+            height: '100% !important',
+            borderRadius: '$$frameBorderRadius'
+          }
+        }}
+      />
+
+      <R3fContextProvider>
+        <R3fCanvas />
+
+        {/* JUST TESTING */}
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: toVw(300, 1920)
+          }}
+        >
+          <R3fGroup
+            style={{
+              marginTop: toVw(300, 1920),
+              width: toVw(450, 1920),
+              height: toVw(450, 1920)
+            }}
+          >
+            <BsmnZipModel />
+          </R3fGroup>
+        </div>
+      </R3fContextProvider>
 
       <Box
         css={{

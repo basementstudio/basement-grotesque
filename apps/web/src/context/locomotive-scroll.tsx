@@ -6,14 +6,18 @@ import mergeRefs from 'react-merge-refs'
 import { useMeasure } from 'hooks/use-measure'
 import Box from 'components/common/box'
 
+export const locoLerp = 0.09708
+
 export interface Context {
   scroll: Scroll | null
   isReady: boolean
+  isSmooth: boolean | undefined
 }
 
 const LocomotiveScrollContext = createContext<Context>({
   scroll: null,
-  isReady: false
+  isReady: false,
+  isSmooth: undefined
 })
 
 type Props = {
@@ -26,6 +30,7 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
   const locomotiveScrollRef = useRef<Scroll | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [ref, { height }] = useMeasure({ debounce: 100 })
+  const [isSmooth, setIsSmooth] = useState<boolean>()
 
   useEffect(() => {
     ;(async () => {
@@ -36,7 +41,7 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
         const locoScroll = new LocomotiveScroll({
           el: scrollContainerRef.current,
           smooth: true,
-          lerp: 0.09708,
+          lerp: locoLerp,
           //@ts-ignore
           firefoxMultiplier: 100,
           //@ts-ignore
@@ -53,6 +58,10 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
       }
     })()
 
+    setIsSmooth(
+      document.documentElement.classList.contains('has-scroll-smooth')
+    )
+
     return () => {
       locomotiveScrollRef.current?.destroy()
     }
@@ -64,7 +73,7 @@ export const LocomotiveScrollProvider = ({ children, options }: Props) => {
 
   return (
     <LocomotiveScrollContext.Provider
-      value={{ scroll: locomotiveScrollRef.current, isReady }}
+      value={{ scroll: locomotiveScrollRef.current, isReady, isSmooth }}
     >
       <Box
         css={{ background: 'black' }}

@@ -15,6 +15,8 @@
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
     "@radix-ui/react-polymorphic": "0.0.13",
+    "@react-three/drei": "^8.8.1",
+    "@react-three/fiber": "^7.0.26",
     "@stitches/react": "^1.2.6",
     "clsx": "^1.1.1",
     "date-fns": "^2.23.0",
@@ -35,7 +37,8 @@
     "react-merge-refs": "^1.1.0",
     "react-query": "^3.27.0",
     "react-use-measure": "^2.0.4",
-    "sharp": "^0.29.0"
+    "sharp": "^0.29.0",
+    "three": "^0.137.5"
   },
   "devDependencies": {
     "@basement-grotesque/config": "*",
@@ -49,6 +52,7 @@
     "@types/p2": "^0.7.39",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.6",
+    "@types/three": "^0.137.0",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "babel-jest": "^27.0.6",
