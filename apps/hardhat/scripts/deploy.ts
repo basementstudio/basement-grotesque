@@ -1,17 +1,16 @@
-// import type a from '@nomiclabs/hardhat-ethers'
 import fs from 'fs';
-import { ethers } from 'hardhat'
+import { ethers } from 'hardhat';
 
 const main = async () => {
   const [deployer] = await ethers.getSigners();
   console.log(`Deploying contracts with the account: ${deployer.address}`);
 
   const balance = await deployer.getBalance();
-  console.log(`Account balance: ${balance.toString()}`);
+  console.log(`Account balance: ${ethers.utils.formatEther(balance)}`);
 
   const Contract = await ethers.getContractFactory('GrotesqueAccessCard');
   const deployedContract = await Contract.deploy();
-  console.log(`Token address: ${deployedContract.address}`);
+  console.log(`Contract address: ${deployedContract.address}`);
 
   const contractAbi = deployedContract.interface.format('json')
 
