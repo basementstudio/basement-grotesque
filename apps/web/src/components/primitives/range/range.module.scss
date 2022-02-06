@@ -1,0 +1,93 @@
+.range {
+  width: 100%;
+  margin: 13.8px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+
+  --thumb-height: var(--thumb-width);
+  --thumb-radius: 3px;
+  --thumb-color: var(--colors-white);
+  --track-color: var(--colors-white);
+  --track-height: 2px;
+}
+
+.range:focus {
+  outline: none;
+  cursor: none;
+
+  &::-webkit-slider-thumb {
+    cursor: none;
+  }
+
+  &::-moz-range-thumb {
+    cursor: none;
+  }
+
+  &::-ms-thumb {
+    cursor: none;
+  }
+}
+
+.range::-webkit-slider-runnable-track {
+  background: var(--track-color);
+  width: 100%;
+  height: var(--track-height);
+}
+
+.range::-webkit-slider-thumb {
+  margin-top: calc((var(--thumb-height) / 2) * -1);
+  width: var(--thumb-width);
+  height: var(--thumb-height);
+  background: var(--thumb-color);
+  border: none;
+  border-radius: var(--thumb-radius);
+  cursor: none;
+  -webkit-appearance: none;
+}
+
+.range::-moz-range-track {
+  background: var(--track-color);
+  width: 100%;
+  height: var(--track-height);
+}
+
+.range::-moz-range-thumb {
+  width: var(--thumb-width);
+  height: var(--thumb-height);
+  background: var(--thumb-color);
+  border: none;
+  border-radius: var(--thumb-radius);
+  cursor: none;
+}
+
+.range::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 14.8px 0;
+  color: transparent;
+  width: 100%;
+  height: 8.4px;
+}
+
+.range::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+
+.range::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+
+.range::-ms-thumb {
+  width: var(--thumb-width);
+  height: var(--thumb-height);
+  background: theme('colors.font.text');
+  border-radius: var(--thumb-radius);
+  cursor: none;
+  margin-top: 0;
+
+  /* Needed to keep the Edge thumb centred */
+}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://grotesque.basement.studio/
+
+# Sitemaps
+Sitemap: https://grotesque.basement.studio/sitemap.xml

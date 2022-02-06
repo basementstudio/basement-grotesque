@@ -1,0 +1,17 @@
+{
+  "description": "BSMNT Grotesque Access Card",
+  "external_url": "https://grotesque.basement.studio/",
+  "image": "https://ipfs.io/ipfs/QmdffbPrPeRPp2iB9GewoXEdx5YGg2ppRpuqrg9wwHzgDL/1.png",
+  "name": "BSMNT Grotesque Access Card",
+  "tokenId": "1",
+  "attributes": [
+    {
+      "name": "color",
+      "value": "silver"
+    },
+    {
+      "name": "rarity",
+      "value": "common"
+    }
+  ]
+}

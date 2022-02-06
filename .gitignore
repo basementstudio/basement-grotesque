@@ -1,7 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.turbo
+
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
@@ -9,11 +11,11 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+.next
+out
 
 # production
-/build
+build
 
 # misc
 .DS_Store
@@ -33,3 +35,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# ts
+tsconfig.tsbuildinfo

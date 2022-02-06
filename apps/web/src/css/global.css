@@ -1,0 +1,63 @@
+@import './reset.css';
+@import './fonts.css';
+@import './scroll.css';
+
+*,
+*:active,
+*:focus {
+  box-sizing: border-box;
+  outline: none;
+  cursor: none;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--fonts-body);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: var(--colors-black);
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+main {
+  background-color: var(--colors-white);
+}
+
+::selection {
+  background-color: white;
+  color: black;
+  -webkit-text-fill-color: black;
+}
+
+.invert-selection::selection,
+.invert-selection *::selection {
+  background-color: black;
+  color: white;
+  -webkit-text-fill-color: white;
+}
+
+.ss01 {
+  font-feature-settings: 'ss01' on;
+}
+
+.ss02 {
+  font-feature-settings: 'ss02' on;
+}
+
+.ss03 {
+  font-feature-settings: 'ss03' on;
+}
