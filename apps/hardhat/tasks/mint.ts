@@ -1,18 +1,13 @@
 import grotesqueAccessCardContract from '../abis/GrotesqueAccessCard.json'
 import { getWalletAndProvider, THardhat } from '../utils'
 
-type Arguments = {
-  receiver: string
-}
-
-const mint = async ({ receiver }: Arguments, hre: THardhat) => {
+const mint = async (_, hre: THardhat) => {
   const overrides = {
-    value: hre.ethers.utils.parseEther('0.000001'),
+    value: hre.ethers.utils.parseEther('0.02'),
     gasLimit: 3000000,
   }
   const { provider, wallet } = getWalletAndProvider(hre)
   
-
   const currentGasPrice = await provider.getGasPrice()
   const balance = await wallet.getBalance();
 
@@ -26,7 +21,7 @@ const mint = async ({ receiver }: Arguments, hre: THardhat) => {
     wallet
   ).connect(wallet)
 
-  const mintTransaction = await ethersContract.mint(receiver, '', overrides)
+  const mintTransaction = await ethersContract.mint(overrides)
 
   console.log(`Transaction created: https://${
     hre.network.name !== 'mainnet' ? hre.network.name + '.' : ''

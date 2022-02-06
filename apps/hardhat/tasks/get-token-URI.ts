@@ -1,7 +1,11 @@
 import grotesqueAccessCardContract from '../abis/GrotesqueAccessCard.json'
 import { THardhat, getWalletAndProvider } from '../utils'
 
-const getTotalSupply = async (_, hre: THardhat) => {
+type Arguments = {
+  tokenid: string
+}
+
+const getTokenURI = async ({ tokenid }: Arguments, hre: THardhat) => {
   const { wallet } = getWalletAndProvider(hre)
 
   const ethersContract = new hre.ethers.Contract(
@@ -11,9 +15,9 @@ const getTotalSupply = async (_, hre: THardhat) => {
     wallet
   ).connect(wallet.address)
 
-  const totalSupply: THardhat['ethers']['BigNumber'] = await ethersContract.totalSupply()
+  const tokenURI: string = await ethersContract.tokenURI(tokenid.toString())
 
-  console.log('Total supply:', totalSupply.toString())
+  console.log('Token URI:', tokenURI)
 }
 
-export default getTotalSupply
+export default getTokenURI
