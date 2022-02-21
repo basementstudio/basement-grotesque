@@ -74,7 +74,7 @@
     "jest": "^27.3.1",
     "lint-staged": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
-    "next-sitemap": "^1.6.162",
+    "next-sitemap": "^2.4.5",
     "next-transpile-modules": "^8.0.0",
     "prettier": "^2.3.2",
     "sass": "^1.38.0",
