@@ -857,9 +857,10 @@
   version "0.2.3"
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
 
-"@corex/deepmerge@^2.6.34":
-  version "2.6.34"
-  resolved "https://registry.npmjs.org/@corex/deepmerge/-/deepmerge-2.6.34.tgz"
+"@corex/deepmerge@^4.0.14":
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-4.0.14.tgz#d927bac61c24aaf4028df707896f3b85f4f5ce3f"
+  integrity sha512-Sh6eHsEwxHVKu6Cu90I+nJ/6Ql1MuHqjNuFQVBOuFHpUDtv2rL5FYlhAfd/Gfj6W76nBt9zqj5lBPHhwrFxU9g==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -5719,12 +5720,6 @@ matchdep@^2.0.0:
     resolve "^1.4.0"
     stack-trace "0.0.10"
 
-matcher@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/matcher/-/matcher-4.0.0.tgz"
-  dependencies:
-    escape-string-regexp "^4.0.0"
-
 mathml-tag-names@^2.1.3:
   version "2.1.3"
   resolved "https://registry.npmjs.org/mathml-tag-names/-/mathml-tag-names-2.1.3.tgz"
@@ -5894,9 +5889,10 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
+minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mixin-deep@^1.2.0:
   version "1.3.2"
@@ -5986,13 +5982,13 @@ next-seo@^4.26.0:
   version "4.26.0"
   resolved "https://registry.npmjs.org/next-seo/-/next-seo-4.26.0.tgz"
 
-next-sitemap@^1.6.162:
-  version "1.6.162"
-  resolved "https://registry.npmjs.org/next-sitemap/-/next-sitemap-1.6.162.tgz"
+next-sitemap@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-3.0.2.tgz#cc7eabaccf5e9de0a4eadab6d8dc78f23f5a8fe8"
+  integrity sha512-65PufQuQiaF2I2r4by5pu+47YDk04Wwzgwn30UZ3ieQft8MOaG5JXsNqhTu2/NvR0BlWdOwPhShxeTrxZYdunQ==
   dependencies:
-    "@corex/deepmerge" "^2.6.34"
-    matcher "^4.0.0"
-    minimist "^1.2.5"
+    "@corex/deepmerge" "^4.0.14"
+    minimist "^1.2.6"
 
 next-svgr@^0.0.2:
   version "0.0.2"
