@@ -46,7 +46,7 @@
     "react-merge-refs": "^1.1.0",
     "react-query": "^3.27.0",
     "react-use-measure": "^2.0.4",
-    "sharp": "^0.29.0"
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.0",
