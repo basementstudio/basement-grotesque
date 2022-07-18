@@ -4,7 +4,7 @@ import { isMobile as _isMobile } from 'react-device-detect'
 
 // Lib
 import { download } from 'lib/utils'
-import { getDownloadLink } from 'lib/github'
+import { getDownloadLink, getReleaseLink } from 'lib/github'
 import { event } from 'lib/ga'
 
 // Stitches
@@ -139,15 +139,10 @@ export const DownloadButton = ({
       '_blank'
     )
     if (!shouldOnlyTweet) {
+      // download the latest release or fallback to the release page
       getDownloadLink()
         .then((link) => download(link))
-        .catch((_) => {
-          // fallback to github release page
-          window.open(
-            'https://github.com/basementstudio/basement-grotesque/releases/latest',
-            '_blank'
-          )
-        })
+        .catch((_) => window.open(getReleaseLink(), '_blank'))
     }
   }, [shouldOnlyTweet])
 
