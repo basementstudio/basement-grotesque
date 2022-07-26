@@ -4,6 +4,8 @@ import { isMobile as _isMobile } from 'react-device-detect'
 
 // Lib
 import { download } from 'lib/utils'
+import { getDownloadLink, getReleaseLink } from 'lib/github'
+import { event } from 'lib/ga'
 
 // Stitches
 import { styled } from '../../../../stitches.config'
@@ -19,7 +21,6 @@ import MobileMenu from './mobile-menu'
 import { useToggleState } from 'hooks/use-toggle-state'
 import { useLocomotiveScroll } from 'context/locomotive-scroll'
 import { useRouter } from 'next/router'
-import { event } from 'lib/ga'
 
 const StyledHeader = styled('header', {
   my: '$4',
@@ -138,9 +139,10 @@ export const DownloadButton = ({
       '_blank'
     )
     if (!shouldOnlyTweet) {
-      download(
-        encodeURI(location.origin + '/BasementGrotesque-Black_v1.202.zip')
-      )
+      // download the latest release or fallback to the release page
+      getDownloadLink()
+        .then((link) => download(link))
+        .catch((_) => window.open(getReleaseLink(), '_blank'))
     }
   }, [shouldOnlyTweet])
 
