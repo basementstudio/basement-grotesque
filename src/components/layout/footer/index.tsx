@@ -289,7 +289,8 @@ const Footer = () => {
             }}
           >
             <Text css={{ fontSize: '$1', '@bp2': { fontSize: '$3' } }}>
-              © basement.studio LLC 2021 all rights reserved
+              © basement.studio LLC {new Date().getUTCFullYear()} all rights
+              reserved
             </Text>
           </Box>
         </FooterGrid>
