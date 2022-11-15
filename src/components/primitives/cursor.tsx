@@ -24,6 +24,7 @@ const CursorFollower = styled('div', {
   mixBlendMode: 'difference',
   top: 0,
   zIndex: 9999,
+  transform: 'translate(-50%, -50%)',
   transition: 'opacity .2s ease-in',
   '.outer': {
     mixBlendMode: 'difference',
