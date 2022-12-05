@@ -20,6 +20,7 @@ import { styled } from '../../../../stitches.config'
 import label from '../../../../public/images/labelhero.png'
 
 import { ArrowDown } from 'components/primitives/arrow'
+import { Banner } from 'components/layout/banner'
 
 const Title = styled('h1', {
   color: '$white',
@@ -111,6 +112,7 @@ const Hero = () => {
 
   return (
     <Section css={{ zIndex: 10 }}>
+      <Banner />
       <Wrapper>
         <Title data-cursor="undefined">
           <Outlined
