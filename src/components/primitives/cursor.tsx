@@ -24,7 +24,8 @@ const CursorFollower = styled('div', {
   mixBlendMode: 'difference',
   top: 0,
   zIndex: 9999,
-
+  transform: 'translate(-50%, -50%)',
+  transition: 'opacity .2s ease-in',
   '.outer': {
     mixBlendMode: 'difference',
     position: 'absolute',
@@ -106,7 +107,7 @@ const Cursor = ({ children }: { children?: React.ReactNode }) => {
 
   useEffect(() => {
     if (!cursorRef.current) return
-    gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 })
+    gsap.set(cursorRef.current, { autoAlpha: 0 })
 
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     const mouse = { x: pos.x, y: pos.y }
@@ -118,6 +119,7 @@ const Cursor = ({ children }: { children?: React.ReactNode }) => {
     function handleMouseMove(e: MouseEvent) {
       mouse.x = e.x
       mouse.y = e.y
+      gsap.set(cursorRef.current, { autoAlpha: 1 })
       if (e.target instanceof HTMLElement || e.target instanceof SVGElement) {
         if (e.target.dataset.cursor) {
           setType(e.target.dataset.cursor as any)
